@@ -4,13 +4,24 @@
     <loc>https://cronoshop.github.io/shooping/</loc>
     <priority>1.0</priority>
   </url>
-  <!-- Se avete altre pagine, aggiungetele qui -->
   <url>
-    <loc>https://cronoshop.github.io/shooping/offerte.html</loc>
+    <loc>https://cronoshop.github.io/shooping/account.html</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cronoshop.github.io/shooping/contatti.html</loc>
-    <priority>0.5</priority>
+    <loc>https://cronoshop.github.io/shooping/cart.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cronoshop.github.io/shooping/categorie.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cronoshop.github.io/shooping/groups.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cronoshop.github.io/shooping/wishlist.html</loc>
+    <priority>0.8</priority>
   </url>
 </urlset>
