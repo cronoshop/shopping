@@ -10,10 +10,8 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Animated Background -->
     <div class="animated-background"></div>
     
-    <!-- Header -->
     <header class="glass-header">
         <nav class="nav-container">
             <div class="logo">
@@ -34,24 +32,22 @@
         </nav>
     </header>
 
-    <!-- Groups Section -->
     <section class="groups-section" style="padding-top: 120px;">
         <div class="section-header">
-            <h2>📱 Gruppi WhatsApp</h2>
-            <p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 2rem;">Unisciti ai nostri gruppi per ricevere offerte esclusive in tempo reale</p>
+            <h2>📱 Gruppi WhatsApp & Telegram</h2>
+            <p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 2rem;">Unisciti ai nostri canali e gruppi per ricevere offerte esclusive in tempo reale</p>
         </div>
         
-        <!-- Main Group Banner -->
         <div class="glass-card main-group-banner" style="margin-bottom: 3rem; padding: 3rem; text-align: center;">
             <div class="whatsapp-icon" style="font-size: 4rem; margin-bottom: 1rem;">📱</div>
-            <h3 style="color: white; margin-bottom: 1rem; font-size: 2rem;">Gruppo Principale Cronoshop</h3>
+            <h3 style="color: white; margin-bottom: 1rem; font-size: 2rem;">Canale Principale Cronoshop (WhatsApp)</h3>
             <p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 2rem; font-size: 1.1rem;">
-                Ricevi tutte le migliori offerte Amazon direttamente sul tuo WhatsApp
+                Segui il nostro canale per ricevere tutte le migliori offerte Amazon in tempo reale
             </p>
             <div class="group-stats" style="display: flex; justify-content: center; gap: 2rem; margin-bottom: 2rem; flex-wrap: wrap;">
                 <div class="stat-item">
                     <span class="stat-number">2.5K+</span>
-                    <span class="stat-label">Membri Attivi</span>
+                    <span class="stat-label">Seguaci Attivi</span>
                 </div>
                 <div class="stat-item">
                     <span class="stat-number">50+</span>
@@ -62,20 +58,19 @@
                     <span class="stat-label">Aggiornamenti</span>
                 </div>
             </div>
-            <button class="glass-btn primary-btn whatsapp-main-btn" style="font-size: 1.2rem; padding: 1rem 2rem;">
-                🚀 Unisciti al Gruppo Principale
+            <button class="glass-btn primary-btn whatsapp-main-btn" style="font-size: 1.2rem; padding: 1rem 2rem;" onclick="joinWhatsAppGroup('main_channel')">
+                🚀 Segui il Canale Principale
             </button>
         </div>
 
-        <!-- Specialized Groups -->
-        <div class="specialized-groups">
-            <h3 style="color: white; text-align: center; margin-bottom: 2rem;">🎯 Gruppi Specializzati</h3>
+        <div class="specialized-groups" style="margin-bottom: 3rem;">
+            <h3 style="color: white; text-align: center; margin-bottom: 2rem;">🎯 Gruppi Specializzati (WhatsApp)</h3>
             
             <div class="groups-grid">
                 <div class="glass-card group-card">
                     <div class="group-header">
                         <div class="group-icon">📱</div>
-                        <div class="group-badge">NUOVO</div>
+                        <div class="group-badge NUOVO">NUOVO</div>
                     </div>
                     <h4>Smartphone & Tech</h4>
                     <p>Offerte esclusive su iPhone, Samsung, accessori tech e gadget</p>
@@ -83,13 +78,13 @@
                         <span class="member-count">👥 1.2K membri</span>
                         <span class="activity-level">🔥 Molto Attivo</span>
                     </div>
-                    <button class="glass-btn whatsapp-btn">Unisciti</button>
+                    <button class="glass-btn whatsapp-btn" onclick="joinWhatsAppGroup('smartphone')">Unisciti</button>
                 </div>
 
                 <div class="glass-card group-card">
                     <div class="group-header">
                         <div class="group-icon">👕</div>
-                        <div class="group-badge">POPOLARE</div>
+                        <div class="group-badge POPOLARE">POPOLARE</div>
                     </div>
                     <h4>Fashion & Style</h4>
                     <p>Abbigliamento, scarpe, accessori moda per uomo e donna</p>
@@ -97,13 +92,13 @@
                         <span class="member-count">👥 850 membri</span>
                         <span class="activity-level">⚡ Attivo</span>
                     </div>
-                    <button class="glass-btn whatsapp-btn">Unisciti</button>
+                    <button class="glass-btn whatsapp-btn" onclick="joinWhatsAppGroup('fashion')">Unisciti</button>
                 </div>
 
                 <div class="glass-card group-card">
                     <div class="group-header">
                         <div class="group-icon">🏠</div>
-                        <div class="group-badge">ESCLUSIVO</div>
+                        <div class="group-badge ESCLUSIVO">ESCLUSIVO</div>
                     </div>
                     <h4>Casa & Cucina</h4>
                     <p>Elettrodomestici, arredamento, prodotti per la casa</p>
@@ -111,13 +106,13 @@
                         <span class="member-count">👥 650 membri</span>
                         <span class="activity-level">📈 In Crescita</span>
                     </div>
-                    <button class="glass-btn whatsapp-btn">Unisciti</button>
+                    <button class="glass-btn whatsapp-btn" onclick="joinWhatsAppGroup('casa')">Unisciti</button>
                 </div>
 
                 <div class="glass-card group-card">
                     <div class="group-header">
                         <div class="group-icon">💊</div>
-                        <div class="group-badge">SALUTE</div>
+                        <div class="group-badge SALUTE">SALUTE</div>
                     </div>
                     <h4>Salute & Benessere</h4>
                     <p>Integratori, vitamine, prodotti per la cura personale</p>
@@ -125,13 +120,13 @@
                         <span class="member-count">👥 420 membri</span>
                         <span class="activity-level">🌱 Moderato</span>
                     </div>
-                    <button class="glass-btn whatsapp-btn">Unisciti</button>
+                    <button class="glass-btn whatsapp-btn" onclick="joinWhatsAppGroup('salute')">Unisciti</button>
                 </div>
 
                 <div class="glass-card group-card">
                     <div class="group-header">
                         <div class="group-icon">⚡</div>
-                        <div class="group-badge">FLASH</div>
+                        <div class="group-badge FLASH">FLASH</div>
                     </div>
                     <h4>Offerte Flash</h4>
                     <p>Sconti lampo e offerte a tempo limitato</p>
@@ -139,13 +134,13 @@
                         <span class="member-count">👥 1.8K membri</span>
                         <span class="activity-level">🚨 Super Attivo</span>
                     </div>
-                    <button class="glass-btn whatsapp-btn">Unisciti</button>
+                    <button class="glass-btn whatsapp-btn" onclick="joinWhatsAppGroup('flash')">Unisciti</button>
                 </div>
 
                 <div class="glass-card group-card">
                     <div class="group-header">
                         <div class="group-icon">💎</div>
-                        <div class="group-badge">VIP</div>
+                        <div class="group-badge VIP">VIP</div>
                     </div>
                     <h4>Gruppo VIP</h4>
                     <p>Accesso anticipato alle migliori offerte e sconti esclusivi</p>
@@ -153,14 +148,38 @@
                         <span class="member-count">👥 200 membri</span>
                         <span class="activity-level">⭐ Esclusivo</span>
                     </div>
-                    <button class="glass-btn whatsapp-btn premium">Richiedi Accesso</button>
+                    <button class="glass-btn whatsapp-btn premium" onclick="joinWhatsAppGroup('vip')">Richiedi Accesso</button>
                 </div>
             </div>
         </div>
 
-        <!-- Benefits Section -->
+        ---
+
+        <div class="telegram-groups" style="margin-top: 3rem;">
+            <h3 style="color: white; text-align: center; margin-bottom: 2rem;">✈️ Unisciti anche su Telegram!</h3>
+            <div class="groups-grid">
+                <div class="glass-card group-card">
+                    <div class="group-header">
+                        <div class="group-icon" style="font-size: 3rem;">✈️</div>
+                        <div class="group-badge POPOLARE" style="background: #0088CC;">CANALE</div>
+                    </div>
+                    <h4>Canale Offerte Cronoshop (Telegram)</h4>
+                    <p>Non perderti nessuna offerta! Ricevi le promozioni direttamente sul tuo Telegram.</p>
+                    <div class="group-info">
+                        <span class="member-count">👥 1.5K+ Seguaci</span>
+                        <span class="activity-level">🟢 Sempre Attivo</span>
+                    </div>
+                    <button class="glass-btn telegram-btn" style="background: linear-gradient(135deg, #0088CC, #005F99); color: white;" onclick="joinTelegramGroup('main_telegram')">
+                        🚀 Unisciti al Canale
+                    </button>
+                </div>
+                </div>
+        </div>
+
+        ---
+
         <div class="benefits-section" style="margin-top: 3rem;">
-            <h3 style="color: white; text-align: center; margin-bottom: 2rem;">✨ Vantaggi dei Nostri Gruppi</h3>
+            <h3 style="color: white; text-align: center; margin-bottom: 2rem;">✨ Vantaggi dei Nostri Canali & Gruppi</h3>
             
             <div class="benefits-grid">
                 <div class="glass-card benefit-card">
@@ -189,43 +208,42 @@
             </div>
         </div>
 
-        <!-- FAQ Section -->
         <div class="faq-section glass-card" style="margin-top: 3rem; padding: 2rem;">
             <h3 style="color: white; text-align: center; margin-bottom: 2rem;">❓ Domande Frequenti</h3>
             
             <div class="faq-list">
                 <div class="faq-item">
-                    <div class="faq-question">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
                         <span>È gratuito unirsi ai gruppi?</span>
                         <span class="faq-toggle">+</span>
                     </div>
                     <div class="faq-answer">
-                        Sì, tutti i nostri gruppi sono completamente gratuiti. Solo il gruppo VIP richiede un'approvazione speciale.
+                        Sì, tutti i nostri canali e gruppi sono completamente gratuiti. Solo il gruppo VIP richiede un'approvazione speciale.
                     </div>
                 </div>
 
                 <div class="faq-item">
-                    <div class="faq-question">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
                         <span>Quante offerte ricevo al giorno?</span>
                         <span class="faq-toggle">+</span>
                     </div>
                     <div class="faq-answer">
-                        Il numero varia da 10-15 offerte nei gruppi specializzati a 50+ nel gruppo principale.
+                        Il numero varia da 10-15 offerte nei gruppi specializzati a 50+ nel canale principale.
                     </div>
                 </div>
 
                 <div class="faq-item">
-                    <div class="faq-question">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
                         <span>Posso disattivare le notifiche?</span>
                         <span class="faq-toggle">+</span>
                     </div>
                     <div class="faq-answer">
-                        Certamente! Puoi silenziare il gruppo o uscire in qualsiasi momento dalle impostazioni di WhatsApp.
+                        Certamente! Puoi silenziare il canale o uscire in qualsiasi momento dalle impostazioni di WhatsApp o Telegram.
                     </div>
                 </div>
 
                 <div class="faq-item">
-                    <div class="faq-question">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
                         <span>Come funziona il gruppo VIP?</span>
                         <span class="faq-toggle">+</span>
                     </div>
@@ -237,7 +255,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="glass-footer">
         <div class="footer-content">
             <div class="footer-section">
@@ -246,13 +263,14 @@
             </div>
             <div class="footer-section">
                 <h4>Link Utili</h4>
-                <a href="groups.html">Gruppi WhatsApp</a>
+                <a href="groups.html">Gruppi WhatsApp & Telegram</a>
                 <a href="categorie.html">Categorie</a>
                 <a href="account.html">Account</a>
             </div>
             <div class="footer-section">
                 <h4>Contatti</h4>
                 <a href="groups.html">WhatsApp</a>
+                <a href="groups.html">Telegram</a>
                 <a href="#email">Email</a>
                 <a href="#social">Social</a>
             </div>
@@ -263,6 +281,7 @@
     </footer>
 
     <style>
+        /* Existing styles remain here */
         .groups-section {
             padding: 2rem 1rem;
             max-width: 1200px;
@@ -320,6 +339,15 @@
         .group-badge.SALUTE { background: #32D74B; }
         .group-badge.FLASH { background: #FF3B30; }
         .group-badge.VIP { background: linear-gradient(45deg, #FFD700, #FFA500); }
+
+        /* New Telegram specific styles */
+        .telegram-btn {
+            background: linear-gradient(135deg, #0088CC, #005F99); /* Telegram blue */
+            color: white;
+            border: none;
+            font-weight: 600;
+            width: 100%;
+        }
 
         .group-card h4 {
             color: white;
@@ -465,27 +493,50 @@
             }
         }
 
-        // Join WhatsApp group
-        function joinWhatsAppGroup(groupType) {
-            const whatsappLinks = {
-                main: 'https://chat.whatsapp.com/cronoshop-main',
-                smartphone: 'https://chat.whatsapp.com/cronoshop-smartphone',
-                fashion: 'https://chat.whatsapp.com/cronoshop-fashion',
-                casa: 'https://chat.whatsapp.com/cronoshop-casa',
-                salute: 'https://chat.whatsapp.com/cronoshop-salute',
-                flash: 'https://chat.whatsapp.com/cronoshop-flash',
-                vip: 'https://chat.whatsapp.com/cronoshop-vip'
-            };
+        // WhatsApp links
+        const whatsappLinks = {
+            main_channel: 'https://whatsapp.com/channel/0029Vb5wE6mDeON8PBORW02R', // WhatsApp Channel link
+            smartphone: 'https://chat.whatsapp.com/cronoshop-smartphone', // Example, replace with actual group links
+            fashion: 'https://chat.whatsapp.com/cronoshop-fashion',
+            casa: 'https://chat.whatsapp.com/cronoshop-casa',
+            salute: 'https://chat.whatsapp.com/cronoshop-salute',
+            flash: 'https://chat.whatsapp.com/cronoshop-flash',
+            vip: 'https://chat.whatsapp.com/cronoshop-vip'
+        };
 
-            // In a real scenario, these would be actual WhatsApp group links
-            const link = whatsappLinks[groupType] || whatsappLinks.main;
+        // Telegram links
+        const telegramLinks = {
+            main_telegram: 'INSERISCI QUI IL LINK TELEGRAM' // *** YOU NEED TO INSERT YOUR TELEGRAM LINK HERE ***
+        };
+
+        // Function to join WhatsApp group/channel
+        function joinWhatsAppGroup(groupType) {
+            const link = whatsappLinks[groupType];
             
-            showNotification('Apertura WhatsApp...');
+            if (link) {
+                showNotification('Apertura WhatsApp...');
+                setTimeout(() => {
+                    window.open(link, '_blank');
+                }, 1000);
+            } else {
+                console.error('Invalid group type for WhatsApp link:', groupType);
+                showNotification('Errore: Link WhatsApp non trovato.');
+            }
+        }
+
+        // Function to join Telegram group/channel
+        function joinTelegramGroup(groupType) {
+            const link = telegramLinks[groupType];
             
-            // Simulate opening WhatsApp
-            setTimeout(() => {
-                window.open(`https://wa.me/?text=Ciao! Vorrei unirmi al gruppo ${groupType} di Cronoshop`, '_blank');
-            }, 1000);
+            if (link && link !== 'INSERISCI QUI IL LINK TELEGRAM') {
+                showNotification('Apertura Telegram...');
+                setTimeout(() => {
+                    window.open(link, '_blank');
+                }, 1000);
+            } else {
+                console.error('Invalid group type for Telegram link or link not set:', groupType);
+                showNotification('Errore: Link Telegram non valido o non ancora impostato.');
+            }
         }
 
         // Toggle FAQ
@@ -570,16 +621,6 @@
             if (mobileMenuBtn) {
                 mobileMenuBtn.addEventListener('click', toggleMobileMenu);
             }
-
-            // WhatsApp button event listeners
-            const whatsappButtons = document.querySelectorAll('.whatsapp-btn, .whatsapp-main-btn');
-            whatsappButtons.forEach((btn, index) => {
-                btn.addEventListener('click', function() {
-                    const groupTypes = ['main', 'smartphone', 'fashion', 'casa', 'salute', 'flash', 'vip'];
-                    const groupType = groupTypes[index] || 'main';
-                    joinWhatsAppGroup(groupType);
-                });
-            });
 
             // FAQ event listeners
             const faqQuestions = document.querySelectorAll('.faq-question');
