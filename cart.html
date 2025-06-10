@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrello - Cronoshop</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-background"></div>
+    
+    <!-- Header -->
+    <header class="glass-header">
+        <nav class="nav-container">
+            <div class="logo">
+                <h1><a href="index.html" style="text-decoration: none; color: inherit;">🛍️ Cronoshop</a></h1>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="index.html#offerte" class="nav-link">Offerte</a>
+                <a href="categorie.html" class="nav-link">Categorie</a>
+                <a href="wishlist.html" class="nav-link">Wishlist</a>
+                <a href="account.html" class="nav-link">Profilo</a>
+            </div>
+            <div class="nav-actions">
+                <a href="cart.html" class="glass-btn cart-btn active">🛒 <span class="cart-count">0</span></a>
+                <button class="glass-btn theme-btn">🌙</button>
+                <button class="glass-btn mobile-menu-btn">☰</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Cart Section -->
+    <section class="cart-section" style="padding-top: 120px;">
+        <div class="section-header">
+            <h2>🛒 Il Tuo Carrello</h2>
+            <p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 2rem;">Prodotti pronti per l'acquisto</p>
+        </div>
+        
+        <div class="cart-container">
+            <!-- Cart Items -->
+            <div class="cart-items">
+                <div class="cart-header glass-card" style="padding: 1rem; margin-bottom: 1rem;">
+                    <h3 style="color: white; margin: 0;">Prodotti nel Carrello</h3>
+                    <button class="glass-btn secondary-btn" id="clearCart">🗑️ Svuota Carrello</button>
+                </div>
+                
+                <div class="cart-list" id="cartList">
+                    <!-- Cart items will be loaded here -->
+                </div>
+
+                <div class="empty-cart" id="emptyCart" style="display: none; text-align: center; padding: 3rem;">
+                    <div class="glass-card" style="padding: 3rem;">
+                        <div style="font-size: 4rem; margin-bottom: 1rem;">🛒</div>
+                        <h3 style="color: white; margin-bottom: 1rem;">Il tuo carrello è vuoto</h3>
+                        <p style="color: rgba(255, 255, 255, 0.7); margin-bottom: 2rem;">
+                            Aggiungi prodotti per iniziare lo shopping!
+                        </p>
+                        <a href="index.html#offerte" class="glass-btn primary-btn">Scopri le Offerte</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cart Summary -->
+            <div class="cart-summary">
+                <div class="glass-card summary-card" style="padding: 2rem;">
+                    <h3 style="color: white; margin-bottom: 1.5rem;">📊 Riepilogo Ordine</h3>
+                    
+                    <div class="summary-row">
+                        <span>Prodotti (<span id="totalItems">0</span>):</span>
+                        <span id="subtotal">€0.00</span>
+                    </div>
+                    
+                    <div class="summary-row">
+                        <span>Spedizione:</span>
+                        <span style="color: var(--success-color);">Gratuita</span>
+                    </div>
+                    
+                    <div class="summary-row discount-row" id="discountRow" style="display: none;">
+                        <span>Sconto:</span>
+                        <span id="discount" style="color: var(--success-color);">-€0.00</span>
+                    </div>
+                    
+                    <hr style="border: 1px solid var(--glass-border); margin: 1rem 0;">
+                    
+                    <div class="summary-row total-row">
+                        <span style="font-weight: 700; font-size: 1.2rem;">Totale:</span>
+                        <span id="total" style="font-weight: 700; font-size: 1.2rem; color: var(--primary-color);">€0.00</span>
+                    </div>
+                    
+                    <div class="promo-code" style="margin: 1.5rem 0;">
+                        <input type="text" placeholder="Codice promozionale" class="glass-input" id="promoCode">
+                        <button class="glass-btn secondary-btn" id="applyPromo">Applica</button>
+                    </div>
+                    
+                    <button class="glass-btn primary-btn full-width" id="checkoutBtn" style="margin-top: 1rem;">
+                        🚀 Procedi all'Acquisto
+                    </button>
+                    
+                    <p style="color: rgba(255, 255, 255, 0.6); font-size: 0.8rem; text-align: center; margin-top: 1rem;">
+                        Verrai reindirizzato ad Amazon per completare l'acquisto
+                    </p>
+                </div>
+
+                <!-- Recommended Products -->
+                <div class="glass-card recommended-card" style="padding: 1.5rem; margin-top: 1rem;">
+                    <h4 style="color: white; margin-bottom: 1rem;">💡 Potrebbero interessarti</h4>
+                    <div class="recommended-items" id="recommendedItems">
+                        <!-- Recommended items will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="glass-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Cronoshop</h4>
+                <p>La tua piattaforma per le migliori offerte Amazon</p>
+            </div>
+            <div class="footer-section">
+                <h4>Link Utili</h4>
+                <a href="groups.html">Gruppi WhatsApp</a>
+                <a href="categorie.html">Categorie</a>
+                <a href="account.html">Account</a>
+            </div>
+            <div class="footer-section">
+                <h4>Contatti</h4>
+                <a href="groups.html">WhatsApp</a>
+                <a href="#email">Email</a>
+                <a href="#social">Social</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Cronoshop. Tutti i diritti riservati.</p>
+        </div>
+    </footer>
+
+    <style>
+        .cart-section {
+            padding: 2rem 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .cart-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-item {
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .cart-item-image {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 10px;
+            flex-shrink: 0;
+        }
+
+        .cart-item-info {
+            flex: 1;
+        }
+
+        .cart-item-info h4 {
+            color: white;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+            line-height: 1.4;
+        }
+
+        .cart-item-price {
+            color: var(--success-color);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .cart-item-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--glass-bg);
+            border-radius: 20px;
+            padding: 0.25rem;
+        }
+
+        .quantity-btn {
+            background: none;
+            border: none;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .quantity-btn:hover {
+            background: var(--glass-bg-strong);
+        }
+
+        .quantity-display {
+            color: white;
+            font-weight: 600;
+            min-width: 30px;
+            text-align: center;
+        }
+
+        .remove-item-btn {
+            background: rgba(255, 59, 48, 0.8);
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-left: 1rem;
+        }
+
+        .remove-item-btn:hover {
+            background: rgba(255, 59, 48, 1);
+            transform: scale(1.1);
+        }
+
+        .summary-card {
+            position: sticky;
+            top: 120px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .total-row {
+            color: white;
+        }
+
+        .promo-code {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .promo-code input {
+            flex: 1;
+        }
+
+        .recommended-items {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .recommended-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem;
+            border-radius: 10px;
+            background: var(--glass-bg);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .recommended-item:hover {
+            background: var(--glass-bg-strong);
+        }
+
+        .recommended-item img {
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .recommended-item-info {
+            flex: 1;
+        }
+
+        .recommended-item-info h5 {
+            color: white;
+            font-size: 0.8rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .recommended-item-price {
+            color: var(--success-color);
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .cart-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .cart-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .cart-item-image {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .cart-header {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+    </style>
+
+    <script>
+        let cart = [];
+        const recommendedProducts = [
+            {
+                id: "rec1",
+                img: "https://m.media-amazon.com/images/I/71d7rfSl0wL._AC_SL1500_.jpg",
+                nome: "iPhone 15",
+                prezzo: "645€",
+                link: "https://www.amazon.it/dp/B0CHWV5HTM"
+            },
+            {
+                id: "rec2",
+                img: "https://m.media-amazon.com/images/I/51B45gaTgjL._AC_SL1000_.jpg",
+                nome: "Fire TV Stick HD",
+                prezzo: "28,99€",
+                link: "https://amzn.to/4jhgwHr"
+            }
+        ];
+
+        // Load cart data
+        function loadCartData() {
+            try {
+                const savedData = localStorage.getItem('cronoshop_data');
+                if (savedData) {
+                    const userData = JSON.parse(savedData);
+                    cart = userData.cart || [];
+                }
+            } catch (error) {
+                console.error('Error loading cart data:', error);
+            }
+        }
+
+        // Save cart data
+        function saveCartData() {
+            try {
+                const savedData = localStorage.getItem('cronoshop_data');
+                let userData = {};
+                if (savedData) {
+                    userData = JSON.parse(savedData);
+                }
+                userData.cart = cart;
+                localStorage.setItem('cronoshop_data', JSON.stringify(userData));
+            } catch (error) {
+                console.error('Error saving cart data:', error);
+            }
+        }
+
+        // Update cart count
+        function updateCartCount() {
+            const cartCount = document.querySelector('.cart-count');
+            if (cartCount) {
+                const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+                cartCount.textContent = totalItems;
+            }
+        }
+
+        // Render cart
+        function renderCart() {
+            const cartList = document.getElementById('cartList');
+            const emptyCart = document.getElementById('emptyCart');
+
+            if (cart.length === 0) {
+                cartList.style.display = 'none';
+                emptyCart.style.display = 'block';
+            } else {
+                cartList.style.display = 'block';
+                emptyCart.style.display = 'none';
+
+                cartList.innerHTML = cart.map(item => `
+                    <div class="glass-card cart-item">
+                        <img src="${item.img}" alt="${item.nome}" class="cart-item-image">
+                        <div class="cart-item-info">
+                            <h4>${item.nome}</h4>
+                            <div class="cart-item-price">${item.prezzo}</div>
+                            <div class="cart-item-controls">
+                                <div class="quantity-controls">
+                                    <button class="quantity-btn" onclick="updateQuantity('${item.id}', -1)">-</button>
+                                    <span class="quantity-display">${item.quantity}</span>
+                                    <button class="quantity-btn" onclick="updateQuantity('${item.id}', 1)">+</button>
+                                </div>
+                                <button class="remove-item-btn" onclick="removeFromCart('${item.id}')">×</button>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            updateCartSummary();
+            updateCartCount();
+        }
+
+        // Update cart summary
+        function updateCartSummary() {
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const subtotal = cart.reduce((sum, item) => {
+                const price = parseFloat(item.prezzo.replace('€', '').replace(',', '.'));
+                return sum + (isNaN(price) ? 0 : price * item.quantity);
+            }, 0);
+
+            document.getElementById('totalItems').textContent = totalItems;
+            document.getElementById('subtotal').textContent = `€${subtotal.toFixed(2)}`;
+            document.getElementById('total').textContent = `€${subtotal.toFixed(2)}`;
+        }
+
+        // Update quantity
+        function updateQuantity(productId, change) {
+            const item = cart.find(item => item.id === productId);
+            if (item) {
+                item.quantity += change;
+                if (item.quantity <= 0) {
+                    removeFromCart(productId);
+                } else {
+                    saveCartData();
+                    renderCart();
+                }
+            }
+        }
+
+        // Remove from cart
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            saveCartData();
+            renderCart();
+            showNotification('Prodotto rimosso dal carrello');
+        }
+
+        // Clear cart
+        function clearCart() {
+            if (cart.length === 0) {
+                showNotification('Il carrello è già vuoto!');
+                return;
+            }
+
+            if (confirm('Sei sicuro di voler svuotare il carrello?')) {
+                cart = [];
+                saveCartData();
+                renderCart();
+                showNotification('Carrello svuotato');
+            }
+        }
+
+        // Apply promo code
+        function applyPromoCode() {
+            const promoCode = document.getElementById('promoCode').value.trim().toLowerCase();
+            const discountRow = document.getElementById('discountRow');
+            const discountElement = document.getElementById('discount');
+            
+            if (promoCode === 'cronoshop10') {
+                const subtotal = cart.reduce((sum, item) => {
+                    const price = parseFloat(item.prezzo.replace('€', '').replace(',', '.'));
+                    return sum + (isNaN(price) ? 0 : price * item.quantity);
+                }, 0);
+                
+                const discount = subtotal * 0.1;
+                const total = subtotal - discount;
+                
+                discountElement.textContent = `-€${discount.toFixed(2)}`;
+                document.getElementById('total').textContent = `€${total.toFixed(2)}`;
+                discountRow.style.display = 'flex';
+                
+                showNotification('Codice promozionale applicato! 10% di sconto');
+            } else if (promoCode === '') {
+                showNotification('Inserisci un codice promozionale');
+            } else {
+                showNotification('Codice promozionale non valido');
+            }
+        }
+
+        // Checkout
+        function checkout() {
+            if (cart.length === 0) {
+                showNotification('Il carrello è vuoto!');
+                return;
+            }
+
+            // Simulate checkout process
+            showNotification('Reindirizzamento ad Amazon...');
+            
+            // Open first product link (in a real scenario, this would be a proper checkout flow)
+            if (cart[0] && cart[0].link) {
+                setTimeout(() => {
+                    window.open(cart[0].link, '_blank');
+                }, 1000);
+            }
+        }
+
+        // Render recommended products
+        function renderRecommendedProducts() {
+            const recommendedItems = document.getElementById('recommendedItems');
+            if (recommendedItems) {
+                recommendedItems.innerHTML = recommendedProducts.map(product => `
+                    <div class="recommended-item" onclick="addRecommendedToCart('${product.id}')">
+                        <img src="${product.img}" alt="${product.nome}">
+                        <div class="recommended-item-info">
+                            <h5>${product.nome}</h5>
+                            <div class="recommended-item-price">${product.prezzo}</div>
+                        </div>
+                        <span style="color: var(--primary-color); font-size: 1.2rem;">+</span>
+                    </div>
+                `).join('');
+            }
+        }
+
+        // Add recommended product to cart
+        function addRecommendedToCart(productId) {
+            const product = recommendedProducts.find(p => p.id === productId);
+            if (product) {
+                const existingItem = cart.find(item => item.id === productId);
+                
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    cart.push({ ...product, quantity: 1 });
+                }
+                
+                saveCartData();
+                renderCart();
+                showNotification('Prodotto aggiunto al carrello');
+            }
+        }
+
+        // Show notification
+        function showNotification(message) {
+            let notification = document.getElementById('notification');
+            if (!notification) {
+                notification = document.createElement('div');
+                notification.id = 'notification';
+                notification.className = 'notification';
+                notification.innerHTML = '<span id="notificationText"></span>';
+                document.body.appendChild(notification);
+            }
+
+            const notificationText = document.getElementById('notificationText');
+            if (notificationText) {
+                notificationText.textContent = message;
+                notification.classList.add('show');
+                
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                }, 3000);
+            }
+        }
+
+        // Theme toggle
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            localStorage.setItem('darkMode', isDark);
+            
+            const themeBtn = document.querySelector('.theme-btn');
+            if (themeBtn) {
+                themeBtn.textContent = isDark ? '☀️' : '🌙';
+            }
+        }
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const navMenu = document.getElementById('navMenu');
+            if (navMenu) {
+                navMenu.classList.toggle('active');
+            }
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            loadCartData();
+            renderCart();
+            renderRecommendedProducts();
+            
+            // Load theme preference
+            const darkMode = localStorage.getItem('darkMode') === 'true';
+            if (darkMode) {
+                document.body.classList.add('dark-mode');
+                const themeBtn = document.querySelector('.theme-btn');
+                if (themeBtn) {
+                    themeBtn.textContent = '☀️';
+                }
+            }
+
+            // Setup event listeners
+            const themeBtn = document.querySelector('.theme-btn');
+            if (themeBtn) {
+                themeBtn.addEventListener('click', toggleTheme);
+            }
+
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+            }
+
+            const clearCartBtn = document.getElementById('clearCart');
+            if (clearCartBtn) {
+                clearCartBtn.addEventListener('click', clearCart);
+            }
+
+            const applyPromoBtn = document.getElementById('applyPromo');
+            if (applyPromoBtn) {
+                applyPromoBtn.addEventListener('click', applyPromoCode);
+            }
+
+            const checkoutBtn = document.getElementById('checkoutBtn');
+            if (checkoutBtn) {
+                checkoutBtn.addEventListener('click', checkout);
+            }
+
+            // Add fade-in animation
+            setTimeout(() => {
+                const elements = document.querySelectorAll('.glass-card');
+                elements.forEach((el, index) => {
+                    setTimeout(() => {
+                        el.classList.add('fade-in');
+                    }, index * 100);
+                });
+            }, 100);
+        });
+    </script>
+</body>
+</html>

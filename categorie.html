@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categorie - Cronoshop</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-background"></div>
+    
+    <!-- Header -->
+    <header class="glass-header">
+        <nav class="nav-container">
+            <div class="logo">
+                <h1><a href="index.html" style="text-decoration: none; color: inherit;">🛍️ Cronoshop</a></h1>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="index.html#offerte" class="nav-link">Offerte</a>
+                <a href="categorie.html" class="nav-link active">Categorie</a>
+                <a href="wishlist.html" class="nav-link">Wishlist</a>
+                <a href="account.html" class="nav-link">Profilo</a>
+            </div>
+            <div class="nav-actions">
+                <a href="cart.html" class="glass-btn cart-btn">🛒 <span class="cart-count">0</span></a>
+                <button class="glass-btn theme-btn">🌙</button>
+                <button class="glass-btn mobile-menu-btn">☰</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Categories Section -->
+    <section class="categories-section" style="padding-top: 120px;">
+        <div class="section-header">
+            <h2>📂 Categorie Prodotti</h2>
+            <p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 2rem;">Esplora i prodotti per categoria</p>
+        </div>
+        
+        <div class="categories-grid">
+            <div class="glass-card category-card" data-category="smartphone">
+                <div class="category-icon">📱</div>
+                <h3>Smartphone</h3>
+                <p>iPhone, Samsung, Google Pixel e altri</p>
+                <div class="category-stats">
+                    <span class="product-count">24 prodotti</span>
+                </div>
+                <button class="glass-btn primary-btn">Esplora</button>
+            </div>
+
+            <div class="glass-card category-card" data-category="fashion">
+                <div class="category-icon">👕</div>
+                <h3>Fashion</h3>
+                <p>Abbigliamento, scarpe e accessori</p>
+                <div class="category-stats">
+                    <span class="product-count">18 prodotti</span>
+                </div>
+                <button class="glass-btn primary-btn">Esplora</button>
+            </div>
+
+            <div class="glass-card category-card" data-category="casa">
+                <div class="category-icon">🏠</div>
+                <h3>Casa e Cucina</h3>
+                <p>Prodotti per la casa e alimentari</p>
+                <div class="category-stats">
+                    <span class="product-count">12 prodotti</span>
+                </div>
+                <button class="glass-btn primary-btn">Esplora</button>
+            </div>
+
+            <div class="glass-card category-card" data-category="tech">
+                <div class="category-icon">💻</div>
+                <h3>Tecnologia</h3>
+                <p>Gadget, accessori tech e elettronica</p>
+                <div class="category-stats">
+                    <span class="product-count">15 prodotti</span>
+                </div>
+                <button class="glass-btn primary-btn">Esplora</button>
+            </div>
+
+            <div class="glass-card category-card" data-category="salute">
+                <div class="category-icon">💊</div>
+                <h3>Salute e Benessere</h3>
+                <p>Integratori, vitamine e prodotti per la salute</p>
+                <div class="category-stats">
+                    <span class="product-count">8 prodotti</span>
+                </div>
+                <button class="glass-btn primary-btn">Esplora</button>
+            </div>
+
+            <div class="glass-card category-card" data-category="sport">
+                <div class="category-icon">⚽</div>
+                <h3>Sport e Fitness</h3>
+                <p>Abbigliamento sportivo e attrezzature</p>
+                <div class="category-stats">
+                    <span class="product-count">6 prodotti</span>
+                </div>
+                <button class="glass-btn primary-btn">Esplora</button>
+            </div>
+        </div>
+
+        <!-- Popular Products by Category -->
+        <div class="popular-by-category" style="margin-top: 3rem;">
+            <h3 style="color: white; text-align: center; margin-bottom: 2rem;">🔥 Più Popolari per Categoria</h3>
+            <div class="category-highlights">
+                <div class="glass-card highlight-card">
+                    <img src="https://m.media-amazon.com/images/I/61hiFJPpY9L._AC_SL1500_.jpg" alt="Samsung Galaxy S25 Ultra" class="highlight-image">
+                    <div class="highlight-info">
+                        <span class="highlight-category">📱 Smartphone</span>
+                        <h4>Samsung Galaxy S25 Ultra</h4>
+                        <span class="highlight-price">1.199€</span>
+                    </div>
+                </div>
+
+                <div class="glass-card highlight-card">
+                    <img src="https://m.media-amazon.com/images/I/71BHou6YJKL._AC_SY879_.jpg" alt="Calvin Klein T-Shirt" class="highlight-image">
+                    <div class="highlight-info">
+                        <span class="highlight-category">👕 Fashion</span>
+                        <h4>Calvin Klein T-Shirt Uomo</h4>
+                        <span class="highlight-price">18€</span>
+                    </div>
+                </div>
+
+                <div class="glass-card highlight-card">
+                    <img src="https://m.media-amazon.com/images/I/51B45gaTgjL._AC_SL1000_.jpg" alt="Fire TV Stick" class="highlight-image">
+                    <div class="highlight-info">
+                        <span class="highlight-category">💻 Tech</span>
+                        <h4>Amazon Fire TV Stick HD</h4>
+                        <span class="highlight-price">28,99€</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="glass-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Cronoshop</h4>
+                <p>La tua piattaforma per le migliori offerte Amazon</p>
+            </div>
+            <div class="footer-section">
+                <h4>Link Utili</h4>
+                <a href="groups.html">Gruppi WhatsApp</a>
+                <a href="categorie.html">Categorie</a>
+                <a href="account.html">Account</a>
+            </div>
+            <div class="footer-section">
+                <h4>Contatti</h4>
+                <a href="groups.html">WhatsApp</a>
+                <a href="#email">Email</a>
+                <a href="#social">Social</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Cronoshop. Tutti i diritti riservati.</p>
+        </div>
+    </footer>
+
+    <style>
+        .categories-section {
+            padding: 2rem 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .category-card {
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px) scale(1.05);
+        }
+
+        .category-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .category-card h3 {
+            color: white;
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+        }
+
+        .category-card p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 1rem;
+        }
+
+        .category-stats {
+            margin-bottom: 1.5rem;
+        }
+
+        .product-count {
+            background: var(--glass-bg-strong);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .category-highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .highlight-card {
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .highlight-image {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .highlight-info {
+            flex: 1;
+        }
+
+        .highlight-category {
+            font-size: 0.8rem;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .highlight-info h4 {
+            color: white;
+            margin: 0.25rem 0;
+            font-size: 1rem;
+        }
+
+        .highlight-price {
+            color: var(--success-color);
+            font-weight: 700;
+        }
+
+        @media (max-width: 768px) {
+            .categories-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .category-highlights {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
+    <script>
+        // Initialize cart count
+        function updateCartCount() {
+            try {
+                const savedData = localStorage.getItem('cronoshop_data');
+                if (savedData) {
+                    const userData = JSON.parse(savedData);
+                    const cart = userData.cart || [];
+                    const cartCount = document.querySelector('.cart-count');
+                    if (cartCount) {
+                        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+                        cartCount.textContent = totalItems;
+                    }
+                }
+            } catch (error) {
+                console.error('Error loading cart data:', error);
+            }
+        }
+
+        // Theme toggle
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            localStorage.setItem('darkMode', isDark);
+            
+            const themeBtn = document.querySelector('.theme-btn');
+            if (themeBtn) {
+                themeBtn.textContent = isDark ? '☀️' : '🌙';
+            }
+        }
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const navMenu = document.getElementById('navMenu');
+            if (navMenu) {
+                navMenu.classList.toggle('active');
+            }
+        }
+
+        // Category navigation
+        function navigateToCategory(category) {
+            window.location.href = `index.html#offerte?category=${category}`;
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCartCount();
+            
+            // Load theme preference
+            const darkMode = localStorage.getItem('darkMode') === 'true';
+            if (darkMode) {
+                document.body.classList.add('dark-mode');
+                const themeBtn = document.querySelector('.theme-btn');
+                if (themeBtn) {
+                    themeBtn.textContent = '☀️';
+                }
+            }
+
+            // Setup event listeners
+            const themeBtn = document.querySelector('.theme-btn');
+            if (themeBtn) {
+                themeBtn.addEventListener('click', toggleTheme);
+            }
+
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+            }
+
+            // Category card click handlers
+            const categoryCards = document.querySelectorAll('.category-card');
+            categoryCards.forEach(card => {
+                const exploreBtn = card.querySelector('.primary-btn');
+                if (exploreBtn) {
+                    exploreBtn.addEventListener('click', function() {
+                        const category = card.dataset.category;
+                        navigateToCategory(category);
+                    });
+                }
+            });
+
+            // Add fade-in animation
+            const elements = document.querySelectorAll('.glass-card');
+            elements.forEach((el, index) => {
+                setTimeout(() => {
+                    el.classList.add('fade-in');
+                }, index * 100);
+            });
+        });
+    </script>
+</body>
+</html>

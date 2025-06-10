@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wishlist - Cronoshop</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-background"></div>
+    
+    <!-- Header -->
+    <header class="glass-header">
+        <nav class="nav-container">
+            <div class="logo">
+                <h1><a href="index.html" style="text-decoration: none; color: inherit;">🛍️ Cronoshop</a></h1>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="index.html#offerte" class="nav-link">Offerte</a>
+                <a href="categorie.html" class="nav-link">Categorie</a>
+                <a href="wishlist.html" class="nav-link active">Wishlist</a>
+                <a href="account.html" class="nav-link">Profilo</a>
+            </div>
+            <div class="nav-actions">
+                <a href="cart.html" class="glass-btn cart-btn">🛒 <span class="cart-count">0</span></a>
+                <button class="glass-btn theme-btn">🌙</button>
+                <button class="glass-btn mobile-menu-btn">☰</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Wishlist Section -->
+    <section class="wishlist-section" style="padding-top: 120px;">
+        <div class="section-header">
+            <h2>❤️ La Tua Wishlist</h2>
+            <p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 2rem;">I tuoi prodotti preferiti</p>
+        </div>
+        
+        <div class="wishlist-stats glass-card" style="margin-bottom: 2rem; padding: 1.5rem; text-align: center;">
+            <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
+                <div class="stat-item">
+                    <span class="stat-number" id="wishlistCount">0</span>
+                    <span class="stat-label">Prodotti Salvati</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="totalValue">€0</span>
+                    <span class="stat-label">Valore Totale</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="avgPrice">€0</span>
+                    <span class="stat-label">Prezzo Medio</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="wishlist-actions" style="margin-bottom: 2rem; text-align: center;">
+            <button class="glass-btn secondary-btn" id="clearWishlist">🗑️ Svuota Wishlist</button>
+            <button class="glass-btn primary-btn" id="shareWishlist">📤 Condividi</button>
+        </div>
+        
+        <div class="wishlist-grid" id="wishlistGrid">
+            <!-- Wishlist items will be loaded here -->
+        </div>
+
+        <div class="empty-wishlist" id="emptyWishlist" style="display: none; text-align: center; padding: 3rem;">
+            <div class="glass-card" style="padding: 3rem;">
+                <div style="font-size: 4rem; margin-bottom: 1rem;">💔</div>
+                <h3 style="color: white; margin-bottom: 1rem;">La tua wishlist è vuota</h3>
+                <p style="color: rgba(255, 255, 255, 0.7); margin-bottom: 2rem;">
+                    Inizia ad aggiungere prodotti che ti interessano!
+                </p>
+                <a href="index.html#offerte" class="glass-btn primary-btn">Scopri le Offerte</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="glass-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Cronoshop</h4>
+                <p>La tua piattaforma per le migliori offerte Amazon</p>
+            </div>
+            <div class="footer-section">
+                <h4>Link Utili</h4>
+                <a href="groups.html">Gruppi WhatsApp</a>
+                <a href="categorie.html">Categorie</a>
+                <a href="account.html">Account</a>
+            </div>
+            <div class="footer-section">
+                <h4>Contatti</h4>
+                <a href="groups.html">WhatsApp</a>
+                <a href="#email">Email</a>
+                <a href="#social">Social</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Cronoshop. Tutti i diritti riservati.</p>
+        </div>
+    </footer>
+
+    <style>
+        .wishlist-section {
+            padding: 2rem 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .wishlist-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .wishlist-item {
+            padding: 1.5rem;
+            position: relative;
+        }
+
+        .wishlist-item-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+        }
+
+        .wishlist-item-info h3 {
+            color: white;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+            line-height: 1.4;
+        }
+
+        .wishlist-item-price {
+            color: var(--success-color);
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .wishlist-item-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .wishlist-item-actions .glass-btn {
+            flex: 1;
+            justify-content: center;
+            font-size: 0.9rem;
+            padding: 0.5rem;
+        }
+
+        .remove-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(255, 59, 48, 0.8);
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .remove-btn:hover {
+            background: rgba(255, 59, 48, 1);
+            transform: scale(1.1);
+        }
+
+        .wishlist-actions {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 768px) {
+            .wishlist-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .wishlist-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+
+    <script>
+        let wishlist = [];
+
+        // Load wishlist data
+        function loadWishlistData() {
+            try {
+                const savedData = localStorage.getItem('cronoshop_data');
+                if (savedData) {
+                    const userData = JSON.parse(savedData);
+                    wishlist = userData.wishlist || [];
+                }
+            } catch (error) {
+                console.error('Error loading wishlist data:', error);
+            }
+        }
+
+        // Save wishlist data
+        function saveWishlistData() {
+            try {
+                const savedData = localStorage.getItem('cronoshop_data');
+                let userData = {};
+                if (savedData) {
+                    userData = JSON.parse(savedData);
+                }
+                userData.wishlist = wishlist;
+                localStorage.setItem('cronoshop_data', JSON.stringify(userData));
+            } catch (error) {
+                console.error('Error saving wishlist data:', error);
+            }
+        }
+
+        // Update cart count
+        function updateCartCount() {
+            try {
+                const savedData = localStorage.getItem('cronoshop_data');
+                if (savedData) {
+                    const userData = JSON.parse(savedData);
+                    const cart = userData.cart || [];
+                    const cartCount = document.querySelector('.cart-count');
+                    if (cartCount) {
+                        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+                        cartCount.textContent = totalItems;
+                    }
+                }
+            } catch (error) {
+                console.error('Error loading cart data:', error);
+            }
+        }
+
+        // Update wishlist stats
+        function updateWishlistStats() {
+            const wishlistCount = document.getElementById('wishlistCount');
+            const totalValue = document.getElementById('totalValue');
+            const avgPrice = document.getElementById('avgPrice');
+
+            if (wishlistCount) wishlistCount.textContent = wishlist.length;
+
+            if (wishlist.length > 0) {
+                const total = wishlist.reduce((sum, item) => {
+                    const price = parseFloat(item.prezzo.replace('€', '').replace(',', '.'));
+                    return sum + (isNaN(price) ? 0 : price);
+                }, 0);
+                
+                if (totalValue) totalValue.textContent = `€${total.toFixed(2)}`;
+                if (avgPrice) avgPrice.textContent = `€${(total / wishlist.length).toFixed(2)}`;
+            } else {
+                if (totalValue) totalValue.textContent = '€0';
+                if (avgPrice) avgPrice.textContent = '€0';
+            }
+        }
+
+        // Render wishlist
+        function renderWishlist() {
+            const wishlistGrid = document.getElementById('wishlistGrid');
+            const emptyWishlist = document.getElementById('emptyWishlist');
+
+            if (wishlist.length === 0) {
+                wishlistGrid.style.display = 'none';
+                emptyWishlist.style.display = 'block';
+            } else {
+                wishlistGrid.style.display = 'grid';
+                emptyWishlist.style.display = 'none';
+
+                wishlistGrid.innerHTML = wishlist.map(item => `
+                    <div class="glass-card wishlist-item">
+                        <button class="remove-btn" onclick="removeFromWishlist('${item.id}')">×</button>
+                        <img src="${item.img}" alt="${item.nome}" class="wishlist-item-image">
+                        <div class="wishlist-item-info">
+                            <h3>${item.nome}</h3>
+                            <div class="wishlist-item-price">${item.prezzo}</div>
+                            <div class="wishlist-item-actions">
+                                <button class="glass-btn primary-btn" onclick="buyProduct('${item.link}')">
+                                    🛒 Acquista
+                                </button>
+                                <button class="glass-btn secondary-btn" onclick="addToCart('${item.id}')">
+                                    📦 Al Carrello
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            updateWishlistStats();
+        }
+
+        // Remove from wishlist
+        function removeFromWishlist(productId) {
+            wishlist = wishlist.filter(item => item.id !== productId);
+            saveWishlistData();
+            renderWishlist();
+            showNotification('Prodotto rimosso dalla wishlist');
+        }
+
+        // Add to cart
+        function addToCart(productId) {
+            try {
+                const savedData = localStorage.getItem('cronoshop_data');
+                let userData = {};
+                if (savedData) {
+                    userData = JSON.parse(savedData);
+                }
+                
+                let cart = userData.cart || [];
+                const product = wishlist.find(item => item.id === productId);
+                
+                if (product) {
+                    const existingItem = cart.find(item => item.id === productId);
+                    
+                    if (existingItem) {
+                        existingItem.quantity += 1;
+                    } else {
+                        cart.push({ ...product, quantity: 1 });
+                    }
+                    
+                    userData.cart = cart;
+                    localStorage.setItem('cronoshop_data', JSON.stringify(userData));
+                    updateCartCount();
+                    showNotification('Prodotto aggiunto al carrello');
+                }
+            } catch (error) {
+                console.error('Error adding to cart:', error);
+            }
+        }
+
+        // Buy product
+        function buyProduct(link) {
+            window.open(link, '_blank');
+            showNotification('Reindirizzamento ad Amazon...');
+        }
+
+        // Clear wishlist
+        function clearWishlist() {
+            if (confirm('Sei sicuro di voler svuotare la wishlist?')) {
+                wishlist = [];
+                saveWishlistData();
+                renderWishlist();
+                showNotification('Wishlist svuotata');
+            }
+        }
+
+        // Share wishlist
+        function shareWishlist() {
+            if (wishlist.length === 0) {
+                showNotification('La wishlist è vuota!');
+                return;
+            }
+
+            const wishlistText = `La mia Wishlist Cronoshop:\n\n${wishlist.map(item => 
+                `• ${item.nome} - ${item.prezzo}`
+            ).join('\n')}\n\nScopri le offerte su Cronoshop!`;
+
+            if (navigator.share) {
+                navigator.share({
+                    title: 'La mia Wishlist Cronoshop',
+                    text: wishlistText
+                });
+            } else {
+                navigator.clipboard.writeText(wishlistText).then(() => {
+                    showNotification('Wishlist copiata negli appunti!');
+                });
+            }
+        }
+
+        // Show notification
+        function showNotification(message) {
+            // Create notification element if it doesn't exist
+            let notification = document.getElementById('notification');
+            if (!notification) {
+                notification = document.createElement('div');
+                notification.id = 'notification';
+                notification.className = 'notification';
+                notification.innerHTML = '<span id="notificationText"></span>';
+                document.body.appendChild(notification);
+            }
+
+            const notificationText = document.getElementById('notificationText');
+            if (notificationText) {
+                notificationText.textContent = message;
+                notification.classList.add('show');
+                
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                }, 3000);
+            }
+        }
+
+        // Theme toggle
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            localStorage.setItem('darkMode', isDark);
+            
+            const themeBtn = document.querySelector('.theme-btn');
+            if (themeBtn) {
+                themeBtn.textContent = isDark ? '☀️' : '🌙';
+            }
+        }
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const navMenu = document.getElementById('navMenu');
+            if (navMenu) {
+                navMenu.classList.toggle('active');
+            }
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            loadWishlistData();
+            updateCartCount();
+            renderWishlist();
+            
+            // Load theme preference
+            const darkMode = localStorage.getItem('darkMode') === 'true';
+            if (darkMode) {
+                document.body.classList.add('dark-mode');
+                const themeBtn = document.querySelector('.theme-btn');
+                if (themeBtn) {
+                    themeBtn.textContent = '☀️';
+                }
+            }
+
+            // Setup event listeners
+            const themeBtn = document.querySelector('.theme-btn');
+            if (themeBtn) {
+                themeBtn.addEventListener('click', toggleTheme);
+            }
+
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+            }
+
+            const clearBtn = document.getElementById('clearWishlist');
+            if (clearBtn) {
+                clearBtn.addEventListener('click', clearWishlist);
+            }
+
+            const shareBtn = document.getElementById('shareWishlist');
+            if (shareBtn) {
+                shareBtn.addEventListener('click', shareWishlist);
+            }
+
+            // Add fade-in animation
+            setTimeout(() => {
+                const elements = document.querySelectorAll('.glass-card');
+                elements.forEach((el, index) => {
+                    setTimeout(() => {
+                        el.classList.add('fade-in');
+                    }, index * 100);
+                });
+            }, 100);
+        });
+    </script>
+</body>
+</html>
