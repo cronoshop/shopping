@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://cronoshop.github.io/shooping/sitemap.xml
