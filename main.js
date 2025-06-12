@@ -488,6 +488,34 @@ const products = [
   "prezzo": "10,99€",
   "descrizione": "<span class='badge-animated'>Scelta Amazon</span> - 5000+ acquistati nel mese scorso, valutazione 4,6 su 5 (3.438 recensioni). Disponibile anche con coupon 20% e varianti Medium, Medium+Cavo USB C a USB C (14,99€), Large+2Pack (20,99€, -13%)"
   }
+  {
+  "id": "prod62",
+  "link": "https://amzn.to/3FUVgJY",
+  "img": "https://m.media-amazon.com/images/I/91MSouIX7HL._AC_SX466_.jpg",
+  "nome": "Amazon Essentials Felpa con Cappuccio e Cerniera Integrale in Pile (Big & Tall) - Uomo",
+  "prezzo": "21,60€",
+  "descrizione": "Felpa in pile con cappuccio, comoda e calda, adatta a tutte le taglie, anche Big & Tall. Design classico con zip frontale.",
+  "category": "fashion"
+}
+{
+  "id": "prod63",
+  "link": "https://amzn.to/4mZh5sw",
+  "img": "https://m.media-amazon.com/images/I/61aAOFdLzJL.__AC_SX395_SY395_QL70_ML2_.jpg",
+  "nome": "ASICS Gel-Excite 9 Scarpe da Corsa, Uomo",
+  "prezzo": "127,66€",
+  "descrizione": "Scarpe da corsa leggere e ammortizzate, ideali per allenamenti e uso quotidiano. Disponibili in varie taglie EU. Resi gratuiti inclusi.",
+  "category": "fashion"
+}
+{
+  "id": "prod64",
+  "link": "https://amzn.to/3SRisMa",
+  "img": "https://m.media-amazon.com/images/I/91MEK1bV2lL.__AC_SY445_SX342_QL70_ML2_.jpg",
+  "nome": "Joma Men's Supernova III T-Shirt",
+  "prezzo": "21,99€",
+  "descrizione": "Maglietta sportiva da uomo, leggera e traspirante. Disponibile in varie taglie dalla 6XS alla XL. Resi gratuiti inclusi.",
+  "category": "fashion"
+}
+
 ];
 
 // Global Variables
