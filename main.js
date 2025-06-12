@@ -518,6 +518,20 @@ const products = [
 
 ];
 
+products.forEach(product => {
+    if (product.link.includes('amazon.') && !product.link.includes('tag=tony6401-21')) {
+        try {
+            const url = new URL(product.link);
+            url.searchParams.set('tag', 'tony6401-21');
+            product.link = url.toString();
+        } catch (e) {
+            // link non valido, ignora
+        }
+    }
+});
+
+
+
 // Global Variables
 let currentProducts = [...products];
 let displayedProducts = [];
