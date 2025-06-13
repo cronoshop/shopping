@@ -573,7 +573,7 @@ const products = [
     prezzo: "21,99€",
     descrizione: "Maglietta sportiva da uomo, leggera e traspirante. Disponibile in varie taglie dalla 6XS alla XL. Resi gratuiti inclusi.",
     category: "clothing"
-  }
+  },
   {
     "id": "prod65",
     "link": "https://www.amazon.com/dp/B0CBRR1GZK?tag=tony6401-21",
