@@ -22,6 +22,7 @@
             <div class="nav-menu" id="navMenu">
                 <a href="index.html" class="nav-link">Home</a>
                 <a href="index.html#offerte" class="nav-link">Offerte</a>
+                <a href="products.html" class="nav-link">Prodotti</a>
                 <a href="categorie.html" class="nav-link">Categorie</a>
                 <a href="wishlist.html" class="nav-link">Wishlist</a>
                 <a href="account.html" class="nav-link active">Profilo</a>
@@ -38,7 +39,7 @@
     <section class="account-section" style="padding-top: 120px;">
         <div class="section-header">
             <h2>👤 Il Tuo Account</h2>
-            <p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 2rem;">Gestisci il tuo profilo e le tue preferenze</p>
+            <p style="color: var(--text-secondary); margin-bottom: 2rem;">Gestisci il tuo profilo e le tue preferenze</p>
         </div>
         
         <!-- User Profile Card -->
@@ -68,16 +69,16 @@
             <div class="glass-card option-card">
                 <div class="option-icon">⚙️</div>
                 <div class="option-content">
-                    <h4>Impostazioni</h4>
-                    <p>Personalizza la tua esperienza</p>
+                    <h4>Impostazioni Generali</h4>
+                    <p>Personalizza la tua esperienza di shopping</p>
                 </div>
-                <button class="glass-btn secondary-btn">Gestisci</button>
+                <button class="glass-btn secondary-btn" id="generalSettings">Gestisci</button>
             </div>
 
             <div class="glass-card option-card">
                 <div class="option-icon">🌙</div>
                 <div class="option-content">
-                    <h4>Tema</h4>
+                    <h4>Tema Interfaccia</h4>
                     <p>Scegli tra tema chiaro e scuro</p>
                 </div>
                 <button class="glass-btn secondary-btn" id="themeToggle">Cambia</button>
@@ -86,8 +87,8 @@
             <div class="glass-card option-card">
                 <div class="option-icon">🔔</div>
                 <div class="option-content">
-                    <h4>Notifiche</h4>
-                    <p>Gestisci le notifiche push</p>
+                    <h4>Notifiche Push</h4>
+                    <p>Gestisci le notifiche per offerte e aggiornamenti</p>
                 </div>
                 <button class="glass-btn secondary-btn" id="notificationToggle">Attiva</button>
             </div>
@@ -96,7 +97,7 @@
                 <div class="option-icon">📊</div>
                 <div class="option-content">
                     <h4>I Tuoi Dati</h4>
-                    <p>Esporta o elimina i tuoi dati</p>
+                    <p>Esporta o gestisci i tuoi dati personali</p>
                 </div>
                 <button class="glass-btn secondary-btn" id="exportData">Esporta</button>
             </div>
@@ -104,25 +105,79 @@
             <div class="glass-card option-card">
                 <div class="option-icon">🛡️</div>
                 <div class="option-content">
-                    <h4>Privacy</h4>
-                    <p>Impostazioni privacy e sicurezza</p>
+                    <h4>Privacy e Sicurezza</h4>
+                    <p>Impostazioni privacy e sicurezza account</p>
                 </div>
-                <button class="glass-btn secondary-btn">Gestisci</button>
+                <button class="glass-btn secondary-btn" id="privacySettings">Gestisci</button>
+            </div>
+
+            <div class="glass-card option-card">
+                <div class="option-icon">🎯</div>
+                <div class="option-content">
+                    <h4>Preferenze Prodotti</h4>
+                    <p>Personalizza le categorie di interesse</p>
+                </div>
+                <button class="glass-btn secondary-btn" id="productPreferences">Configura</button>
+            </div>
+
+            <div class="glass-card option-card">
+                <div class="option-icon">💳</div>
+                <div class="option-content">
+                    <h4>Metodi di Pagamento</h4>
+                    <p>Gestisci carte e metodi di pagamento salvati</p>
+                </div>
+                <button class="glass-btn secondary-btn" id="paymentMethods">Gestisci</button>
+            </div>
+
+            <div class="glass-card option-card">
+                <div class="option-icon">📍</div>
+                <div class="option-content">
+                    <h4>Indirizzi di Spedizione</h4>
+                    <p>Gestisci i tuoi indirizzi di consegna</p>
+                </div>
+                <button class="glass-btn secondary-btn" id="shippingAddresses">Gestisci</button>
+            </div>
+
+            <div class="glass-card option-card">
+                <div class="option-icon">🔄</div>
+                <div class="option-content">
+                    <h4>Sincronizzazione</h4>
+                    <p>Sincronizza dati tra dispositivi</p>
+                </div>
+                <button class="glass-btn secondary-btn" id="syncSettings">Configura</button>
             </div>
 
             <div class="glass-card option-card">
                 <div class="option-icon">❓</div>
                 <div class="option-content">
-                    <h4>Aiuto</h4>
-                    <p>FAQ e supporto clienti</p>
+                    <h4>Aiuto e Supporto</h4>
+                    <p>FAQ, guide e supporto clienti</p>
                 </div>
-                <button class="glass-btn secondary-btn">Apri</button>
+                <button class="glass-btn secondary-btn" id="helpSupport">Apri</button>
+            </div>
+
+            <div class="glass-card option-card">
+                <div class="option-icon">📱</div>
+                <div class="option-content">
+                    <h4>App Mobile</h4>
+                    <p>Scarica l'app per dispositivi mobili</p>
+                </div>
+                <button class="glass-btn secondary-btn" id="mobileApp">Scarica</button>
+            </div>
+
+            <div class="glass-card option-card">
+                <div class="option-icon">⭐</div>
+                <div class="option-content">
+                    <h4>Valuta l'App</h4>
+                    <p>Lascia una recensione e aiutaci a migliorare</p>
+                </div>
+                <button class="glass-btn secondary-btn" id="rateApp">Valuta</button>
             </div>
         </div>
 
         <!-- Activity Summary -->
         <div class="glass-card activity-summary" style="margin-top: 2rem; padding: 2rem;">
-            <h3 style="color: white; margin-bottom: 1.5rem;">📈 Riepilogo Attività</h3>
+            <h3 style="color: var(--text-blue); margin-bottom: 1.5rem;">📈 Riepilogo Attività</h3>
             <div class="activity-stats">
                 <div class="activity-stat">
                     <div class="stat-number" id="wishlistItems">0</div>
@@ -195,6 +250,21 @@
         </div>
     </div>
 
+    <!-- Settings Modal -->
+    <div class="modal-overlay" id="settingsModal">
+        <div class="glass-modal">
+            <div class="modal-header">
+                <h3 id="settingsTitle">Impostazioni</h3>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="settingsContent">
+                    <!-- Settings content will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="glass-footer">
         <div class="footer-content">
@@ -246,12 +316,13 @@
             width: 80px;
             height: 80px;
             border-radius: 50%;
-            background: var(--glass-bg-strong);
+            background: var(--glass-white-strong);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 2rem;
             margin-bottom: 0.5rem;
+            color: var(--text-primary);
         }
 
         .profile-info {
@@ -259,13 +330,13 @@
         }
 
         .profile-info h3 {
-            color: white;
+            color: var(--text-blue);
             margin-bottom: 0.5rem;
             font-size: 1.5rem;
         }
 
         .profile-info p {
-            color: rgba(255, 255, 255, 0.7);
+            color: var(--text-secondary);
             margin-bottom: 1rem;
         }
 
@@ -276,10 +347,10 @@
         }
 
         .stat-badge {
-            background: var(--glass-bg-strong);
+            background: var(--glass-white-strong);
             padding: 0.5rem 1rem;
             border-radius: 20px;
-            color: var(--primary-color);
+            color: var(--text-blue);
             font-size: 0.9rem;
             font-weight: 600;
         }
@@ -315,12 +386,12 @@
         }
 
         .option-content h4 {
-            color: white;
+            color: var(--text-primary);
             margin-bottom: 0.25rem;
         }
 
         .option-content p {
-            color: rgba(255, 255, 255, 0.7);
+            color: var(--text-secondary);
             font-size: 0.9rem;
         }
 
@@ -342,13 +413,62 @@
             display: block;
             font-size: 2rem;
             font-weight: 700;
-            color: var(--primary-color);
+            color: var(--text-blue);
             margin-bottom: 0.5rem;
         }
 
         .activity-stat .stat-label {
-            color: rgba(255, 255, 255, 0.7);
+            color: var(--text-secondary);
             font-size: 0.9rem;
+        }
+
+        .settings-section {
+            margin-bottom: 2rem;
+        }
+
+        .settings-section h4 {
+            color: var(--text-blue);
+            margin-bottom: 1rem;
+        }
+
+        .setting-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            background: var(--glass-white);
+            border-radius: var(--radius-md);
+            margin-bottom: 0.5rem;
+        }
+
+        .setting-toggle {
+            width: 50px;
+            height: 25px;
+            background: var(--glass-border);
+            border-radius: 25px;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .setting-toggle.active {
+            background: var(--primary-blue);
+        }
+
+        .setting-toggle::after {
+            content: '';
+            position: absolute;
+            width: 21px;
+            height: 21px;
+            background: white;
+            border-radius: 50%;
+            top: 2px;
+            left: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .setting-toggle.active::after {
+            left: 27px;
         }
 
         @media (max-width: 768px) {
@@ -571,6 +691,110 @@
             }
         }
 
+        // Show settings modal
+        function showSettings(settingType) {
+            const modal = document.getElementById('settingsModal');
+            const title = document.getElementById('settingsTitle');
+            const content = document.getElementById('settingsContent');
+            
+            let settingsHTML = '';
+            
+            switch(settingType) {
+                case 'general':
+                    title.textContent = 'Impostazioni Generali';
+                    settingsHTML = `
+                        <div class="settings-section">
+                            <h4>Preferenze Generali</h4>
+                            <div class="setting-item">
+                                <span>Mostra prezzi con IVA</span>
+                                <div class="setting-toggle active" onclick="toggleSetting(this)"></div>
+                            </div>
+                            <div class="setting-item">
+                                <span>Salva cronologia ricerche</span>
+                                <div class="setting-toggle active" onclick="toggleSetting(this)"></div>
+                            </div>
+                            <div class="setting-item">
+                                <span>Suggerimenti personalizzati</span>
+                                <div class="setting-toggle active" onclick="toggleSetting(this)"></div>
+                            </div>
+                        </div>
+                    `;
+                    break;
+                case 'privacy':
+                    title.textContent = 'Privacy e Sicurezza';
+                    settingsHTML = `
+                        <div class="settings-section">
+                            <h4>Impostazioni Privacy</h4>
+                            <div class="setting-item">
+                                <span>Condividi dati di utilizzo</span>
+                                <div class="setting-toggle" onclick="toggleSetting(this)"></div>
+                            </div>
+                            <div class="setting-item">
+                                <span>Tracking pubblicitario</span>
+                                <div class="setting-toggle" onclick="toggleSetting(this)"></div>
+                            </div>
+                            <div class="setting-item">
+                                <span>Autenticazione a due fattori</span>
+                                <div class="setting-toggle active" onclick="toggleSetting(this)"></div>
+                            </div>
+                        </div>
+                        <div class="settings-section">
+                            <h4>Gestione Dati</h4>
+                            <button class="glass-btn secondary-btn" onclick="exportData()">Esporta tutti i dati</button>
+                            <button class="glass-btn secondary-btn" style="margin-left: 1rem;" onclick="clearAllData()">Cancella tutti i dati</button>
+                        </div>
+                    `;
+                    break;
+                case 'preferences':
+                    title.textContent = 'Preferenze Prodotti';
+                    settingsHTML = `
+                        <div class="settings-section">
+                            <h4>Categorie di Interesse</h4>
+                            <div class="setting-item">
+                                <span>📱 Smartphone e Tech</span>
+                                <div class="setting-toggle active" onclick="toggleSetting(this)"></div>
+                            </div>
+                            <div class="setting-item">
+                                <span>👕 Fashion e Abbigliamento</span>
+                                <div class="setting-toggle active" onclick="toggleSetting(this)"></div>
+                            </div>
+                            <div class="setting-item">
+                                <span>🏠 Casa e Cucina</span>
+                                <div class="setting-toggle" onclick="toggleSetting(this)"></div>
+                            </div>
+                            <div class="setting-item">
+                                <span>💊 Salute e Benessere</span>
+                                <div class="setting-toggle" onclick="toggleSetting(this)"></div>
+                            </div>
+                        </div>
+                    `;
+                    break;
+                default:
+                    title.textContent = 'Impostazioni';
+                    settingsHTML = '<p>Seleziona un\'opzione dal menu principale.</p>';
+            }
+            
+            content.innerHTML = settingsHTML;
+            showModal('settingsModal');
+        }
+
+        // Toggle setting
+        function toggleSetting(element) {
+            element.classList.toggle('active');
+            showNotification('Impostazione aggiornata');
+        }
+
+        // Clear all data
+        function clearAllData() {
+            if (confirm('Sei sicuro di voler cancellare tutti i dati? Questa azione non può essere annullata.')) {
+                localStorage.clear();
+                showNotification('Tutti i dati sono stati cancellati');
+                setTimeout(() => {
+                    window.location.reload();
+                }, 1000);
+            }
+        }
+
         // Show notification
         function showNotification(message) {
             let notification = document.getElementById('notification');
@@ -664,6 +888,53 @@
             const exportDataBtn = document.getElementById('exportData');
             if (exportDataBtn) {
                 exportDataBtn.addEventListener('click', exportData);
+            }
+
+            // Settings buttons
+            const generalSettings = document.getElementById('generalSettings');
+            if (generalSettings) {
+                generalSettings.addEventListener('click', () => showSettings('general'));
+            }
+
+            const privacySettings = document.getElementById('privacySettings');
+            if (privacySettings) {
+                privacySettings.addEventListener('click', () => showSettings('privacy'));
+            }
+
+            const productPreferences = document.getElementById('productPreferences');
+            if (productPreferences) {
+                productPreferences.addEventListener('click', () => showSettings('preferences'));
+            }
+
+            // Other option buttons
+            const paymentMethods = document.getElementById('paymentMethods');
+            if (paymentMethods) {
+                paymentMethods.addEventListener('click', () => showNotification('Funzionalità in arrivo!'));
+            }
+
+            const shippingAddresses = document.getElementById('shippingAddresses');
+            if (shippingAddresses) {
+                shippingAddresses.addEventListener('click', () => showNotification('Funzionalità in arrivo!'));
+            }
+
+            const syncSettings = document.getElementById('syncSettings');
+            if (syncSettings) {
+                syncSettings.addEventListener('click', () => showNotification('Sincronizzazione attiva'));
+            }
+
+            const helpSupport = document.getElementById('helpSupport');
+            if (helpSupport) {
+                helpSupport.addEventListener('click', () => window.open('mailto:support@cronoshop.eu', '_blank'));
+            }
+
+            const mobileApp = document.getElementById('mobileApp');
+            if (mobileApp) {
+                mobileApp.addEventListener('click', () => showNotification('App mobile in sviluppo!'));
+            }
+
+            const rateApp = document.getElementById('rateApp');
+            if (rateApp) {
+                rateApp.addEventListener('click', () => showNotification('Grazie per il tuo feedback!'));
             }
 
             // Modal event listeners
