@@ -28,7 +28,7 @@
     --text-blue: var(--primary-blue);
     
     /* Background */
-    --bg-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --bg-primary: #FFFFFF
     --bg-light: #F5F5F7;
     --bg-white: #FFFFFF;
     
