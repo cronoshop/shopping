@@ -515,7 +515,6 @@ const products = [
   "descrizione": "Maglietta sportiva da uomo, leggera e traspirante. Disponibile in varie taglie dalla 6XS alla XL. Resi gratuiti inclusi.",
   "category": "fashion"
 }
-
 ];
 
 products.forEach(product => {
