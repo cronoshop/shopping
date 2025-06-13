@@ -597,7 +597,7 @@ const products = [
     "link": "https://www.amazon.com/dp/B06XWND2ST?tag=tony6401-21",
     "img": "https://m.media-amazon.com/images/I/816fhPoCRyS.__AC_SY445_SX342_QL70_ML2_.jpg",
     "nome": "Amazon Essentials Camicia Casual in Popeline a Maniche Lunghe vestibilità Regular Uomo",
-    "prezzo": "24.",
+    "prezzo": "24€",
     "descrizione": "Un marchio Amazon.",
     "category": "tech"
   },
@@ -606,7 +606,7 @@ const products = [
     "link": "https://www.amazon.com/dp/B0B129TD65?tag=tony6401-21",
     "img": "https://m.media-amazon.com/images/I/51UaQx1b+1L._AC_SX342_SY445_.jpg",
     "nome": "LINVO Men's Women's Classic Polarized Sunglasses Fashion Rectangular TR90 100% UV400 Protection for Driving Fishing",
-    "prezzo": "12.",
+    "prezzo": "12€",
     "descrizione": "N/A",
     "category": "fashion"
   },
@@ -615,7 +615,7 @@ const products = [
     "link": "https://www.amazon.com/dp/B07G4SRQC8?tag=tony6401-21",
     "img": "https://m.media-amazon.com/images/I/81m7hD4I3aL.__AC_SX300_SY300_QL70_ML2_.jpg",
     "nome": "Amazon Basics - Hard Cabin Cabin Luggage with Swivel Wheels 55cm Approved for Ryanair, Easyjet and other airlines., Black, standard",
-    "prezzo": "34.",
+    "prezzo": "34€",
     "descrizione": "AmazonBasics offers everyday items for your home, office, garden, and more. The AmazonBasics selection is constantly growing and is designed to become a cost-effective choice for your everyday electronics and everyday necessities.",
     "category": "tech"
   },
@@ -624,7 +624,7 @@ const products = [
     "link": "https://www.amazon.com/dp/B09L8CZKRH?tag=tony6401-21",
     "img": "https://m.media-amazon.com/images/I/71LYN2Q16iL.__AC_SY395_SX395_QL70_ML2_.jpg",
     "nome": "Amazon Essentials Women's Casual Flip Flop Sandal with Ankle Strap",
-    "prezzo": "19.00",
+    "prezzo": "19€",
     "descrizione": "Casual Ankle Strap Thong",
     "category": "tech"
   },
@@ -633,7 +633,7 @@ const products = [
     "link": "https://www.amazon.com/dp/B0C6DZKJ1X?tag=tony6401-21",
     "img": "https://m.media-amazon.com/images/I/61Y5pM28BuL.__AC_SY445_SX342_QL70_ML2_.jpg",
     "nome": "Amazon Essentials Serafino Men's Slim Fit Cotton Short Sleeve T-Shirt, Pack of 2",
-    "prezzo": "26.",
+    "prezzo": "26€",
     "descrizione": "We listen to customer feedback and fine-tune every detail to ensure our clothes are more comfortable, superior quality and long lasting, affordable for the whole family.",
     "category": "fashion"
   },
@@ -642,7 +642,7 @@ const products = [
     "link": "https://www.amazon.com/dp/B08JHP1L86?tag=tony6401-21",
     "img": "https://m.media-amazon.com/images/I/81qIK780N4L.__AC_SY445_SX342_QL70_ML2_.jpg",
     "nome": "Amazon Essentials Men's Stretch Jeans with Sporty Fit",
-    "prezzo": "27.90",
+    "prezzo": "27.90€",
     "descrizione": "An Amazon brand - These classic 5-pocket athletic fit jeans are lightly elasticated for added comfort and to help maintain their shape",
     "category": "fashion"
   },
@@ -651,7 +651,7 @@ const products = [
     "link": "https://www.amazon.com/dp/B07Z6JM8TQ?tag=tony6401-21",
     "img": "https://m.media-amazon.com/images/I/71tUoMNs8fL.__AC_SY445_SX342_QL70_ML2_.jpg",
     "nome": "Amazon Essentials Women's High Leg Cotton Underwear (Available in Plus Size), Breathable Women's Briefs, Multiple Packs",
-    "prezzo": "12.05",
+    "prezzo": "12.05€",
     "descrizione": "Amazon Essentials focuses on creating high-quality and long-lasting clothing for every day. Our women's clothing line includes cashmere sweaters, fleece and down jackets, and more, including plus size options. Our uniform sizes make you guess shopping, and each piece is tested to maintain the highest standards of quality and comfort.",
     "category": "tech"
   },
@@ -660,7 +660,7 @@ const products = [
     "link": "https://www.amazon.com/dp/B0CD2SHVLZ?tag=tony6401-21",
     "img": "https://m.media-amazon.com/images/I/81cKZpZzm5L.__AC_SY445_SX342_QL70_ML2_.jpg",
     "nome": "Amazon Basics - Travel Backpack / Hand Luggage",
-    "prezzo": "34.",
+    "prezzo": "34€",
     "descrizione": "Amazon Basics Hand Travel Backpack",
     "category": "tech"
   },
@@ -669,7 +669,7 @@ const products = [
     "link": "https://www.amazon.com/dp/B088DG714B?tag=tony6401-21",
     "img": "https://m.media-amazon.com/images/I/71vbSv0DSIL.__AC_SY445_SX342_QL70_ML2_.jpg",
     "nome": "9 Pairs Short Socks Tobilleros Men's",
-    "prezzo": "16",
+    "prezzo": "16€",
     "descrizione": "N/A",
     "category": "tech"
   },
