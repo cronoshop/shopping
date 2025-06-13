@@ -345,6 +345,11 @@ function setupEventListeners() {
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
             closeAllModals();
+            // Close mobile menu if open
+            const navMenu = document.getElementById('navMenu');
+            if (navMenu && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+            }
         }
     });
 }
@@ -421,31 +426,54 @@ function createProductCard(product) {
             <h3 class="product-name">${product.nome}</h3>
             <div class="product-price">${priceHTML}</div>
             <p class="product-description">${product.descrizione}</p>
-            <button class="glass-btn primary-btn buy-btn" data-id="${product.id}">
-                Acquista ora
-            </button>
+            <div class="product-actions">
+                <button class="glass-btn primary-btn buy-btn" data-id="${product.id}">
+                    🛒 Acquista su Amazon
+                </button>
+                <div class="secondary-actions">
+                    <button class="action-btn wishlist-btn" data-id="${product.id}">
+                        ❤️
+                    </button>
+                    <button class="action-btn cart-btn" data-id="${product.id}">
+                        🛍️
+                    </button>
+                    <button class="action-btn share-btn" data-id="${product.id}">
+                        📤
+                    </button>
+                </div>
+            </div>
         </div>
     `;
 
     // Add event listeners to buttons
-    const wishlistBtn = card.querySelector('.wishlist-btn');
-    const cartBtn = card.querySelector('.cart-btn');
+    const wishlistBtns = card.querySelectorAll('.wishlist-btn');
+    const cartBtns = card.querySelectorAll('.cart-btn');
     const buyBtn = card.querySelector('.buy-btn');
+    const shareBtn = card.querySelector('.share-btn');
 
-    if (wishlistBtn) {
-        wishlistBtn.addEventListener('click', (e) => {
+    wishlistBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
             e.stopPropagation();
             addToWishlist(product.id);
         });
-    }
-    if (cartBtn) {
-        cartBtn.addEventListener('click', (e) => {
+    });
+
+    cartBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
             e.stopPropagation();
             addToCart(product.id);
         });
-    }
+    });
+
     if (buyBtn) {
         buyBtn.addEventListener('click', () => buyProduct(product.link));
+    }
+
+    if (shareBtn) {
+        shareBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            shareProduct(product);
+        });
     }
 
     return card;
@@ -525,6 +553,22 @@ function addToCart(productId) {
     updateCartCount();
     saveUserData();
     showNotification('Aggiunto al carrello');
+}
+
+function shareProduct(product) {
+    const shareText = `Guarda questa offerta su Cronoshop!\n\n${product.nome}\n${product.prezzo}\n\n${product.link}`;
+    
+    if (navigator.share) {
+        navigator.share({
+            title: product.nome,
+            text: shareText,
+            url: product.link
+        });
+    } else {
+        navigator.clipboard.writeText(shareText).then(() => {
+            showNotification('Link copiato negli appunti!');
+        });
+    }
 }
 
 function updateCartCount() {
