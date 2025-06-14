@@ -772,6 +772,15 @@ const products = [
     "prezzo": "60.48 €",
     "descrizione": "N/A",
     "category": "altro"
+  },
+  {
+    "id": "prod87",
+    "link": "https://www.amazon.it/dp/B0DQ8H5BPK/ref=cm_sw_r_as_gl_apa_gl_i_dl_J2Y9AY9B9EVDRXT7J5ZN?linkCode=ml1&tag=tony6401-21",
+    "img": "https://images-eu.ssl-images-amazon.com/images/I/61B9F2kKArL._AC_SL1500_.jpg",
+    "nome": "ECOVACS X8 PRO OMNI Robot Aspirapolvere con Autopulizia, Autosvuotamento e Autolavaggio",
+    "prezzo": "849,00€ (sconto 20%, prima 1.059,00€)",
+    "descrizione": "Robot aspirapolvere intelligente con funzione di autopulizia, autosvuotamento e autolavaggio, ideale per una pulizia completa e automatica della tua casa.",
+    "category": "casa"
   }
 ];
 
