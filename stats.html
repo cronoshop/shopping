@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statistiche - Cronoshop</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=2.3">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-background"></div>
+    
+    <!-- Header -->
+    <header class="glass-header">
+        <nav class="nav-container">
+            <div class="logo">
+                <h1><a href="index.html" style="text-decoration: none; color: inherit;">🛍️ Cronoshop</a></h1>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="index.html#offerte" class="nav-link">Offerte</a>
+                <a href="products.html" class="nav-link">Prodotti</a>
+                <a href="categorie.html" class="nav-link">Categorie</a>
+                <a href="wishlist.html" class="nav-link">Wishlist</a>
+                <a href="stats.html" class="nav-link active">Statistiche</a>
+                <a href="account.html" class="nav-link">Profilo</a>
+            </div>
+            <div class="nav-actions">
+                <a href="cart.html" class="glass-btn cart-btn">🛒 <span class="cart-count">0</span></a>
+                <button class="glass-btn theme-btn">🌙</button>
+                <button class="glass-btn mobile-menu-btn">☰</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Stats Section -->
+    <section class="stats-section" style="padding-top: 120px;">
+        <div class="section-header">
+            <h2>📊 Statistiche Cronoshop</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 2rem;">Dati globali e personali della piattaforma</p>
+        </div>
+        
+        <!-- Global Stats -->
+        <div class="stats-grid">
+            <div class="glass-card stats-card">
+                <h3>🌍 Statistiche Globali</h3>
+                <div class="stats-list">
+                    <div class="stat-row">
+                        <span class="stat-label">👥 Utenti Totali</span>
+                        <span class="stat-value" id="globalUsers">0</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">🛍️ Prodotti Disponibili</span>
+                        <span class="stat-value" id="globalProducts">0</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">👀 Visualizzazioni Totali</span>
+                        <span class="stat-value" id="globalViews">0</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">💰 Sconto Medio</span>
+                        <span class="stat-value" id="globalDiscount">0%</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">🔥 Categoria Top</span>
+                        <span class="stat-value" id="globalTopCategory">-</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">⚡ Offerte Giornaliere</span>
+                        <span class="stat-value" id="globalDailyDeals">0</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-card stats-card">
+                <h3>👤 Le Tue Statistiche</h3>
+                <div class="stats-list">
+                    <div class="stat-row">
+                        <span class="stat-label">❤️ Prodotti in Wishlist</span>
+                        <span class="stat-value" id="userWishlist">0</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">🛒 Prodotti nel Carrello</span>
+                        <span class="stat-value" id="userCart">0</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">📅 Visite Totali</span>
+                        <span class="stat-value" id="userVisits">0</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">🕒 Ultima Visita</span>
+                        <span class="stat-value" id="userLastVisit">-</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">⭐ Categoria Preferita</span>
+                        <span class="stat-value" id="userFavoriteCategory">-</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">🏆 Punti Fedeltà</span>
+                        <span class="stat-value" id="userPoints">0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Activity Chart -->
+        <div class="glass-card stats-card" style="margin-bottom: 2rem;">
+            <h3>📈 Attività Recente</h3>
+            <div class="activity-timeline" id="activityTimeline">
+                <div class="activity-item">
+                    <div class="activity-icon">🛍️</div>
+                    <div class="activity-content">
+                        <div class="activity-title">Prodotto aggiunto al carrello</div>
+                        <div class="activity-time">2 ore fa</div>
+                    </div>
+                </div>
+                <div class="activity-item">
+                    <div class="activity-icon">❤️</div>
+                    <div class="activity-content">
+                        <div class="activity-title">Prodotto aggiunto alla wishlist</div>
+                        <div class="activity-time">1 giorno fa</div>
+                    </div>
+                </div>
+                <div class="activity-item">
+                    <div class="activity-icon">👀</div>
+                    <div class="activity-content">
+                        <div class="activity-title">Visita alla pagina prodotti</div>
+                        <div class="activity-time">2 giorni fa</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Platform Stats -->
+        <div class="glass-card stats-card">
+            <h3>🚀 Performance Piattaforma</h3>
+            <div class="performance-grid">
+                <div class="performance-item">
+                    <div class="performance-icon">⚡</div>
+                    <div class="performance-value">99.9%</div>
+                    <div class="performance-label">Uptime</div>
+                </div>
+                <div class="performance-item">
+                    <div class="performance-icon">🔄</div>
+                    <div class="performance-value">24h</div>
+                    <div class="performance-label">Aggiornamenti</div>
+                </div>
+                <div class="performance-item">
+                    <div class="performance-icon">🛡️</div>
+                    <div class="performance-value">100%</div>
+                    <div class="performance-label">Sicurezza</div>
+                </div>
+                <div class="performance-item">
+                    <div class="performance-icon">📱</div>
+                    <div class="performance-value">5★</div>
+                    <div class="performance-label">Rating</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="glass-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Cronoshop</h4>
+                <p>La tua piattaforma per le migliori offerte Amazon</p>
+            </div>
+            <div class="footer-section">
+                <h4>Link Utili</h4>
+                <a href="groups.html">Gruppi WhatsApp</a>
+                <a href="categorie.html">Categorie</a>
+                <a href="account.html">Account</a>
+            </div>
+            <div class="footer-section">
+                <h4>Contatti</h4>
+                <a href="groups.html">WhatsApp</a>
+                <a href="#email">Email</a>
+                <a href="#social">Social</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Cronoshop. Tutti i diritti riservati.</p>
+        </div>
+    </footer>
+
+    <style>
+        .activity-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .activity-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--glass-white);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--glass-border);
+        }
+
+        .activity-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--glass-white-strong);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .activity-content {
+            flex: 1;
+        }
+
+        .activity-title {
+            color: var(--text-primary);
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .activity-time {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .performance-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .performance-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--glass-white);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--glass-border);
+        }
+
+        .performance-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .performance-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-blue);
+            margin-bottom: 0.25rem;
+        }
+
+        .performance-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .performance-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .performance-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
+    <script src="main.js?v=2.3"></script>
+    <script>
+        // Load and display stats
+        function loadStats() {
+            // Load global stats
+            const globalStats = JSON.parse(localStorage.getItem('globalStats') || '{}');
+            document.getElementById('globalUsers').textContent = globalStats.totalUsers || '2,847';
+            document.getElementById('globalProducts').textContent = globalStats.totalProducts || '61';
+            document.getElementById('globalViews').textContent = (globalStats.totalViews || 75000).toLocaleString();
+            document.getElementById('globalDiscount').textContent = (globalStats.avgDiscount || 25) + '%';
+            document.getElementById('globalTopCategory').textContent = globalStats.topCategory || 'smartphone';
+            document.getElementById('globalDailyDeals').textContent = globalStats.dailyDeals || '35';
+
+            // Load user stats
+            const userStats = JSON.parse(localStorage.getItem('userStats') || '{}');
+            document.getElementById('userWishlist').textContent = userStats.wishlistItems || '0';
+            document.getElementById('userCart').textContent = userStats.cartItems || '0';
+            document.getElementById('userVisits').textContent = userStats.visitCount || '1';
+            
+            if (userStats.lastVisit) {
+                const lastVisit = new Date(userStats.lastVisit);
+                document.getElementById('userLastVisit').textContent = lastVisit.toLocaleDateString('it-IT');
+            } else {
+                document.getElementById('userLastVisit').textContent = 'Oggi';
+            }
+            
+            document.getElementById('userFavoriteCategory').textContent = userStats.favoriteCategory || 'smartphone';
+
+            // Load user points
+            try {
+                const savedData = localStorage.getItem('cronoshop_data');
+                if (savedData) {
+                    const userData = JSON.parse(savedData);
+                    const currentUser = userData.currentUser;
+                    document.getElementById('userPoints').textContent = currentUser?.points || '0';
+                }
+            } catch (error) {
+                console.error('Error loading user points:', error);
+            }
+        }
+
+        // Update cart count
+        function updateCartCount() {
+            try {
+                const savedData = localStorage.getItem('cronoshop_data');
+                if (savedData) {
+                    const userData = JSON.parse(savedData);
+                    const cart = userData.cart || [];
+                    const cartCount = document.querySelector('.cart-count');
+                    if (cartCount) {
+                        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+                        cartCount.textContent = totalItems;
+                    }
+                }
+            } catch (error) {
+                console.error('Error loading cart data:', error);
+            }
+        }
+
+        // Theme toggle
+        function toggleTheme() {
+            const isDark = document.body.classList.contains('dark-mode');
+            localStorage.setItem('darkMode', !isDark);
+            applyTheme();
+            showNotification(`Tema ${!isDark ? 'scuro' : 'chiaro'} attivato`);
+        }
+
+        // Apply theme
+        function applyTheme() {
+            const darkMode = localStorage.getItem('darkMode') === 'true';
+            const themeMode = localStorage.getItem('themeMode') || 'default';
+            const glassMode = localStorage.getItem('glassMode') === 'true';
+
+            // Remove all theme classes
+            document.body.classList.remove('dark-mode', 'theme-green', 'theme-red', 'theme-blue', 'theme-purple', 'theme-orange', 'glass-mode');
+
+            // Apply dark mode
+            if (darkMode) {
+                document.body.classList.add('dark-mode');
+            }
+
+            // Apply theme mode
+            if (themeMode !== 'default') {
+                document.body.classList.add(`theme-${themeMode}`);
+            }
+
+            // Apply glass mode
+            if (glassMode) {
+                document.body.classList.add('glass-mode');
+            }
+
+            // Update theme button
+            const themeBtn = document.querySelector('.theme-btn');
+            if (themeBtn) {
+                themeBtn.textContent = darkMode ? '☀️' : '🌙';
+            }
+        }
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const navMenu = document.getElementById('navMenu');
+            if (navMenu) {
+                navMenu.classList.toggle('active');
+            }
+        }
+
+        // Show notification
+        function showNotification(message) {
+            let notification = document.getElementById('notification');
+            if (!notification) {
+                notification = document.createElement('div');
+                notification.id = 'notification';
+                notification.className = 'notification';
+                notification.innerHTML = '<span id="notificationText"></span>';
+                document.body.appendChild(notification);
+            }
+
+            const notificationText = document.getElementById('notificationText');
+            if (notificationText) {
+                notificationText.textContent = message;
+                notification.classList.add('show');
+                
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                }, 3000);
+            }
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            applyTheme();
+            loadStats();
+            updateCartCount();
+
+            // Setup event listeners
+            const themeBtn = document.querySelector('.theme-btn');
+            if (themeBtn) {
+                themeBtn.addEventListener('click', toggleTheme);
+            }
+
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+            }
+
+            // Add fade-in animation
+            setTimeout(() => {
+                const elements = document.querySelectorAll('.glass-card');
+                elements.forEach((el, index) => {
+                    setTimeout(() => {
+                        el.classList.add('fade-in');
+                    }, index * 100);
+                });
+            }, 100);
+        });
+    </script>
+</body>
+</html>

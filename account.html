@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=2.3">
 </head>
 <body>
     <!-- Animated Background -->
@@ -25,6 +25,7 @@
                 <a href="products.html" class="nav-link">Prodotti</a>
                 <a href="categorie.html" class="nav-link">Categorie</a>
                 <a href="wishlist.html" class="nav-link">Wishlist</a>
+                <a href="stats.html" class="nav-link stats-link">Statistiche</a>
                 <a href="account.html" class="nav-link active">Profilo</a>
             </div>
             <div class="nav-actions">
@@ -76,12 +77,12 @@
             </div>
 
             <div class="glass-card option-card">
-                <div class="option-icon">🌙</div>
+                <div class="option-icon">🎨</div>
                 <div class="option-content">
-                    <h4>Tema Interfaccia</h4>
-                    <p>Scegli tra tema chiaro e scuro</p>
+                    <h4>Tema e Aspetto</h4>
+                    <p>Personalizza l'aspetto dell'interfaccia</p>
                 </div>
-                <button class="glass-btn secondary-btn" id="themeToggle">Cambia</button>
+                <button class="glass-btn secondary-btn" id="themeSettings">Personalizza</button>
             </div>
 
             <div class="glass-card option-card">
@@ -291,6 +292,16 @@
     </footer>
 
     <style>
+        .stats-link {
+            display: none;
+        }
+
+        @media (min-width: 769px) {
+            .stats-link {
+                display: block;
+            }
+        }
+
         .account-section {
             padding: 2rem 1rem;
             max-width: 1000px;
@@ -368,11 +379,11 @@
             align-items: center;
             gap: 1rem;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all var(--transition-smooth);
         }
 
         .option-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-2px);
         }
 
         .option-icon {
@@ -448,7 +459,7 @@
             border-radius: 25px;
             position: relative;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all var(--transition-smooth);
         }
 
         .setting-toggle.active {
@@ -464,11 +475,73 @@
             border-radius: 50%;
             top: 2px;
             left: 2px;
-            transition: all 0.3s ease;
+            transition: all var(--transition-smooth);
         }
 
         .setting-toggle.active::after {
             left: 27px;
+        }
+
+        .theme-selector {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .theme-option {
+            padding: 1rem;
+            border: 2px solid var(--glass-border);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            text-align: center;
+            transition: all var(--transition-fast);
+            background: var(--glass-white);
+        }
+
+        .theme-option.active {
+            border-color: var(--primary-blue);
+            background: var(--glass-white-strong);
+        }
+
+        .theme-option:hover {
+            border-color: var(--primary-blue);
+        }
+
+        .theme-preview {
+            width: 100%;
+            height: 40px;
+            border-radius: var(--radius-sm);
+            margin-bottom: 0.5rem;
+        }
+
+        .theme-preview.default {
+            background: linear-gradient(135deg, #007AFF, #5AC8FA);
+        }
+
+        .theme-preview.green {
+            background: linear-gradient(135deg, #2E7D32, #4CAF50);
+        }
+
+        .theme-preview.red {
+            background: linear-gradient(135deg, #C62828, #F44336);
+        }
+
+        .theme-preview.blue {
+            background: linear-gradient(135deg, #1565C0, #2196F3);
+        }
+
+        .theme-preview.purple {
+            background: linear-gradient(135deg, #7B1FA2, #9C27B0);
+        }
+
+        .theme-preview.orange {
+            background: linear-gradient(135deg, #E65100, #FF9800);
+        }
+
+        .theme-preview.glass {
+            background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.1));
+            border: 1px solid rgba(255,255,255,0.3);
         }
 
         @media (max-width: 768px) {
@@ -484,9 +557,14 @@
             .activity-stats {
                 grid-template-columns: repeat(2, 1fr);
             }
+
+            .theme-selector {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
     </style>
 
+    <script src="main.js?v=2.3"></script>
     <script>
         let currentUser = null;
 
@@ -549,10 +627,8 @@
                     if (cartItems) cartItems.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
                     if (totalSavings) totalSavings.textContent = '€' + (Math.random() * 100).toFixed(2);
                     
-                    // Increment visit count
-                    let visits = parseInt(localStorage.getItem('visitCount') || '1');
-                    visits++;
-                    localStorage.setItem('visitCount', visits.toString());
+                    // Get visit count
+                    const visits = parseInt(localStorage.getItem('visitCount') || '1');
                     if (visitCount) visitCount.textContent = visits;
                 }
             } catch (error) {
@@ -720,6 +796,54 @@
                         </div>
                     `;
                     break;
+                case 'theme':
+                    title.textContent = 'Tema e Aspetto';
+                    settingsHTML = `
+                        <div class="settings-section">
+                            <h4>Modalità Tema</h4>
+                            <div class="setting-item">
+                                <span>Tema Scuro</span>
+                                <div class="setting-toggle ${localStorage.getItem('darkMode') === 'true' ? 'active' : ''}" onclick="toggleDarkMode(this)"></div>
+                            </div>
+                        </div>
+                        <div class="settings-section">
+                            <h4>Modalità Tinta</h4>
+                            <div class="theme-selector">
+                                <div class="theme-option ${localStorage.getItem('themeMode') === 'default' || !localStorage.getItem('themeMode') ? 'active' : ''}" onclick="setThemeMode('default')">
+                                    <div class="theme-preview default"></div>
+                                    <span>Default</span>
+                                </div>
+                                <div class="theme-option ${localStorage.getItem('themeMode') === 'green' ? 'active' : ''}" onclick="setThemeMode('green')">
+                                    <div class="theme-preview green"></div>
+                                    <span>Verde</span>
+                                </div>
+                                <div class="theme-option ${localStorage.getItem('themeMode') === 'red' ? 'active' : ''}" onclick="setThemeMode('red')">
+                                    <div class="theme-preview red"></div>
+                                    <span>Rosso</span>
+                                </div>
+                                <div class="theme-option ${localStorage.getItem('themeMode') === 'blue' ? 'active' : ''}" onclick="setThemeMode('blue')">
+                                    <div class="theme-preview blue"></div>
+                                    <span>Blu</span>
+                                </div>
+                                <div class="theme-option ${localStorage.getItem('themeMode') === 'purple' ? 'active' : ''}" onclick="setThemeMode('purple')">
+                                    <div class="theme-preview purple"></div>
+                                    <span>Viola</span>
+                                </div>
+                                <div class="theme-option ${localStorage.getItem('themeMode') === 'orange' ? 'active' : ''}" onclick="setThemeMode('orange')">
+                                    <div class="theme-preview orange"></div>
+                                    <span>Arancione</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="settings-section">
+                            <h4>Modalità Glass</h4>
+                            <div class="setting-item">
+                                <span>Effetto Vetro</span>
+                                <div class="setting-toggle ${localStorage.getItem('glassMode') === 'true' ? 'active' : ''}" onclick="toggleGlassMode(this)"></div>
+                            </div>
+                        </div>
+                    `;
+                    break;
                 case 'privacy':
                     title.textContent = 'Privacy e Sicurezza';
                     settingsHTML = `
@@ -740,6 +864,7 @@
                         </div>
                         <div class="settings-section">
                             <h4>Gestione Dati</h4>
+                            
                             <button class="glass-btn secondary-btn" onclick="exportData()">Esporta tutti i dati</button>
                             <button class="glass-btn secondary-btn" style="margin-left: 1rem;" onclick="clearAllData()">Cancella tutti i dati</button>
                         </div>
@@ -784,6 +909,69 @@
             showNotification('Impostazione aggiornata');
         }
 
+        // Toggle dark mode
+        function toggleDarkMode(element) {
+            element.classList.toggle('active');
+            const isDark = element.classList.contains('active');
+            localStorage.setItem('darkMode', isDark);
+            applyTheme();
+            showNotification(`Tema ${isDark ? 'scuro' : 'chiaro'} attivato`);
+        }
+
+        // Set theme mode
+        function setThemeMode(mode) {
+            localStorage.setItem('themeMode', mode);
+            applyTheme();
+            
+            // Update active theme option
+            document.querySelectorAll('.theme-option').forEach(option => {
+                option.classList.remove('active');
+            });
+            event.target.closest('.theme-option').classList.add('active');
+            
+            showNotification(`Tema ${mode} attivato`);
+        }
+
+        // Toggle glass mode
+        function toggleGlassMode(element) {
+            element.classList.toggle('active');
+            const isGlass = element.classList.contains('active');
+            localStorage.setItem('glassMode', isGlass);
+            applyTheme();
+            showNotification(`Modalità vetro ${isGlass ? 'attivata' : 'disattivata'}`);
+        }
+
+        // Apply theme
+        function applyTheme() {
+            const darkMode = localStorage.getItem('darkMode') === 'true';
+            const themeMode = localStorage.getItem('themeMode') || 'default';
+            const glassMode = localStorage.getItem('glassMode') === 'true';
+
+            // Remove all theme classes
+            document.body.classList.remove('dark-mode', 'theme-green', 'theme-red', 'theme-blue', 'theme-purple', 'theme-orange', 'glass-mode');
+
+            // Apply dark mode
+            if (darkMode) {
+                document.body.classList.add('dark-mode');
+            }
+
+            // Apply theme mode
+            if (themeMode !== 'default') {
+                document.body.classList.add(`theme-${themeMode}`);
+            }
+
+            // Apply glass mode
+            if (glassMode) {
+                document.body.classList.add('glass-mode');
+            }
+
+            // Update theme button
+            const themeBtn = document.querySelector('.theme-btn');
+            if (themeBtn) {
+                themeBtn.textContent = darkMode ? '☀️' : '🌙';
+            }
+        }
+
         // Clear all data
         function clearAllData() {
             if (confirm('Sei sicuro di voler cancellare tutti i dati? Questa azione non può essere annullata.')) {
@@ -819,16 +1007,10 @@
 
         // Theme toggle
         function toggleTheme() {
-            document.body.classList.toggle('dark-mode');
             const isDark = document.body.classList.contains('dark-mode');
-            localStorage.setItem('darkMode', isDark);
-            
-            const themeBtn = document.querySelector('.theme-btn');
-            if (themeBtn) {
-                themeBtn.textContent = isDark ? '☀️' : '🌙';
-            }
-            
-            showNotification(`Tema ${isDark ? 'scuro' : 'chiaro'} attivato`);
+            localStorage.setItem('darkMode', !isDark);
+            applyTheme();
+            showNotification(`Tema ${!isDark ? 'scuro' : 'chiaro'} attivato`);
         }
 
         // Mobile menu toggle
@@ -841,18 +1023,9 @@
 
         // Initialize page
         document.addEventListener('DOMContentLoaded', function() {
+            applyTheme();
             loadUserData();
             updateCartCount();
-            
-            // Load theme preference
-            const darkMode = localStorage.getItem('darkMode') === 'true';
-            if (darkMode) {
-                document.body.classList.add('dark-mode');
-                const themeBtn = document.querySelector('.theme-btn');
-                if (themeBtn) {
-                    themeBtn.textContent = '☀️';
-                }
-            }
 
             // Setup event listeners
             const themeBtn = document.querySelector('.theme-btn');
@@ -875,11 +1048,6 @@
                 logoutBtn.addEventListener('click', logout);
             }
 
-            const themeToggle = document.getElementById('themeToggle');
-            if (themeToggle) {
-                themeToggle.addEventListener('click', toggleTheme);
-            }
-
             const notificationToggle = document.getElementById('notificationToggle');
             if (notificationToggle) {
                 notificationToggle.addEventListener('click', toggleNotifications);
@@ -894,6 +1062,11 @@
             const generalSettings = document.getElementById('generalSettings');
             if (generalSettings) {
                 generalSettings.addEventListener('click', () => showSettings('general'));
+            }
+
+            const themeSettings = document.getElementById('themeSettings');
+            if (themeSettings) {
+                themeSettings.addEventListener('click', () => showSettings('theme'));
             }
 
             const privacySettings = document.getElementById('privacySettings');
