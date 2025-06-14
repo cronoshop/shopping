@@ -675,12 +675,102 @@ const products = [
   },
   {
     "id": "prod76",
-    "link": "https://www.amazon.com/dp/B0D4YDXD74?tag=tony6401-21",
-    "img": "https://m.media-amazon.com/images/I/61nVL+nauLL._AC_SY300_SX300_.jpg",
-    "nome": "Pulabo Men Women Large Rectangular Rectangular Cubic Zirconia Plated Jewelry Ring Fashion and Popular Innovate, Keramik, other gemstones",
-    "prezzo": "N/A",
-    "descrizione": "Features: rectangular cubic zirconia, finger jewelry, polished ring Service: We love our customers, your satisfaction is our priority, contact us if you have any question, we will try our best to solve any problem you encounter.'",
+    "link": "https://www.amazon.com/dp/B0CB21FKJ3?tag=tony6401-21",
+    "img": "https://m.media-amazon.com/images/I/71E-K37BdsL.__AC_SY395_SX395_QL70_ML2_.jpg",
+    "nome": "Skechers Uno Stand On Air, Scarpe da Ginnastica Uomo",
+    "prezzo": "19.00 €",
+    "descrizione": "Sneaker Durabuck con lacci in memory foam raffreddata ad aria.",
+    "category": "altro"
+  },
+  {
+    "id": "prod77",
+    "link": "https://www.amazon.com/dp/B0BG8JH3H9?tag=tony6401-21",
+    "img": "https://m.media-amazon.com/images/I/81+fhlfEC0L._AC_SX342_SY445_.jpg",
+    "nome": "Amazon Essentials Men's Cotton Jersey Boxer Shorts (Available in Big & Tall Sizes) - Pack of 5",
+    "prezzo": "26.80 €",
+    "descrizione": "We listen to customer feedback and fine-tune every detail to ensure our clothes are more comfortable, superior quality and long lasting, affordable for the whole family.",
+    "category": "altro"
+  },
+  {
+    "id": "prod78",
+    "link": "https://www.amazon.com/dp/B07XB1Y3W2?tag=tony6401-21",
+    "img": "https://m.media-amazon.com/images/I/81tCQ7KumJL.__AC_SY445_SX342_QL70_ML2_.jpg",
+    "nome": "Amazon Essentials Men's Straight Jeans with Bootcut Cut",
+    "prezzo": "35.00 €",
+    "descrizione": "An Amazon brand - Classic denim and five-pocket style highlight these perfect everyday jeans",
     "category": "fashion"
+  },
+  {
+    "id": "prod79",
+    "link": "https://www.amazon.com/dp/B08WK5MQ1H?tag=tony6401-21",
+    "img": "https://m.media-amazon.com/images/I/91FFTV5JTAL.__AC_SY445_SX342_QL70_ML2_.jpg",
+    "nome": "Amazon Essentials Girls and Girls Fleece Lined Zip Up Hoodies",
+    "prezzo": "16.00 €",
+    "descrizione": "Amazon Essentials It has everything you need to dress up your little ones in daily wear, high quality and long lasting outfits. Our line of children's must have includes soft fleece and oh-so warm puffer jackets to keep them tidy when temperatures drop, as well as trousers and polo shirts ready for school uniform. The consistent size takes the guesswork out of the groceries and each piece is put to the test to maintain parent-approved standards for quality and comfort.",
+    "category": "fashion"
+  },
+  {
+    "id": "prod80",
+    "link": "https://www.amazon.com/dp/B0BLSY2RFH?tag=tony6401-21",
+    "img": "https://m.media-amazon.com/images/I/61Cwt7x2zZL.__AC_SX395_SY395_QL70_ML2_.jpg",
+    "nome": "Men's Stylish Sneakers Sneakers with Wedge Heel Soft Sole Sneakers for Men with Soft Sole Breathable Toe Western Running Shoes for Men",
+    "prezzo": "42.00 €",
+    "descrizione": "Scopri Men's Stylish Sneakers Sneakers with Wedge Heel Soft Sole Sneakers for Men with Soft Sole Breathable Toe Western Running Shoes for Men, un prodotto della categoria 'fashion' ideale per chi cerca qualità e convenienza. Perfetto per ogni occasione, combina stile e comfort.",
+    "category": "fashion"
+  },
+  {
+    "id": "prod81",
+    "link": "https://www.amazon.com/dp/B08X19T334?tag=tony6401-21",
+    "img": "https://m.media-amazon.com/images/I/81nOh4knyPL.__AC_SY445_SX342_QL70_ML2_.jpg",
+    "nome": "Amazon Essentials Men's High-Waist Stretch Straight Jeans",
+    "prezzo": "27.10 €",
+    "descrizione": "Amazon Essentials It is focused on creating affordable, high-quality and long-lasting everyday clothing. Our men's must-have line includes polo shirts, chinos, classic shorts, casual buttons and crew neck t-shirts. Our consistent size just guesswork and each piece is put to the test to maintain the highest standards of quality and comfort.",
+    "category": "fashion"
+  },
+  {
+    "id": "prod82",
+    "link": "https://www.amazon.com/dp/B0CWDXTKT3?tag=tony6401-21",
+    "img": "https://m.media-amazon.com/images/I/81IpfF7o41L.__AC_SY445_SX342_QL70_ML2_.jpg",
+    "nome": "SOXCO 10 Pairs Mens Long Reinforced Work Socks Work Socks",
+    "prezzo": "19.99 €",
+    "descrizione": "Introducing SOXCO's Work Socks: The Ultimate Solution for Anyone Who Needs Durable and Comfortable Work Socks. Made with high quality materials and advanced technologies, these socks are designed to keep your feet protected and comfortable all day long. SOXCO WORK socks feature thick, durable cushioning with premium elastic that lasts long and retains its shape. In addition, reinforced heel and toe areas provide extra protection and support, ensuring these socks last longer and offer better value for money. Proprietary DRI-WIK technology wicks moisture away from your feet, preventing blisters and other foot problems, while the HEX-COMB mesh with cushioning reduces foot fatigue, allowing you to comfortably focus on your work. At an affordable price, SOXCO WORK socks are the perfect budget choice for those looking for high quality work socks. Whether you work in construction, healthcare or any other profession that requires long hours on your feet, SOXCO WORK socks offer the perfect combination of durability, comfort and value for money. Buy your SOXCO WORK pair of socks today and experience the difference they make!",
+    "category": "altro"
+  },
+  {
+    "id": "prod83",
+    "link": "https://www.amazon.com/dp/B097RV1D6R?tag=tony6401-21",
+    "img": "https://m.media-amazon.com/images/I/81mZMvuvfYS.__AC_SY445_SX342_QL70_ML2_.jpg",
+    "nome": "Amazon Essentials Women's Loose Fit Round Neck Short Sleeve T-Shirt (Plus Size Available)",
+    "prezzo": "130.00 €",
+    "descrizione": "An Amazon brand - This comfortable t-shirt combines a crew neck with a flowing line.",
+    "category": "fashion"
+  },
+  {
+    "id": "prod84",
+    "link": "https://www.amazon.com/dp/B0B9MX76FB?tag=tony6401-21",
+    "img": "https://m.media-amazon.com/images/I/9101cym+dhL._AC_SY300_SX300_.jpg",
+    "nome": "Popglory Smartwatch for Men and Women, 2 Straps Watch Calls and WhatsApp, Pedometer, Voice Assistant, Digital Watch 24H Heart Rate Monitor, Blood Pressure SpO2 Sleep, Android iOS Gift",
+    "prezzo": "39.00 €",
+    "descrizione": "N/A",
+    "category": "smartphone"
+  },
+  {
+    "id": "prod85",
+    "link": "https://www.amazon.com/dp/B08X2H31K5?tag=tony6401-21",
+    "img": "https://m.media-amazon.com/images/I/81CWjDoZb6L.__AC_SY445_SX342_QL70_ML2_.jpg",
+    "nome": "Amazon Essentials Relaxed Fit Fleece Joggers Jogging Bottoms for Men",
+    "prezzo": "17.00 €",
+    "descrizione": "Amazon Essentials It is focused on creating affordable, high-quality and long-lasting everyday clothing. Our men's must-have line includes polo shirts, chinos, classic shorts, casual buttons and crew neck t-shirts. Our consistent size just guesswork and each piece is put to the test to maintain the highest standards of quality and comfort.",
+    "category": "altro"
+  },
+  {
+    "id": "prod86",
+    "link": "https://www.amazon.com/dp/B06Y57GNY1?tag=tony6401-21",
+    "img": "https://m.media-amazon.com/images/I/91lDjTg1IyL.__AC_SX300_SY300_QL70_ML2_.jpg",
+    "nome": "Amazon Basics - Hiking Backpack with Inner Frame and Rain Zip",
+    "prezzo": "60.48 €",
+    "descrizione": "N/A",
+    "category": "altro"
   }
 ];
 
