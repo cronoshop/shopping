@@ -1,347 +1,1187 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Account - Cronoshop</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=2.3">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-background"></div>
+    
+    <!-- Header -->
+    <header class="glass-header">
+        <nav class="nav-container">
+            <div class="logo">
+                <h1><a href="index.html" style="text-decoration: none; color: inherit;">🛍️ Cronoshop</a></h1>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="index.html#offerte" class="nav-link">Offerte</a>
+                <a href="products.html" class="nav-link">Prodotti</a>
+                <a href="categorie.html" class="nav-link">Categorie</a>
+                <a href="wishlist.html" class="nav-link">Wishlist</a>
+                <a href="stats.html" class="nav-link stats-link">Statistiche</a>
+                <a href="account.html" class="nav-link active">Profilo</a>
+            </div>
+            <div class="nav-actions">
+                <a href="cart.html" class="glass-btn cart-btn">🛒 <span class="cart-count">0</span></a>
+                <button class="glass-btn theme-btn">🌙</button>
+                <button class="glass-btn mobile-menu-btn">☰</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Account Section -->
+    <section class="account-section" style="padding-top: 120px;">
+        <div class="section-header">
+            <h2>👤 Il Tuo Account</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 2rem;">Gestisci il tuo profilo e le tue preferenze</p>
+        </div>
+        
+        <!-- User Profile Card -->
+        <div class="glass-card profile-card" style="margin-bottom: 2rem; padding: 2rem;">
+            <div class="profile-header">
+                <div class="profile-avatar">
+                    <div class="avatar-circle">👤</div>
+                    <button class="glass-btn mini-btn change-avatar-btn">Cambia</button>
+                </div>
+                <div class="profile-info">
+                    <h3 id="userName">Ospite</h3>
+                    <p id="userEmail">Non connesso</p>
+                    <div class="user-stats">
+                        <span class="stat-badge">🏆 <span id="userPoints">0</span> punti</span>
+                        <span class="stat-badge">📅 Membro da <span id="memberSince">oggi</span></span>
+                    </div>
+                </div>
+                <div class="profile-actions">
+                    <button class="glass-btn primary-btn" id="loginBtn">Accedi</button>
+                    <button class="glass-btn secondary-btn" id="logoutBtn" style="display: none;">Esci</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Account Options -->
+        <div class="account-options">
+            <div class="glass-card option-card">
+                <div class="option-icon">⚙️</div>
+                <div class="option-content">
+                    <h4>Impostazioni Generali</h4>
+                    <p>Personalizza la tua esperienza di shopping</p>
+                </div>
+                <button class="glass-btn secondary-btn" id="generalSettings">Gestisci</button>
+            </div>
+
+            <div class="glass-card option-card">
+                <div class="option-icon">🎨</div>
+                <div class="option-content">
+                    <h4>Tema e Aspetto</h4>
+                    <p>Personalizza l'aspetto dell'interfaccia</p>
+                </div>
+                <button class="glass-btn secondary-btn" id="themeSettings">Personalizza</button>
+            </div>
+
+            <div class="glass-card option-card">
+                <div class="option-icon">🔔</div>
+                <div class="option-content">
+                    <h4>Notifiche Push</h4>
+                    <p>Gestisci le notifiche per offerte e aggiornamenti</p>
+                </div>
+                <button class="glass-btn secondary-btn" id="notificationToggle">Attiva</button>
+            </div>
+
+            <div class="glass-card option-card">
+                <div class="option-icon">📊</div>
+                <div class="option-content">
+                    <h4>I Tuoi Dati</h4>
+                    <p>Esporta o gestisci i tuoi dati personali</p>
+                </div>
+                <button class="glass-btn secondary-btn" id="exportData">Esporta</button>
+            </div>
+
+            <div class="glass-card option-card">
+                <div class="option-icon">🛡️</div>
+                <div class="option-content">
+                    <h4>Privacy e Sicurezza</h4>
+                    <p>Impostazioni privacy e sicurezza account</p>
+                </div>
+                <button class="glass-btn secondary-btn" id="privacySettings">Gestisci</button>
+            </div>
+
+            <div class="glass-card option-card">
+                <div class="option-icon">🎯</div>
+                <div class="option-content">
+                    <h4>Preferenze Prodotti</h4>
+                    <p>Personalizza le categorie di interesse</p>
+                </div>
+                <button class="glass-btn secondary-btn" id="productPreferences">Configura</button>
+            </div>
+
+            <div class="glass-card option-card">
+                <div class="option-icon">💳</div>
+                <div class="option-content">
+                    <h4>Metodi di Pagamento</h4>
+                    <p>Gestisci carte e metodi di pagamento salvati</p>
+                </div>
+                <button class="glass-btn secondary-btn" id="paymentMethods">Gestisci</button>
+            </div>
+
+            <div class="glass-card option-card">
+                <div class="option-icon">📍</div>
+                <div class="option-content">
+                    <h4>Indirizzi di Spedizione</h4>
+                    <p>Gestisci i tuoi indirizzi di consegna</p>
+                </div>
+                <button class="glass-btn secondary-btn" id="shippingAddresses">Gestisci</button>
+            </div>
+
+            <div class="glass-card option-card">
+                <div class="option-icon">🔄</div>
+                <div class="option-content">
+                    <h4>Sincronizzazione</h4>
+                    <p>Sincronizza dati tra dispositivi</p>
+                </div>
+                <button class="glass-btn secondary-btn" id="syncSettings">Configura</button>
+            </div>
+
+            <div class="glass-card option-card">
+                <div class="option-icon">❓</div>
+                <div class="option-content">
+                    <h4>Aiuto e Supporto</h4>
+                    <p>FAQ, guide e supporto clienti</p>
+                </div>
+                <button class="glass-btn secondary-btn" id="helpSupport">Apri</button>
+            </div>
+
+            <div class="glass-card option-card">
+                <div class="option-icon">📱</div>
+                <div class="option-content">
+                    <h4>App Mobile</h4>
+                    <p>Scarica l'app per dispositivi mobili</p>
+                </div>
+                <button class="glass-btn secondary-btn" id="mobileApp">Scarica</button>
+            </div>
+
+            <div class="glass-card option-card">
+                <div class="option-icon">⭐</div>
+                <div class="option-content">
+                    <h4>Valuta l'App</h4>
+                    <p>Lascia una recensione e aiutaci a migliorare</p>
+                </div>
+                <button class="glass-btn secondary-btn" id="rateApp">Valuta</button>
+            </div>
+        </div>
+
+        <!-- Activity Summary -->
+        <div class="glass-card activity-summary" style="margin-top: 2rem; padding: 2rem;">
+            <h3 style="color: var(--text-blue); margin-bottom: 1.5rem;">📈 Riepilogo Attività</h3>
+            <div class="activity-stats">
+                <div class="activity-stat">
+                    <div class="stat-number" id="wishlistItems">0</div>
+                    <div class="stat-label">Prodotti in Wishlist</div>
+                </div>
+                <div class="activity-stat">
+                    <div class="stat-number" id="cartItems">0</div>
+                    <div class="stat-label">Prodotti nel Carrello</div>
+                </div>
+                <div class="activity-stat">
+                    <div class="stat-number" id="totalSavings">€0</div>
+                    <div class="stat-label">Risparmi Totali</div>
+                </div>
+                <div class="activity-stat">
+                    <div class="stat-number" id="visitCount">1</div>
+                    <div class="stat-label">Visite</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Login Modal -->
+    <div class="modal-overlay" id="loginModal">
+        <div class="glass-modal">
+            <div class="modal-header">
+                <h3>Accedi al tuo account</h3>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form class="login-form" id="loginForm">
+                    <div class="form-group">
+                        <input type="email" placeholder="Email" class="glass-input" id="loginEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" placeholder="Password" class="glass-input" id="loginPassword" required>
+                    </div>
+                    <button type="submit" class="glass-btn primary-btn full-width">Accedi</button>
+                </form>
+                <div class="modal-footer">
+                    <p>Non hai un account? <a href="#" id="showRegister">Registrati</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="modal-overlay" id="registerModal">
+        <div class="glass-modal">
+            <div class="modal-header">
+                <h3>Crea un nuovo account</h3>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form class="register-form" id="registerForm">
+                    <div class="form-group">
+                        <input type="text" placeholder="Nome" class="glass-input" id="registerName" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Email" class="glass-input" id="registerEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" placeholder="Password" class="glass-input" id="registerPassword" required>
+                    </div>
+                    <button type="submit" class="glass-btn primary-btn full-width">Registrati</button>
+                </form>
+                <div class="modal-footer">
+                    <p>Hai già un account? <a href="#" id="showLogin">Accedi</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div class="modal-overlay" id="settingsModal">
+        <div class="glass-modal">
+            <div class="modal-header">
+                <h3 id="settingsTitle">Impostazioni</h3>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="settingsContent">
+                    <!-- Settings content will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="glass-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Cronoshop</h4>
+                <p>La tua piattaforma per le migliori offerte Amazon</p>
+            </div>
+            <div class="footer-section">
+                <h4>Link Utili</h4>
+                <a href="groups.html">Gruppi WhatsApp</a>
+                <a href="categorie.html">Categorie</a>
+                <a href="account.html">Account</a>
+            </div>
+            <div class="footer-section">
+                <h4>Contatti</h4>
+                <a href="groups.html">WhatsApp</a>
+                <a href="#email">Email</a>
+                <a href="#social">Social</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Cronoshop. Tutti i diritti riservati.</p>
+        </div>
+    </footer>
+
     <style>
-        /* Stili base per la pagina */
-        body {
-            font-family: var(--font-family, Arial, sans-serif);
-            background-color: var(--background-color, #fff);
-            color: var(--text-color, #000);
-            margin: 0; padding: 0;
-            transition: background-color 0.3s, color 0.3s;
+        .stats-link {
+            display: none;
         }
-        .glass-mode {
-            backdrop-filter: blur(10px);
-            background-color: rgba(255, 255, 255, 0.3);
+
+        @media (min-width: 769px) {
+            .stats-link {
+                display: block;
+            }
         }
-        .dark-mode {
-            --background-color: #121212;
-            --text-color: #eee;
-        }
+
         .account-section {
-            max-width: 900px;
-            margin: 2rem auto;
-            background: var(--section-bg, #f9f9f9);
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            padding: 2rem 1rem;
+            max-width: 1000px;
+            margin: 0 auto;
         }
-        h2 {
+
+        .profile-card {
+            margin-bottom: 2rem;
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .profile-avatar {
+            text-align: center;
+        }
+
+        .avatar-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--glass-white-strong);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .profile-info {
+            flex: 1;
+        }
+
+        .profile-info h3 {
+            color: var(--text-blue);
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+        }
+
+        .profile-info p {
+            color: var(--text-secondary);
             margin-bottom: 1rem;
         }
-        h4 {
-            margin-top: 1rem;
+
+        .user-stats {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-badge {
+            background: var(--glass-white-strong);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            color: var(--text-blue);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .account-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .option-card {
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            cursor: pointer;
+            transition: all var(--transition-smooth);
+        }
+
+        .option-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .option-icon {
+            font-size: 2rem;
+            min-width: 60px;
+            text-align: center;
+        }
+
+        .option-content {
+            flex: 1;
+        }
+
+        .option-content h4 {
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .option-content p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .activity-summary {
+            text-align: center;
+        }
+
+        .activity-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+        }
+
+        .activity-stat {
+            text-align: center;
+        }
+
+        .activity-stat .stat-number {
+            display: block;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-blue);
             margin-bottom: 0.5rem;
         }
+
+        .activity-stat .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .settings-section {
+            margin-bottom: 2rem;
+        }
+
+        .settings-section h4 {
+            color: var(--text-blue);
+            margin-bottom: 1rem;
+        }
+
         .setting-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 1rem;
+            padding: 1rem;
+            background: var(--glass-white);
+            border-radius: var(--radius-md);
+            margin-bottom: 0.5rem;
         }
+
         .setting-toggle {
-            width: 40px;
-            height: 22px;
-            border-radius: 11px;
-            background: #ccc;
+            width: 50px;
+            height: 25px;
+            background: var(--glass-border);
+            border-radius: 25px;
             position: relative;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: all var(--transition-smooth);
         }
+
         .setting-toggle.active {
-            background: #4caf50;
+            background: var(--primary-blue);
         }
-        .setting-toggle.active::after {
-            left: 20px;
-        }
+
         .setting-toggle::after {
-            content: "";
+            content: '';
             position: absolute;
-            top: 1.5px;
-            left: 2px;
-            width: 18px;
-            height: 18px;
+            width: 21px;
+            height: 21px;
+            background: white;
             border-radius: 50%;
-            background: #fff;
-            transition: left 0.3s;
+            top: 2px;
+            left: 2px;
+            transition: all var(--transition-smooth);
         }
-        select, input[type=color] {
-            padding: 6px;
-            border-radius: 4px;
-            border: 1px solid #ccc;
+
+        .setting-toggle.active::after {
+            left: 27px;
         }
-        button.glass-btn {
-            background: #4caf50;
-            color: white;
-            border: none;
-            padding: 10px 18px;
-            border-radius: 6px;
+
+        .theme-selector {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .theme-option {
+            padding: 1rem;
+            border: 2px solid var(--glass-border);
+            border-radius: var(--radius-md);
             cursor: pointer;
-            font-size: 1rem;
-            transition: background-color 0.3s;
+            text-align: center;
+            transition: all var(--transition-fast);
+            background: var(--glass-white);
         }
-        button.glass-btn:hover {
-            background: #45a049;
+
+        .theme-option.active {
+            border-color: var(--primary-blue);
+            background: var(--glass-white-strong);
+        }
+
+        .theme-option:hover {
+            border-color: var(--primary-blue);
+        }
+
+        .theme-preview {
+            width: 100%;
+            height: 40px;
+            border-radius: var(--radius-sm);
+            margin-bottom: 0.5rem;
+        }
+
+        .theme-preview.default {
+            background: linear-gradient(135deg, #007AFF, #5AC8FA);
+        }
+
+        .theme-preview.green {
+            background: linear-gradient(135deg, #2E7D32, #4CAF50);
+        }
+
+        .theme-preview.red {
+            background: linear-gradient(135deg, #C62828, #F44336);
+        }
+
+        .theme-preview.blue {
+            background: linear-gradient(135deg, #1565C0, #2196F3);
+        }
+
+        .theme-preview.purple {
+            background: linear-gradient(135deg, #7B1FA2, #9C27B0);
+        }
+
+        .theme-preview.orange {
+            background: linear-gradient(135deg, #E65100, #FF9800);
+        }
+
+        .theme-preview.glass {
+            background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.1));
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        @media (max-width: 768px) {
+            .profile-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .account-options {
+                grid-template-columns: 1fr;
+            }
+            
+            .activity-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .theme-selector {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
     </style>
-</head>
-<body>
-    <main>
-        <section class="account-section" id="generalSettingsSection">
-            <h2>Impostazioni Generali</h2>
-            <div class="setting-item">
-                <span>Mostra prezzi con IVA</span>
-                <div class="setting-toggle" id="showIVA"></div>
-            </div>
-            <div class="setting-item">
-                <span>Salva cronologia ricerche</span>
-                <div class="setting-toggle" id="saveSearchHistory"></div>
-            </div>
-            <div class="setting-item">
-                <span>Suggerimenti personalizzati</span>
-                <div class="setting-toggle" id="personalizedSuggestions"></div>
-            </div>
-        </section>
 
-        <section class="account-section" id="themesStyleSection">
-            <h2>Temi e Stile</h2>
-            <p>Personalizza l'aspetto del sito scegliendo colori, font e modalità di visualizzazione.</p>
-
-            <h4>Seleziona Font</h4>
-            <select id="fontSelector" aria-label="Seleziona font sito">
-                <option value="default" selected>Font predefinito</option>
-                <option value="Arial, sans-serif">Arial</option>
-                <option value="'Roboto', sans-serif">Roboto</option>
-                <option value="'Open Sans', sans-serif">Open Sans</option>
-                <option value="'Montserrat', sans-serif">Montserrat</option>
-                <option value="'Lato', sans-serif">Lato</option>
-            </select>
-
-            <h4>Colori Personalizzati</h4>
-            <label for="primaryColorPicker">Colore Primario:</label><br/>
-            <input type="color" id="primaryColorPicker" name="primaryColor" value="#4caf50" /><br/><br/>
-
-            <label for="secondaryColorPicker">Colore Secondario:</label><br/>
-            <input type="color" id="secondaryColorPicker" name="secondaryColor" value="#ff5722" /><br/><br/>
-
-            <label for="backgroundColorPicker">Colore Sfondo:</label><br/>
-            <input type="color" id="backgroundColorPicker" name="backgroundColor" value="#ffffff" />
-
-            <h4>Modalità Visualizzazione</h4>
-            <div class="setting-item">
-                <span>Tema Scuro</span>
-                <div class="setting-toggle" id="darkModeToggle"></div>
-            </div>
-            <div class="setting-item">
-                <span>Effetto Vetro (Glass Mode)</span>
-                <div class="setting-toggle" id="glassModeToggle"></div>
-            </div>
-
-            <button class="glass-btn" id="saveThemeStyleBtn">Salva Personalizzazioni</button>
-        </section>
-
-        <section class="account-section" id="privacySettingsSection">
-            <h2>Privacy e Sicurezza</h2>
-            <div class="setting-item">
-                <span>Condividi dati di utilizzo</span>
-                <div class="setting-toggle" id="shareUsageData"></div>
-            </div>
-            <div class="setting-item">
-                <span>Tracking pubblicitario</span>
-                <div class="setting-toggle" id="adTracking"></div>
-            </div>
-            <div class="setting-item">
-                <span>Autenticazione a due fattori</span>
-                <div class="setting-toggle active" id="twoFactorAuth"></div>
-            </div>
-
-            <h4>Gestione Dati</h4>
-            <button class="glass-btn secondary-btn" id="exportDataBtn">Esporta tutti i dati</button>
-            <button class="glass-btn secondary-btn" id="clearDataBtn" style="margin-left:1rem;">Cancella tutti i dati</button>
-        </section>
-
-        <section class="account-section" id="productPreferencesSection">
-            <h2>Preferenze Prodotti</h2>
-            <div class="setting-item">
-                <span>📱 Smartphone e Tech</span>
-                <div class="setting-toggle active" id="prefSmartphone"></div>
-            </div>
-            <div class="setting-item">
-                <span>👕 Fashion e Abbigliamento</span>
-                <div class="setting-toggle active" id="prefFashion"></div>
-            </div>
-            <div class="setting-item">
-                <span>🏠 Casa e Cucina</span>
-                <div class="setting-toggle" id="prefHome"></div>
-            </div>
-            <div class="setting-item">
-                <span>💊 Salute e Benessere</span>
-                <div class="setting-toggle" id="prefHealth"></div>
-            </div>
-        </section>
-    </main>
-
+    <script src="main.js?v=2.3"></script>
     <script>
-        // ------- UTILS -------
-        function setToggleState(id, state) {
-            const el = document.getElementById(id);
-            if (!el) return;
-            if(state) el.classList.add('active');
-            else el.classList.remove('active');
-        }
-        function getToggleState(id) {
-            const el = document.getElementById(id);
-            return el && el.classList.contains('active');
-        }
+        let currentUser = null;
 
-        // ------- CARICA IMPOSTAZIONI DA LOCALSTORAGE -------
-        function loadSettings() {
-            const settings = JSON.parse(localStorage.getItem('cronoshop_settings')) || {};
-
-            setToggleState('showIVA', settings.showIVA ?? true);
-            setToggleState('saveSearchHistory', settings.saveSearchHistory ?? true);
-            setToggleState('personalizedSuggestions', settings.personalizedSuggestions ?? true);
-
-            setToggleState('shareUsageData', settings.shareUsageData ?? false);
-            setToggleState('adTracking', settings.adTracking ?? false);
-            setToggleState('twoFactorAuth', settings.twoFactorAuth ?? true);
-
-            setToggleState('prefSmartphone', settings.prefSmartphone ?? true);
-            setToggleState('prefFashion', settings.prefFashion ?? true);
-            setToggleState('prefHome', settings.prefHome ?? false);
-            setToggleState('prefHealth', settings.prefHealth ?? false);
-
-            // Temi e Stile
-            document.getElementById('fontSelector').value = settings.fontFamily || 'default';
-            document.getElementById('primaryColorPicker').value = settings.primaryColor || '#4caf50';
-            document.getElementById('secondaryColorPicker').value = settings.secondaryColor || '#ff5722';
-            document.getElementById('backgroundColorPicker').value = settings.backgroundColor || '#ffffff';
-
-            setToggleState('darkModeToggle', settings.darkMode || false);
-            setToggleState('glassModeToggle', settings.glassMode || false);
-
-            applyTheme(settings);
+        // Load user data
+        function loadUserData() {
+            try {
+                const savedData = localStorage.getItem('cronoshop_data');
+                if (savedData) {
+                    const userData = JSON.parse(savedData);
+                    currentUser = userData.currentUser || null;
+                    updateUserInterface();
+                    updateActivityStats();
+                }
+            } catch (error) {
+                console.error('Error loading user data:', error);
+            }
         }
 
-        // ------- SALVA IMPOSTAZIONI -------
-        function saveSettings() {
-            const settings = {
-                showIVA: getToggleState('showIVA'),
-                saveSearchHistory: getToggleState('saveSearchHistory'),
-                personalizedSuggestions: getToggleState('personalizedSuggestions'),
+        // Update user interface
+        function updateUserInterface() {
+            const userName = document.getElementById('userName');
+            const userEmail = document.getElementById('userEmail');
+            const userPoints = document.getElementById('userPoints');
+            const memberSince = document.getElementById('memberSince');
+            const loginBtn = document.getElementById('loginBtn');
+            const logoutBtn = document.getElementById('logoutBtn');
 
-                shareUsageData: getToggleState('shareUsageData'),
-                adTracking: getToggleState('adTracking'),
-                twoFactorAuth: getToggleState('twoFactorAuth'),
+            if (currentUser) {
+                if (userName) userName.textContent = currentUser.name;
+                if (userEmail) userEmail.textContent = currentUser.email;
+                if (userPoints) userPoints.textContent = currentUser.points || 0;
+                if (memberSince) memberSince.textContent = currentUser.joinDate || 'oggi';
+                if (loginBtn) loginBtn.style.display = 'none';
+                if (logoutBtn) logoutBtn.style.display = 'block';
+            } else {
+                if (userName) userName.textContent = 'Ospite';
+                if (userEmail) userEmail.textContent = 'Non connesso';
+                if (userPoints) userPoints.textContent = '0';
+                if (memberSince) memberSince.textContent = 'oggi';
+                if (loginBtn) loginBtn.style.display = 'block';
+                if (logoutBtn) logoutBtn.style.display = 'none';
+            }
+        }
 
-                prefSmartphone: getToggleState('prefSmartphone'),
-                prefFashion: getToggleState('prefFashion'),
-                prefHome: getToggleState('prefHome'),
-                prefHealth: getToggleState('prefHealth'),
+        // Update activity stats
+        function updateActivityStats() {
+            try {
+                const savedData = localStorage.getItem('cronoshop_data');
+                if (savedData) {
+                    const userData = JSON.parse(savedData);
+                    const wishlist = userData.wishlist || [];
+                    const cart = userData.cart || [];
 
-                fontFamily: document.getElementById('fontSelector').value,
-                primaryColor: document.getElementById('primaryColorPicker').value,
-                secondaryColor: document.getElementById('secondaryColorPicker').value,
-                backgroundColor: document.getElementById('backgroundColorPicker').value,
+                    const wishlistItems = document.getElementById('wishlistItems');
+                    const cartItems = document.getElementById('cartItems');
+                    const totalSavings = document.getElementById('totalSavings');
+                    const visitCount = document.getElementById('visitCount');
 
-                darkMode: getToggleState('darkModeToggle'),
-                glassMode: getToggleState('glassModeToggle'),
+                    if (wishlistItems) wishlistItems.textContent = wishlist.length;
+                    if (cartItems) cartItems.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+                    if (totalSavings) totalSavings.textContent = '€' + (Math.random() * 100).toFixed(2);
+                    
+                    // Get visit count
+                    const visits = parseInt(localStorage.getItem('visitCount') || '1');
+                    if (visitCount) visitCount.textContent = visits;
+                }
+            } catch (error) {
+                console.error('Error updating activity stats:', error);
+            }
+        }
+
+        // Update cart count
+        function updateCartCount() {
+            try {
+                const savedData = localStorage.getItem('cronoshop_data');
+                if (savedData) {
+                    const userData = JSON.parse(savedData);
+                    const cart = userData.cart || [];
+                    const cartCount = document.querySelector('.cart-count');
+                    if (cartCount) {
+                        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+                        cartCount.textContent = totalItems;
+                    }
+                }
+            } catch (error) {
+                console.error('Error loading cart data:', error);
+            }
+        }
+
+        // Show modal
+        function showModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        // Close modal
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Login
+        function login(email, password) {
+            // Simulate login
+            currentUser = {
+                name: email.split('@')[0],
+                email: email,
+                points: Math.floor(Math.random() * 1000),
+                joinDate: new Date().toLocaleDateString('it-IT')
             };
-            localStorage.setItem('cronoshop_settings', JSON.stringify(settings));
-            applyTheme(settings);
-            alert('Impostazioni salvate con successo!');
-        }
 
-        // ------- APPLICA TEMA E STILE -------
-        function applyTheme(settings) {
-            settings = settings || JSON.parse(localStorage.getItem('cronoshop_settings')) || {};
-
-            // Font
-            if (settings.fontFamily && settings.fontFamily !== 'default') {
-                document.body.style.setProperty('--font-family', settings.fontFamily);
-            } else {
-                document.body.style.removeProperty('--font-family');
+            // Save user data
+            try {
+                const savedData = localStorage.getItem('cronoshop_data');
+                let userData = {};
+                if (savedData) {
+                    userData = JSON.parse(savedData);
+                }
+                userData.currentUser = currentUser;
+                localStorage.setItem('cronoshop_data', JSON.stringify(userData));
+            } catch (error) {
+                console.error('Error saving user data:', error);
             }
 
-            // Colori
-            document.body.style.setProperty('--primary-color', settings.primaryColor || '#4caf50');
-            document.body.style.setProperty('--secondary-color', settings.secondaryColor || '#ff5722');
-            document.body.style.setProperty('--background-color', settings.backgroundColor || '#ffffff');
-
-            // Dark Mode
-            if (settings.darkMode) {
-                document.body.classList.add('dark-mode');
-            } else {
-                document.body.classList.remove('dark-mode');
-            }
-
-            // Glass Mode
-            if (settings.glassMode) {
-                document.body.classList.add('glass-mode');
-            } else {
-                document.body.classList.remove('glass-mode');
-            }
+            updateUserInterface();
+            closeModal('loginModal');
+            showNotification('Accesso effettuato con successo!');
         }
 
-        // ------- Gestione toggle click -------
-        function setupToggleClick(id) {
-            const el = document.getElementById(id);
-            if (!el) return;
-            el.addEventListener('click', () => {
-                el.classList.toggle('active');
-            });
+        // Logout
+        function logout() {
+            currentUser = null;
+            
+            try {
+                const savedData = localStorage.getItem('cronoshop_data');
+                let userData = {};
+                if (savedData) {
+                    userData = JSON.parse(savedData);
+                }
+                userData.currentUser = null;
+                localStorage.setItem('cronoshop_data', JSON.stringify(userData));
+            } catch (error) {
+                console.error('Error saving user data:', error);
+            }
+
+            updateUserInterface();
+            showNotification('Disconnesso con successo!');
         }
 
-        // ------- EXPORT DATA -------
+        // Export data
         function exportData() {
-            const data = localStorage.getItem('cronoshop_data');
-            if (!data) {
-                alert('Nessun dato da esportare');
-                return;
+            try {
+                const savedData = localStorage.getItem('cronoshop_data');
+                if (savedData) {
+                    const userData = JSON.parse(savedData);
+                    const dataStr = JSON.stringify(userData, null, 2);
+                    const dataBlob = new Blob([dataStr], {type: 'application/json'});
+                    
+                    const link = document.createElement('a');
+                    link.href = URL.createObjectURL(dataBlob);
+                    link.download = 'cronoshop_data.json';
+                    link.click();
+                    
+                    showNotification('Dati esportati con successo!');
+                } else {
+                    showNotification('Nessun dato da esportare');
+                }
+            } catch (error) {
+                console.error('Error exporting data:', error);
+                showNotification('Errore durante l\'esportazione');
             }
-            const blob = new Blob([data], { type: 'application/json' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'cronoshop_data.json';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
-            alert('Dati esportati con successo!');
         }
 
-        // ------- CLEAR DATA -------
+        // Toggle notifications
+        function toggleNotifications() {
+            if ('Notification' in window) {
+                if (Notification.permission === 'granted') {
+                    showNotification('Notifiche già attive');
+                } else if (Notification.permission !== 'denied') {
+                    Notification.requestPermission().then(permission => {
+                        if (permission === 'granted') {
+                            showNotification('Notifiche attivate!');
+                            new Notification('Cronoshop', {
+                                body: 'Riceverai notifiche sulle migliori offerte!',
+                                icon: '/favicon.ico'
+                            });
+                        }
+                    });
+                } else {
+                    showNotification('Notifiche bloccate dal browser');
+                }
+            } else {
+                showNotification('Notifiche non supportate');
+            }
+        }
+
+        // Show settings modal
+        function showSettings(settingType) {
+            const modal = document.getElementById('settingsModal');
+            const title = document.getElementById('settingsTitle');
+            const content = document.getElementById('settingsContent');
+            
+            let settingsHTML = '';
+            
+            switch(settingType) {
+                case 'general':
+                    title.textContent = 'Impostazioni Generali';
+                    settingsHTML = `
+                        <div class="settings-section">
+                            <h4>Preferenze Generali</h4>
+                            <div class="setting-item">
+                                <span>Mostra prezzi con IVA</span>
+                                <div class="setting-toggle active" onclick="toggleSetting(this)"></div>
+                            </div>
+                            <div class="setting-item">
+                                <span>Salva cronologia ricerche</span>
+                                <div class="setting-toggle active" onclick="toggleSetting(this)"></div>
+                            </div>
+                            <div class="setting-item">
+                                <span>Suggerimenti personalizzati</span>
+                                <div class="setting-toggle active" onclick="toggleSetting(this)"></div>
+                            </div>
+                        </div>
+                    `;
+                    break;
+                case 'theme':
+                    title.textContent = 'Tema e Aspetto';
+                    settingsHTML = `
+                        <div class="settings-section">
+                            <h4>Modalità Tema</h4>
+                            <div class="setting-item">
+                                <span>Tema Scuro</span>
+                                <div class="setting-toggle ${localStorage.getItem('darkMode') === 'true' ? 'active' : ''}" onclick="toggleDarkMode(this)"></div>
+                            </div>
+                        </div>
+                        <div class="settings-section">
+                            <h4>Modalità Tinta</h4>
+                            <div class="theme-selector">
+                                <div class="theme-option ${localStorage.getItem('themeMode') === 'default' || !localStorage.getItem('themeMode') ? 'active' : ''}" onclick="setThemeMode('default')">
+                                    <div class="theme-preview default"></div>
+                                    <span>Default</span>
+                                </div>
+                                <div class="theme-option ${localStorage.getItem('themeMode') === 'green' ? 'active' : ''}" onclick="setThemeMode('green')">
+                                    <div class="theme-preview green"></div>
+                                    <span>Verde</span>
+                                </div>
+                                <div class="theme-option ${localStorage.getItem('themeMode') === 'red' ? 'active' : ''}" onclick="setThemeMode('red')">
+                                    <div class="theme-preview red"></div>
+                                    <span>Rosso</span>
+                                </div>
+                                <div class="theme-option ${localStorage.getItem('themeMode') === 'blue' ? 'active' : ''}" onclick="setThemeMode('blue')">
+                                    <div class="theme-preview blue"></div>
+                                    <span>Blu</span>
+                                </div>
+                                <div class="theme-option ${localStorage.getItem('themeMode') === 'purple' ? 'active' : ''}" onclick="setThemeMode('purple')">
+                                    <div class="theme-preview purple"></div>
+                                    <span>Viola</span>
+                                </div>
+                                <div class="theme-option ${localStorage.getItem('themeMode') === 'orange' ? 'active' : ''}" onclick="setThemeMode('orange')">
+                                    <div class="theme-preview orange"></div>
+                                    <span>Arancione</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="settings-section">
+                            <h4>Modalità Glass</h4>
+                            <div class="setting-item">
+                                <span>Effetto Vetro</span>
+                                <div class="setting-toggle ${localStorage.getItem('glassMode') === 'true' ? 'active' : ''}" onclick="toggleGlassMode(this)"></div>
+                            </div>
+                        </div>
+                    `;
+                    break;
+                case 'privacy':
+                    title.textContent = 'Privacy e Sicurezza';
+                    settingsHTML = `
+                        <div class="settings-section">
+                            <h4>Impostazioni Privacy</h4>
+                            <div class="setting-item">
+                                <span>Condividi dati di utilizzo</span>
+                                <div class="setting-toggle" onclick="toggleSetting(this)"></div>
+                            </div>
+                            <div class="setting-item">
+                                <span>Tracking pubblicitario</span>
+                                <div class="setting-toggle" onclick="toggleSetting(this)"></div>
+                            </div>
+                            <div class="setting-item">
+                                <span>Autenticazione a due fattori</span>
+                                <div class="setting-toggle active" onclick="toggleSetting(this)"></div>
+                            </div>
+                        </div>
+                        <div class="settings-section">
+                            <h4>Gestione Dati</h4>
+                            
+                            <button class="glass-btn secondary-btn" onclick="exportData()">Esporta tutti i dati</button>
+                            <button class="glass-btn secondary-btn" style="margin-left: 1rem;" onclick="clearAllData()">Cancella tutti i dati</button>
+                        </div>
+                    `;
+                    break;
+                case 'preferences':
+                    title.textContent = 'Preferenze Prodotti';
+                    settingsHTML = `
+                        <div class="settings-section">
+                            <h4>Categorie di Interesse</h4>
+                            <div class="setting-item">
+                                <span>📱 Smartphone e Tech</span>
+                                <div class="setting-toggle active" onclick="toggleSetting(this)"></div>
+                            </div>
+                            <div class="setting-item">
+                                <span>👕 Fashion e Abbigliamento</span>
+                                <div class="setting-toggle active" onclick="toggleSetting(this)"></div>
+                            </div>
+                            <div class="setting-item">
+                                <span>🏠 Casa e Cucina</span>
+                                <div class="setting-toggle" onclick="toggleSetting(this)"></div>
+                            </div>
+                            <div class="setting-item">
+                                <span>💊 Salute e Benessere</span>
+                                <div class="setting-toggle" onclick="toggleSetting(this)"></div>
+                            </div>
+                        </div>
+                    `;
+                    break;
+                default:
+                    title.textContent = 'Impostazioni';
+                    settingsHTML = '<p>Seleziona un\'opzione dal menu principale.</p>';
+            }
+            
+            content.innerHTML = settingsHTML;
+            showModal('settingsModal');
+        }
+
+        // Toggle setting
+        function toggleSetting(element) {
+            element.classList.toggle('active');
+            showNotification('Impostazione aggiornata');
+        }
+
+        // Toggle dark mode
+        function toggleDarkMode(element) {
+            element.classList.toggle('active');
+            const isDark = element.classList.contains('active');
+            localStorage.setItem('darkMode', isDark);
+            applyTheme();
+            showNotification(`Tema ${isDark ? 'scuro' : 'chiaro'} attivato`);
+        }
+
+        // Set theme mode
+        function setThemeMode(mode) {
+            localStorage.setItem('themeMode', mode);
+            applyTheme();
+            
+            // Update active theme option
+            document.querySelectorAll('.theme-option').forEach(option => {
+                option.classList.remove('active');
+            });
+            event.target.closest('.theme-option').classList.add('active');
+            
+            showNotification(`Tema ${mode} attivato`);
+        }
+
+        // Toggle glass mode
+        function toggleGlassMode(element) {
+            element.classList.toggle('active');
+            const isGlass = element.classList.contains('active');
+            localStorage.setItem('glassMode', isGlass);
+            applyTheme();
+            showNotification(`Modalità vetro ${isGlass ? 'attivata' : 'disattivata'}`);
+        }
+
+        // Apply theme
+        function applyTheme() {
+            const darkMode = localStorage.getItem('darkMode') === 'true';
+            const themeMode = localStorage.getItem('themeMode') || 'default';
+            const glassMode = localStorage.getItem('glassMode') === 'true';
+
+            // Remove all theme classes
+            document.body.classList.remove('dark-mode', 'theme-green', 'theme-red', 'theme-blue', 'theme-purple', 'theme-orange', 'glass-mode');
+
+            // Apply dark mode
+            if (darkMode) {
+                document.body.classList.add('dark-mode');
+            }
+
+            // Apply theme mode
+            if (themeMode !== 'default') {
+                document.body.classList.add(`theme-${themeMode}`);
+            }
+
+            // Apply glass mode
+            if (glassMode) {
+                document.body.classList.add('glass-mode');
+            }
+
+            // Update theme button
+            const themeBtn = document.querySelector('.theme-btn');
+            if (themeBtn) {
+                themeBtn.textContent = darkMode ? '☀️' : '🌙';
+            }
+        }
+
+        // Clear all data
         function clearAllData() {
             if (confirm('Sei sicuro di voler cancellare tutti i dati? Questa azione non può essere annullata.')) {
                 localStorage.clear();
-                alert('Tutti i dati sono stati cancellati');
-                location.reload();
+                showNotification('Tutti i dati sono stati cancellati');
+                setTimeout(() => {
+                    window.location.reload();
+                }, 1000);
             }
         }
 
-        // ------- INIT -------
-        document.addEventListener('DOMContentLoaded', () => {
-            // Carica impostazioni e applica tema
-            loadSettings();
+        // Show notification
+        function showNotification(message) {
+            let notification = document.getElementById('notification');
+            if (!notification) {
+                notification = document.createElement('div');
+                notification.id = 'notification';
+                notification.className = 'notification';
+                notification.innerHTML = '<span id="notificationText"></span>';
+                document.body.appendChild(notification);
+            }
 
-            // Setup toggle click handlers
-            [
-                'showIVA', 'saveSearchHistory', 'personalizedSuggestions',
-                'shareUsageData', 'adTracking', 'twoFactorAuth',
-                'prefSmartphone', 'prefFashion', 'prefHome', 'prefHealth',
-                'darkModeToggle', 'glassModeToggle'
-            ].forEach(setupToggleClick);
+            const notificationText = document.getElementById('notificationText');
+            if (notificationText) {
+                notificationText.textContent = message;
+                notification.classList.add('show');
+                
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                }, 3000);
+            }
+        }
 
-            // Bottone salva personalizzazioni temi e stile
-            document.getElementById('saveThemeStyleBtn').addEventListener('click', saveSettings);
+        // Theme toggle
+        function toggleTheme() {
+            const isDark = document.body.classList.contains('dark-mode');
+            localStorage.setItem('darkMode', !isDark);
+            applyTheme();
+            showNotification(`Tema ${!isDark ? 'scuro' : 'chiaro'} attivato`);
+        }
 
-            // Export e Clear data
-            document.getElementById('exportDataBtn').addEventListener('click', exportData);
-            document.getElementById('clearDataBtn').addEventListener('click', clearAllData);
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const navMenu = document.getElementById('navMenu');
+            if (navMenu) {
+                navMenu.classList.toggle('active');
+            }
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            applyTheme();
+            loadUserData();
+            updateCartCount();
+
+            // Setup event listeners
+            const themeBtn = document.querySelector('.theme-btn');
+            if (themeBtn) {
+                themeBtn.addEventListener('click', toggleTheme);
+            }
+
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+            }
+
+            const loginBtn = document.getElementById('loginBtn');
+            if (loginBtn) {
+                loginBtn.addEventListener('click', () => showModal('loginModal'));
+            }
+
+            const logoutBtn = document.getElementById('logoutBtn');
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', logout);
+            }
+
+            const notificationToggle = document.getElementById('notificationToggle');
+            if (notificationToggle) {
+                notificationToggle.addEventListener('click', toggleNotifications);
+            }
+
+            const exportDataBtn = document.getElementById('exportData');
+            if (exportDataBtn) {
+                exportDataBtn.addEventListener('click', exportData);
+            }
+
+            // Settings buttons
+            const generalSettings = document.getElementById('generalSettings');
+            if (generalSettings) {
+                generalSettings.addEventListener('click', () => showSettings('general'));
+            }
+
+            const themeSettings = document.getElementById('themeSettings');
+            if (themeSettings) {
+                themeSettings.addEventListener('click', () => showSettings('theme'));
+            }
+
+            const privacySettings = document.getElementById('privacySettings');
+            if (privacySettings) {
+                privacySettings.addEventListener('click', () => showSettings('privacy'));
+            }
+
+            const productPreferences = document.getElementById('productPreferences');
+            if (productPreferences) {
+                productPreferences.addEventListener('click', () => showSettings('preferences'));
+            }
+
+            // Other option buttons
+            const paymentMethods = document.getElementById('paymentMethods');
+            if (paymentMethods) {
+                paymentMethods.addEventListener('click', () => showNotification('Funzionalità in arrivo!'));
+            }
+
+            const shippingAddresses = document.getElementById('shippingAddresses');
+            if (shippingAddresses) {
+                shippingAddresses.addEventListener('click', () => showNotification('Funzionalità in arrivo!'));
+            }
+
+            const syncSettings = document.getElementById('syncSettings');
+            if (syncSettings) {
+                syncSettings.addEventListener('click', () => showNotification('Sincronizzazione attiva'));
+            }
+
+            const helpSupport = document.getElementById('helpSupport');
+            if (helpSupport) {
+                helpSupport.addEventListener('click', () => window.open('mailto:support@cronoshop.eu', '_blank'));
+            }
+
+            const mobileApp = document.getElementById('mobileApp');
+            if (mobileApp) {
+                mobileApp.addEventListener('click', () => showNotification('App mobile in sviluppo!'));
+            }
+
+            const rateApp = document.getElementById('rateApp');
+            if (rateApp) {
+                rateApp.addEventListener('click', () => showNotification('Grazie per il tuo feedback!'));
+            }
+
+            // Modal event listeners
+            const closeButtons = document.querySelectorAll('.close-btn');
+            closeButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const modal = this.closest('.modal-overlay');
+                    if (modal) {
+                        closeModal(modal.id);
+                    }
+                });
+            });
+
+            const showRegister = document.getElementById('showRegister');
+            if (showRegister) {
+                showRegister.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    closeModal('loginModal');
+                    showModal('registerModal');
+                });
+            }
+
+            const showLogin = document.getElementById('showLogin');
+            if (showLogin) {
+                showLogin.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    closeModal('registerModal');
+                    showModal('loginModal');
+                });
+            }
+
+            // Form submissions
+            const loginForm = document.getElementById('loginForm');
+            if (loginForm) {
+                loginForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const email = document.getElementById('loginEmail').value;
+                    const password = document.getElementById('loginPassword').value;
+                    login(email, password);
+                });
+            }
+
+            const registerForm = document.getElementById('registerForm');
+            if (registerForm) {
+                registerForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const name = document.getElementById('registerName').value;
+                    const email = document.getElementById('registerEmail').value;
+                    const password = document.getElementById('registerPassword').value;
+                    
+                    // Simulate registration
+                    login(email, password);
+                    closeModal('registerModal');
+                    showNotification('Registrazione completata!');
+                });
+            }
+
+            // Close modals when clicking outside
+            document.addEventListener('click', function(e) {
+                if (e.target.classList.contains('modal-overlay')) {
+                    const modal = e.target;
+                    closeModal(modal.id);
+                }
+            });
+
+            // Add fade-in animation
+            setTimeout(() => {
+                const elements = document.querySelectorAll('.glass-card');
+                elements.forEach((el, index) => {
+                    setTimeout(() => {
+                        el.classList.add('fade-in');
+                    }, index * 100);
+                });
+            }, 100);
         });
     </script>
 </body>
