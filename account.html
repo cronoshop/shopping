@@ -8,7 +8,20 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css?v=2.3">
-</head>
+
+    <style>
+    :root {
+        --user-font: 'Inter', sans-serif;
+        --color-primary: #007AFF;
+        --color-secondary: #5AC8FA;
+        --color-background: #ffffff;
+    }
+    body {
+        font-family: var(--user-font, 'Inter'), sans-serif;
+        background-color: var(--color-background);
+    }
+    </style>
+    </head>
 <body>
     <!-- Animated Background -->
     <div class="animated-background"></div>
@@ -804,60 +817,7 @@
                             <div class="setting-item">
                                 <span>Tema Scuro</span>
                                 <div class="setting-toggle ${localStorage.getItem('darkMode') === 'true' ? 'active' : ''}" onclick="toggleDarkMode(this)"></div>
-                            
-<div class="settings-section">
-    <h4>Font Personalizzato</h4>
-    <div class="setting-item">
-        <span>Seleziona Font</span>
-        <select id="fontSelector" class="glass-input" onchange="updateFont(this.value)">
-            <option value="Arial">Arial</option>
-            <option value="Roboto">Roboto</option>
-            <option value="Open Sans">Open Sans</option>
-            <option value="Montserrat">Montserrat</option>
-            <option value="Lato">Lato</option>
-        </select>
-    </div>
-</div>
-<div class="settings-section">
-    <h4>Colori Personalizzati</h4>
-    <div class="setting-item">
-        <span>Colore Primario</span>
-        <input type="color" id="primaryColor" onchange="updateColor('primary', this.value)">
-    </div>
-    <div class="setting-item">
-        <span>Colore Secondario</span>
-        <input type="color" id="secondaryColor" onchange="updateColor('secondary', this.value)">
-    </div>
-    <div class="setting-item">
-        <span>Colore Sfondo</span>
-        <input type="color" id="backgroundColor" onchange="updateColor('background', this.value)">
-    </div>
-</div>
-<script>
-function updateFont(font) {
-    document.documentElement.style.setProperty('--user-font', font);
-    saveSetting('font', font);
-}
-function updateColor(type, color) {
-    let varName = '--color-' + type;
-    document.documentElement.style.setProperty(varName, color);
-    saveSetting(type + 'Color', color);
-}
-function saveSetting(key, value) {
-    let settings = JSON.parse(localStorage.getItem('cronoshop_settings') || '{}');
-    settings[key] = value;
-    localStorage.setItem('cronoshop_settings', JSON.stringify(settings));
-}
-function applySavedSettings() {
-    let settings = JSON.parse(localStorage.getItem('cronoshop_settings') || '{}');
-    if (settings.font) document.documentElement.style.setProperty('--user-font', settings.font);
-    if (settings.primaryColor) document.documentElement.style.setProperty('--color-primary', settings.primaryColor);
-    if (settings.secondaryColor) document.documentElement.style.setProperty('--color-secondary', settings.secondaryColor);
-    if (settings.backgroundColor) document.documentElement.style.setProperty('--color-background', settings.backgroundColor);
-}
-document.addEventListener('DOMContentLoaded', applySavedSettings);
-</script>
-</div>
+                            </div>
                         </div>
                         <div class="settings-section">
                             <h4>Modalità Tinta</h4>
@@ -896,7 +856,36 @@ document.addEventListener('DOMContentLoaded', applySavedSettings);
                             </div>
                         </div>
                     `;
-                    break;
+                    
+                        <div class="settings-section">
+                            <h4>Font Personalizzato</h4>
+                            <div class="setting-item">
+                                <span>Seleziona Font</span>
+                                <select id="fontSelector" class="glass-input" onchange="updateFont(this.value)">
+                                    <option value="Arial">Arial</option>
+                                    <option value="Roboto">Roboto</option>
+                                    <option value="Open Sans">Open Sans</option>
+                                    <option value="Montserrat">Montserrat</option>
+                                    <option value="Lato">Lato</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="settings-section">
+                            <h4>Colori Personalizzati</h4>
+                            <div class="setting-item">
+                                <span>Colore Primario</span>
+                                <input type="color" id="primaryColor" onchange="updateColor('primary', this.value)">
+                            </div>
+                            <div class="setting-item">
+                                <span>Colore Secondario</span>
+                                <input type="color" id="secondaryColor" onchange="updateColor('secondary', this.value)">
+                            </div>
+                            <div class="setting-item">
+                                <span>Colore Sfondo</span>
+                                <input type="color" id="backgroundColor" onchange="updateColor('background', this.value)">
+                            </div>
+                        </div>
+break;
                 case 'privacy':
                     title.textContent = 'Privacy e Sicurezza';
                     settingsHTML = `
@@ -1074,7 +1063,46 @@ document.addEventListener('DOMContentLoaded', applySavedSettings);
             }
         }
 
-        // Initialize page
+        
+        // Font e Colori personalizzati
+        function updateFont(font) {
+            document.documentElement.style.setProperty('--user-font', font);
+            saveSetting('font', font);
+        }
+
+        function updateColor(type, color) {
+            const varName = '--color-' + type;
+            document.documentElement.style.setProperty(varName, color);
+            saveSetting(type + 'Color', color);
+        }
+
+        function saveSetting(key, value) {
+            let settings = JSON.parse(localStorage.getItem('cronoshop_settings') || '{}');
+            settings[key] = value;
+            localStorage.setItem('cronoshop_settings', JSON.stringify(settings));
+        }
+
+        function applySavedSettings() {
+            let settings = JSON.parse(localStorage.getItem('cronoshop_settings') || '{}');
+            if (settings.font) {
+                document.documentElement.style.setProperty('--user-font', settings.font);
+                const fontSelector = document.getElementById('fontSelector');
+                if (fontSelector) fontSelector.value = settings.font;
+            }
+            ['primary', 'secondary', 'background'].forEach(type => {
+                const key = type + 'Color';
+                if (settings[key]) {
+                    document.documentElement.style.setProperty('--color-' + type, settings[key]);
+                    const input = document.getElementById(type + 'Color');
+                    if (input) input.value = settings[key];
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', applySavedSettings);
+
+
+// Initialize page
         document.addEventListener('DOMContentLoaded', function() {
             applyTheme();
             loadUserData();
