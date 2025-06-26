@@ -6,22 +6,9 @@
     <title>Account - Cronoshop</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css?v=2.3">
-
-    <style>
-    :root {
-        --user-font: 'Inter', sans-serif;
-        --color-primary: #007AFF;
-        --color-secondary: #5AC8FA;
-        --color-background: #ffffff;
-    }
-    body {
-        font-family: var(--user-font, 'Inter'), sans-serif;
-        background-color: var(--color-background);
-    }
-    </style>
-    </head>
+</head>
 <body>
     <!-- Animated Background -->
     <div class="animated-background"></div>
@@ -92,28 +79,10 @@
             <div class="glass-card option-card">
                 <div class="option-icon">🎨</div>
                 <div class="option-content">
-                    <h4>Tema e Aspetto</h4>
+                    <h4>Temi e Stile</h4>
                     <p>Personalizza l'aspetto dell'interfaccia</p>
                 </div>
                 <button class="glass-btn secondary-btn" id="themeSettings">Personalizza</button>
-            </div>
-
-            <div class="glass-card option-card">
-                <div class="option-icon">🔔</div>
-                <div class="option-content">
-                    <h4>Notifiche Push</h4>
-                    <p>Gestisci le notifiche per offerte e aggiornamenti</p>
-                </div>
-                <button class="glass-btn secondary-btn" id="notificationToggle">Attiva</button>
-            </div>
-
-            <div class="glass-card option-card">
-                <div class="option-icon">📊</div>
-                <div class="option-content">
-                    <h4>I Tuoi Dati</h4>
-                    <p>Esporta o gestisci i tuoi dati personali</p>
-                </div>
-                <button class="glass-btn secondary-btn" id="exportData">Esporta</button>
             </div>
 
             <div class="glass-card option-card">
@@ -132,6 +101,24 @@
                     <p>Personalizza le categorie di interesse</p>
                 </div>
                 <button class="glass-btn secondary-btn" id="productPreferences">Configura</button>
+            </div>
+
+            <div class="glass-card option-card">
+                <div class="option-icon">🔔</div>
+                <div class="option-content">
+                    <h4>Notifiche Push</h4>
+                    <p>Gestisci le notifiche per offerte e aggiornamenti</p>
+                </div>
+                <button class="glass-btn secondary-btn" id="notificationToggle">Attiva</button>
+            </div>
+
+            <div class="glass-card option-card">
+                <div class="option-icon">📊</div>
+                <div class="option-content">
+                    <h4>I Tuoi Dati</h4>
+                    <p>Esporta o gestisci i tuoi dati personali</p>
+                </div>
+                <button class="glass-btn secondary-btn" id="exportData">Esporta</button>
             </div>
 
             <div class="glass-card option-card">
@@ -266,7 +253,7 @@
 
     <!-- Settings Modal -->
     <div class="modal-overlay" id="settingsModal">
-        <div class="glass-modal">
+        <div class="glass-modal large-modal">
             <div class="modal-header">
                 <h3 id="settingsTitle">Impostazioni</h3>
                 <button class="close-btn">&times;</button>
@@ -304,7 +291,24 @@
         </div>
     </footer>
 
+    <!-- Notification -->
+    <div id="notification" class="notification">
+        <span id="notificationText"></span>
+    </div>
+
     <style>
+        :root {
+            --primary-color: #3B82F6;
+            --secondary-color: #10B981;
+            --background-color: #F8FAFC;
+            --font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-family);
+            transition: all 0.3s ease;
+        }
+
         .stats-link {
             display: none;
         }
@@ -446,13 +450,21 @@
             font-size: 0.9rem;
         }
 
+        .large-modal .glass-modal {
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
         .settings-section {
             margin-bottom: 2rem;
         }
 
         .settings-section h4 {
-            color: var(--text-blue);
+            color: var(--primary-color);
             margin-bottom: 1rem;
+            font-size: 1.2rem;
+            font-weight: 600;
         }
 
         .setting-item {
@@ -460,23 +472,28 @@
             justify-content: space-between;
             align-items: center;
             padding: 1rem;
-            background: var(--glass-white);
-            border-radius: var(--radius-md);
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
             margin-bottom: 0.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .setting-item span {
+            font-weight: 500;
         }
 
         .setting-toggle {
             width: 50px;
             height: 25px;
-            background: var(--glass-border);
+            background: #ccc;
             border-radius: 25px;
             position: relative;
             cursor: pointer;
-            transition: all var(--transition-smooth);
+            transition: all 0.3s ease;
         }
 
         .setting-toggle.active {
-            background: var(--primary-blue);
+            background: var(--primary-color);
         }
 
         .setting-toggle::after {
@@ -488,73 +505,148 @@
             border-radius: 50%;
             top: 2px;
             left: 2px;
-            transition: all var(--transition-smooth);
+            transition: all 0.3s ease;
         }
 
         .setting-toggle.active::after {
             left: 27px;
         }
 
-        .theme-selector {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 1rem;
-            margin-bottom: 1rem;
+        .font-selector {
+            margin-bottom: 2rem;
         }
 
-        .theme-option {
-            padding: 1rem;
-            border: 2px solid var(--glass-border);
-            border-radius: var(--radius-md);
-            cursor: pointer;
-            text-align: center;
-            transition: all var(--transition-fast);
-            background: var(--glass-white);
-        }
-
-        .theme-option.active {
-            border-color: var(--primary-blue);
-            background: var(--glass-white-strong);
-        }
-
-        .theme-option:hover {
-            border-color: var(--primary-blue);
-        }
-
-        .theme-preview {
-            width: 100%;
-            height: 40px;
-            border-radius: var(--radius-sm);
+        .font-selector label {
+            display: block;
             margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
         }
 
-        .theme-preview.default {
-            background: linear-gradient(135deg, #007AFF, #5AC8FA);
+        .font-dropdown {
+            position: relative;
+            width: 100%;
         }
 
-        .theme-preview.green {
-            background: linear-gradient(135deg, #2E7D32, #4CAF50);
+        .font-selected {
+            width: 100%;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 500;
         }
 
-        .theme-preview.red {
-            background: linear-gradient(135deg, #C62828, #F44336);
+        .font-options {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            z-index: 1000;
+            max-height: 200px;
+            overflow-y: auto;
+            display: none;
         }
 
-        .theme-preview.blue {
-            background: linear-gradient(135deg, #1565C0, #2196F3);
+        .font-options.show {
+            display: block;
         }
 
-        .theme-preview.purple {
-            background: linear-gradient(135deg, #7B1FA2, #9C27B0);
+        .font-option {
+            padding: 12px 16px;
+            cursor: pointer;
+            transition: background 0.2s ease;
         }
 
-        .theme-preview.orange {
-            background: linear-gradient(135deg, #E65100, #FF9800);
+        .font-option:hover {
+            background: rgba(59, 130, 246, 0.1);
         }
 
-        .theme-preview.glass {
-            background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.1));
-            border: 1px solid rgba(255,255,255,0.3);
+        .font-option.selected {
+            background: rgba(59, 130, 246, 0.2);
+            font-weight: 600;
+        }
+
+        .color-pickers {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .color-picker {
+            text-align: center;
+        }
+
+        .color-picker label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .color-input-wrapper {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .color-input {
+            width: 100%;
+            height: 50px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .color-value {
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .data-management {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .data-management button {
+            flex: 1;
+            min-width: 150px;
+        }
+
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(59, 130, 246, 0.9);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            z-index: 10000;
+            font-weight: 500;
+        }
+
+        .notification.show {
+            transform: translateX(0);
         }
 
         @media (max-width: 768px) {
@@ -571,15 +663,156 @@
                 grid-template-columns: repeat(2, 1fr);
             }
 
-            .theme-selector {
-                grid-template-columns: repeat(2, 1fr);
+            .color-pickers {
+                grid-template-columns: 1fr;
             }
+
+            .data-management {
+                flex-direction: column;
+            }
+
+            .data-management button {
+                min-width: auto;
+            }
+        }
+
+        /* Dark mode styles */
+        .dark-mode {
+            --background-color: #1F2937;
+        }
+
+        /* Theme color variations */
+        .theme-green {
+            --primary-color: #10B981;
+            --secondary-color: #34D399;
+        }
+
+        .theme-red {
+            --primary-color: #EF4444;
+            --secondary-color: #F87171;
+        }
+
+        .theme-blue {
+            --primary-color: #3B82F6;
+            --secondary-color: #60A5FA;
+        }
+
+        .theme-purple {
+            --primary-color: #8B5CF6;
+            --secondary-color: #A78BFA;
+        }
+
+        .theme-orange {
+            --primary-color: #F59E0B;
+            --secondary-color: #FBBF24;
+        }
+
+        /* Glass mode enhancements */
+        .glass-mode .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .glass-mode .setting-item {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
     </style>
 
     <script src="main.js?v=2.3"></script>
     <script>
+        // Settings management
+        const defaultSettings = {
+            general: {
+                showPricesWithVAT: true,
+                saveSearchHistory: true,
+                personalizedSuggestions: true
+            },
+            theme: {
+                darkMode: false,
+                glassMode: true,
+                fontFamily: 'Inter',
+                primaryColor: '#3B82F6',
+                secondaryColor: '#10B981',
+                backgroundColor: '#F8FAFC'
+            },
+            privacy: {
+                shareUsageData: false,
+                adTracking: false,
+                twoFactorAuth: true
+            },
+            preferences: {
+                categories: {
+                    smartphone: true,
+                    fashion: true,
+                    home: false,
+                    health: false
+                }
+            }
+        };
+
         let currentUser = null;
+        let currentSettings = { ...defaultSettings };
+
+        // Font options
+        const fontOptions = [
+            { name: 'Inter', value: 'Inter' },
+            { name: 'Roboto', value: 'Roboto' },
+            { name: 'Open Sans', value: 'Open Sans' },
+            { name: 'Montserrat', value: 'Montserrat' },
+            { name: 'Lato', value: 'Lato' }
+        ];
+
+        // Load settings from localStorage
+        function loadSettings() {
+            try {
+                const saved = localStorage.getItem('cronoshop_settings');
+                if (saved) {
+                    currentSettings = { ...defaultSettings, ...JSON.parse(saved) };
+                }
+                applyThemeSettings();
+            } catch (error) {
+                console.error('Error loading settings:', error);
+            }
+        }
+
+        // Save settings to localStorage
+        function saveSettings() {
+            try {
+                localStorage.setItem('cronoshop_settings', JSON.stringify(currentSettings));
+                showNotification('Impostazioni salvate!');
+            } catch (error) {
+                console.error('Error saving settings:', error);
+                showNotification('Errore nel salvataggio');
+            }
+        }
+
+        // Apply theme settings
+        function applyThemeSettings() {
+            const root = document.documentElement;
+            const theme = currentSettings.theme;
+            
+            // Apply CSS variables
+            root.style.setProperty('--primary-color', theme.primaryColor);
+            root.style.setProperty('--secondary-color', theme.secondaryColor);
+            root.style.setProperty('--background-color', theme.backgroundColor);
+            root.style.setProperty('--font-family', `'${theme.fontFamily}', sans-serif`);
+            
+            // Apply body classes
+            document.body.className = '';
+            if (theme.darkMode) document.body.classList.add('dark-mode');
+            if (theme.glassMode) document.body.classList.add('glass-mode');
+            
+            // Update font family
+            document.body.style.fontFamily = `'${theme.fontFamily}', sans-serif`;
+            
+            // Update theme button
+            const themeBtn = document.querySelector('.theme-btn');
+            if (themeBtn) {
+                themeBtn.textContent = theme.darkMode ? '☀️' : '🌙';
+            }
+        }
 
         // Load user data
         function loadUserData() {
@@ -638,9 +871,8 @@
 
                     if (wishlistItems) wishlistItems.textContent = wishlist.length;
                     if (cartItems) cartItems.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
-                    if (totalSavings) totalSavings.textContent = '€' + (Math.random() * 100).toFixed(2);
+                    if (totalSavings) totalSavings.textContent = '€' + (Math.random() * 200).toFixed(2);
                     
-                    // Get visit count
                     const visits = parseInt(localStorage.getItem('visitCount') || '1');
                     if (visitCount) visitCount.textContent = visits;
                 }
@@ -687,15 +919,13 @@
 
         // Login
         function login(email, password) {
-            // Simulate login
             currentUser = {
                 name: email.split('@')[0],
                 email: email,
-                points: Math.floor(Math.random() * 1000),
+                points: Math.floor(Math.random() * 1000) + 100,
                 joinDate: new Date().toLocaleDateString('it-IT')
             };
 
-            // Save user data
             try {
                 const savedData = localStorage.getItem('cronoshop_data');
                 let userData = {};
@@ -736,24 +966,43 @@
         // Export data
         function exportData() {
             try {
-                const savedData = localStorage.getItem('cronoshop_data');
-                if (savedData) {
-                    const userData = JSON.parse(savedData);
-                    const dataStr = JSON.stringify(userData, null, 2);
-                    const dataBlob = new Blob([dataStr], {type: 'application/json'});
-                    
-                    const link = document.createElement('a');
-                    link.href = URL.createObjectURL(dataBlob);
-                    link.download = 'cronoshop_data.json';
-                    link.click();
-                    
-                    showNotification('Dati esportati con successo!');
-                } else {
-                    showNotification('Nessun dato da esportare');
-                }
+                const allData = {
+                    userData: JSON.parse(localStorage.getItem('cronoshop_data') || '{}'),
+                    settings: currentSettings,
+                    visitCount: localStorage.getItem('visitCount') || '1',
+                    exportDate: new Date().toISOString()
+                };
+                
+                const dataStr = JSON.stringify(allData, null, 2);
+                const dataBlob = new Blob([dataStr], {type: 'application/json'});
+                
+                const link = document.createElement('a');
+                link.href = URL.createObjectURL(dataBlob);
+                link.download = `cronoshop_data_${new Date().toISOString().split('T')[0]}.json`;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                showNotification('Dati esportati con successo!');
             } catch (error) {
                 console.error('Error exporting data:', error);
                 showNotification('Errore durante l\'esportazione');
+            }
+        }
+
+        // Clear all data
+        function clearAllData() {
+            if (confirm('Sei sicuro di voler cancellare tutti i dati? Questa azione non può essere annullata.')) {
+                try {
+                    localStorage.clear();
+                    showNotification('Tutti i dati sono stati cancellati');
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 1000);
+                } catch (error) {
+                    console.error('Error clearing data:', error);
+                    showNotification('Errore durante la cancellazione');
+                }
             }
         }
 
@@ -780,6 +1029,94 @@
             }
         }
 
+        // Create font selector
+        function createFontSelector() {
+            return `
+                <div class="font-selector">
+                    <label>Seleziona Font</label>
+                    <div class="font-dropdown">
+                        <div class="font-selected" onclick="toggleFontDropdown()">
+                            <span id="selectedFont">${currentSettings.theme.fontFamily}</span>
+                            <span>▼</span>
+                        </div>
+                        <div class="font-options" id="fontOptions">
+                            ${fontOptions.map(font => `
+                                <div class="font-option ${font.value === currentSettings.theme.fontFamily ? 'selected' : ''}" 
+                                     onclick="selectFont('${font.value}')" 
+                                     style="font-family: '${font.value}', sans-serif">
+                                    ${font.name}
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Toggle font dropdown
+        function toggleFontDropdown() {
+            const dropdown = document.getElementById('fontOptions');
+            if (dropdown) {
+                dropdown.classList.toggle('show');
+            }
+        }
+
+        // Select font
+        function selectFont(fontValue) {
+            currentSettings.theme.fontFamily = fontValue;
+            document.getElementById('selectedFont').textContent = fontValue;
+            document.getElementById('fontOptions').classList.remove('show');
+            
+            // Update all font options
+            document.querySelectorAll('.font-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            event.target.classList.add('selected');
+            
+            applyThemeSettings();
+            saveSettings();
+        }
+
+        // Create color pickers
+        function createColorPickers() {
+            return `
+                <div class="color-pickers">
+                    <div class="color-picker">
+                        <label>Colore Primario</label>
+                        <div class="color-input-wrapper">
+                            <input type="color" class="color-input" value="${currentSettings.theme.primaryColor}" 
+                                   onchange="updateColor('primaryColor', this.value)">
+                            <div class="color-value">${currentSettings.theme.primaryColor}</div>
+                        </div>
+                    </div>
+                    <div class="color-picker">
+                        <label>Colore Secondario</label>
+                        <div class="color-input-wrapper">
+                            <input type="color" class="color-input" value="${currentSettings.theme.secondaryColor}" 
+                                   onchange="updateColor('secondaryColor', this.value)">
+                            <div class="color-value">${currentSettings.theme.secondaryColor}</div>
+                        </div>
+                    </div>
+                    <div class="color-picker">
+                        <label>Colore Sfondo</label>
+                        <div class="color-input-wrapper">
+                            <input type="color" class="color-input" value="${currentSettings.theme.backgroundColor}" 
+                                   onchange="updateColor('backgroundColor', this.value)">
+                            <div class="color-value">${currentSettings.theme.backgroundColor}</div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Update color
+        function updateColor(colorType, value) {
+            currentSettings.theme[colorType] = value;
+            event.target.nextElementSibling.textContent = value;
+            applyThemeSettings();
+            saveSettings();
+        }
+
         // Show settings modal
         function showSettings(settingType) {
             const modal = document.getElementById('settingsModal');
@@ -796,96 +1133,47 @@
                             <h4>Preferenze Generali</h4>
                             <div class="setting-item">
                                 <span>Mostra prezzi con IVA</span>
-                                <div class="setting-toggle active" onclick="toggleSetting(this)"></div>
+                                <div class="setting-toggle ${currentSettings.general.showPricesWithVAT ? 'active' : ''}" 
+                                     onclick="toggleGeneralSetting('showPricesWithVAT')"></div>
                             </div>
                             <div class="setting-item">
                                 <span>Salva cronologia ricerche</span>
-                                <div class="setting-toggle active" onclick="toggleSetting(this)"></div>
+                                <div class="setting-toggle ${currentSettings.general.saveSearchHistory ? 'active' : ''}" 
+                                     onclick="toggleGeneralSetting('saveSearchHistory')"></div>
                             </div>
                             <div class="setting-item">
                                 <span>Suggerimenti personalizzati</span>
-                                <div class="setting-toggle active" onclick="toggleSetting(this)"></div>
+                                <div class="setting-toggle ${currentSettings.general.personalizedSuggestions ? 'active' : ''}" 
+                                     onclick="toggleGeneralSetting('personalizedSuggestions')"></div>
                             </div>
                         </div>
                     `;
                     break;
+                    
                 case 'theme':
-                    title.textContent = 'Tema e Aspetto';
+                    title.textContent = 'Temi e Stile';
                     settingsHTML = `
                         <div class="settings-section">
                             <h4>Modalità Tema</h4>
                             <div class="setting-item">
                                 <span>Tema Scuro</span>
-                                <div class="setting-toggle ${localStorage.getItem('darkMode') === 'true' ? 'active' : ''}" onclick="toggleDarkMode(this)"></div>
+                                <div class="setting-toggle ${currentSettings.theme.darkMode ? 'active' : ''}" 
+                                     onclick="toggleThemeSetting('darkMode')"></div>
                             </div>
-                        </div>
-                        <div class="settings-section">
-                            <h4>Modalità Tinta</h4>
-                            <div class="theme-selector">
-                                <div class="theme-option ${localStorage.getItem('themeMode') === 'default' || !localStorage.getItem('themeMode') ? 'active' : ''}" onclick="setThemeMode('default')">
-                                    <div class="theme-preview default"></div>
-                                    <span>Default</span>
-                                </div>
-                                <div class="theme-option ${localStorage.getItem('themeMode') === 'green' ? 'active' : ''}" onclick="setThemeMode('green')">
-                                    <div class="theme-preview green"></div>
-                                    <span>Verde</span>
-                                </div>
-                                <div class="theme-option ${localStorage.getItem('themeMode') === 'red' ? 'active' : ''}" onclick="setThemeMode('red')">
-                                    <div class="theme-preview red"></div>
-                                    <span>Rosso</span>
-                                </div>
-                                <div class="theme-option ${localStorage.getItem('themeMode') === 'blue' ? 'active' : ''}" onclick="setThemeMode('blue')">
-                                    <div class="theme-preview blue"></div>
-                                    <span>Blu</span>
-                                </div>
-                                <div class="theme-option ${localStorage.getItem('themeMode') === 'purple' ? 'active' : ''}" onclick="setThemeMode('purple')">
-                                    <div class="theme-preview purple"></div>
-                                    <span>Viola</span>
-                                </div>
-                                <div class="theme-option ${localStorage.getItem('themeMode') === 'orange' ? 'active' : ''}" onclick="setThemeMode('orange')">
-                                    <div class="theme-preview orange"></div>
-                                    <span>Arancione</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="settings-section">
-                            <h4>Modalità Glass</h4>
                             <div class="setting-item">
                                 <span>Effetto Vetro</span>
-                                <div class="setting-toggle ${localStorage.getItem('glassMode') === 'true' ? 'active' : ''}" onclick="toggleGlassMode(this)"></div>
+                                <div class="setting-toggle ${currentSettings.theme.glassMode ? 'active' : ''}" 
+                                     onclick="toggleThemeSetting('glassMode')"></div>
                             </div>
+                        </div>
+                        <div class="settings-section">
+                            <h4>Personalizzazione</h4>
+                            ${createFontSelector()}
+                            ${createColorPickers()}
                         </div>
                     `;
+                    break;
                     
-                        <div class="settings-section">
-                            <h4>Font Personalizzato</h4>
-                            <div class="setting-item">
-                                <span>Seleziona Font</span>
-                                <select id="fontSelector" class="glass-input" onchange="updateFont(this.value)">
-                                    <option value="Arial">Arial</option>
-                                    <option value="Roboto">Roboto</option>
-                                    <option value="Open Sans">Open Sans</option>
-                                    <option value="Montserrat">Montserrat</option>
-                                    <option value="Lato">Lato</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="settings-section">
-                            <h4>Colori Personalizzati</h4>
-                            <div class="setting-item">
-                                <span>Colore Primario</span>
-                                <input type="color" id="primaryColor" onchange="updateColor('primary', this.value)">
-                            </div>
-                            <div class="setting-item">
-                                <span>Colore Secondario</span>
-                                <input type="color" id="secondaryColor" onchange="updateColor('secondary', this.value)">
-                            </div>
-                            <div class="setting-item">
-                                <span>Colore Sfondo</span>
-                                <input type="color" id="backgroundColor" onchange="updateColor('background', this.value)">
-                            </div>
-                        </div>
-break;
                 case 'privacy':
                     title.textContent = 'Privacy e Sicurezza';
                     settingsHTML = `
@@ -893,25 +1181,34 @@ break;
                             <h4>Impostazioni Privacy</h4>
                             <div class="setting-item">
                                 <span>Condividi dati di utilizzo</span>
-                                <div class="setting-toggle" onclick="toggleSetting(this)"></div>
+                                <div class="setting-toggle ${currentSettings.privacy.shareUsageData ? 'active' : ''}" 
+                                     onclick="togglePrivacySetting('shareUsageData')"></div>
                             </div>
                             <div class="setting-item">
                                 <span>Tracking pubblicitario</span>
-                                <div class="setting-toggle" onclick="toggleSetting(this)"></div>
+                                <div class="setting-toggle ${currentSettings.privacy.adTracking ? 'active' : ''}" 
+                                     onclick="togglePrivacySetting('adTracking')"></div>
                             </div>
                             <div class="setting-item">
                                 <span>Autenticazione a due fattori</span>
-                                <div class="setting-toggle active" onclick="toggleSetting(this)"></div>
+                                <div class="setting-toggle ${currentSettings.privacy.twoFactorAuth ? 'active' : ''}" 
+                                     onclick="togglePrivacySetting('twoFactorAuth')"></div>
                             </div>
                         </div>
                         <div class="settings-section">
                             <h4>Gestione Dati</h4>
-                            
-                            <button class="glass-btn secondary-btn" onclick="exportData()">Esporta tutti i dati</button>
-                            <button class="glass-btn secondary-btn" style="margin-left: 1rem;" onclick="clearAllData()">Cancella tutti i dati</button>
+                            <div class="data-management">
+                                <button class="glass-btn secondary-btn" onclick="exportData()">
+                                    📥 Esporta tutti i dati
+                                </button>
+                                <button class="glass-btn secondary-btn" onclick="clearAllData()">
+                                    🗑️ Cancella tutti i dati
+                                </button>
+                            </div>
                         </div>
                     `;
                     break;
+                    
                 case 'preferences':
                     title.textContent = 'Preferenze Prodotti';
                     settingsHTML = `
@@ -919,23 +1216,28 @@ break;
                             <h4>Categorie di Interesse</h4>
                             <div class="setting-item">
                                 <span>📱 Smartphone e Tech</span>
-                                <div class="setting-toggle active" onclick="toggleSetting(this)"></div>
+                                <div class="setting-toggle ${currentSettings.preferences.categories.smartphone ? 'active' : ''}" 
+                                     onclick="toggleCategorySetting('smartphone')"></div>
                             </div>
                             <div class="setting-item">
                                 <span>👕 Fashion e Abbigliamento</span>
-                                <div class="setting-toggle active" onclick="toggleSetting(this)"></div>
+                                <div class="setting-toggle ${currentSettings.preferences.categories.fashion ? 'active' : ''}" 
+                                     onclick="toggleCategorySetting('fashion')"></div>
                             </div>
                             <div class="setting-item">
                                 <span>🏠 Casa e Cucina</span>
-                                <div class="setting-toggle" onclick="toggleSetting(this)"></div>
+                                <div class="setting-toggle ${currentSettings.preferences.categories.home ? 'active' : ''}" 
+                                     onclick="toggleCategorySetting('home')"></div>
                             </div>
                             <div class="setting-item">
                                 <span>💊 Salute e Benessere</span>
-                                <div class="setting-toggle" onclick="toggleSetting(this)"></div>
+                                <div class="setting-toggle ${currentSettings.preferences.categories.health ? 'active' : ''}" 
+                                     onclick="toggleCategorySetting('health')"></div>
                             </div>
                         </div>
                     `;
                     break;
+                    
                 default:
                     title.textContent = 'Impostazioni';
                     settingsHTML = '<p>Seleziona un\'opzione dal menu principale.</p>';
@@ -945,99 +1247,38 @@ break;
             showModal('settingsModal');
         }
 
-        // Toggle setting
-        function toggleSetting(element) {
-            element.classList.toggle('active');
-            showNotification('Impostazione aggiornata');
+        // Toggle setting functions
+        function toggleGeneralSetting(setting) {
+            currentSettings.general[setting] = !currentSettings.general[setting];
+            event.target.classList.toggle('active');
+            saveSettings();
         }
 
-        // Toggle dark mode
-        function toggleDarkMode(element) {
-            element.classList.toggle('active');
-            const isDark = element.classList.contains('active');
-            localStorage.setItem('darkMode', isDark);
-            applyTheme();
-            showNotification(`Tema ${isDark ? 'scuro' : 'chiaro'} attivato`);
+        function toggleThemeSetting(setting) {
+            currentSettings.theme[setting] = !currentSettings.theme[setting];
+            event.target.classList.toggle('active');
+            applyThemeSettings();
+            saveSettings();
         }
 
-        // Set theme mode
-        function setThemeMode(mode) {
-            localStorage.setItem('themeMode', mode);
-            applyTheme();
-            
-            // Update active theme option
-            document.querySelectorAll('.theme-option').forEach(option => {
-                option.classList.remove('active');
-            });
-            event.target.closest('.theme-option').classList.add('active');
-            
-            showNotification(`Tema ${mode} attivato`);
+        function togglePrivacySetting(setting) {
+            currentSettings.privacy[setting] = !currentSettings.privacy[setting];
+            event.target.classList.toggle('active');
+            saveSettings();
         }
 
-        // Toggle glass mode
-        function toggleGlassMode(element) {
-            element.classList.toggle('active');
-            const isGlass = element.classList.contains('active');
-            localStorage.setItem('glassMode', isGlass);
-            applyTheme();
-            showNotification(`Modalità vetro ${isGlass ? 'attivata' : 'disattivata'}`);
-        }
-
-        // Apply theme
-        function applyTheme() {
-            const darkMode = localStorage.getItem('darkMode') === 'true';
-            const themeMode = localStorage.getItem('themeMode') || 'default';
-            const glassMode = localStorage.getItem('glassMode') === 'true';
-
-            // Remove all theme classes
-            document.body.classList.remove('dark-mode', 'theme-green', 'theme-red', 'theme-blue', 'theme-purple', 'theme-orange', 'glass-mode');
-
-            // Apply dark mode
-            if (darkMode) {
-                document.body.classList.add('dark-mode');
-            }
-
-            // Apply theme mode
-            if (themeMode !== 'default') {
-                document.body.classList.add(`theme-${themeMode}`);
-            }
-
-            // Apply glass mode
-            if (glassMode) {
-                document.body.classList.add('glass-mode');
-            }
-
-            // Update theme button
-            const themeBtn = document.querySelector('.theme-btn');
-            if (themeBtn) {
-                themeBtn.textContent = darkMode ? '☀️' : '🌙';
-            }
-        }
-
-        // Clear all data
-        function clearAllData() {
-            if (confirm('Sei sicuro di voler cancellare tutti i dati? Questa azione non può essere annullata.')) {
-                localStorage.clear();
-                showNotification('Tutti i dati sono stati cancellati');
-                setTimeout(() => {
-                    window.location.reload();
-                }, 1000);
-            }
+        function toggleCategorySetting(category) {
+            currentSettings.preferences.categories[category] = !currentSettings.preferences.categories[category];
+            event.target.classList.toggle('active');
+            saveSettings();
         }
 
         // Show notification
         function showNotification(message) {
-            let notification = document.getElementById('notification');
-            if (!notification) {
-                notification = document.createElement('div');
-                notification.id = 'notification';
-                notification.className = 'notification';
-                notification.innerHTML = '<span id="notificationText"></span>';
-                document.body.appendChild(notification);
-            }
-
+            const notification = document.getElementById('notification');
             const notificationText = document.getElementById('notificationText');
-            if (notificationText) {
+            
+            if (notification && notificationText) {
                 notificationText.textContent = message;
                 notification.classList.add('show');
                 
@@ -1049,10 +1290,9 @@ break;
 
         // Theme toggle
         function toggleTheme() {
-            const isDark = document.body.classList.contains('dark-mode');
-            localStorage.setItem('darkMode', !isDark);
-            applyTheme();
-            showNotification(`Tema ${!isDark ? 'scuro' : 'chiaro'} attivato`);
+            currentSettings.theme.darkMode = !currentSettings.theme.darkMode;
+            applyThemeSettings();
+            saveSettings();
         }
 
         // Mobile menu toggle
@@ -1063,50 +1303,25 @@ break;
             }
         }
 
-        
-        // Font e Colori personalizzati
-        function updateFont(font) {
-            document.documentElement.style.setProperty('--user-font', font);
-            saveSetting('font', font);
-        }
-
-        function updateColor(type, color) {
-            const varName = '--color-' + type;
-            document.documentElement.style.setProperty(varName, color);
-            saveSetting(type + 'Color', color);
-        }
-
-        function saveSetting(key, value) {
-            let settings = JSON.parse(localStorage.getItem('cronoshop_settings') || '{}');
-            settings[key] = value;
-            localStorage.setItem('cronoshop_settings', JSON.stringify(settings));
-        }
-
-        function applySavedSettings() {
-            let settings = JSON.parse(localStorage.getItem('cronoshop_settings') || '{}');
-            if (settings.font) {
-                document.documentElement.style.setProperty('--user-font', settings.font);
-                const fontSelector = document.getElementById('fontSelector');
-                if (fontSelector) fontSelector.value = settings.font;
-            }
-            ['primary', 'secondary', 'background'].forEach(type => {
-                const key = type + 'Color';
-                if (settings[key]) {
-                    document.documentElement.style.setProperty('--color-' + type, settings[key]);
-                    const input = document.getElementById(type + 'Color');
-                    if (input) input.value = settings[key];
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.font-dropdown')) {
+                const dropdown = document.getElementById('fontOptions');
+                if (dropdown) {
+                    dropdown.classList.remove('show');
                 }
-            });
-        }
+            }
+        });
 
-        document.addEventListener('DOMContentLoaded', applySavedSettings);
-
-
-// Initialize page
+        // Initialize page
         document.addEventListener('DOMContentLoaded', function() {
-            applyTheme();
+            loadSettings();
             loadUserData();
             updateCartCount();
+
+            // Update visit count
+            const currentCount = parseInt(localStorage.getItem('visitCount') || '1');
+            localStorage.setItem('visitCount', (currentCount + 1).toString());
 
             // Setup event listeners
             const themeBtn = document.querySelector('.theme-btn');
@@ -1239,7 +1454,6 @@ break;
                     const email = document.getElementById('registerEmail').value;
                     const password = document.getElementById('registerPassword').value;
                     
-                    // Simulate registration
                     login(email, password);
                     closeModal('registerModal');
                     showNotification('Registrazione completata!');
