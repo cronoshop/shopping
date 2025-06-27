@@ -236,15 +236,76 @@ body.dark-mode .animated-background {
     position: relative;
 }
 
-.logo h1 {
+/* Logo Styles */
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    text-decoration: none;
+    color: inherit;
+    transition: all var(--transition-fast);
+}
+
+.logo-link:hover {
+    transform: scale(1.05);
+}
+
+.logo-image {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+}
+
+.logo-text {
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--text-blue);
 }
 
-.logo a {
-    text-decoration: none;
-    color: inherit;
+/* Hero Logo */
+.hero-logo {
+    text-align: center;
+    margin-bottom: var(--space-lg);
+}
+
+.hero-logo-image {
+    height: 80px;
+    width: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+}
+
+/* Footer Logo */
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-md);
+}
+
+.footer-logo-image {
+    height: 32px;
+    width: auto;
+    object-fit: contain;
+}
+
+.footer-bottom-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+}
+
+.footer-bottom-logo {
+    height: 24px;
+    width: auto;
+    object-fit: contain;
 }
 
 .nav-menu {
@@ -1141,6 +1202,10 @@ body.dark-mode .mini-btn {
         display: block;
     }
     
+    .logo-text {
+        display: none;
+    }
+    
     .hero-card h2 {
         font-size: 2rem;
     }
@@ -1221,6 +1286,11 @@ body.dark-mode .mini-btn {
     
     .nav-menu {
         top: 70px;
+    }
+    
+    .footer-bottom-content {
+        flex-direction: column;
+        gap: var(--space-xs);
     }
 }
 
