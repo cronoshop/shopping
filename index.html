@@ -281,6 +281,171 @@
     });
   });
 </script>
+<!-- HTML -->
+<style>
+  /* Pulsante chat in basso a destra */
+  #chat-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #25d366;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+  }
+  #chat-toggle img {
+    width: 32px;
+    height: 32px;
+  }
 
+  /* Overlay semi-trasparente */
+  #chat-popup {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 320px;
+    max-height: 70vh;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    overflow-y: auto;
+    display: none;
+    flex-direction: column;
+    z-index: 10001;
+  }
+
+  /* Header popup */
+  #chat-popup header {
+    padding: 10px;
+    font-weight: bold;
+    background: #25d366;
+    color: white;
+    border-radius: 12px 12px 0 0;
+  }
+
+  /* Chat messages container */
+  #chat-messages {
+    padding: 10px;
+    flex-grow: 1;
+  }
+
+  /* Bottoni risposta */
+  .chat-btn {
+    background: #25d366;
+    border: none;
+    color: white;
+    margin: 5px 3px;
+    padding: 8px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    display: inline-block;
+  }
+
+  /* Close button */
+  #chat-close {
+    position: absolute;
+    top: 6px;
+    right: 12px;
+    cursor: pointer;
+    font-size: 20px;
+    color: white;
+  }
+</style>
+
+<div id="chat-toggle" aria-label="Apri chat di supporto" role="button" tabindex="0" title="Apri chat">
+  <img src="https://cdn-icons-png.flaticon.com/512/1384/1384005.png" alt="Icona chat">
+</div>
+
+<div id="chat-popup" role="dialog" aria-modal="true" aria-labelledby="chat-header">
+  <header id="chat-header">
+    Chat di supporto
+    <span id="chat-close" aria-label="Chiudi chat" role="button" tabindex="0">&times;</span>
+  </header>
+  <div id="chat-messages">
+    <p>Cosa ti serve? Seleziona una delle opzioni:</p>
+    <button class="chat-btn" data-key="offerte">Offerte Amazon</button>
+    <button class="chat-btn" data-key="sicurezza">È sicuro?</button>
+    <button class="chat-btn" data-key="gruppo">Gruppo WhatsApp</button>
+  </div>
+</div>
+
+<script>
+  const chatToggle = document.getElementById('chat-toggle');
+  const chatPopup = document.getElementById('chat-popup');
+  const chatClose = document.getElementById('chat-close');
+  const chatMessages = document.getElementById('chat-messages');
+
+  // Risposte base per parole chiave
+  const risposte = {
+    offerte: [
+      "Abbiamo le migliori offerte Amazon, sempre aggiornate!",
+      "Controlla la pagina offerte per i dettagli."
+    ],
+    sicurezza: [
+      "Cronoshop è sicuro e affidabile.",
+      "Le offerte provengono direttamente da Amazon."
+    ],
+    gruppo: [
+      "Puoi unirti al nostro gruppo WhatsApp per offerte esclusive.",
+      "Trovi il link nella pagina principale."
+    ]
+  };
+
+  function mostraRisposte(key) {
+    if (!risposte[key]) return;
+    chatMessages.innerHTML = '<p>Risposte:</p>';
+    risposte[key].forEach(testo => {
+      const p = document.createElement('p');
+      p.textContent = testo;
+      chatMessages.appendChild(p);
+    });
+    // Aggiungi bottone indietro
+    const indietroBtn = document.createElement('button');
+    indietroBtn.textContent = 'Indietro';
+    indietroBtn.className = 'chat-btn';
+    indietroBtn.onclick = mostraMenuPrincipale;
+    chatMessages.appendChild(indietroBtn);
+  }
+
+  function mostraMenuPrincipale() {
+    chatMessages.innerHTML = '<p>Cosa ti serve? Seleziona una delle opzioni:</p>';
+    Object.keys(risposte).forEach(key => {
+      const btn = document.createElement('button');
+      btn.textContent = key === 'offerte' ? 'Offerte Amazon' :
+                        key === 'sicurezza' ? 'È sicuro?' :
+                        key === 'gruppo' ? 'Gruppo WhatsApp' : key;
+      btn.className = 'chat-btn';
+      btn.dataset.key = key;
+      btn.onclick = () => mostraRisposte(key);
+      chatMessages.appendChild(btn);
+    });
+  }
+
+  chatToggle.onclick = () => {
+    chatPopup.style.display = 'flex';
+    chatToggle.style.display = 'none';
+    mostraMenuPrincipale();
+  };
+
+  chatClose.onclick = () => {
+    chatPopup.style.display = 'none';
+    chatToggle.style.display = 'flex';
+  };
+
+  // Accessibilità: chiudi con ESC
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && chatPopup.style.display === 'flex') {
+      chatPopup.style.display = 'none';
+      chatToggle.style.display = 'flex';
+    }
+  });
+</script>
 </body>
 </html>
