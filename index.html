@@ -268,26 +268,12 @@
             display: block;
         }
     }
-</style>
 
-<script src="main.js?v=2.3" defer></script>
-<script>
-  // Mobile menu toggle
-  document.addEventListener('DOMContentLoaded', () => {
-    const menuBtn = document.querySelector('.mobile-menu-btn');
-    const navMenu = document.getElementById('navMenu');
-    menuBtn.addEventListener('click', () => {
-      navMenu.classList.toggle('open');
-    });
-  });
-</script>
-<!-- HTML -->
-<style>
-  /* Pulsante chat in basso a destra */
+  /* Pulsante chat in basso a sinistra */
   #chat-toggle {
     position: fixed;
     bottom: 20px;
-    right: 20px;
+    left: 20px; /* spostato da right a sinistra */
     background: #25d366;
     border-radius: 50%;
     width: 60px;
@@ -304,11 +290,11 @@
     height: 32px;
   }
 
-  /* Overlay semi-trasparente */
+  /* Overlay semi-trasparente spostato a sinistra */
   #chat-popup {
     position: fixed;
     bottom: 90px;
-    right: 20px;
+    left: 20px; /* spostato da right a sinistra */
     width: 320px;
     max-height: 70vh;
     background: rgba(255, 255, 255, 0.95);
@@ -327,38 +313,33 @@
     background: #25d366;
     color: white;
     border-radius: 12px 12px 0 0;
+    position: relative;
   }
 
-  /* Chat messages container */
-  #chat-messages {
-    padding: 10px;
-    flex-grow: 1;
-  }
-
-  /* Bottoni risposta */
-  .chat-btn {
-    background: #25d366;
-    border: none;
-    color: white;
-    margin: 5px 3px;
-    padding: 8px 12px;
-    border-radius: 20px;
-    cursor: pointer;
-    font-size: 14px;
-    display: inline-block;
-  }
-
-  /* Close button */
+  /* Close button spostato a sinistra */
   #chat-close {
     position: absolute;
     top: 6px;
-    right: 12px;
+    left: 12px; /* spostato da right a sinistra */
     cursor: pointer;
     font-size: 20px;
     color: white;
   }
 </style>
 
+<script src="main.js?v=2.3" defer></script>
+<script>
+  // Mobile menu toggle
+  document.addEventListener('DOMContentLoaded', () => {
+    const menuBtn = document.querySelector('.mobile-menu-btn');
+    const navMenu = document.getElementById('navMenu');
+    menuBtn.addEventListener('click', () => {
+      navMenu.classList.toggle('open');
+    });
+  });
+</script>
+
+<!-- Chat Toggle and Popup -->
 <div id="chat-toggle" aria-label="Apri chat di supporto" role="button" tabindex="0" title="Apri chat">
   <img src="https://cdn-icons-png.flaticon.com/512/1384/1384005.png" alt="Icona chat">
 </div>
