@@ -158,7 +158,7 @@ body.dark-mode .animated-background {
     border-color: var(--primary-blue);
 }
 
-/* Header - One UI Style - More Compact */
+/* Header - One UI Style - Ultra Compact */
 .glass-header {
     position: fixed;
     top: 0;
@@ -169,9 +169,9 @@ body.dark-mode .animated-background {
     backdrop-filter: var(--backdrop-blur-strong);
     -webkit-backdrop-filter: var(--backdrop-blur-strong);
     border-bottom: 1px solid var(--glass-border);
-    padding: var(--space-md) var(--space-md);
+    padding: var(--space-sm) var(--space-md);
     transition: all var(--transition-smooth);
-    height: 70px;
+    height: 60px;
     display: flex;
     align-items: center;
 }
@@ -186,7 +186,7 @@ body.dark-mode .animated-background {
     position: relative;
 }
 
-/* Logo Styles - More Compact */
+/* Logo Styles - Ultra Compact */
 .logo {
     display: flex;
     align-items: center;
@@ -195,7 +195,7 @@ body.dark-mode .animated-background {
 .logo-link {
     display: flex;
     align-items: center;
-    gap: var(--space-sm);
+    gap: var(--space-xs);
     text-decoration: none;
     color: inherit;
     transition: all var(--transition-fast);
@@ -206,33 +206,33 @@ body.dark-mode .animated-background {
 }
 
 .logo-image {
-    height: 32px;
+    height: 28px;
     width: auto;
     object-fit: contain;
 }
 
 .logo-text {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     font-weight: 700;
     color: var(--text-blue);
 }
 
-/* Navigation Menu - More Compact */
+/* Navigation Menu - Ultra Compact */
 .nav-menu {
     display: flex;
-    gap: var(--space-md);
+    gap: var(--space-xs);
     transition: all var(--transition-smooth);
 }
 
 .nav-link {
     color: var(--text-primary);
     text-decoration: none;
-    padding: var(--space-sm) var(--space-md);
-    border-radius: var(--radius-lg);
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: var(--radius-md);
     transition: all var(--transition-fast);
     font-weight: 500;
     position: relative;
-    font-size: 0.85rem;
+    font-size: 0.75rem;
     white-space: nowrap;
 }
 
@@ -248,18 +248,18 @@ body.dark-mode .animated-background {
 
 .nav-actions {
     display: flex;
-    gap: var(--space-sm);
+    gap: var(--space-xs);
     align-items: center;
 }
 
-/* Glass Buttons - More Compact */
+/* Glass Buttons - Ultra Compact */
 .glass-btn {
     background: var(--glass-white);
     backdrop-filter: var(--backdrop-blur);
     -webkit-backdrop-filter: var(--backdrop-blur);
     border: 1px solid var(--glass-border);
-    border-radius: var(--radius-lg);
-    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-md);
+    padding: var(--space-xs) var(--space-sm);
     color: var(--text-primary);
     font-weight: 500;
     cursor: pointer;
@@ -271,8 +271,8 @@ body.dark-mode .animated-background {
     align-items: center;
     justify-content: center;
     gap: var(--space-xs);
-    font-size: 0.8rem;
-    min-height: 36px;
+    font-size: 0.7rem;
+    min-height: 32px;
 }
 
 .glass-btn:hover {
@@ -301,22 +301,22 @@ body.dark-mode .animated-background {
     color: var(--text-primary);
 }
 
-/* Theme Button - Text Based - Compact */
+/* Theme Button - Text Based - Ultra Compact */
 .theme-btn {
-    min-width: 60px;
-    font-size: 0.75rem;
-    padding: var(--space-sm) var(--space-sm);
+    min-width: 50px;
+    font-size: 0.65rem;
+    padding: var(--space-xs);
 }
 
-/* Cart Button - Fixed Styling */
+/* Cart Button - Ultra Compact */
 .cart-btn {
     position: relative;
     background: var(--glass-white);
     backdrop-filter: var(--backdrop-blur);
     -webkit-backdrop-filter: var(--backdrop-blur);
     border: 1px solid var(--glass-border);
-    border-radius: var(--radius-lg);
-    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-md);
+    padding: var(--space-xs) var(--space-sm);
     color: var(--text-primary);
     font-weight: 500;
     cursor: pointer;
@@ -326,8 +326,8 @@ body.dark-mode .animated-background {
     align-items: center;
     justify-content: center;
     gap: var(--space-xs);
-    font-size: 0.8rem;
-    min-height: 36px;
+    font-size: 0.7rem;
+    min-height: 32px;
 }
 
 .cart-btn:hover {
@@ -341,19 +341,19 @@ body.dark-mode .animated-background {
     background: var(--error-red);
     color: var(--text-white);
     border-radius: 50%;
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.65rem;
+    font-size: 0.6rem;
     font-weight: 600;
     position: absolute;
-    top: -6px;
-    right: -6px;
+    top: -4px;
+    right: -4px;
 }
 
-/* Mobile Menu - Compact */
+/* Mobile Menu - Ultra Compact */
 .mobile-menu-btn {
     display: none;
     background: var(--glass-white);
@@ -362,10 +362,10 @@ body.dark-mode .animated-background {
     padding: var(--space-xs);
     color: var(--text-primary);
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 0.9rem;
     transition: all var(--transition-fast);
-    min-height: 36px;
-    width: 36px;
+    min-height: 32px;
+    width: 32px;
 }
 
 .mobile-menu-btn:hover {
@@ -724,12 +724,18 @@ body.dark-mode .animated-background {
     transition: all var(--transition-fast);
     font-size: 1rem;
     min-height: 52px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
 }
 
 .buy-btn:hover {
     background: linear-gradient(135deg, var(--accent-blue), var(--primary-blue));
     transform: translateY(-2px);
     box-shadow: var(--glass-shadow);
+    color: var(--text-white);
 }
 
 /* Product Actions - Fixed Styling */
@@ -918,7 +924,7 @@ body.dark-mode .animated-background {
 /* Notification */
 .notification {
     position: fixed;
-    top: 80px;
+    top: 70px;
     right: var(--space-lg);
     background: var(--glass-white-strong);
     backdrop-filter: var(--backdrop-blur);
@@ -970,25 +976,60 @@ body.dark-mode .animated-background {
 }
 
 /* Responsive Design */
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
     .nav-menu {
-        gap: var(--space-sm);
+        gap: 2px;
     }
     
     .nav-link {
-        padding: var(--space-xs) var(--space-sm);
-        font-size: 0.8rem;
+        padding: 4px 6px;
+        font-size: 0.7rem;
     }
     
     .logo-text {
-        font-size: 1.1rem;
+        font-size: 1rem;
+    }
+    
+    .glass-btn {
+        padding: 4px 6px;
+        font-size: 0.65rem;
+        min-height: 28px;
+    }
+    
+    .theme-btn {
+        min-width: 40px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .nav-menu {
+        gap: 1px;
+    }
+    
+    .nav-link {
+        padding: 3px 5px;
+        font-size: 0.65rem;
+    }
+    
+    .logo-text {
+        font-size: 0.9rem;
+    }
+    
+    .glass-btn {
+        padding: 3px 5px;
+        font-size: 0.6rem;
+        min-height: 26px;
+    }
+    
+    .theme-btn {
+        min-width: 35px;
     }
 }
 
 @media (max-width: 768px) {
     .nav-menu {
         position: fixed;
-        top: 70px;
+        top: 60px;
         left: 0;
         right: 0;
         background: var(--glass-white-strong);
@@ -1077,12 +1118,12 @@ body.dark-mode .animated-background {
     }
     
     .glass-header {
-        padding: var(--space-sm) var(--space-md);
-        height: 60px;
+        padding: var(--space-xs) var(--space-md);
+        height: 50px;
     }
     
     .nav-menu {
-        top: 60px;
+        top: 50px;
     }
     
     .secondary-actions {
