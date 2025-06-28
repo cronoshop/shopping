@@ -118,16 +118,16 @@
             </a>
         </div>
         <div class="nav-menu" id="navMenu">
-            <a href="/" class="nav-link active" aria-current="page">Home</a>
-            <a href="#offerte" class="nav-link">Offerte</a>
-            <a href="products.html" class="nav-link">Prodotti</a>
-            <a href="categorie.html" class="nav-link">Categorie</a>
-            <a href="wishlist.html" class="nav-link">Wishlist</a>
-            <a href="account.html" class="nav-link">Profilo</a>
+            <a href="/" class="nav-link active" aria-current="page">🏠 Home</a>
+            <a href="#offerte" class="nav-link">🛍️ Offerte</a>
+            <a href="products.html" class="nav-link">📦 Prodotti</a>
+            <a href="categorie.html" class="nav-link">📂 Categorie</a>
+            <a href="wishlist.html" class="nav-link">❤️ Wishlist</a>
+            <a href="account.html" class="nav-link">👤 Profilo</a>
         </div>
         <div class="nav-actions">
-            <button class="glass-btn search-btn" aria-label="Apri ricerca prodotti" title="Cerca offerte Amazon">Cerca</button>
-            <button class="glass-btn theme-btn" aria-label="Cambia tema" title="Cambia tema chiaro/scuro">Tema</button>
+            <button class="glass-btn search-btn" aria-label="Apri ricerca prodotti" title="Cerca offerte Amazon">🔍 Cerca</button>
+            <button class="glass-btn theme-btn" aria-label="Cambia tema" title="Cambia tema chiaro/scuro">🌙 Tema</button>
             <a href="cart.html" class="glass-btn cart-btn" aria-label="Visualizza carrello" title="Il tuo carrello">🛒 <span class="cart-count">0</span></a>
             <button class="glass-btn mobile-menu-btn" aria-label="Apri menu mobile" aria-expanded="false">☰</button>
         </div>
@@ -155,7 +155,7 @@
             <!-- Statistiche Hero -->
             <div class="hero-stats" role="list" aria-label="Statistiche piattaforma Cronoshop">
                 <div class="stat-item" role="listitem">
-                    <span class="stat-number">61+</span>
+                    <span class="stat-number" id="heroProductCount">61+</span>
                     <span class="stat-label">Prodotti Selezionati</span>
                 </div>
                 <div class="stat-item" role="listitem">
@@ -230,10 +230,10 @@
         <!-- Filtri Categoria -->
         <div class="filter-buttons" role="list" aria-label="Filtra prodotti per categoria">
             <button class="glass-btn filter-btn active" data-category="all" role="listitem" aria-pressed="true">Tutte le Offerte</button>
-            <button class="glass-btn filter-btn" data-category="smartphone" role="listitem" aria-pressed="false">Smartphone & Tech</button>
-            <button class="glass-btn filter-btn" data-category="fashion" role="listitem" aria-pressed="false">Moda & Style</button>
-            <button class="glass-btn filter-btn" data-category="casa" role="listitem" aria-pressed="false">Casa & Cucina</button>
-            <button class="glass-btn filter-btn" data-category="tech" role="listitem" aria-pressed="false">Tecnologia</button>
+            <button class="glass-btn filter-btn" data-category="smartphone" role="listitem" aria-pressed="false">📱 Smartphone & Tech</button>
+            <button class="glass-btn filter-btn" data-category="fashion" role="listitem" aria-pressed="false">👕 Moda & Style</button>
+            <button class="glass-btn filter-btn" data-category="casa" role="listitem" aria-pressed="false">🏠 Casa & Cucina</button>
+            <button class="glass-btn filter-btn" data-category="tech" role="listitem" aria-pressed="false">💻 Tecnologia</button>
         </div>
         
         <!-- Indicatori di Freschezza -->
@@ -251,7 +251,7 @@
 
     <!-- Load More -->
     <div class="load-more-container">
-        <button class="glass-btn load-more-btn" aria-label="Carica altre offerte Amazon">Carica Altre Offerte</button>
+        <button class="glass-btn load-more-btn" aria-label="Carica altre offerte Amazon" id="loadMoreBtn">Carica Altre Offerte</button>
         <p class="load-more-description">Scopri ancora più offerte Amazon selezionate dal nostro team</p>
     </div>
 </section>
@@ -585,6 +585,272 @@
 <script src="affiliate.js" defer></script>
 
 <script>
+// Products loading and display functionality
+let currentProducts = [];
+let displayedProducts = [];
+let currentPage = 0;
+const productsPerPage = 12;
+let currentFilter = 'all';
+
+// Initialize products from main.js
+function initializeProducts() {
+    if (typeof products !== 'undefined' && products.length > 0) {
+        currentProducts = [...products];
+        updateHeroStats();
+        renderProducts();
+    } else {
+        console.warn('Products array not found in main.js');
+    }
+}
+
+// Update hero statistics
+function updateHeroStats() {
+    const heroProductCount = document.getElementById('heroProductCount');
+    if (heroProductCount && currentProducts.length > 0) {
+        heroProductCount.textContent = `${currentProducts.length}+`;
+    }
+}
+
+// Filter products by category
+function filterProducts(category) {
+    currentFilter = category;
+    currentPage = 0;
+    
+    if (category === 'all') {
+        currentProducts = [...products];
+    } else {
+        currentProducts = products.filter(product => product.categoria === category);
+    }
+    
+    renderProducts();
+    
+    // Update filter buttons
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('active');
+        btn.setAttribute('aria-pressed', 'false');
+    });
+    
+    const activeBtn = document.querySelector(`[data-category="${category}"]`);
+    if (activeBtn) {
+        activeBtn.classList.add('active');
+        activeBtn.setAttribute('aria-pressed', 'true');
+    }
+    
+    showNotification(`Filtro applicato: ${category === 'all' ? 'Tutti i prodotti' : category}`);
+}
+
+// Render products
+function renderProducts() {
+    const grid = document.getElementById('productsGrid');
+    if (!grid) return;
+
+    const startIndex = currentPage * productsPerPage;
+    const endIndex = startIndex + productsPerPage;
+    const productsToShow = currentProducts.slice(startIndex, endIndex);
+    
+    if (currentPage === 0) {
+        grid.innerHTML = '';
+        displayedProducts = [];
+    }
+
+    productsToShow.forEach((product, index) => {
+        const productCard = createProductCard(product);
+        grid.appendChild(productCard);
+        displayedProducts.push(product);
+        
+        setTimeout(() => {
+            productCard.classList.add('fade-in');
+        }, index * 50);
+    });
+
+    // Update load more button
+    const loadMoreBtn = document.getElementById('loadMoreBtn');
+    if (loadMoreBtn) {
+        const hasMore = endIndex < currentProducts.length;
+        loadMoreBtn.style.display = hasMore ? 'block' : 'none';
+    }
+}
+
+// Create product card
+function createProductCard(product) {
+    const card = document.createElement('div');
+    card.className = 'glass-card product-card';
+    card.setAttribute('data-category', product.categoria);
+    
+    // Handle description - use descrizione if available, otherwise create from nome
+    const description = product.descrizione || `Scopri ${product.nome} con uno sconto incredibile su Amazon. Non perdere questa offerta limitata!`;
+    
+    card.innerHTML = `
+        <div class="product-image-container">
+            <img src="${product.img}" alt="${product.nome}" class="product-image" loading="lazy">
+        </div>
+        <div class="product-info">
+            <h3 class="product-name">${product.nome}</h3>
+            <div class="product-price">
+                <span class="current-price">${product.prezzo}</span>
+            </div>
+            <p class="product-description">${description}</p>
+            <div class="product-actions">
+                <button class="buy-btn" onclick="buyProduct('${product.link}')">
+                    🛒 Acquista su Amazon
+                </button>
+                <div class="secondary-actions">
+                    <button class="action-btn wishlist-btn" onclick="addToWishlist('${product.id}')">
+                        ❤️ Wishlist
+                    </button>
+                    <button class="action-btn cart-btn" onclick="addToCart('${product.id}')">
+                        🛍️ Carrello
+                    </button>
+                    <button class="action-btn share-btn" onclick="shareProduct('${product.id}')">
+                        📤 Condividi
+                    </button>
+                </div>
+            </div>
+        </div>
+    `;
+
+    return card;
+}
+
+// Load more products
+function loadMoreProducts() {
+    currentPage++;
+    renderProducts();
+}
+
+// Buy product
+function buyProduct(link) {
+    if (link) {
+        showNotification('Reindirizzamento ad Amazon...');
+        setTimeout(() => {
+            window.open(link, '_blank');
+        }, 1000);
+    }
+}
+
+// Add to wishlist
+function addToWishlist(productId) {
+    try {
+        const savedData = localStorage.getItem('cronoshop_data');
+        let userData = savedData ? JSON.parse(savedData) : {};
+        let wishlist = userData.wishlist || [];
+        
+        const product = products.find(p => p.id === productId);
+        if (!product) {
+            showNotification('Prodotto non trovato', 'error');
+            return;
+        }
+
+        if (wishlist.find(item => item.id === productId)) {
+            showNotification('Prodotto già nella wishlist', 'warning');
+            return;
+        }
+
+        wishlist.push(product);
+        userData.wishlist = wishlist;
+        localStorage.setItem('cronoshop_data', JSON.stringify(userData));
+        
+        showNotification('Prodotto aggiunto alla wishlist!', 'success');
+    } catch (error) {
+        console.error('Error adding to wishlist:', error);
+        showNotification('Errore durante l\'aggiunta alla wishlist', 'error');
+    }
+}
+
+// Add to cart
+function addToCart(productId) {
+    try {
+        const savedData = localStorage.getItem('cronoshop_data');
+        let userData = savedData ? JSON.parse(savedData) : {};
+        let cart = userData.cart || [];
+        
+        const product = products.find(p => p.id === productId);
+        if (!product) {
+            showNotification('Prodotto non trovato', 'error');
+            return;
+        }
+
+        const existingItem = cart.find(item => item.id === productId);
+        if (existingItem) {
+            existingItem.quantity += 1;
+        } else {
+            cart.push({ ...product, quantity: 1 });
+        }
+
+        userData.cart = cart;
+        localStorage.setItem('cronoshop_data', JSON.stringify(userData));
+        
+        updateCartCount();
+        showNotification('Prodotto aggiunto al carrello!', 'success');
+    } catch (error) {
+        console.error('Error adding to cart:', error);
+        showNotification('Errore durante l\'aggiunta al carrello', 'error');
+    }
+}
+
+// Share product
+function shareProduct(productId) {
+    const product = products.find(p => p.id === productId);
+    if (!product) return;
+    
+    const shareText = `🛍️ Guarda questa offerta su Cronoshop!\n\n${product.nome}\n💰 ${product.prezzo}\n\n🔗 ${product.link}\n\n#Cronoshop #OfferteAmazon #Risparmio`;
+    
+    if (navigator.share) {
+        navigator.share({
+            title: `${product.nome} - Cronoshop`,
+            text: shareText,
+            url: product.link
+        }).catch(console.error);
+    } else {
+        navigator.clipboard.writeText(shareText).then(() => {
+            showNotification('Link copiato negli appunti!', 'success');
+        }).catch(() => {
+            showNotification('Errore nella copia del link', 'error');
+        });
+    }
+}
+
+// Update cart count
+function updateCartCount() {
+    try {
+        const savedData = localStorage.getItem('cronoshop_data');
+        if (savedData) {
+            const userData = JSON.parse(savedData);
+            const cart = userData.cart || [];
+            const cartCount = document.querySelector('.cart-count');
+            if (cartCount) {
+                const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+                cartCount.textContent = totalItems;
+            }
+        }
+    } catch (error) {
+        console.error('Error loading cart data:', error);
+    }
+}
+
+// Show notification
+function showNotification(message, type = 'info') {
+    let notification = document.getElementById('notification');
+    if (!notification) {
+        notification = document.createElement('div');
+        notification.id = 'notification';
+        notification.className = 'notification';
+        notification.innerHTML = '<span id="notificationText"></span>';
+        document.body.appendChild(notification);
+    }
+
+    const notificationText = document.getElementById('notificationText');
+    if (notificationText) {
+        notificationText.textContent = message;
+        notification.className = `notification ${type}`;
+        notification.classList.add('show');
+        
+        setTimeout(() => {
+            notification.classList.remove('show');
+        }, 3000);
+    }
+}
+
 // Chat functionality
 document.addEventListener('DOMContentLoaded', () => {
     const chatToggle = document.getElementById('chat-toggle');
@@ -646,16 +912,20 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    chatToggle.onclick = () => {
-        chatPopup.style.display = 'flex';
-        chatToggle.style.display = 'none';
-        mostraMenuPrincipale();
-    };
+    if (chatToggle) {
+        chatToggle.onclick = () => {
+            chatPopup.style.display = 'flex';
+            chatToggle.style.display = 'none';
+            mostraMenuPrincipale();
+        };
+    }
 
-    chatClose.onclick = () => {
-        chatPopup.style.display = 'none';
-        chatToggle.style.display = 'flex';
-    };
+    if (chatClose) {
+        chatClose.onclick = () => {
+            chatPopup.style.display = 'none';
+            chatToggle.style.display = 'flex';
+        };
+    }
 
     document.addEventListener('keydown', e => {
         if (e.key === 'Escape' && chatPopup.style.display === 'flex') {
@@ -663,6 +933,24 @@ document.addEventListener('DOMContentLoaded', () => {
             chatToggle.style.display = 'flex';
         }
     });
+
+    // Initialize products when DOM is loaded
+    initializeProducts();
+    updateCartCount();
+
+    // Setup filter buttons
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const category = btn.dataset.category;
+            filterProducts(category);
+        });
+    });
+
+    // Setup load more button
+    const loadMoreBtn = document.getElementById('loadMoreBtn');
+    if (loadMoreBtn) {
+        loadMoreBtn.addEventListener('click', loadMoreProducts);
+    }
 
     // Modal functionality for benefits and testimonials
     const showBenefitsBtn = document.getElementById('showBenefitsBtn');

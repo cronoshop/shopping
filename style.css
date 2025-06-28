@@ -158,7 +158,7 @@ body.dark-mode .animated-background {
     border-color: var(--primary-blue);
 }
 
-/* Header - One UI Style - Ultra Compact */
+/* Header - One UI Style - Compact with Larger Icons */
 .glass-header {
     position: fixed;
     top: 0;
@@ -171,7 +171,7 @@ body.dark-mode .animated-background {
     border-bottom: 1px solid var(--glass-border);
     padding: var(--space-sm) var(--space-md);
     transition: all var(--transition-smooth);
-    height: 60px;
+    height: 70px;
     display: flex;
     align-items: center;
 }
@@ -186,7 +186,7 @@ body.dark-mode .animated-background {
     position: relative;
 }
 
-/* Logo Styles - Ultra Compact */
+/* Logo Styles - Larger */
 .logo {
     display: flex;
     align-items: center;
@@ -195,7 +195,7 @@ body.dark-mode .animated-background {
 .logo-link {
     display: flex;
     align-items: center;
-    gap: var(--space-xs);
+    gap: var(--space-sm);
     text-decoration: none;
     color: inherit;
     transition: all var(--transition-fast);
@@ -206,34 +206,37 @@ body.dark-mode .animated-background {
 }
 
 .logo-image {
-    height: 28px;
+    height: 36px;
     width: auto;
     object-fit: contain;
 }
 
 .logo-text {
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     font-weight: 700;
     color: var(--text-blue);
 }
 
-/* Navigation Menu - Ultra Compact */
+/* Navigation Menu - Larger Icons */
 .nav-menu {
     display: flex;
-    gap: var(--space-xs);
+    gap: var(--space-sm);
     transition: all var(--transition-smooth);
 }
 
 .nav-link {
     color: var(--text-primary);
     text-decoration: none;
-    padding: var(--space-xs) var(--space-sm);
+    padding: var(--space-sm) var(--space-md);
     border-radius: var(--radius-md);
     transition: all var(--transition-fast);
     font-weight: 500;
     position: relative;
-    font-size: 0.75rem;
+    font-size: 0.9rem;
     white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
 }
 
 .nav-link:hover,
@@ -246,20 +249,25 @@ body.dark-mode .animated-background {
     transform: translateY(-1px);
 }
 
+/* Larger icons in nav links */
+.nav-link::before {
+    font-size: 1.1rem;
+}
+
 .nav-actions {
     display: flex;
-    gap: var(--space-xs);
+    gap: var(--space-sm);
     align-items: center;
 }
 
-/* Glass Buttons - Ultra Compact */
+/* Glass Buttons - Larger */
 .glass-btn {
     background: var(--glass-white);
     backdrop-filter: var(--backdrop-blur);
     -webkit-backdrop-filter: var(--backdrop-blur);
     border: 1px solid var(--glass-border);
     border-radius: var(--radius-md);
-    padding: var(--space-xs) var(--space-sm);
+    padding: var(--space-sm) var(--space-md);
     color: var(--text-primary);
     font-weight: 500;
     cursor: pointer;
@@ -271,8 +279,8 @@ body.dark-mode .animated-background {
     align-items: center;
     justify-content: center;
     gap: var(--space-xs);
-    font-size: 0.7rem;
-    min-height: 32px;
+    font-size: 0.85rem;
+    min-height: 40px;
 }
 
 .glass-btn:hover {
@@ -301,14 +309,14 @@ body.dark-mode .animated-background {
     color: var(--text-primary);
 }
 
-/* Theme Button - Text Based - Ultra Compact */
+/* Theme Button - Larger */
 .theme-btn {
-    min-width: 50px;
-    font-size: 0.65rem;
-    padding: var(--space-xs);
+    min-width: 60px;
+    font-size: 0.8rem;
+    padding: var(--space-sm);
 }
 
-/* Cart Button - Ultra Compact */
+/* Cart Button - Larger */
 .cart-btn {
     position: relative;
     background: var(--glass-white);
@@ -316,7 +324,7 @@ body.dark-mode .animated-background {
     -webkit-backdrop-filter: var(--backdrop-blur);
     border: 1px solid var(--glass-border);
     border-radius: var(--radius-md);
-    padding: var(--space-xs) var(--space-sm);
+    padding: var(--space-sm) var(--space-md);
     color: var(--text-primary);
     font-weight: 500;
     cursor: pointer;
@@ -326,8 +334,8 @@ body.dark-mode .animated-background {
     align-items: center;
     justify-content: center;
     gap: var(--space-xs);
-    font-size: 0.7rem;
-    min-height: 32px;
+    font-size: 0.85rem;
+    min-height: 40px;
 }
 
 .cart-btn:hover {
@@ -341,31 +349,31 @@ body.dark-mode .animated-background {
     background: var(--error-red);
     color: var(--text-white);
     border-radius: 50%;
-    width: 16px;
-    height: 16px;
+    width: 20px;
+    height: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.6rem;
+    font-size: 0.7rem;
     font-weight: 600;
     position: absolute;
-    top: -4px;
-    right: -4px;
+    top: -6px;
+    right: -6px;
 }
 
-/* Mobile Menu - Ultra Compact */
+/* Mobile Menu - Larger */
 .mobile-menu-btn {
     display: none;
     background: var(--glass-white);
     border: 1px solid var(--glass-border);
     border-radius: var(--radius-md);
-    padding: var(--space-xs);
+    padding: var(--space-sm);
     color: var(--text-primary);
     cursor: pointer;
-    font-size: 0.9rem;
+    font-size: 1.1rem;
     transition: all var(--transition-fast);
-    min-height: 32px;
-    width: 32px;
+    min-height: 40px;
+    width: 40px;
 }
 
 .mobile-menu-btn:hover {
@@ -439,7 +447,7 @@ body.dark-mode .animated-background {
 
 /* Hero Section - More Spacious */
 .hero {
-    padding: 120px var(--space-xl) var(--space-3xl);
+    padding: 140px var(--space-xl) var(--space-3xl);
     text-align: center;
     min-height: 100vh;
     display: flex;
@@ -924,7 +932,7 @@ body.dark-mode .animated-background {
 /* Notification */
 .notification {
     position: fixed;
-    top: 70px;
+    top: 80px;
     right: var(--space-lg);
     background: var(--glass-white-strong);
     backdrop-filter: var(--backdrop-blur);
@@ -978,55 +986,59 @@ body.dark-mode .animated-background {
 /* Responsive Design */
 @media (max-width: 1200px) {
     .nav-menu {
-        gap: 2px;
+        gap: 4px;
     }
     
     .nav-link {
-        padding: 4px 6px;
-        font-size: 0.7rem;
+        padding: 6px 8px;
+        font-size: 0.8rem;
     }
     
     .logo-text {
-        font-size: 1rem;
+        font-size: 1.2rem;
     }
     
     .glass-btn {
-        padding: 4px 6px;
-        font-size: 0.65rem;
-        min-height: 28px;
+        padding: 6px 8px;
+        font-size: 0.75rem;
+        min-height: 36px;
     }
     
     .theme-btn {
-        min-width: 40px;
+        min-width: 50px;
     }
 }
 
 @media (max-width: 1024px) {
     .nav-menu {
-        gap: 1px;
+        gap: 2px;
     }
     
     .nav-link {
-        padding: 3px 5px;
-        font-size: 0.65rem;
+        padding: 4px 6px;
+        font-size: 0.75rem;
     }
     
     .logo-text {
-        font-size: 0.9rem;
+        font-size: 1.1rem;
     }
     
     .glass-btn {
-        padding: 3px 5px;
-        font-size: 0.6rem;
-        min-height: 26px;
+        padding: 4px 6px;
+        font-size: 0.7rem;
+        min-height: 34px;
     }
     
     .theme-btn {
-        min-width: 35px;
+        min-width: 45px;
     }
 }
 
 @media (max-width: 768px) {
+    .glass-header {
+        height: 60px;
+    }
+    
     .nav-menu {
         position: fixed;
         top: 60px;
@@ -1061,6 +1073,10 @@ body.dark-mode .animated-background {
         display: none;
     }
     
+    .hero {
+        padding: 120px var(--space-md) var(--space-xl);
+    }
+    
     .hero-card h1 {
         font-size: 2.5rem;
     }
@@ -1093,6 +1109,7 @@ body.dark-mode .animated-background {
     .notification {
         right: var(--space-md);
         left: var(--space-md);
+        top: 70px;
     }
 }
 
@@ -1179,3 +1196,439 @@ body.dark-mode .animated-background {
 .gap-3 { gap: var(--space-md); }
 .gap-4 { gap: var(--space-lg); }
 .gap-5 { gap: var(--space-xl); }
+
+/* Chat Widget Styles */
+#chat-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: var(--glass-shadow-strong);
+    z-index: 1000;
+    transition: all var(--transition-smooth);
+}
+
+#chat-toggle:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 25px rgba(25, 118, 210, 0.3);
+}
+
+#chat-popup {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 300px;
+    height: 400px;
+    background: var(--glass-white-strong);
+    backdrop-filter: var(--backdrop-blur-strong);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--glass-shadow-strong);
+    display: none;
+    flex-direction: column;
+    z-index: 1001;
+}
+
+#chat-header {
+    background: var(--primary-blue);
+    color: white;
+    padding: 1rem;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+}
+
+#chat-close {
+    cursor: pointer;
+    font-size: 1.2rem;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+}
+
+#chat-close:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+#chat-messages {
+    flex: 1;
+    padding: 1rem;
+    overflow-y: auto;
+    color: var(--text-primary);
+}
+
+.chat-btn {
+    background: var(--glass-white);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-md);
+    padding: 0.5rem 1rem;
+    margin: 0.25rem 0;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    width: 100%;
+    text-align: left;
+}
+
+.chat-btn:hover {
+    background: var(--primary-blue);
+    color: white;
+    border-color: var(--primary-blue);
+}
+
+/* Additional styles for better product display */
+.product-description {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    flex: 1;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.original-price {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    text-decoration: line-through;
+    margin-right: 0.5rem;
+}
+
+.discount-badge {
+    background: var(--error-red);
+    color: var(--text-white);
+    padding: 0.25rem 0.5rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-left: 0.5rem;
+}
+
+/* Freshness indicators */
+.freshness-indicators {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-lg);
+    margin-top: var(--space-lg);
+    flex-wrap: wrap;
+}
+
+.freshness-badge {
+    background: var(--glass-white-strong);
+    color: var(--text-primary);
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-2xl);
+    font-size: 0.8rem;
+    border: 1px solid var(--glass-border);
+}
+
+/* Load more button */
+.load-more-container {
+    text-align: center;
+    margin-top: var(--space-2xl);
+}
+
+.load-more-btn {
+    padding: var(--space-lg) var(--space-2xl);
+    font-size: 1rem;
+    min-height: 50px;
+}
+
+.load-more-description {
+    color: var(--text-secondary);
+    margin-top: var(--space-md);
+    font-size: 0.9rem;
+}
+
+/* WhatsApp benefits list */
+.whatsapp-benefits {
+    list-style: none;
+    margin-top: var(--space-lg);
+}
+
+.whatsapp-benefits li {
+    color: var(--text-primary);
+    margin-bottom: var(--space-sm);
+    padding-left: var(--space-lg);
+    position: relative;
+}
+
+.whatsapp-benefits li::before {
+    content: "✅";
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+/* How it works section */
+.how-it-works-section {
+    padding: var(--space-3xl) var(--space-lg);
+    background: var(--glass-white);
+    backdrop-filter: var(--backdrop-blur);
+    border-top: 1px solid var(--glass-border);
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-2xl);
+    margin-bottom: var(--space-3xl);
+}
+
+.step-card {
+    text-align: center;
+    padding: var(--space-2xl);
+    position: relative;
+}
+
+.step-number {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--primary-blue);
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.step-icon {
+    font-size: 3rem;
+    margin-bottom: var(--space-lg);
+}
+
+.step-card h3 {
+    color: var(--text-blue);
+    margin-bottom: var(--space-md);
+    font-size: 1.3rem;
+}
+
+.step-card p {
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+.cta-section {
+    text-align: center;
+    padding: var(--space-2xl);
+    background: var(--glass-white-strong);
+    border-radius: var(--radius-lg);
+}
+
+.cta-section h3 {
+    color: var(--text-blue);
+    margin-bottom: var(--space-md);
+    font-size: 1.5rem;
+}
+
+.cta-section p {
+    color: var(--text-primary);
+    margin-bottom: var(--space-xl);
+    font-size: 1.1rem;
+}
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-lg);
+    flex-wrap: wrap;
+}
+
+/* Quick FAQ section */
+.quick-faq-section {
+    padding: var(--space-3xl) var(--space-lg);
+}
+
+.faq-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-xl);
+    margin-bottom: var(--space-2xl);
+}
+
+.faq-card {
+    padding: var(--space-xl);
+}
+
+.faq-card h3 {
+    color: var(--text-blue);
+    margin-bottom: var(--space-md);
+    font-size: 1.1rem;
+}
+
+.faq-card p {
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+.faq-cta {
+    text-align: center;
+    padding: var(--space-xl);
+    background: var(--glass-white-strong);
+    border-radius: var(--radius-lg);
+}
+
+.faq-cta p {
+    color: var(--text-primary);
+    margin-bottom: var(--space-lg);
+}
+
+/* Benefits and testimonials modals */
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-xl);
+}
+
+.benefit-card {
+    text-align: center;
+    padding: var(--space-xl);
+}
+
+.benefit-icon {
+    font-size: 3rem;
+    margin-bottom: var(--space-lg);
+}
+
+.benefit-card h3 {
+    color: var(--text-blue);
+    margin-bottom: var(--space-md);
+    font-size: 1.2rem;
+}
+
+.benefit-card p {
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-xl);
+    margin-bottom: var(--space-2xl);
+}
+
+.testimonial {
+    background: var(--glass-white);
+    padding: var(--space-xl);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--glass-border);
+}
+
+.testimonial p {
+    color: var(--text-primary);
+    line-height: 1.6;
+    margin-bottom: var(--space-md);
+}
+
+.testimonial footer {
+    color: var(--warning-orange);
+    font-size: 1.2rem;
+}
+
+.trust-stats {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-2xl);
+    text-align: center;
+}
+
+.trust-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.trust-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-blue);
+    margin-bottom: var(--space-xs);
+}
+
+.trust-label {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* User widget */
+.user-widget {
+    position: fixed;
+    top: 80px;
+    left: var(--space-lg);
+    padding: var(--space-md);
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    z-index: 100;
+    min-width: 200px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    flex: 1;
+}
+
+.user-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--glass-white-strong);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+}
+
+.user-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-name {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+}
+
+.user-points {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.mini-btn {
+    padding: var(--space-xs) var(--space-sm);
+    font-size: 0.8rem;
+    min-height: 28px;
+}
+
+@media (max-width: 768px) {
+    .user-widget {
+        display: none;
+    }
+}
