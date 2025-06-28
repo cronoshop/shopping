@@ -6,7 +6,7 @@ let currentPage = 0;
 const productsPerPage = 12;
 
 // All original products data
-const products = [
+const originalProducts = [
   {
     id: "prod1",
     link: "https://amzn.to/3Z551fa",
