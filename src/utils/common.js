@@ -35,7 +35,7 @@ class CronoshopUtils {
 
         const themeBtn = document.querySelector('.theme-btn');
         if (themeBtn) {
-            themeBtn.textContent = darkMode ? '☀️' : '🌙';
+            themeBtn.textContent = darkMode ? 'Chiaro' : 'Scuro';
         }
     }
 

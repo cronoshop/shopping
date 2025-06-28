@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=2.3">
+    <link rel="stylesheet" href="style.css?v=2.5">
 </head>
 <body>
     <!-- Animated Background -->
@@ -34,14 +34,11 @@
                 <a href="products.html" class="nav-link">Prodotti</a>
                 <a href="categorie.html" class="nav-link">Categorie</a>
                 <a href="wishlist.html" class="nav-link">Wishlist</a>
-                <a href="stats.html" class="nav-link stats-link">Statistiche</a>
                 <a href="account.html" class="nav-link active">Profilo</a>
-                <a href="blog.html" class="nav-link">Blog</a>
-                <a href="faq.html" class="nav-link">FAQ</a>
             </div>
             <div class="nav-actions">
                 <a href="cart.html" class="glass-btn cart-btn">🛒 <span class="cart-count">0</span></a>
-                <button class="glass-btn theme-btn">🌙</button>
+                <button class="glass-btn theme-btn">Tema</button>
                 <button class="glass-btn mobile-menu-btn">☰</button>
             </div>
         </nav>
@@ -50,7 +47,7 @@
     <!-- Account Section -->
     <section class="account-section" style="padding-top: 120px;">
         <div class="section-header">
-            <h2>👤 Il Tuo Account</h2>
+            <h2>Il Tuo Account</h2>
             <p style="color: var(--text-secondary); margin-bottom: 2rem;">Gestisci il tuo profilo e le tue preferenze</p>
         </div>
         
@@ -303,16 +300,6 @@
     </footer>
 
     <style>
-        .stats-link {
-            display: none;
-        }
-
-        @media (min-width: 769px) {
-            .stats-link {
-                display: block;
-            }
-        }
-
         .account-section {
             padding: 2rem 1rem;
             max-width: 1000px;
@@ -527,7 +514,7 @@
         }
 
         .theme-preview.default {
-            background: linear-gradient(135deg, #007AFF, #5AC8FA);
+            background: linear-gradient(135deg, #1976D2, #42A5F5);
         }
 
         .theme-preview.green {
@@ -575,7 +562,7 @@
         }
     </style>
 
-    <script src="main.js?v=2.3"></script>
+    <script src="main.js?v=2.5"></script>
     <script>
         let currentUser = null;
 
@@ -885,6 +872,7 @@
                     title.textContent = 'Preferenze Prodotti';
                     settingsHTML = `
                         <div class="settings-section">
+                            
                             <h4>Categorie di Interesse</h4>
                             <div class="setting-item">
                                 <span>📱 Smartphone e Tech</span>
@@ -979,7 +967,7 @@
             // Update theme button
             const themeBtn = document.querySelector('.theme-btn');
             if (themeBtn) {
-                themeBtn.textContent = darkMode ? '☀️' : '🌙';
+                themeBtn.textContent = darkMode ? 'Chiaro' : 'Scuro';
             }
         }
 

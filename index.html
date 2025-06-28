@@ -15,7 +15,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="assets/cronoshop-logo.png">
     <link rel="apple-touch-icon" sizes="180x180" href="assets/cronoshop-logo.png">
     <link rel="manifest" href="/manifest.json">
-    <meta name="theme-color" content="#007AFF">
+    <meta name="theme-color" content="#1976D2">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:title" content="Cronoshop - Le Migliori Offerte Amazon Giornaliere | Sconti Esclusivi 2025" />
@@ -49,7 +49,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     
     <!-- CSS -->
-    <link rel="stylesheet" href="style.css?v=2.4" />
+    <link rel="stylesheet" href="style.css?v=2.5" />
     
     <!-- Schema.org JSON-LD -->
     <script type="application/ld+json">
@@ -118,20 +118,16 @@
             </a>
         </div>
         <div class="nav-menu" id="navMenu">
-            <a href="/" class="nav-link active" aria-current="page">🏠 Home</a>
-            <a href="#offerte" class="nav-link">🔥 Offerte del Giorno</a>
-            <a href="products.html" class="nav-link">🛍️ Tutti i Prodotti</a>
-            <a href="categorie.html" class="nav-link">📂 Categorie</a>
-            <a href="wishlist.html" class="nav-link">❤️ Wishlist</a>
-            <a href="stats.html" class="nav-link stats-link">📊 Statistiche</a>
-            <a href="account.html" class="nav-link">👤 Profilo</a>
-            <a href="chisiamo.html" class="nav-link">🧭 Chi Siamo</a>
-            <a href="blog.html" class="nav-link">📝 Blog</a>
-            <a href="faq.html" class="nav-link">❓ FAQ</a>
+            <a href="/" class="nav-link active" aria-current="page">Home</a>
+            <a href="#offerte" class="nav-link">Offerte</a>
+            <a href="products.html" class="nav-link">Prodotti</a>
+            <a href="categorie.html" class="nav-link">Categorie</a>
+            <a href="wishlist.html" class="nav-link">Wishlist</a>
+            <a href="account.html" class="nav-link">Profilo</a>
         </div>
         <div class="nav-actions">
-            <button class="glass-btn search-btn" aria-label="Apri ricerca prodotti" title="Cerca offerte Amazon">🔍</button>
-            <button class="glass-btn theme-btn" aria-label="Cambia tema" title="Cambia tema chiaro/scuro">🌙</button>
+            <button class="glass-btn search-btn" aria-label="Apri ricerca prodotti" title="Cerca offerte Amazon">Cerca</button>
+            <button class="glass-btn theme-btn" aria-label="Cambia tema" title="Cambia tema chiaro/scuro">Tema</button>
             <a href="cart.html" class="glass-btn cart-btn" aria-label="Visualizza carrello" title="Il tuo carrello">🛒 <span class="cart-count">0</span></a>
             <button class="glass-btn mobile-menu-btn" aria-label="Apri menu mobile" aria-expanded="false">☰</button>
         </div>
@@ -153,7 +149,7 @@
             <div class="hero-logo">
                 <img src="assets/cronoshop-logo.png" alt="Cronoshop - La tua piattaforma per le migliori offerte Amazon" class="hero-logo-image" width="80" height="80">
             </div>
-            <h1 id="hero-title">✨ Le Migliori Offerte Amazon Giornaliere del 2025</h1>
+            <h1 id="hero-title">Le Migliori Offerte Amazon Giornaliere del 2025</h1>
             <p class="hero-description">Scopri ogni giorno una selezione curata e aggiornata dei migliori prodotti Amazon con <strong>sconti esclusivi fino al 70%</strong>. Tecnologia, smartphone, casa, moda e molto altro. <em>Risparmia tempo e denaro con Cronoshop!</em></p>
             
             <!-- Statistiche Hero -->
@@ -178,8 +174,9 @@
             
             <!-- CTA Buttons -->
             <div class="hero-buttons">
-                <a href="products.html" class="glass-btn primary-btn" role="button" title="Scopri tutte le offerte Amazon selezionate">🛍️ Scopri le Offerte</a>
-                <a href="groups.html" class="glass-btn secondary-btn" role="button" title="Unisciti ai nostri gruppi WhatsApp e Telegram">📱 Gruppi WhatsApp</a>
+                <a href="products.html" class="glass-btn primary-btn" role="button" title="Scopri tutte le offerte Amazon selezionate">Scopri le Offerte</a>
+                <a href="groups.html" class="glass-btn secondary-btn" role="button" title="Unisciti ai nostri gruppi WhatsApp e Telegram">Gruppi WhatsApp</a>
+                <button class="glass-btn secondary-btn" id="showBenefitsBtn" role="button" title="Scopri i vantaggi di Cronoshop">Scopri i Vantaggi</button>
             </div>
 
             <!-- Trust Indicators -->
@@ -201,52 +198,6 @@
     </div>
 </section>
 
-<!-- Sezione Vantaggi -->
-<section class="benefits-section" role="region" aria-labelledby="benefits-title">
-    <div class="section-container">
-        <h2 id="benefits-title">🌟 Perché Scegliere Cronoshop per le Tue Offerte Amazon</h2>
-        <p class="section-description">Cronoshop è la piattaforma italiana di riferimento per trovare le migliori offerte Amazon. Ecco perché migliaia di utenti si fidano di noi ogni giorno:</p>
-        
-        <div class="benefits-grid">
-            <div class="glass-card benefit-card">
-                <div class="benefit-icon">🔍</div>
-                <h3>Selezione Curata Manualmente</h3>
-                <p>Il nostro team di esperti seleziona personalmente ogni offerta, garantendo solo promozioni reali e vantaggiose. <strong>Niente false offerte o sconti gonfiati!</strong></p>
-            </div>
-            
-            <div class="glass-card benefit-card">
-                <div class="benefit-icon">⚡</div>
-                <h3>Aggiornamenti in Tempo Reale</h3>
-                <p>Le nostre offerte sono aggiornate <em>ogni 24 ore</em> per garantirti sempre le promozioni più fresche e disponibili su Amazon Italia.</p>
-            </div>
-            
-            <div class="glass-card benefit-card">
-                <div class="benefit-icon">💰</div>
-                <h3>Risparmio Garantito</h3>
-                <p>I nostri utenti risparmiano in media <strong>€150 al mese</strong> grazie alle offerte esclusive che selezioniamo quotidianamente.</p>
-            </div>
-            
-            <div class="glass-card benefit-card">
-                <div class="benefit-icon">📱</div>
-                <h3>Notifiche Istantanee</h3>
-                <p>Unisciti ai nostri <a href="groups.html" title="Gruppi WhatsApp Cronoshop">gruppi WhatsApp</a> e ricevi le migliori offerte direttamente sul tuo smartphone.</p>
-            </div>
-            
-            <div class="glass-card benefit-card">
-                <div class="benefit-icon">🛡️</div>
-                <h3>Sicurezza e Affidabilità</h3>
-                <p>Tutti i nostri link portano direttamente ad Amazon Italia. <em>Nessun intermediario, massima sicurezza per i tuoi acquisti.</em></p>
-            </div>
-            
-            <div class="glass-card benefit-card">
-                <div class="benefit-icon">🎯</div>
-                <h3>Categorie Specializzate</h3>
-                <p>Trova facilmente quello che cerchi: <a href="categorie.html" title="Categorie prodotti">smartphone, tecnologia, casa, moda</a> e molto altro, tutto organizzato per te.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
 <!-- WhatsApp Banner ottimizzato -->
 <section class="whatsapp-banner" role="region" aria-labelledby="whatsapp-title">
     <div class="glass-card banner-card">
@@ -256,70 +207,15 @@
                 <h2 id="whatsapp-title">Unisciti alla Community Cronoshop su WhatsApp</h2>
                 <p>Oltre <strong>2.500 utenti</strong> ricevono già le migliori offerte Amazon direttamente su WhatsApp. <em>Non perdere le promozioni lampo!</em></p>
                 <ul class="whatsapp-benefits">
-                    <li>✅ Offerte esclusive in anteprima</li>
-                    <li>✅ Notifiche per offerte lampo</li>
-                    <li>✅ Community attiva e consigli</li>
-                    <li>✅ Completamente gratuito</li>
+                    <li>Offerte esclusive in anteprima</li>
+                    <li>Notifiche per offerte lampo</li>
+                    <li>Community attiva e consigli</li>
+                    <li>Completamente gratuito</li>
                 </ul>
             </div>
             <div class="banner-actions">
-                <a href="groups.html" class="glass-btn secondary-btn" title="Visualizza tutti i gruppi WhatsApp e Telegram">📋 Tutti i Gruppi</a>
-                <a href="https://whatsapp.com/channel/0029Vb5wE6mDeON8PBORW02R" class="glass-btn whatsapp-btn" title="Unisciti subito al canale WhatsApp principale" rel="noopener">🚀 Entra Ora!</a>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Recensioni e Testimonianze -->
-<section class="recensioni-banner" role="region" aria-labelledby="recensioni-title">
-    <div class="glass-card banner-card">
-        <div class="banner-content">
-            <div class="banner-icon" aria-hidden="true">⭐</div>
-            <div class="banner-text">
-                <h2 id="recensioni-title">Cosa Dicono i Nostri Utenti di Cronoshop</h2>
-                <p class="testimonials-intro">Migliaia di utenti hanno già scoperto il potere del risparmio con Cronoshop. Ecco alcune delle loro testimonianze:</p>
-                
-                <div class="testimonials-grid">
-                    <blockquote class="testimonial">
-                        <p><strong>Mario Scalia:</strong> "Ho trovato offerte Amazon incredibili su Cronoshop! <em>Sito affidabile al 100%</em>, ho risparmiato oltre €200 in un mese. Consigliatissimo!"</p>
-                        <footer>⭐⭐⭐⭐⭐</footer>
-                    </blockquote>
-                    
-                    <blockquote class="testimonial">
-                        <p><strong>Giulia Amato:</strong> "Cronoshop è fantastico! Le offerte sono sempre aggiornate e <strong>mi ha fatto risparmiare un sacco</strong> sui regali di Natale. Il gruppo WhatsApp è utilissimo!"</p>
-                        <footer>⭐⭐⭐⭐⭐</footer>
-                    </blockquote>
-                    
-                    <blockquote class="testimonial">
-                        <p><strong>Luca Guglielmino:</strong> "Finalmente un sito che propone <em>solo offerte vere su Amazon</em>. Niente truffe o sconti falsi. Uso Cronoshop da 6 mesi e sono super soddisfatto!"</p>
-                        <footer>⭐⭐⭐⭐⭐</footer>
-                    </blockquote>
-                    
-                    <blockquote class="testimonial">
-                        <p><strong>Valentina Valentinini:</strong> "Mi fido ciecamente di Cronoshop per i miei acquisti Amazon. <strong>Mai avuto un problema</strong>, sempre offerte genuine e aggiornate!"</p>
-                        <footer>⭐⭐⭐⭐⭐</footer>
-                    </blockquote>
-                    
-                    <blockquote class="testimonial">
-                        <p><strong>Antonio Schillaci:</strong> "Il miglior sito per offerte Amazon che abbia mai usato. <em>Consigliato a tutti</em> i miei amici e familiari. Risparmio garantito!"</p>
-                        <footer>⭐⭐⭐⭐⭐</footer>
-                    </blockquote>
-                </div>
-                
-                <div class="trust-stats">
-                    <div class="trust-stat">
-                        <span class="trust-number">4.9/5</span>
-                        <span class="trust-label">Rating Medio</span>
-                    </div>
-                    <div class="trust-stat">
-                        <span class="trust-number">2.500+</span>
-                        <span class="trust-label">Utenti Soddisfatti</span>
-                    </div>
-                    <div class="trust-stat">
-                        <span class="trust-number">€150</span>
-                        <span class="trust-label">Risparmio Medio/Mese</span>
-                    </div>
-                </div>
+                <a href="groups.html" class="glass-btn secondary-btn" title="Visualizza tutti i gruppi WhatsApp e Telegram">Tutti i Gruppi</a>
+                <a href="https://whatsapp.com/channel/0029Vb5wE6mDeON8PBORW02R" class="glass-btn whatsapp-btn" title="Unisciti subito al canale WhatsApp principale" rel="noopener">Entra Ora!</a>
             </div>
         </div>
     </div>
@@ -328,23 +224,23 @@
 <!-- Products Section ottimizzata -->
 <section class="products-section" id="offerte" role="region" aria-labelledby="products-title">
     <div class="section-header">
-        <h2 id="products-title">🔥 Offerte Amazon del Giorno - Aggiornate Oggi</h2>
+        <h2 id="products-title">Offerte Amazon del Giorno - Aggiornate Oggi</h2>
         <p class="section-description">Scopri la nostra selezione quotidiana delle <strong>migliori offerte Amazon</strong> con sconti reali fino al 70%. Ogni prodotto è verificato dal nostro team per garantirti il <em>massimo risparmio</em>.</p>
         
         <!-- Filtri Categoria -->
         <div class="filter-buttons" role="list" aria-label="Filtra prodotti per categoria">
-            <button class="glass-btn filter-btn active" data-category="all" role="listitem" aria-pressed="true">🛍️ Tutte le Offerte</button>
-            <button class="glass-btn filter-btn" data-category="smartphone" role="listitem" aria-pressed="false">📱 Smartphone & Tech</button>
-            <button class="glass-btn filter-btn" data-category="fashion" role="listitem" aria-pressed="false">👕 Moda & Style</button>
-            <button class="glass-btn filter-btn" data-category="casa" role="listitem" aria-pressed="false">🏠 Casa & Cucina</button>
-            <button class="glass-btn filter-btn" data-category="tech" role="listitem" aria-pressed="false">💻 Tecnologia</button>
+            <button class="glass-btn filter-btn active" data-category="all" role="listitem" aria-pressed="true">Tutte le Offerte</button>
+            <button class="glass-btn filter-btn" data-category="smartphone" role="listitem" aria-pressed="false">Smartphone & Tech</button>
+            <button class="glass-btn filter-btn" data-category="fashion" role="listitem" aria-pressed="false">Moda & Style</button>
+            <button class="glass-btn filter-btn" data-category="casa" role="listitem" aria-pressed="false">Casa & Cucina</button>
+            <button class="glass-btn filter-btn" data-category="tech" role="listitem" aria-pressed="false">Tecnologia</button>
         </div>
         
         <!-- Indicatori di Freschezza -->
         <div class="freshness-indicators">
-            <span class="freshness-badge">🕐 Ultimo aggiornamento: Oggi alle 08:00</span>
-            <span class="freshness-badge">🔄 Prossimo aggiornamento: Domani alle 08:00</span>
-            <span class="freshness-badge">✅ Tutte le offerte verificate</span>
+            <span class="freshness-badge">Ultimo aggiornamento: Oggi alle 08:00</span>
+            <span class="freshness-badge">Prossimo aggiornamento: Domani alle 08:00</span>
+            <span class="freshness-badge">Tutte le offerte verificate</span>
         </div>
     </div>
 
@@ -355,7 +251,7 @@
 
     <!-- Load More -->
     <div class="load-more-container">
-        <button class="glass-btn load-more-btn" aria-label="Carica altre offerte Amazon">📦 Carica Altre Offerte</button>
+        <button class="glass-btn load-more-btn" aria-label="Carica altre offerte Amazon">Carica Altre Offerte</button>
         <p class="load-more-description">Scopri ancora più offerte Amazon selezionate dal nostro team</p>
     </div>
 </section>
@@ -363,7 +259,7 @@
 <!-- Sezione Come Funziona -->
 <section class="how-it-works-section" role="region" aria-labelledby="how-it-works-title">
     <div class="section-container">
-        <h2 id="how-it-works-title">🚀 Come Funziona Cronoshop: Il Tuo Risparmio in 3 Semplici Passi</h2>
+        <h2 id="how-it-works-title">Come Funziona Cronoshop: Il Tuo Risparmio in 3 Semplici Passi</h2>
         <p class="section-description">Risparmiare con Cronoshop è facilissimo! Segui questi 3 semplici passi e inizia subito a trovare le migliori offerte Amazon:</p>
         
         <div class="steps-grid">
@@ -393,8 +289,8 @@
             <h3>Pronto a Iniziare?</h3>
             <p>Unisciti a migliaia di utenti che risparmiano ogni giorno con Cronoshop!</p>
             <div class="cta-buttons">
-                <a href="products.html" class="glass-btn primary-btn">🛍️ Inizia a Risparmiare</a>
-                <a href="groups.html" class="glass-btn secondary-btn">📱 Unisciti ai Gruppi</a>
+                <a href="products.html" class="glass-btn primary-btn">Inizia a Risparmiare</a>
+                <a href="groups.html" class="glass-btn secondary-btn">Unisciti ai Gruppi</a>
             </div>
         </div>
     </div>
@@ -403,33 +299,34 @@
 <!-- FAQ Rapide -->
 <section class="quick-faq-section" role="region" aria-labelledby="quick-faq-title">
     <div class="section-container">
-        <h2 id="quick-faq-title">❓ Domande Frequenti su Cronoshop</h2>
+        <h2 id="quick-faq-title">Domande Frequenti su Cronoshop</h2>
         <p class="section-description">Risposte rapide alle domande più comuni sui nostri servizi:</p>
         
         <div class="faq-grid">
             <div class="glass-card faq-card">
-                <h3>🆓 Cronoshop è gratuito?</h3>
+                <h3>Cronoshop è gratuito?</h3>
                 <p>Sì! <strong>Cronoshop è completamente gratuito</strong>. Non ci sono costi nascosti, abbonamenti o commissioni. Guadagniamo solo attraverso le affiliazioni Amazon.</p>
             </div>
             
             <div class="glass-card faq-card">
-                <h3>🛡️ È sicuro acquistare tramite i vostri link?</h3>
+                <h3>È sicuro acquistare tramite i vostri link?</h3>
                 <p>Assolutamente sì! Tutti i nostri link portano direttamente ad <strong>Amazon Italia</strong>. Non gestiamo pagamenti o dati personali, garantendo la massima sicurezza.</p>
             </div>
             
             <div class="glass-card faq-card">
-                <h3>🔄 Quanto spesso aggiornate le offerte?</h3>
+                <h3>Quanto spesso aggiornate le offerte?</h3>
                 <p>Le nostre offerte sono <em>aggiornate quotidianamente</em> alle 08:00. Inoltre, monitoriamo costantemente le promozioni lampo durante tutta la giornata.</p>
             </div>
             
             <div class="glass-card faq-card">
-                <h3>📱 Come funzionano i gruppi WhatsApp?</h3>
+                <h3>Come funzionano i gruppi WhatsApp?</h3>
                 <p>I nostri <a href="groups.html" title="Gruppi WhatsApp Cronoshop">gruppi WhatsApp</a> ti inviano notifiche istantanee per le migliori offerte. Puoi unirti gratuitamente e uscire quando vuoi.</p>
             </div>
         </div>
         
         <div class="faq-cta">
             <p>Hai altre domande? <a href="faq.html" title="FAQ complete Cronoshop">Consulta le nostre FAQ complete</a> o <a href="groups.html" title="Contattaci su WhatsApp">contattaci su WhatsApp</a>!</p>
+            <button class="glass-btn secondary-btn" id="showTestimonialsBtn" style="margin-top: 1rem;">Leggi le Recensioni</button>
         </div>
     </div>
 </section>
@@ -445,6 +342,112 @@
     </div>
     <div class="user-actions">
         <a href="account.html" class="glass-btn mini-btn" title="Accedi al tuo account Cronoshop">Accedi</a>
+    </div>
+</div>
+
+<!-- Benefits Modal -->
+<div class="modal-overlay" id="benefitsModal" role="dialog" aria-modal="true" aria-labelledby="benefitsTitle" hidden>
+    <div class="glass-modal">
+        <div class="modal-header">
+            <h3 id="benefitsTitle">Perché Scegliere Cronoshop per le Tue Offerte Amazon</h3>
+            <button class="close-btn" aria-label="Chiudi finestra vantaggi">&times;</button>
+        </div>
+        <div class="modal-body">
+            <p class="section-description">Cronoshop è la piattaforma italiana di riferimento per trovare le migliori offerte Amazon. Ecco perché migliaia di utenti si fidano di noi ogni giorno:</p>
+            
+            <div class="benefits-grid">
+                <div class="glass-card benefit-card">
+                    <div class="benefit-icon">🔍</div>
+                    <h3>Selezione Curata Manualmente</h3>
+                    <p>Il nostro team di esperti seleziona personalmente ogni offerta, garantendo solo promozioni reali e vantaggiose. <strong>Niente false offerte o sconti gonfiati!</strong></p>
+                </div>
+                
+                <div class="glass-card benefit-card">
+                    <div class="benefit-icon">⚡</div>
+                    <h3>Aggiornamenti in Tempo Reale</h3>
+                    <p>Le nostre offerte sono aggiornate <em>ogni 24 ore</em> per garantirti sempre le promozioni più fresche e disponibili su Amazon Italia.</p>
+                </div>
+                
+                <div class="glass-card benefit-card">
+                    <div class="benefit-icon">💰</div>
+                    <h3>Risparmio Garantito</h3>
+                    <p>I nostri utenti risparmiano in media <strong>€150 al mese</strong> grazie alle offerte esclusive che selezioniamo quotidianamente.</p>
+                </div>
+                
+                <div class="glass-card benefit-card">
+                    <div class="benefit-icon">📱</div>
+                    <h3>Notifiche Istantanee</h3>
+                    <p>Unisciti ai nostri <a href="groups.html" title="Gruppi WhatsApp Cronoshop">gruppi WhatsApp</a> e ricevi le migliori offerte direttamente sul tuo smartphone.</p>
+                </div>
+                
+                <div class="glass-card benefit-card">
+                    <div class="benefit-icon">🛡️</div>
+                    <h3>Sicurezza e Affidabilità</h3>
+                    <p>Tutti i nostri link portano direttamente ad Amazon Italia. <em>Nessun intermediario, massima sicurezza per i tuoi acquisti.</em></p>
+                </div>
+                
+                <div class="glass-card benefit-card">
+                    <div class="benefit-icon">🎯</div>
+                    <h3>Categorie Specializzate</h3>
+                    <p>Trova facilmente quello che cerchi: <a href="categorie.html" title="Categorie prodotti">smartphone, tecnologia, casa, moda</a> e molto altro, tutto organizzato per te.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Testimonials Modal -->
+<div class="modal-overlay" id="testimonialsModal" role="dialog" aria-modal="true" aria-labelledby="testimonialsTitle" hidden>
+    <div class="glass-modal">
+        <div class="modal-header">
+            <h3 id="testimonialsTitle">Cosa Dicono i Nostri Utenti di Cronoshop</h3>
+            <button class="close-btn" aria-label="Chiudi finestra recensioni">&times;</button>
+        </div>
+        <div class="modal-body">
+            <p class="testimonials-intro">Migliaia di utenti hanno già scoperto il potere del risparmio con Cronoshop. Ecco alcune delle loro testimonianze:</p>
+            
+            <div class="testimonials-grid">
+                <blockquote class="testimonial">
+                    <p><strong>Mario Scalia:</strong> "Ho trovato offerte Amazon incredibili su Cronoshop! <em>Sito affidabile al 100%</em>, ho risparmiato oltre €200 in un mese. Consigliatissimo!"</p>
+                    <footer>⭐⭐⭐⭐⭐</footer>
+                </blockquote>
+                
+                <blockquote class="testimonial">
+                    <p><strong>Giulia Amato:</strong> "Cronoshop è fantastico! Le offerte sono sempre aggiornate e <strong>mi ha fatto risparmiare un sacco</strong> sui regali di Natale. Il gruppo WhatsApp è utilissimo!"</p>
+                    <footer>⭐⭐⭐⭐⭐</footer>
+                </blockquote>
+                
+                <blockquote class="testimonial">
+                    <p><strong>Luca Guglielmino:</strong> "Finalmente un sito che propone <em>solo offerte vere su Amazon</em>. Niente truffe o sconti falsi. Uso Cronoshop da 6 mesi e sono super soddisfatto!"</p>
+                    <footer>⭐⭐⭐⭐⭐</footer>
+                </blockquote>
+                
+                <blockquote class="testimonial">
+                    <p><strong>Valentina Valentinini:</strong> "Mi fido ciecamente di Cronoshop per i miei acquisti Amazon. <strong>Mai avuto un problema</strong>, sempre offerte genuine e aggiornate!"</p>
+                    <footer>⭐⭐⭐⭐⭐</footer>
+                </blockquote>
+                
+                <blockquote class="testimonial">
+                    <p><strong>Antonio Schillaci:</strong> "Il miglior sito per offerte Amazon che abbia mai usato. <em>Consigliato a tutti</em> i miei amici e familiari. Risparmio garantito!"</p>
+                    <footer>⭐⭐⭐⭐⭐</footer>
+                </blockquote>
+            </div>
+            
+            <div class="trust-stats">
+                <div class="trust-stat">
+                    <span class="trust-number">4.9/5</span>
+                    <span class="trust-label">Rating Medio</span>
+                </div>
+                <div class="trust-stat">
+                    <span class="trust-number">2.500+</span>
+                    <span class="trust-label">Utenti Soddisfatti</span>
+                </div>
+                <div class="trust-stat">
+                    <span class="trust-number">€150</span>
+                    <span class="trust-label">Risparmio Medio/Mese</span>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -490,13 +493,13 @@
                     <div class="product-modal-description" id="modalProductDescription"></div>
                     <div class="product-modal-actions">
                         <button class="glass-btn primary-btn" aria-label="Acquista questo prodotto su Amazon">
-                            🛒 Acquista su Amazon
+                            Acquista su Amazon
                         </button>
                         <button class="glass-btn secondary-btn" aria-label="Aggiungi questo prodotto ai preferiti">
-                            ❤️ Aggiungi ai Preferiti
+                            Aggiungi ai Preferiti
                         </button>
                         <button class="glass-btn secondary-btn" aria-label="Aggiungi questo prodotto al carrello">
-                            🛍️ Aggiungi al Carrello
+                            Aggiungi al Carrello
                         </button>
                     </div>
                 </div>
@@ -520,26 +523,26 @@
             </div>
             <p>La piattaforma italiana di riferimento per le <strong>migliori offerte Amazon giornaliere</strong>. Risparmia tempo e denaro con le nostre promozioni selezionate.</p>
             <div class="social-links">
-                <a href="https://whatsapp.com/channel/0029Vb5wE6mDeON8PBORW02R" title="Seguici su WhatsApp" rel="noopener">📱 WhatsApp</a>
-                <a href="https://t.me/+5NiSV_LSuStjOTc0" title="Seguici su Telegram" rel="noopener">✈️ Telegram</a>
+                <a href="https://whatsapp.com/channel/0029Vb5wE6mDeON8PBORW02R" title="Seguici su WhatsApp" rel="noopener">WhatsApp</a>
+                <a href="https://t.me/+5NiSV_LSuStjOTc0" title="Seguici su Telegram" rel="noopener">Telegram</a>
             </div>
         </div>
         <div class="footer-section">
-            <h4>🛍️ Offerte e Prodotti</h4>
+            <h4>Offerte e Prodotti</h4>
             <a href="products.html" title="Tutti i prodotti in offerta">Tutti i Prodotti</a>
             <a href="categorie.html" title="Categorie prodotti">Categorie</a>
             <a href="wishlist.html" title="La tua wishlist">Wishlist</a>
             <a href="cart.html" title="Il tuo carrello">Carrello</a>
         </div>
         <div class="footer-section">
-            <h4>📱 Community</h4>
+            <h4>Community</h4>
             <a href="groups.html" title="Gruppi WhatsApp e Telegram">Gruppi WhatsApp</a>
             <a href="groups.html" title="Canale Telegram">Canale Telegram</a>
             <a href="blog.html" title="Blog Cronoshop">Blog e Guide</a>
             <a href="stats.html" title="Statistiche piattaforma">Statistiche</a>
         </div>
         <div class="footer-section">
-            <h4>ℹ️ Informazioni</h4>
+            <h4>Informazioni</h4>
             <a href="chisiamo.html" title="Chi siamo - Cronoshop">Chi Siamo</a>
             <a href="faq.html" title="Domande frequenti">FAQ</a>
             <a href="account.html" title="Il tuo account">Account</a>
@@ -563,22 +566,22 @@
 
 <div id="chat-popup" role="dialog" aria-modal="true" aria-labelledby="chat-header">
     <header id="chat-header">
-        💬 Supporto Cronoshop
+        Supporto Cronoshop
         <span id="chat-close" aria-label="Chiudi chat" role="button" tabindex="0">&times;</span>
     </header>
     <div id="chat-messages">
-        <p>👋 Ciao! Come possiamo aiutarti oggi?</p>
-        <button class="chat-btn" data-key="offerte">🔥 Migliori Offerte</button>
-        <button class="chat-btn" data-key="sicurezza">🛡️ È Sicuro?</button>
-        <button class="chat-btn" data-key="gruppo">📱 Gruppo WhatsApp</button>
-        <button class="chat-btn" data-key="come-funziona">❓ Come Funziona</button>
+        <p>Ciao! Come possiamo aiutarti oggi?</p>
+        <button class="chat-btn" data-key="offerte">Migliori Offerte</button>
+        <button class="chat-btn" data-key="sicurezza">È Sicuro?</button>
+        <button class="chat-btn" data-key="gruppo">Gruppo WhatsApp</button>
+        <button class="chat-btn" data-key="come-funziona">Come Funziona</button>
     </div>
 </div>
 
 <!-- Scripts -->
 <script src="src/utils/common.js" defer></script>
 <script src="src/components/seo-meta.js" defer></script>
-<script src="main.js?v=2.4" defer></script>
+<script src="main.js?v=2.5" defer></script>
 <script src="affiliate.js" defer></script>
 
 <script>
@@ -591,25 +594,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const risposte = {
         offerte: [
-            "🔥 Abbiamo oltre 61 offerte Amazon aggiornate quotidianamente!",
-            "📱 Controlla la sezione 'Offerte del Giorno' per i migliori sconti.",
-            "💰 I nostri utenti risparmiano in media €150 al mese!"
+            "Abbiamo oltre 61 offerte Amazon aggiornate quotidianamente!",
+            "Controlla la sezione 'Offerte del Giorno' per i migliori sconti.",
+            "I nostri utenti risparmiano in media €150 al mese!"
         ],
         sicurezza: [
-            "🛡️ Cronoshop è 100% sicuro e affidabile.",
-            "🔗 Tutti i link portano direttamente ad Amazon Italia.",
-            "✅ Non gestiamo pagamenti, tutto avviene su Amazon."
+            "Cronoshop è 100% sicuro e affidabile.",
+            "Tutti i link portano direttamente ad Amazon Italia.",
+            "Non gestiamo pagamenti, tutto avviene su Amazon."
         ],
         gruppo: [
-            "📱 Abbiamo diversi gruppi WhatsApp specializzati!",
-            "🚀 Oltre 2.500 utenti ricevono offerte esclusive.",
-            "🔗 Vai su 'Gruppi WhatsApp' per unirti."
+            "Abbiamo diversi gruppi WhatsApp specializzati!",
+            "Oltre 2.500 utenti ricevono offerte esclusive.",
+            "Vai su 'Gruppi WhatsApp' per unirti."
         ],
         "come-funziona": [
             "1️⃣ Esplora le nostre offerte selezionate",
             "2️⃣ Salva i prodotti che ti interessano",
             "3️⃣ Acquista direttamente su Amazon",
-            "💡 È tutto gratuito e senza registrazione!"
+            "È tutto gratuito e senza registrazione!"
         ]
     };
 
@@ -631,11 +634,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function mostraMenuPrincipale() {
         chatMessages.innerHTML = `
-            <p>👋 Ciao! Come possiamo aiutarti oggi?</p>
-            <button class="chat-btn" data-key="offerte">🔥 Migliori Offerte</button>
-            <button class="chat-btn" data-key="sicurezza">🛡️ È Sicuro?</button>
-            <button class="chat-btn" data-key="gruppo">📱 Gruppo WhatsApp</button>
-            <button class="chat-btn" data-key="come-funziona">❓ Come Funziona</button>
+            <p>Ciao! Come possiamo aiutarti oggi?</p>
+            <button class="chat-btn" data-key="offerte">Migliori Offerte</button>
+            <button class="chat-btn" data-key="sicurezza">È Sicuro?</button>
+            <button class="chat-btn" data-key="gruppo">Gruppo WhatsApp</button>
+            <button class="chat-btn" data-key="come-funziona">Come Funziona</button>
         `;
         
         chatMessages.querySelectorAll('.chat-btn').forEach(btn => {
@@ -660,6 +663,22 @@ document.addEventListener('DOMContentLoaded', () => {
             chatToggle.style.display = 'flex';
         }
     });
+
+    // Modal functionality for benefits and testimonials
+    const showBenefitsBtn = document.getElementById('showBenefitsBtn');
+    const showTestimonialsBtn = document.getElementById('showTestimonialsBtn');
+    
+    if (showBenefitsBtn) {
+        showBenefitsBtn.addEventListener('click', () => {
+            window.cronoshopUtils?.showModal('benefitsModal');
+        });
+    }
+    
+    if (showTestimonialsBtn) {
+        showTestimonialsBtn.addEventListener('click', () => {
+            window.cronoshopUtils?.showModal('testimonialsModal');
+        });
+    }
 });
 
 // Mobile menu functionality
