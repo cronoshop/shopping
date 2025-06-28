@@ -1,4 +1,90 @@
+# Robots.txt per Cronoshop.eu
+# Ottimizzato per SEO e crawling efficiente
+
 User-agent: *
 Allow: /
 
+# Pagine principali - priorità alta
+Allow: /index.html
+Allow: /products.html
+Allow: /categorie.html
+Allow: /groups.html
+Allow: /blog.html
+
+# Pagine secondarie
+Allow: /chisiamo.html
+Allow: /faq.html
+Allow: /account.html
+Allow: /wishlist.html
+Allow: /cart.html
+Allow: /stats.html
+
+# Assets e risorse
+Allow: /assets/
+Allow: /src/
+Allow: /*.css
+Allow: /*.js
+Allow: /*.png
+Allow: /*.jpg
+Allow: /*.jpeg
+Allow: /*.webp
+Allow: /*.svg
+
+# Blocca file di sistema e temporanei
+Disallow: /.git/
+Disallow: /.gitignore
+Disallow: /node_modules/
+Disallow: /*.log
+Disallow: /*.tmp
+Disallow: /package.json
+Disallow: /package-lock.json
+
+# Blocca parametri di tracking
+Disallow: /*?utm_*
+Disallow: /*?ref=*
+Disallow: /*?source=*
+
+# Crawl-delay per essere gentili con i server
+Crawl-delay: 1
+
+# Sitemap
 Sitemap: https://www.cronoshop.eu/sitemap.xml
+
+# Specifiche per bot principali
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 2
+
+User-agent: Slurp
+Allow: /
+Crawl-delay: 2
+
+# Bot social media
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+# Blocca bot spam e scraper aggressivi
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: BLEXBot
+Disallow: /

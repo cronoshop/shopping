@@ -1,0 +1,67 @@
+{
+    "name": "Cronoshop - Migliori Offerte Amazon",
+    "short_name": "Cronoshop",
+    "description": "Scopri ogni giorno le migliori offerte Amazon selezionate da Cronoshop. Risparmia con sconti esclusivi fino al 70%!",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#007AFF",
+    "theme_color": "#007AFF",
+    "orientation": "portrait-primary",
+    "categories": ["shopping", "lifestyle", "productivity"],
+    "lang": "it",
+    "dir": "ltr",
+    "icons": [
+        {
+            "src": "assets/cronoshop-logo.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "assets/cronoshop-logo.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ],
+    "screenshots": [
+        {
+            "src": "assets/cronoshop-screenshot-mobile.png",
+            "sizes": "390x844",
+            "type": "image/png",
+            "form_factor": "narrow"
+        },
+        {
+            "src": "assets/cronoshop-screenshot-desktop.png",
+            "sizes": "1920x1080",
+            "type": "image/png",
+            "form_factor": "wide"
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "Offerte del Giorno",
+            "short_name": "Offerte",
+            "description": "Visualizza le migliori offerte Amazon di oggi",
+            "url": "/products.html",
+            "icons": [
+                {
+                    "src": "assets/cronoshop-logo.png",
+                    "sizes": "96x96"
+                }
+            ]
+        },
+        {
+            "name": "Gruppi WhatsApp",
+            "short_name": "WhatsApp",
+            "description": "Unisciti ai nostri gruppi WhatsApp",
+            "url": "/groups.html",
+            "icons": [
+                {
+                    "src": "assets/cronoshop-logo.png",
+                    "sizes": "96x96"
+                }
+            ]
+        }
+    ]
+}
