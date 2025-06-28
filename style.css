@@ -158,7 +158,7 @@ body.dark-mode .animated-background {
     border-color: var(--primary-blue);
 }
 
-/* Header - One UI Style */
+/* Header - One UI Style - More Compact */
 .glass-header {
     position: fixed;
     top: 0;
@@ -169,9 +169,9 @@ body.dark-mode .animated-background {
     backdrop-filter: var(--backdrop-blur-strong);
     -webkit-backdrop-filter: var(--backdrop-blur-strong);
     border-bottom: 1px solid var(--glass-border);
-    padding: var(--space-lg) var(--space-md);
+    padding: var(--space-md) var(--space-md);
     transition: all var(--transition-smooth);
-    height: 80px;
+    height: 70px;
     display: flex;
     align-items: center;
 }
@@ -186,7 +186,7 @@ body.dark-mode .animated-background {
     position: relative;
 }
 
-/* Logo Styles */
+/* Logo Styles - More Compact */
 .logo {
     display: flex;
     align-items: center;
@@ -195,7 +195,7 @@ body.dark-mode .animated-background {
 .logo-link {
     display: flex;
     align-items: center;
-    gap: var(--space-md);
+    gap: var(--space-sm);
     text-decoration: none;
     color: inherit;
     transition: all var(--transition-fast);
@@ -206,33 +206,34 @@ body.dark-mode .animated-background {
 }
 
 .logo-image {
-    height: 40px;
+    height: 32px;
     width: auto;
     object-fit: contain;
 }
 
 .logo-text {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     font-weight: 700;
     color: var(--text-blue);
 }
 
-/* Navigation Menu - Cleaner */
+/* Navigation Menu - More Compact */
 .nav-menu {
     display: flex;
-    gap: var(--space-xl);
+    gap: var(--space-md);
     transition: all var(--transition-smooth);
 }
 
 .nav-link {
     color: var(--text-primary);
     text-decoration: none;
-    padding: var(--space-md) var(--space-lg);
-    border-radius: var(--radius-xl);
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-lg);
     transition: all var(--transition-fast);
     font-weight: 500;
     position: relative;
-    font-size: 0.95rem;
+    font-size: 0.85rem;
+    white-space: nowrap;
 }
 
 .nav-link:hover,
@@ -247,18 +248,18 @@ body.dark-mode .animated-background {
 
 .nav-actions {
     display: flex;
-    gap: var(--space-md);
+    gap: var(--space-sm);
     align-items: center;
 }
 
-/* Glass Buttons - One UI Style */
+/* Glass Buttons - More Compact */
 .glass-btn {
     background: var(--glass-white);
     backdrop-filter: var(--backdrop-blur);
     -webkit-backdrop-filter: var(--backdrop-blur);
     border: 1px solid var(--glass-border);
-    border-radius: var(--radius-xl);
-    padding: var(--space-md) var(--space-lg);
+    border-radius: var(--radius-lg);
+    padding: var(--space-sm) var(--space-md);
     color: var(--text-primary);
     font-weight: 500;
     cursor: pointer;
@@ -269,9 +270,9 @@ body.dark-mode .animated-background {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: var(--space-sm);
-    font-size: 0.9rem;
-    min-height: 44px;
+    gap: var(--space-xs);
+    font-size: 0.8rem;
+    min-height: 36px;
 }
 
 .glass-btn:hover {
@@ -300,44 +301,71 @@ body.dark-mode .animated-background {
     color: var(--text-primary);
 }
 
-/* Theme Button - Text Based */
+/* Theme Button - Text Based - Compact */
 .theme-btn {
-    min-width: 80px;
-    font-size: 0.85rem;
+    min-width: 60px;
+    font-size: 0.75rem;
+    padding: var(--space-sm) var(--space-sm);
 }
 
-/* Cart Button */
+/* Cart Button - Fixed Styling */
 .cart-btn {
     position: relative;
+    background: var(--glass-white);
+    backdrop-filter: var(--backdrop-blur);
+    -webkit-backdrop-filter: var(--backdrop-blur);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-sm) var(--space-md);
+    color: var(--text-primary);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-xs);
+    font-size: 0.8rem;
+    min-height: 36px;
+}
+
+.cart-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--glass-shadow);
+    border-color: var(--primary-blue);
+    color: var(--text-blue);
 }
 
 .cart-count {
     background: var(--error-red);
     color: var(--text-white);
     border-radius: 50%;
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     font-weight: 600;
     position: absolute;
-    top: -8px;
-    right: -8px;
+    top: -6px;
+    right: -6px;
 }
 
-/* Mobile Menu */
+/* Mobile Menu - Compact */
 .mobile-menu-btn {
     display: none;
     background: var(--glass-white);
     border: 1px solid var(--glass-border);
     border-radius: var(--radius-md);
-    padding: var(--space-sm);
+    padding: var(--space-xs);
     color: var(--text-primary);
     cursor: pointer;
-    font-size: 1.2rem;
+    font-size: 1rem;
     transition: all var(--transition-fast);
+    min-height: 36px;
+    width: 36px;
 }
 
 .mobile-menu-btn:hover {
@@ -348,7 +376,7 @@ body.dark-mode .animated-background {
 /* Search Container */
 .search-container {
     max-width: 1200px;
-    margin: var(--space-lg) auto 0;
+    margin: var(--space-md) auto 0;
     padding: 0 var(--space-md);
     opacity: 0;
     max-height: 0;
@@ -411,7 +439,7 @@ body.dark-mode .animated-background {
 
 /* Hero Section - More Spacious */
 .hero {
-    padding: 140px var(--space-xl) var(--space-3xl);
+    padding: 120px var(--space-xl) var(--space-3xl);
     text-align: center;
     min-height: 100vh;
     display: flex;
@@ -704,6 +732,55 @@ body.dark-mode .animated-background {
     box-shadow: var(--glass-shadow);
 }
 
+/* Product Actions - Fixed Styling */
+.product-actions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    margin-top: var(--space-lg);
+}
+
+.secondary-actions {
+    display: flex;
+    gap: var(--space-sm);
+}
+
+.action-btn {
+    flex: 1;
+    padding: var(--space-md);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    background: var(--glass-white);
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-xs);
+    font-size: 0.9rem;
+    font-weight: 500;
+    min-height: 44px;
+    text-decoration: none;
+}
+
+.action-btn:hover {
+    background: var(--glass-white-strong);
+    border-color: var(--primary-blue);
+    color: var(--text-blue);
+    transform: translateY(-1px);
+}
+
+.action-btn.wishlist-btn:hover {
+    color: var(--error-red);
+    border-color: var(--error-red);
+}
+
+.action-btn.share-btn:hover {
+    color: var(--success-green);
+    border-color: var(--success-green);
+}
+
 /* Modals - Enhanced */
 .modal-overlay {
     position: fixed;
@@ -841,7 +918,7 @@ body.dark-mode .animated-background {
 /* Notification */
 .notification {
     position: fixed;
-    top: 100px;
+    top: 80px;
     right: var(--space-lg);
     background: var(--glass-white-strong);
     backdrop-filter: var(--backdrop-blur);
@@ -893,10 +970,25 @@ body.dark-mode .animated-background {
 }
 
 /* Responsive Design */
+@media (max-width: 1024px) {
+    .nav-menu {
+        gap: var(--space-sm);
+    }
+    
+    .nav-link {
+        padding: var(--space-xs) var(--space-sm);
+        font-size: 0.8rem;
+    }
+    
+    .logo-text {
+        font-size: 1.1rem;
+    }
+}
+
 @media (max-width: 768px) {
     .nav-menu {
         position: fixed;
-        top: 80px;
+        top: 70px;
         left: 0;
         right: 0;
         background: var(--glass-white-strong);
@@ -965,7 +1057,7 @@ body.dark-mode .animated-background {
 
 @media (max-width: 480px) {
     .hero {
-        padding: 120px var(--space-md) var(--space-xl);
+        padding: 100px var(--space-md) var(--space-xl);
     }
     
     .hero-card {
@@ -985,11 +1077,20 @@ body.dark-mode .animated-background {
     }
     
     .glass-header {
-        padding: var(--space-md);
+        padding: var(--space-sm) var(--space-md);
+        height: 60px;
     }
     
     .nav-menu {
-        top: 70px;
+        top: 60px;
+    }
+    
+    .secondary-actions {
+        flex-direction: column;
+    }
+    
+    .action-btn {
+        width: 100%;
     }
 }
 
