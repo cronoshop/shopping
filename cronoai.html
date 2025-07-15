@@ -3,77 +3,130 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>CronoAI - Il Tuo Assistente AI per le Offerte Amazon | Cronoshop</title>
-    <meta name="description" content="🤖 Usa CronoAI per trovare le migliori offerte Amazon. Descrivi il prodotto che cerchi e lascia che la nostra intelligenza artificiale trovi lo sconto perfetto per te." />
-    <meta name="robots" content="index, follow" />
-    
-    <link rel="icon" type="image/png" href="assets/cronoshop-logo.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css?v=2.6" />
+    <title>CronoAI - Assistente AI per Offerte Amazon | Cronoshop</title>
+    <meta name="description" content="🤖 Chatta con CronoAI, il tuo assistente intelligente per le offerte Amazon. Trova prodotti, analizza prezzi e scopri funzioni AI uniche per il tuo shopping." />
+    <link rel="stylesheet" href="style.css?v=2.8" />
+    <style>
+        body { padding-top: 70px; }
+        .ai-main { padding: 2rem 1rem; max-width: 1000px; margin: auto; }
+        .ai-header { text-align: center; margin-bottom: 3rem; }
+        .ai-header h1 { font-size: 3rem; font-weight: 700; color: var(--text-blue); margin-bottom: 1rem; }
+        .ai-header p { font-size: 1.2rem; color: var(--text-secondary); }
+        
+        /* Disclaimer Section */
+        .disclaimer-section { padding: 2rem; border: 1px solid var(--warning-orange); border-radius: var(--radius-lg); margin-bottom: 3rem; }
+        .disclaimer-section h2 { font-size: 2rem; color: var(--warning-orange); text-align: center; margin-bottom: 1.5rem; }
+        .disclaimer-section p { font-size: 1.1rem; line-height: 1.7; margin-bottom: 1rem; }
+        
+        /* Funzioni AI */
+        .ai-functions-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+        .ai-function-card { padding: 1.5rem; text-align: center; }
+        .ai-function-card h3 { font-size: 1.3rem; margin-bottom: 1rem; }
+        .ai-function-card .glass-input { margin: 1rem 0; }
+        .ai-function-card .result { margin-top: 1rem; font-weight: bold; min-height: 24px; }
+        
+        /* Banner Promozionali */
+        .promo-banner-whatsapp { margin: 3rem 0; padding: 2rem; background: linear-gradient(135deg, #25D366, #128C7E); color: white; text-align: center; border-radius: var(--radius-lg); }
+        .promo-banner-products { margin: 3rem 0; padding: 2rem; background: var(--glass-white-strong); text-align: center; border-radius: var(--radius-lg); }
+    </style>
 </head>
 <body>
 
 <div class="animated-background"></div>
-
 <div id="navigation-container"></div>
 
-<main class="main-content" style="padding: 100px 20px 40px;">
-    <section class="hero-ai">
-        <div class="glass-card hero-card">
-            <h1>✨ Benvenuto in CronoAI</h1>
-            <p>L'assistente intelligente che rivoluziona il tuo modo di fare shopping.</p>
-            <div class="ai-input-container" style="margin-top: 2rem;">
-                <textarea class="glass-input" placeholder="Esempio: 'Cerco uno smartphone Android sotto i 300 euro con una buona fotocamera...'" rows="4"></textarea>
-                <button class="glass-btn primary-btn" style="margin-top: 1rem; width: 100%;">Cerca con AI</button>
+<main class="ai-main">
+    <section class="ai-header">
+        <h1>✨ Benvenuto in CronoAI</h1>
+        <p>L'assistente intelligente che trasforma il tuo modo di fare shopping.</p>
+    </section>
+
+    <section class="disclaimer-section glass-card">
+        <h2>⚠️ Disclaimer Importante e Descrizione del Servizio</h2>
+        <p><strong>CronoAI è un servizio sperimentale.</strong> Le risposte fornite sono generate da un'intelligenza artificiale e potrebbero contenere imprecisioni o errori. Le offerte e i prezzi indicati non sono garantiti e devono sempre essere verificati sulla pagina ufficiale di Amazon prima di procedere all'acquisto.</p>
+        <p>Questo strumento è stato creato per assisterti nella ricerca e per offrirti suggerimenti basati sui dati disponibili, ma non deve essere considerato come una consulenza finanziaria o di acquisto. <strong>L'utente è l'unico responsabile delle proprie decisioni di acquisto.</strong></p>
+    </section>
+
+    <section class="promo-banner-whatsapp">
+        <h2>📱 Offerte Esclusive su WhatsApp</h2>
+        <p>Non perderti neanche uno sconto! Unisciti al nostro canale per ricevere le migliori offerte in tempo reale.</p>
+        <a href="groups.html" class="glass-btn" style="background: white; color: #25D366;">Unisciti Ora</a>
+    </section>
+
+    <section>
+        <h2 style="text-align: center; margin-bottom: 2rem;">Le Nostre Funzioni AI Esclusive</h2>
+        <div class="ai-functions-grid">
+            <div class="glass-card ai-function-card">
+                <h3>Analizzatore Colore Sconto</h3>
+                <p>Inserisci un colore (es. 'rosso') e ti diremo che tipo di sconto rappresenta!</p>
+                <input type="text" id="colorInput" class="glass-input" placeholder="Es. verde, blu, arancione...">
+                <button class="glass-btn primary-btn" onclick="analyzeColor()">Analizza</button>
+                <div class="result" id="colorResult"></div>
+            </div>
+            
+            <div class="glass-card ai-function-card">
+                <h3>Contatore Sillabe Prodotto</h3>
+                <p>Scrivi il nome di un prodotto e l'AI conterà le sillabe per te.</p>
+                <input type="text" id="syllableInput" class="glass-input" placeholder="Es. Smartphone, Frigorifero...">
+                <button class="glass-btn primary-btn" onclick="countSyllables()">Conta Sillabe</button>
+                <div class="result" id="syllableResult"></div>
+            </div>
+
+            <div class="glass-card ai-function-card">
+                <h3>Generatore Nome Offerta Casuale</h3>
+                <p>Clicca per generare un nome accattivante per un'offerta inesistente!</p>
+                <button class="glass-btn primary-btn" onclick="generateOfferName()">Genera Nome</button>
+                <div class="result" id="offerNameResult"></div>
             </div>
         </div>
     </section>
 
-    <section id="scopri-di-piu" style="margin-top: 3rem; text-align: center;">
-        <h2>Come Funziona</h2>
-        <p>Qui puoi spiegare in dettaglio il funzionamento di CronoAI.</p>
-        </section>
+    <section class="promo-banner-products">
+        <h2>🛍️ Stanco di giocare con l'AI?</h2>
+        <p>Torna alle cose serie! Scopri centinaia di offerte reali e verificate dal nostro team.</p>
+        <a href="products.html" class="glass-btn primary-btn">Vedi Tutte le Offerte</a>
+    </section>
+
 </main>
 
+<footer class="glass-footer">
+    </footer>
 
-<footer class="glass-footer" role="contentinfo">
-    <div class="footer-content">
-        <div class="footer-section">
-            <div class="footer-logo">
-                <img src="assets/cronoshop-logo.png" alt="Logo Cronoshop" class="footer-logo-image" width="32" height="32">
-                <h4>Cronoshop</h4>
-            </div>
-            <p>La piattaforma italiana di riferimento per le <strong>migliori offerte Amazon giornaliere</strong>.</p>
-        </div>
-        </div>
-    <div class="footer-bottom">
-        <p>&copy; 2025 <strong>Cronoshop</strong>. Tutti i diritti riservati.</p>
-    </div>
-</footer>
-
+<script src="src/utils/nav-loader.js" defer></script>
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    fetch("nav.html")
-      .then((res) => res.text())
-      .then((html) => {
-        document.getElementById("navigation-container").innerHTML = html;
-        const menuBtn = document.getElementById("mobileMenuBtn");
-        const navMenu = document.getElementById("navMenu");
-        if (menuBtn && navMenu) {
-          menuBtn.addEventListener("click", () => {
-            menuBtn.setAttribute("aria-expanded", menuBtn.getAttribute("aria-expanded") !== "true");
-            navMenu.classList.toggle("active");
-            document.body.classList.toggle("no-scroll");
-          });
+    // Funzioni AI
+    function analyzeColor() {
+        const input = document.getElementById('colorInput').value.toLowerCase();
+        const resultDiv = document.getElementById('colorResult');
+        const risposte = {
+            'rosso': 'Sconto imperdibile, agisci subito!',
+            'arancione': 'Ottima offerta, ma potrebbe scendere ancora.',
+            'giallo': 'Sconto modesto, buono se ne hai bisogno ora.',
+            'verde': 'Prezzo standard, non è una vera offerta.',
+            'blu': 'Prezzo in aumento, acquista solo se necessario.'
+        };
+        resultDiv.textContent = risposte[input] || "Colore non riconosciuto nel nostro database di sconti.";
+    }
+
+    function countSyllables() {
+        const input = document.getElementById('syllableInput').value;
+        const resultDiv = document.getElementById('syllableResult');
+        if (!input) {
+            resultDiv.textContent = "Inserisci una parola.";
+            return;
         }
-        const currentPage = "cronoai"; // Imposta la pagina corrente manualmente
-        const activeLink = document.querySelector(`.nav-link[data-page="${currentPage}"]`);
-        if (activeLink) activeLink.classList.add("active");
-      })
-      .catch((err) => console.error("Errore caricamento nav.html:", err));
-  });
+        const vowelCount = (input.match(/[aeiouàèéìòù]/gi) || []).length;
+        resultDiv.textContent = `"'${input}' ha circa ${vowelCount} sillabe!"`;
+    }
+
+    function generateOfferName() {
+        const aggettivi = ['Imperdibile', 'Stratosferico', 'Segreto', 'Esclusivo', 'Lampo'];
+        const nomi = ['Ribasso', 'Sconto', 'Affare', 'Risparmio', 'Deal'];
+        const emoji = ['🔥', '🚀', '💰', '✨', '⚡'];
+        
+        const nomeCasuale = `${emoji[Math.floor(Math.random() * emoji.length)]} ${aggettivi[Math.floor(Math.random() * aggettivi.length)]} ${nomi[Math.floor(Math.random() * nomi.length)]}!`;
+        document.getElementById('offerNameResult').textContent = nomeCasuale;
+    }
 </script>
 
 </body>
