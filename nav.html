@@ -1,102 +1,25 @@
-<header class="glass-header">
-    <nav class="nav-container" role="navigation" aria-label="Menu principale">
-        <div class="logo">
-            <a href="/" class="logo-link" aria-label="Cronoshop - Torna alla homepage delle migliori offerte Amazon">
-                <img src="assets/cronoshop-logo.png" alt="Logo Cronoshop - Offerte Amazon Giornaliere" class="logo-image" width="40" height="40">
-                <span class="logo-text">Cronoshop</span>
-            </a>
-        </div>
+<header class="main-header glass-card" role="banner">
+    <div class="nav-container">
+        <a href="index.html" class="nav-logo" title="Torna alla Home di Cronoshop">
+            <img src="assets/cronoshop-logo.png" alt="Cronoshop Logo" width="40" height="40">
+            <span>Cronoshop</span>
+        </a>
 
-        <div class="nav-menu" id="navMenu">
-            <a href="index.html" class="nav-link" data-page="index">🏠 Home</a>
-            <a href="index.html#offerte" class="nav-link" data-page="offerte">🛍️ Offerte</a>
-            <a href="products.html" class="nav-link" data-page="products">📦 Prodotti</a>
-            <a href="categorie.html" class="nav-link" data-page="categorie">📂 Categorie</a>
-            <a href="wishlist.html" class="nav-link" data-page="wishlist">❤️ Wishlist</a>
-            <a href="cronoai.html" class="nav-link ai-link" data-page="cronoai">✨ CronoAI <span class="new-badge">NEW</span></a>
-            <a href="account.html" class="nav-link" data-page="account">👤 Profilo</a>
-            <a href="blog.html" class="nav-link" data-page="blog">📝 Blog</a>
-            <a href="groups.html" class="nav-link" data-page="groups">📱 Gruppi</a>
-            <a href="faq.html" class="nav-link" data-page="faq">❓ FAQ</a>
-        </div>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-controls="navMenu" aria-expanded="false" aria-label="Apri menu di navigazione">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
 
-        <div class="nav-actions">
-            <button class="glass-btn search-btn" aria-label="Apri ricerca prodotti" title="Cerca offerte Amazon">🔍 Cerca</button>
-            <button class="glass-btn theme-btn" aria-label="Cambia tema" title="Cambia tema chiaro/scuro">🌙 Tema</button>
-            <a href="cart.html" class="glass-btn cart-btn" aria-label="Visualizza carrello" title="Il tuo carrello">🛒 <span class="cart-count">0</span></a>
-            <button class="glass-btn mobile-menu-btn" aria-label="Apri menu mobile" aria-expanded="false">☰</button>
-        </div>
-    </nav>
-
-    <div class="search-container" id="searchContainer" role="search" aria-label="Ricerca prodotti e offerte Amazon">
-        <div class="glass-search">
-            <input type="search" placeholder="Cerca offerte Amazon, smartphone, tech, casa..." id="searchInput" aria-label="Campo ricerca prodotti e offerte" autocomplete="off" />
-            <button type="submit" aria-label="Avvia ricerca">Cerca</button>
-        </div>
+        <nav id="navMenu" class="nav-menu" role="navigation">
+            <ul class="nav-list">
+                <li><a href="index.html" class="nav-link" data-page="index">Home</a></li>
+                <li><a href="products.html" class="nav-link" data-page="products">Offerte</a></li>
+                <li><a href="cronoai.html" class="nav-link" data-page="cronoai">✨ CronoAI</a></li>
+                <li><a href="groups.html" class="nav-link" data-page="groups">Gruppi</a></li>
+                <li><a href="chisiamo.html" class="nav-link" data-page="chisiamo">Chi Siamo</a></li>
+                <li><a href="account.html" class="nav-link primary-btn" data-page="account">Accedi</a></li>
+            </ul>
+        </nav>
     </div>
 </header>
-
-<style>
-    /* Stile per il link AI */
-    .ai-link {
-        position: relative;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* */
-        color: white !important;
-        border-radius: var(--radius-md);
-        padding: var(--space-sm) var(--space-md) !important; /* */
-        font-weight: 600;
-        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3); /* */
-        transition: all var(--transition-smooth);
-    }
-
-    .ai-link:hover {
-        transform: translateY(-2px); /* */
-        box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4); /* */
-        background: linear-gradient(135deg, #764ba2 0%, #667eea 100%); /* */
-    }
-
-    /* Badge "NEW" */
-    .new-badge {
-        position: absolute;
-        top: -8px; /* */
-        right: -8px; /* */
-        background: linear-gradient(45deg, #ff6b6b, #ee5a24);
-        color: white;
-        font-size: 0.6rem;
-        font-weight: 700;
-        padding: 2px 6px;
-        border-radius: 8px;
-        box-shadow: 0 2px 8px rgba(255, 107, 107, 0.4); /* */
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        animation: pulse 2s infinite; /* */
-    }
-
-    @keyframes pulse {
-        0% {
-            transform: scale(1);
-            box-shadow: 0 2px 8px rgba(255, 107, 107, 0.4); /* */
-        }
-        50% {
-            transform: scale(1.1);
-            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.6); /* */
-        }
-        100% {
-            transform: scale(1);
-            box-shadow: 0 2px 8px rgba(255, 107, 107, 0.4); /* */
-        }
-    }
-
-    /* Adattamenti per mobile */
-    @media (max-width: 768px) {
-        .ai-link {
-            margin: 0.5rem 0; /* */
-        }
-        
-        .new-badge {
-            position: static;
-            margin-left: 0.5rem; /* */
-            display: inline-block;
-        }
-    }
-</style>
