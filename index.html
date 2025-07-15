@@ -109,38 +109,25 @@
 <div class="animated-background"></div>
 
 <!-- Header ottimizzato per SEO -->
-<header class="glass-header" role="banner">
-    <nav class="nav-container" role="navigation" aria-label="Menu principale di navigazione Cronoshop">
-        <div class="logo">
-            <a href="/" class="logo-link" aria-label="Cronoshop - Torna alla homepage delle migliori offerte Amazon">
-                <img src="assets/cronoshop-logo.png" alt="Logo Cronoshop - Offerte Amazon Giornaliere" class="logo-image" width="40" height="40">
-                <span class="logo-text">Cronoshop</span>
-            </a>
-        </div>
-        <div class="nav-menu" id="navMenu">
-            <a href="/" class="nav-link active" aria-current="page">🏠 Home</a>
-            <a href="#offerte" class="nav-link">🛍️ Offerte</a>
-            <a href="products.html" class="nav-link">📦 Prodotti</a>
-            <a href="categorie.html" class="nav-link">📂 Categorie</a>
-            <a href="wishlist.html" class="nav-link">❤️ Wishlist</a>
-            <a href="account.html" class="nav-link">👤 Profilo</a>
-        </div>
-        <div class="nav-actions">
-            <button class="glass-btn search-btn" aria-label="Apri ricerca prodotti" title="Cerca offerte Amazon">🔍 Cerca</button>
-            <button class="glass-btn theme-btn" aria-label="Cambia tema" title="Cambia tema chiaro/scuro">🌙 Tema</button>
-            <a href="cart.html" class="glass-btn cart-btn" aria-label="Visualizza carrello" title="Il tuo carrello">🛒 <span class="cart-count">0</span></a>
-            <button class="glass-btn mobile-menu-btn" aria-label="Apri menu mobile" aria-expanded="false">☰</button>
-        </div>
-    </nav>
+<!-- Load Navigation -->
+<div id="navigation-container"></div>
 
-    <!-- Search Bar ottimizzata -->
-    <div class="search-container" id="searchContainer" role="search" aria-label="Ricerca prodotti e offerte Amazon">
-        <div class="glass-search">
-            <input type="search" placeholder="Cerca offerte Amazon, smartphone, tech, casa..." id="searchInput" aria-label="Campo ricerca prodotti e offerte" autocomplete="off" />
-            <button type="submit" aria-label="Avvia ricerca">Cerca</button>
-        </div>
-    </div>
-</header>
+<!-- Loader Script -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    fetch("nav.html")
+      .then((res) => res.text())
+      .then((html) => {
+        document.getElementById("navigation-container").innerHTML = html;
+
+        // Attiva link attuale
+        const currentPage = window.location.pathname.split("/").pop().replace(".html", "") || "index";
+        const activeLink = document.querySelector(`.nav-link[data-page="${currentPage}"]`);
+        if (activeLink) activeLink.classList.add("active");
+      })
+      .catch((err) => console.error("Errore caricamento nav.html:", err));
+  });
+</script>
 
 <!-- Hero Section ottimizzata -->
 <section class="hero" id="home" role="region" aria-labelledby="hero-title">
