@@ -1632,3 +1632,234 @@ body.dark-mode .animated-background {
         display: none;
     }
 }
+/* =================================
+   STILI NAVBAR RESPONSIVE
+==================================== */
+.main-header {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    z-index: 1000;
+    border-radius: 12px;
+    padding: 0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 1.5rem;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: #fff;
+    text-decoration: none;
+}
+
+.nav-logo img {
+    transition: transform 0.3s ease;
+}
+
+.nav-logo:hover img {
+    transform: rotate(15deg);
+}
+
+.nav-menu {
+    display: none; /* Nascosto su mobile di default */
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: rgba(10, 25, 47, 0.85);
+    backdrop-filter: blur(10px);
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    padding: 1rem 0;
+}
+
+.nav-menu.active {
+    display: flex; /* Mostra il menu quando attivo */
+}
+
+.nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.nav-list li {
+    padding: 0.8rem 1rem;
+}
+
+.nav-link {
+    color: #e0e0e0;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.1rem;
+    transition: color 0.3s, background-color 0.3s;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+}
+
+.nav-link.active,
+.nav-link:hover {
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.nav-link.primary-btn {
+    background-color: #1976D2;
+    color: white;
+}
+.nav-link.primary-btn:hover {
+    background-color: #1565C0;
+}
+
+/* Stili per il pulsante Hamburger */
+.mobile-menu-btn {
+    display: flex; /* Visibile su mobile */
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2rem;
+    height: 2rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10;
+}
+
+.mobile-menu-btn span {
+    width: 2rem;
+    height: 0.25rem;
+    background: #fff;
+    border-radius: 10px;
+    transition: all 0.3s linear;
+    position: relative;
+    transform-origin: 1px;
+}
+
+.mobile-menu-btn[aria-expanded="true"] span:nth-child(1) {
+    transform: rotate(45deg);
+}
+.mobile-menu-btn[aria-expanded="true"] span:nth-child(2) {
+    opacity: 0;
+    transform: translateX(20px);
+}
+.mobile-menu-btn[aria-expanded="true"] span:nth-child(3) {
+    transform: rotate(-45deg);
+}
+
+
+/* Media Query per Desktop */
+@media (min-width: 768px) {
+    .mobile-menu-btn {
+        display: none; /* Nascondi hamburger su desktop */
+    }
+
+    .nav-menu {
+        display: flex;
+        position: static;
+        flex-direction: row;
+        background: none;
+        backdrop-filter: none;
+        width: auto;
+        padding: 0;
+    }
+
+    .nav-list {
+        display: flex;
+        gap: 0.5rem;
+    }
+    
+    .nav-list li {
+        padding: 0;
+    }
+}
+
+
+/* =================================
+   STILI BANNER PROMO CRONOAI
+==================================== */
+.promo-banner-ai {
+    padding: 2rem 1rem;
+}
+
+.banner-card-ai {
+    border: 1px solid rgba(138, 43, 226, 0.5); /* Viola per richiamare l'AI */
+    background: linear-gradient(135deg, rgba(25, 118, 210, 0.1), rgba(138, 43, 226, 0.1));
+}
+
+.banner-content-ai {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    text-align: center;
+}
+
+.banner-icon-ai {
+    font-size: 3rem;
+    line-height: 1;
+}
+
+.banner-text-ai h2 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    color: #fff;
+}
+
+.banner-text-ai p {
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+    color: #e0e0e0;
+}
+
+.banner-actions-ai {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    width: 100%;
+    max-width: 300px;
+}
+
+/* Adattamenti per schermi più grandi */
+@media (min-width: 768px) {
+    .banner-content-ai {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+    }
+
+    .banner-text-ai {
+        flex: 1;
+    }
+    
+    .banner-actions-ai {
+        flex-direction: row;
+        width: auto;
+    }
+
+    .promo-banner-ai.compact .banner-content-ai {
+        align-items: center;
+    }
+}
+
+/* Stili per il body quando il menu è aperto */
+body.no-scroll {
+    overflow: hidden;
+}
