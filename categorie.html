@@ -1,372 +1,271 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <!-- Favicon -->
-<link rel="icon" type="image/png" sizes="32x32" href="assets/cronoshop-logo.png">
-<link rel="icon" type="image/png" sizes="16x16" href="assets/cronoshop-logo.png">
-<link rel="apple-touch-icon" href="assets/cronoshop-logo.png">
-<meta name="author" content="Cronoshop Team" />
-<link rel="canonical" href="https://www.cronoshop.eu/categorie.html" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Categorie - Cronoshop</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <!-- Animated Background -->
-    <div class="animated-background"></div>
     
-  <!-- Header -->
-<header class="glass-header">
-    <nav class="nav-container" role="navigation" aria-label="Menu principale">
-        <div class="logo">
-            <a href="index.html" class="logo-link">
-                <img src="assets/cronoshop-logo.png" alt="Cronoshop Logo" class="logo-image">
-                <span class="logo-text">Cronoshop</span>
-            </a>
-        </div>
-            <div class="nav-menu" id="navMenu">
-                <a href="index.html" class="nav-link">Home</a>
-                <a href="index.html#offerte" class="nav-link">Offerte</a>
-                <a href="categorie.html" class="nav-link active">Categorie</a>
-                <a href="wishlist.html" class="nav-link">Wishlist</a>
-                <a href="account.html" class="nav-link">Profilo</a>
-                <a href="chisiamo.html" class="nav-link">Chi Siamo</a>
-                <a href="faq.html" class="nav-link">FAQ</a>
-                <a href="blog.html" class="nav-link">Blog</a>
-            </div>
-            <div class="nav-actions">
-                <a href="cart.html" class="glass-btn cart-btn">🛒 <span class="cart-count">0</span></a>
-                <button class="glass-btn theme-btn">🌙</button>
-                <button class="glass-btn mobile-menu-btn">☰</button>
-            </div>
-        </nav>
-    </header>
+    <meta name="author" content="Cronoshop Team" />
+    <link rel="canonical" href="https://www.cronoshop.eu/categorie.html" />
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/cronoshop-logo.png">
+    <link rel="apple-touch-icon" href="assets/cronoshop-logo.png">
 
-    <!-- Categories Section -->
-    <section class="categories-section" style="padding-top: 120px;">
-        <div class="section-header">
-            <h2>📂 Categorie Prodotti</h2>
-            <p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 2rem;">Esplora i prodotti per categoria</p>
-        </div>
-        
-        <div class="categories-grid">
-            <div class="glass-card category-card" data-category="smartphone">
-                <div class="category-icon">📱</div>
-                <h3>Smartphone</h3>
-                <p>iPhone, Samsung, Google Pixel e altri</p>
-                <div class="category-stats">
-                    <span class="product-count">24 prodotti</span>
-                </div>
-                <button class="glass-btn primary-btn">Esplora</button>
-            </div>
-
-            <div class="glass-card category-card" data-category="fashion">
-                <div class="category-icon">👕</div>
-                <h3>Fashion</h3>
-                <p>Abbigliamento, scarpe e accessori</p>
-                <div class="category-stats">
-                    <span class="product-count">18 prodotti</span>
-                </div>
-                <button class="glass-btn primary-btn">Esplora</button>
-            </div>
-
-            <div class="glass-card category-card" data-category="casa">
-                <div class="category-icon">🏠</div>
-                <h3>Casa e Cucina</h3>
-                <p>Prodotti per la casa e alimentari</p>
-                <div class="category-stats">
-                    <span class="product-count">12 prodotti</span>
-                </div>
-                <button class="glass-btn primary-btn">Esplora</button>
-            </div>
-
-            <div class="glass-card category-card" data-category="tech">
-                <div class="category-icon">💻</div>
-                <h3>Tecnologia</h3>
-                <p>Gadget, accessori tech e elettronica</p>
-                <div class="category-stats">
-                    <span class="product-count">15 prodotti</span>
-                </div>
-                <button class="glass-btn primary-btn">Esplora</button>
-            </div>
-
-            <div class="glass-card category-card" data-category="salute">
-                <div class="category-icon">💊</div>
-                <h3>Salute e Benessere</h3>
-                <p>Integratori, vitamine e prodotti per la salute</p>
-                <div class="category-stats">
-                    <span class="product-count">8 prodotti</span>
-                </div>
-                <button class="glass-btn primary-btn">Esplora</button>
-            </div>
-
-            <div class="glass-card category-card" data-category="sport">
-                <div class="category-icon">⚽</div>
-                <h3>Sport e Fitness</h3>
-                <p>Abbigliamento sportivo e attrezzature</p>
-                <div class="category-stats">
-                    <span class="product-count">6 prodotti</span>
-                </div>
-                <button class="glass-btn primary-btn">Esplora</button>
-            </div>
-        </div>
-
-        <!-- Popular Products by Category -->
-        <div class="popular-by-category" style="margin-top: 3rem;">
-            <h3 style="color: white; text-align: center; margin-bottom: 2rem;">🔥 Più Popolari per Categoria</h3>
-            <div class="category-highlights">
-                <div class="glass-card highlight-card">
-                    <img src="https://m.media-amazon.com/images/I/61hiFJPpY9L._AC_SL1500_.jpg" alt="Samsung Galaxy S25 Ultra" class="highlight-image">
-                    <div class="highlight-info">
-                        <span class="highlight-category">📱 Smartphone</span>
-                        <h4>Samsung Galaxy S25 Ultra</h4>
-                        <span class="highlight-price">1.199€</span>
-                    </div>
-                </div>
-
-                <div class="glass-card highlight-card">
-                    <img src="https://m.media-amazon.com/images/I/71BHou6YJKL._AC_SY879_.jpg" alt="Calvin Klein T-Shirt" class="highlight-image">
-                    <div class="highlight-info">
-                        <span class="highlight-category">👕 Fashion</span>
-                        <h4>Calvin Klein T-Shirt Uomo</h4>
-                        <span class="highlight-price">18€</span>
-                    </div>
-                </div>
-
-                <div class="glass-card highlight-card">
-                    <img src="https://m.media-amazon.com/images/I/51B45gaTgjL._AC_SL1000_.jpg" alt="Fire TV Stick" class="highlight-image">
-                    <div class="highlight-info">
-                        <span class="highlight-category">💻 Tech</span>
-                        <h4>Amazon Fire TV Stick HD</h4>
-                        <span class="highlight-price">28,99€</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="glass-footer">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h4>Cronoshop</h4>
-                <p>La tua piattaforma per le migliori offerte Amazon</p>
-            </div>
-            <div class="footer-section">
-                <h4>Link Utili</h4>
-                <a href="groups.html">Gruppi WhatsApp</a>
-                <a href="categorie.html">Categorie</a>
-                <a href="account.html">Account</a>
-            </div>
-            <div class="footer-section">
-                <h4>Contatti</h4>
-                <a href="groups.html">WhatsApp</a>
-                <a href="#email">Email</a>
-                <a href="#social">Social</a>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 Cronoshop. Tutti i diritti riservati.</p>
-        </div>
-    </footer>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
     <style>
-        .categories-section {
-            padding: 2rem 1rem;
-            max-width: 1200px;
-            margin: 0 auto;
+        /* --- [1] IMPOSTAZIONI GLOBALI E VARIABILI --- */
+        :root {
+            --c-accent-primary: #007aff;
+            --c-bg-primary: #f2f2f7;
+            --c-bg-secondary: #ffffff;
+            --c-text-primary: #1d1d1f;
+            --c-text-secondary: #6e6e73;
+            --c-text-on-accent: #ffffff;
+            --c-separator: rgba(60, 60, 67, 0.29);
+            --font-system: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", Roboto, Helvetica, Arial, sans-serif;
+            --radius-md: 14px;
+            --radius-lg: 20px;
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --spacing-sm: 8px;
+            --spacing-md: 16px;
+            --spacing-lg: 24px;
+            --spacing-xl: 32px;
+            --header-height: 60px;
+            --transition-fast: 0.2s cubic-bezier(0.3, 0, 0.4, 1);
+        }
+        html.dark-theme {
+            --c-accent-primary: #0a84ff;
+            --c-bg-primary: #000000;
+            --c-bg-secondary: #1c1c1e;
+            --c-text-primary: #f5f5f7;
+            --c-text-secondary: #8d8d92;
+            --c-separator: rgba(84, 84, 88, 0.65);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
 
+        /* --- [2] RESET E STILI BASE --- */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: var(--font-system);
+            background-color: var(--c-bg-primary);
+            color: var(--c-text-primary);
+            padding-top: var(--header-height);
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 var(--spacing-lg); }
+
+        /* --- [3] STILI SPECIFICI DELLA PAGINA CATEGORIE --- */
+        .categories-section { padding: var(--spacing-xl) 0; }
+        .section-header { text-align: center; margin-bottom: var(--spacing-xl); }
+        .section-header h2 { font-size: 2.2rem; display: flex; align-items: center; justify-content: center; gap: var(--spacing-md); }
+        .section-header p { color: var(--c-text-secondary); }
+
+        /* Griglia Categorie */
         .categories-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-xl);
         }
-
         .category-card {
-            padding: 2rem;
+            background-color: var(--c-bg-secondary);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
             text-align: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: var(--shadow-md);
+            transition: transform var(--transition-fast), box-shadow var(--transition-fast);
         }
-
         .category-card:hover {
-            transform: translateY(-10px) scale(1.05);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            html.dark-theme & { box-shadow: 0 8px 20px rgba(0,0,0,0.25); }
         }
-
         .category-icon {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-        }
-
-        .category-card h3 {
-            color: white;
-            margin-bottom: 0.5rem;
-            font-size: 1.5rem;
-        }
-
-        .category-card p {
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 1rem;
-        }
-
-        .category-stats {
-            margin-bottom: 1.5rem;
-        }
-
-        .product-count {
-            background: var(--glass-bg-strong);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            color: var(--primary-color);
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-
-        .category-highlights {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .highlight-card {
-            padding: 1rem;
+            font-size: 2.5rem;
+            width: 64px;
+            height: 64px;
+            border-radius: var(--radius-md);
+            background-color: color-mix(in srgb, var(--c-accent-primary), transparent 85%);
+            color: var(--c-accent-primary);
             display: flex;
             align-items: center;
-            gap: 1rem;
+            justify-content: center;
+            margin-bottom: var(--spacing-md);
         }
+        .category-card h3 { font-size: 1.2rem; margin-bottom: var(--spacing-sm); }
+        .category-card p { color: var(--c-text-secondary); font-size: 0.95rem; flex-grow: 1; margin-bottom: var(--spacing-lg); }
+        .product-count {
+            display: inline-block;
+            background-color: color-mix(in srgb, var(--c-bg-primary), #000 5%);
+            padding: 4px 12px;
+            border-radius: var(--radius-md);
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: var(--spacing-lg);
+        }
+        html.dark-theme .product-count { background-color: color-mix(in srgb, var(--c-bg-primary), #fff 10%); }
 
-        .highlight-image {
-            width: 60px;
-            height: 60px;
-            object-fit: cover;
-            border-radius: 10px;
+        /* Prodotti Popolari */
+        .popular-by-category { margin-top: var(--spacing-xl); }
+        .popular-by-category h3 {
+            font-size: 1.5rem;
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+            display: flex; align-items: center; justify-content: center; gap: var(--spacing-sm);
         }
+        .category-highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-md);
+        }
+        .highlight-card {
+            background-color: var(--c-bg-secondary);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+        .highlight-image { width: 60px; height: 60px; object-fit: cover; border-radius: var(--radius-sm); flex-shrink: 0; }
+        .highlight-category { font-size: 0.8rem; font-weight: 500; color: var(--c-accent-primary); }
+        .highlight-info h4 { font-size: 1rem; margin: 2px 0; }
+        .highlight-price { font-size: 0.9rem; color: var(--c-text-secondary); }
 
-        .highlight-info {
-            flex: 1;
-        }
-
-        .highlight-category {
-            font-size: 0.8rem;
-            color: var(--primary-color);
-            font-weight: 600;
-        }
-
-        .highlight-info h4 {
-            color: white;
-            margin: 0.25rem 0;
-            font-size: 1rem;
-        }
-
-        .highlight-price {
-            color: var(--success-color);
-            font-weight: 700;
-        }
-
-        @media (max-width: 768px) {
-            .categories-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .category-highlights {
-                grid-template-columns: 1fr;
-            }
-        }
+        /* Bottoni */
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--spacing-sm); padding: 12px 18px; font-size: 1rem; font-weight: 600; border-radius: var(--radius-md); border: none; cursor: pointer; text-decoration: none; width: 100%; }
+        .btn-primary { background-color: var(--c-accent-primary); color: var(--c-text-on-accent); }
     </style>
 
+</head>
+<body>
+
+    <div id="navbar-placeholder"></div>
+
+    <div class="container">
+        <section class="categories-section">
+            <div class="section-header">
+                <h2><i class="ph-fill ph-folders"></i> Categorie Prodotti</h2>
+                <p>Esplora i prodotti per categoria</p>
+            </div>
+            
+            <div class="categories-grid">
+                <div class="category-card" data-category="smartphone">
+                    <div class="category-icon"><i class="ph-fill ph-device-mobile"></i></div>
+                    <h3>Smartphone</h3>
+                    <p>iPhone, Samsung, Google Pixel e altri</p>
+                    <div class="product-count">24 prodotti</div>
+                    <button class="btn btn-primary">Esplora</button>
+                </div>
+
+                <div class="category-card" data-category="fashion">
+                    <div class="category-icon"><i class="ph-fill ph-t-shirt"></i></div>
+                    <h3>Fashion</h3>
+                    <p>Abbigliamento, scarpe e accessori</p>
+                    <div class="product-count">18 prodotti</div>
+                    <button class="btn btn-primary">Esplora</button>
+                </div>
+
+                <div class="category-card" data-category="casa">
+                    <div class="category-icon"><i class="ph-fill ph-house"></i></div>
+                    <h3>Casa e Cucina</h3>
+                    <p>Prodotti per la casa e alimentari</p>
+                    <div class="product-count">12 prodotti</div>
+                    <button class="btn btn-primary">Esplora</button>
+                </div>
+
+                <div class="category-card" data-category="tech">
+                    <div class="category-icon"><i class="ph-fill ph-laptop"></i></div>
+                    <h3>Tecnologia</h3>
+                    <p>Gadget, accessori tech e elettronica</p>
+                    <div class="product-count">15 prodotti</div>
+                    <button class="btn btn-primary">Esplora</button>
+                </div>
+
+                <div class="category-card" data-category="salute">
+                    <div class="category-icon"><i class="ph-fill ph-pill"></i></div>
+                    <h3>Salute e Benessere</h3>
+                    <p>Integratori e prodotti per la salute</p>
+                    <div class="product-count">8 prodotti</div>
+                    <button class="btn btn-primary">Esplora</button>
+                </div>
+
+                <div class="category-card" data-category="sport">
+                    <div class="category-icon"><i class="ph-fill ph-soccer-ball"></i></div>
+                    <h3>Sport e Fitness</h3>
+                    <p>Abbigliamento sportivo e attrezzature</p>
+                    <div class="product-count">6 prodotti</div>
+                    <button class="btn btn-primary">Esplora</button>
+                </div>
+            </div>
+
+            <div class="popular-by-category">
+                <h3><i class="ph-fill ph-fire"></i> Più Popolari per Categoria</h3>
+                <div class="category-highlights">
+                    <div class="highlight-card">
+                        <img src="https://m.media-amazon.com/images/I/61hiFJPpY9L._AC_SL1500_.jpg" alt="Samsung Galaxy S25 Ultra" class="highlight-image">
+                        <div class="highlight-info">
+                            <span class="highlight-category">Smartphone</span>
+                            <h4>Samsung Galaxy S25 Ultra</h4>
+                            <span class="highlight-price">1.199€</span>
+                        </div>
+                    </div>
+                    <div class="highlight-card">
+                        <img src="https://m.media-amazon.com/images/I/71BHou6YJKL._AC_SY879_.jpg" alt="Calvin Klein T-Shirt" class="highlight-image">
+                        <div class="highlight-info">
+                            <span class="highlight-category">Fashion</span>
+                            <h4>Calvin Klein T-Shirt Uomo</h4>
+                            <span class="highlight-price">18€</span>
+                        </div>
+                    </div>
+                    <div class="highlight-card">
+                        <img src="https://m.media-amazon.com/images/I/51B45gaTgjL._AC_SL1000_.jpg" alt="Fire TV Stick" class="highlight-image">
+                        <div class="highlight-info">
+                            <span class="highlight-category">Tech</span>
+                            <h4>Amazon Fire TV Stick HD</h4>
+                            <span class="highlight-price">28,99€</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="footer-placeholder"></div>
+
     <script>
-        // Initialize cart count
-        function updateCartCount() {
-            try {
-                const savedData = localStorage.getItem('cronoshop_data');
-                if (savedData) {
-                    const userData = JSON.parse(savedData);
-                    const cart = userData.cart || [];
-                    const cartCount = document.querySelector('.cart-count');
-                    if (cartCount) {
-                        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-                        cartCount.textContent = totalItems;
+        function loadComponent(url, placeholderId) {
+            fetch(url)
+                .then(response => response.ok ? response.text() : Promise.reject('Errore nel caricamento'))
+                .then(data => {
+                    const placeholder = document.getElementById(placeholderId);
+                    if (!placeholder) return;
+                    
+                    const tempDiv = document.createElement('div');
+                    tempDiv.innerHTML = data;
+                    
+                    const script = tempDiv.querySelector('script');
+                    placeholder.innerHTML = tempDiv.innerHTML;
+
+                    if (script) {
+                        const newScript = document.createElement('script');
+                        newScript.textContent = script.textContent;
+                        document.body.appendChild(newScript).remove();
                     }
-                }
-            } catch (error) {
-                console.error('Error loading cart data:', error);
-            }
+                })
+                .catch(error => console.error(`Impossibile caricare ${url}: ${error}`));
         }
 
-        // Theme toggle
-        function toggleTheme() {
-            document.body.classList.toggle('dark-mode');
-            const isDark = document.body.classList.contains('dark-mode');
-            localStorage.setItem('darkMode', isDark);
-            
-            const themeBtn = document.querySelector('.theme-btn');
-            if (themeBtn) {
-                themeBtn.textContent = isDark ? '☀️' : '🌙';
-            }
-        }
-
-        // Mobile menu toggle
-        function toggleMobileMenu() {
-            const navMenu = document.getElementById('navMenu');
-            if (navMenu) {
-                navMenu.classList.toggle('active');
-            }
-        }
-
-        // Category navigation
-        function navigateToCategory(category) {
-            window.location.href = `index.html#offerte?category=${category}`;
-        }
-
-        // Initialize page
         document.addEventListener('DOMContentLoaded', function() {
-            updateCartCount();
-            
-            // Load theme preference
-            const darkMode = localStorage.getItem('darkMode') === 'true';
-            if (darkMode) {
-                document.body.classList.add('dark-mode');
-                const themeBtn = document.querySelector('.theme-btn');
-                if (themeBtn) {
-                    themeBtn.textContent = '☀️';
-                }
-            }
+            loadComponent('nav.html', 'navbar-placeholder');
+            loadComponent('footer.html', 'footer-placeholder');
 
-            // Setup event listeners
-            const themeBtn = document.querySelector('.theme-btn');
-            if (themeBtn) {
-                themeBtn.addEventListener('click', toggleTheme);
-            }
-
-            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-            if (mobileMenuBtn) {
-                mobileMenuBtn.addEventListener('click', toggleMobileMenu);
-            }
-
-            // Category card click handlers
-            const categoryCards = document.querySelectorAll('.category-card');
-            categoryCards.forEach(card => {
-                const exploreBtn = card.querySelector('.primary-btn');
-                if (exploreBtn) {
-                    exploreBtn.addEventListener('click', function() {
-                        const category = card.dataset.category;
-                        navigateToCategory(category);
-                    });
-                }
-            });
-
-            // Add fade-in animation
-            const elements = document.querySelectorAll('.glass-card');
-            elements.forEach((el, index) => {
-                setTimeout(() => {
-                    el.classList.add('fade-in');
-                }, index * 100);
+            document.querySelectorAll('.category-card .btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const category = this.closest('.category-card').dataset.category;
+                    window.location.href = `products.html?category=${category}`;
+                });
             });
         });
     </script>
