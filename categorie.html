@@ -13,136 +13,135 @@
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
     <style>
-        /* --- [1] IMPOSTAZIONI GLOBALI E VARIABILI --- */
+        /* --- [1] IMPOSTAZIONI GLOBALI E VARIABILI (Stile Unificato iOS) --- */
         :root {
-            --c-accent-primary: #007aff;
-            --c-bg-primary: #f2f2f7;
-            --c-bg-secondary: #ffffff;
-            --c-text-primary: #1d1d1f;
-            --c-text-secondary: #6e6e73;
-            --c-text-on-accent: #ffffff;
-            --c-separator: rgba(60, 60, 67, 0.29);
+            --c-accent-primary: #007aff; --c-bg-primary: #f2f2f7; --c-bg-secondary: #ffffff;
+            --c-bg-tertiary: #e5e5ea; --c-text-primary: #1d1d1f; --c-text-secondary: #6e6e73;
+            --c-text-on-accent: #ffffff; --c-separator: #E5E5EA;
             --font-system: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", Roboto, Helvetica, Arial, sans-serif;
-            --radius-md: 14px;
-            --radius-lg: 20px;
-            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
-            --spacing-sm: 8px;
-            --spacing-md: 16px;
-            --spacing-lg: 24px;
-            --spacing-xl: 32px;
-            --header-height: 60px;
-            --transition-fast: 0.2s cubic-bezier(0.3, 0, 0.4, 1);
+            --radius-md: 12px; --radius-lg: 18px;
+            --shadow-subtle: 0 1px 2px rgba(0,0,0,0.03), 0 3px 10px rgba(0,0,0,0.06);
+            --spacing-sm: 8px; --spacing-md: 16px; --spacing-lg: 24px; --spacing-xl: 32px;
+            --header-height: 60px; --transition-fast: 0.2s ease;
+            --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
         html.dark-theme {
-            --c-accent-primary: #0a84ff;
-            --c-bg-primary: #000000;
-            --c-bg-secondary: #1c1c1e;
-            --c-text-primary: #f5f5f7;
-            --c-text-secondary: #8d8d92;
-            --c-separator: rgba(84, 84, 88, 0.65);
-            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.2);
+            --c-accent-primary: #0a84ff; --c-bg-primary: #000000; --c-bg-secondary: #1c1c1e;
+            --c-bg-tertiary: #2c2c2e; --c-text-primary: #f5f5f7; --c-text-secondary: #8d8d92;
+            --c-separator: #38383A; --shadow-subtle: 0 4px 12px rgba(0, 0, 0, 0.25);
         }
 
         /* --- [2] RESET E STILI BASE --- */
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: var(--font-system);
-            background-color: var(--c-bg-primary);
-            color: var(--c-text-primary);
-            padding-top: var(--header-height);
+            font-family: var(--font-system); background-color: var(--c-bg-primary);
+            color: var(--c-text-primary); padding-top: var(--header-height);
+            -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
         }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 var(--spacing-lg); }
-
-        /* --- [3] STILI SPECIFICI DELLA PAGINA CATEGORIE --- */
-        .categories-section { padding: var(--spacing-xl) 0; }
-        .section-header { text-align: center; margin-bottom: var(--spacing-xl); }
-        .section-header h2 { font-size: 2.2rem; display: flex; align-items: center; justify-content: center; gap: var(--spacing-md); }
-        .section-header p { color: var(--c-text-secondary); }
-
-        /* Griglia Categorie */
-        .categories-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: var(--spacing-lg);
-            margin-bottom: var(--spacing-xl);
-        }
-        .category-card {
-            background-color: var(--c-bg-secondary);
-            border-radius: var(--radius-lg);
-            padding: var(--spacing-lg);
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            box-shadow: var(--shadow-md);
-            transition: transform var(--transition-fast), box-shadow var(--transition-fast);
-        }
-        .category-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-            html.dark-theme & { box-shadow: 0 8px 20px rgba(0,0,0,0.25); }
-        }
-        .category-icon {
-            font-size: 2.5rem;
-            width: 64px;
-            height: 64px;
-            border-radius: var(--radius-md);
-            background-color: color-mix(in srgb, var(--c-accent-primary), transparent 85%);
-            color: var(--c-accent-primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: var(--spacing-md);
-        }
-        .category-card h3 { font-size: 1.2rem; margin-bottom: var(--spacing-sm); }
-        .category-card p { color: var(--c-text-secondary); font-size: 0.95rem; flex-grow: 1; margin-bottom: var(--spacing-lg); }
-        .product-count {
-            display: inline-block;
-            background-color: color-mix(in srgb, var(--c-bg-primary), #000 5%);
-            padding: 4px 12px;
-            border-radius: var(--radius-md);
-            font-size: 0.9rem;
-            font-weight: 500;
-            margin-bottom: var(--spacing-lg);
-        }
-        html.dark-theme .product-count { background-color: color-mix(in srgb, var(--c-bg-primary), #fff 10%); }
-
-        /* Prodotti Popolari */
-        .popular-by-category { margin-top: var(--spacing-xl); }
-        .popular-by-category h3 {
-            font-size: 1.5rem;
-            text-align: center;
-            margin-bottom: var(--spacing-lg);
-            display: flex; align-items: center; justify-content: center; gap: var(--spacing-sm);
-        }
-        .category-highlights {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: var(--spacing-md);
-        }
-        .highlight-card {
-            background-color: var(--c-bg-secondary);
-            border-radius: var(--radius-md);
-            padding: var(--spacing-md);
-            display: flex;
-            align-items: center;
-            gap: var(--spacing-md);
-        }
-        .highlight-image { width: 60px; height: 60px; object-fit: cover; border-radius: var(--radius-sm); flex-shrink: 0; }
-        .highlight-category { font-size: 0.8rem; font-weight: 500; color: var(--c-accent-primary); }
-        .highlight-info h4 { font-size: 1rem; margin: 2px 0; }
-        .highlight-price { font-size: 0.9rem; color: var(--c-text-secondary); }
-
-        /* Bottoni */
         .btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--spacing-sm); padding: 12px 18px; font-size: 1rem; font-weight: 600; border-radius: var(--radius-md); border: none; cursor: pointer; text-decoration: none; width: 100%; }
         .btn-primary { background-color: var(--c-accent-primary); color: var(--c-text-on-accent); }
-    </style>
+        
+        /* --- [3] NAVBAR STATICA COMPLETA --- */
+        .glass-header {
+            position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+            background-color: color-mix(in srgb, var(--c-bg-secondary), transparent 20%);
+            backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 1px solid var(--c-separator);
+        }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 20px; height: var(--header-height); }
+        .logo-link { display: flex; align-items: center; text-decoration: none; color: var(--c-text-primary); gap: 10px; }
+        .logo-image { height: 32px; } .logo-dark { display: none; }
+        html.dark-theme .logo-light { display: none; }
+        html.dark-theme .logo-dark { display: block; }
+        .logo-text { font-size: 20px; font-weight: 600; }
+        .nav-desktop { display: flex; }
+        .nav-desktop-list { display: flex; gap: var(--spacing-sm); list-style: none; }
+        .nav-desktop-link { padding: 8px 12px; text-decoration: none; color: var(--c-text-secondary); font-size: 15px; font-weight: 500; border-radius: var(--radius-sm); transition: background-color var(--transition-fast), color var(--transition-fast); }
+        .nav-desktop-link:hover { background-color: var(--c-bg-tertiary); color: var(--c-text-primary); }
+        .nav-desktop-link.active { color: var(--c-text-primary); font-weight: 600; }
+        .nav-actions { display: flex; align-items: center; gap: var(--spacing-sm); }
+        .glass-btn { background: transparent; border: none; cursor: pointer; padding: 8px; border-radius: 50%; display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; }
+        .glass-btn:hover { background-color: var(--c-bg-tertiary); }
+        .glass-btn i { font-size: 22px; color: var(--c-text-primary); }
+        .mobile-menu-btn { display: none; }
+        .mobile-menu { position: fixed; top: 0; right: 0; width: 100%; height: 100%; max-width: 320px; background-color: var(--c-bg-secondary); z-index: 1002; transform: translateX(100%); transition: transform var(--transition-smooth); display: flex; flex-direction: column; border-left: 1px solid var(--c-separator); }
+        .mobile-menu.is-open { transform: translateX(0); }
+        .mobile-menu-header { display: flex; justify-content: space-between; align-items: center; padding: 8px 16px; height: var(--header-height); flex-shrink: 0; border-bottom: 1px solid var(--c-separator); }
+        .mobile-menu-title { font-size: 17px; font-weight: 600; }
+        .mobile-menu-content { padding: var(--spacing-md); overflow-y: auto; flex-grow: 1; }
+        .nav-mobile-list { list-style: none; }
+        .nav-mobile-list .nav-link { display: flex; align-items: center; padding: 12px 8px; text-decoration: none; color: var(--c-text-primary); font-size: 17px; border-radius: var(--radius-sm); }
+        .nav-mobile-list .nav-link:hover { background-color: var(--c-bg-tertiary); }
+        .nav-mobile-list .nav-link.active { background-color: var(--c-accent-primary); color: var(--c-text-on-accent); }
+        .nav-mobile-list .nav-link i { font-size: 22px; margin-right: 16px; color: var(--c-accent-primary); width: 24px; text-align: center; }
+        .nav-mobile-list .nav-link.active i { color: inherit; }
+        .overlay { position: fixed; inset: 0; background-color: rgba(0, 0, 0, 0.4); z-index: 1001; opacity: 0; visibility: hidden; transition: opacity var(--transition-fast); }
+        .overlay.is-active { opacity: 1; visibility: visible; }
+        @media (max-width: 992px) { .nav-desktop { display: none; } .mobile-menu-btn { display: flex; } }
 
+        /* --- [4] STILI PAGINA CATEGORIE --- */
+        .categories-section { padding: var(--spacing-xl) 0; }
+        .section-header { text-align: center; margin-bottom: var(--spacing-xl); }
+        .section-header h2 { font-size: 2.2rem; }
+        .section-header p { color: var(--c-text-secondary); }
+        .categories-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--spacing-lg); }
+        .category-card { background-color: var(--c-bg-secondary); border-radius: var(--radius-lg); padding: var(--spacing-lg); text-align: center; display: flex; flex-direction: column; align-items: center; box-shadow: var(--shadow-subtle); transition: transform var(--transition-fast); }
+        .category-card:hover { transform: translateY(-5px); }
+        .category-icon { font-size: 2.5rem; width: 64px; height: 64px; border-radius: var(--radius-md); background-color: color-mix(in srgb, var(--c-accent-primary), transparent 85%); color: var(--c-accent-primary); display: flex; align-items: center; justify-content: center; margin-bottom: var(--spacing-md); }
+        .category-card h3 { font-size: 1.2rem; margin-bottom: var(--spacing-sm); }
+        .category-card p { color: var(--c-text-secondary); font-size: 0.95rem; flex-grow: 1; margin-bottom: var(--spacing-lg); }
+        .product-count { display: inline-block; background-color: var(--c-bg-primary); padding: 4px 12px; border-radius: var(--radius-md); font-size: 0.9rem; font-weight: 500; margin-bottom: var(--spacing-lg); }
+        .popular-by-category { background-color: var(--c-bg-secondary); border-radius: var(--radius-lg); padding: var(--spacing-lg); margin-top: var(--spacing-xl); box-shadow: var(--shadow-subtle); }
+        .popular-by-category h3 { font-size: 1.5rem; text-align: center; margin-bottom: var(--spacing-lg); }
+        .category-highlights { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--spacing-md); }
+        .highlight-card { background-color: var(--c-bg-primary); border-radius: var(--radius-md); padding: var(--spacing-md); display: flex; align-items: center; gap: var(--spacing-md); }
+        .highlight-image { width: 60px; height: 60px; object-fit: cover; border-radius: var(--radius-sm); flex-shrink: 0; }
+        .highlight-category { font-size: 0.8rem; font-weight: 500; color: var(--c-accent-primary); }
+    </style>
 </head>
 <body>
+    
+    <header class="glass-header" id="mainHeader">
+        <nav class="nav-container">
+            <a href="index.html" class="logo-link">
+                <img src="assets/cronoshop-logo.png" alt="Logo Cronoshop" class="logo-image logo-light">
+                <img src="assets/cronoshop-logo-black.png" alt="Logo Cronoshop" class="logo-image logo-dark">
+                <span class="logo-text">Cronoshop</span>
+            </a>
+            <div class="nav-desktop">
+                <ul class="nav-desktop-list">
+                    <li><a href="index.html" class="nav-desktop-link" data-page="index">Home</a></li>
+                    <li><a href="products.html" class="nav-desktop-link" data-page="products">Prodotti</a></li>
+                    <li><a href="categorie.html" class="nav-desktop-link" data-page="categorie">Categorie</a></li>
+                    <li><a href="blog.html" class="nav-desktop-link" data-page="blog">Blog</a></li>
+                </ul>
+            </div>
+            <div class="nav-actions">
+                <button class="glass-btn" id="theme-toggle-btn" aria-label="Cambia tema"><i class="ph-bold ph-moon"></i></button>
+                <a href="cart.html" class="glass-btn" aria-label="Carrello"><i class="ph-bold ph-shopping-cart-simple"></i></a>
+                <a href="account.html" class="glass-btn" aria-label="Account"><i class="ph-bold ph-user-circle"></i></a>
+                <button class="glass-btn mobile-menu-btn" id="mobileMenuBtn" aria-label="Apri menu"><i class="ph-bold ph-list"></i></button>
+            </div>
+        </nav>
+    </header>
 
-    <div id="navbar-placeholder"></div>
+    <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true">
+        <div class="mobile-menu-header">
+            <span class="mobile-menu-title">Menu</span>
+            <button class="glass-btn" id="closeMenuBtn" aria-label="Chiudi menu"><i class="ph-bold ph-x"></i></button>
+        </div>
+        <div class="mobile-menu-content">
+            <ul class="nav-mobile-list">
+                <li><a href="index.html" class="nav-link" data-page="index"><i class="ph-fill ph-house"></i>Home</a></li>
+                <li><a href="products.html" class="nav-link" data-page="products"><i class="ph-fill ph-package"></i>Prodotti</a></li>
+                <li><a href="categorie.html" class="nav-link" data-page="categorie"><i class="ph-fill ph-folder-simple"></i>Categorie</a></li>
+                <li><a href="blog.html" class="nav-link" data-page="blog"><i class="ph-fill ph-newspaper"></i>Blog</a></li>
+            </ul>
+        </div>
+    </div>
 
+    <div class="overlay" id="overlay"></div>
     <div class="container">
         <section class="categories-section">
             <div class="section-header">
@@ -151,83 +150,12 @@
             </div>
             
             <div class="categories-grid">
-                <div class="category-card" data-category="smartphone">
-                    <div class="category-icon"><i class="ph-fill ph-device-mobile"></i></div>
-                    <h3>Smartphone</h3>
-                    <p>iPhone, Samsung, Google Pixel e altri</p>
-                    <div class="product-count">24 prodotti</div>
-                    <button class="btn btn-primary">Esplora</button>
                 </div>
-
-                <div class="category-card" data-category="fashion">
-                    <div class="category-icon"><i class="ph-fill ph-t-shirt"></i></div>
-                    <h3>Fashion</h3>
-                    <p>Abbigliamento, scarpe e accessori</p>
-                    <div class="product-count">18 prodotti</div>
-                    <button class="btn btn-primary">Esplora</button>
-                </div>
-
-                <div class="category-card" data-category="casa">
-                    <div class="category-icon"><i class="ph-fill ph-house"></i></div>
-                    <h3>Casa e Cucina</h3>
-                    <p>Prodotti per la casa e alimentari</p>
-                    <div class="product-count">12 prodotti</div>
-                    <button class="btn btn-primary">Esplora</button>
-                </div>
-
-                <div class="category-card" data-category="tech">
-                    <div class="category-icon"><i class="ph-fill ph-laptop"></i></div>
-                    <h3>Tecnologia</h3>
-                    <p>Gadget, accessori tech e elettronica</p>
-                    <div class="product-count">15 prodotti</div>
-                    <button class="btn btn-primary">Esplora</button>
-                </div>
-
-                <div class="category-card" data-category="salute">
-                    <div class="category-icon"><i class="ph-fill ph-pill"></i></div>
-                    <h3>Salute e Benessere</h3>
-                    <p>Integratori e prodotti per la salute</p>
-                    <div class="product-count">8 prodotti</div>
-                    <button class="btn btn-primary">Esplora</button>
-                </div>
-
-                <div class="category-card" data-category="sport">
-                    <div class="category-icon"><i class="ph-fill ph-soccer-ball"></i></div>
-                    <h3>Sport e Fitness</h3>
-                    <p>Abbigliamento sportivo e attrezzature</p>
-                    <div class="product-count">6 prodotti</div>
-                    <button class="btn btn-primary">Esplora</button>
-                </div>
-            </div>
 
             <div class="popular-by-category">
                 <h3><i class="ph-fill ph-fire"></i> Più Popolari per Categoria</h3>
                 <div class="category-highlights">
-                    <div class="highlight-card">
-                        <img src="https://m.media-amazon.com/images/I/61hiFJPpY9L._AC_SL1500_.jpg" alt="Samsung Galaxy S25 Ultra" class="highlight-image">
-                        <div class="highlight-info">
-                            <span class="highlight-category">Smartphone</span>
-                            <h4>Samsung Galaxy S25 Ultra</h4>
-                            <span class="highlight-price">1.199€</span>
-                        </div>
                     </div>
-                    <div class="highlight-card">
-                        <img src="https://m.media-amazon.com/images/I/71BHou6YJKL._AC_SY879_.jpg" alt="Calvin Klein T-Shirt" class="highlight-image">
-                        <div class="highlight-info">
-                            <span class="highlight-category">Fashion</span>
-                            <h4>Calvin Klein T-Shirt Uomo</h4>
-                            <span class="highlight-price">18€</span>
-                        </div>
-                    </div>
-                    <div class="highlight-card">
-                        <img src="https://m.media-amazon.com/images/I/51B45gaTgjL._AC_SL1000_.jpg" alt="Fire TV Stick" class="highlight-image">
-                        <div class="highlight-info">
-                            <span class="highlight-category">Tech</span>
-                            <h4>Amazon Fire TV Stick HD</h4>
-                            <span class="highlight-price">28,99€</span>
-                        </div>
-                    </div>
-                </div>
             </div>
         </section>
     </div>
@@ -235,38 +163,85 @@
     <div id="footer-placeholder"></div>
 
     <script>
-        function loadComponent(url, placeholderId) {
-            fetch(url)
-                .then(response => response.ok ? response.text() : Promise.reject('Errore nel caricamento'))
-                .then(data => {
-                    const placeholder = document.getElementById(placeholderId);
-                    if (!placeholder) return;
-                    
-                    const tempDiv = document.createElement('div');
-                    tempDiv.innerHTML = data;
-                    
-                    const script = tempDiv.querySelector('script');
-                    placeholder.innerHTML = tempDiv.innerHTML;
-
-                    if (script) {
-                        const newScript = document.createElement('script');
-                        newScript.textContent = script.textContent;
-                        document.body.appendChild(newScript).remove();
-                    }
-                })
-                .catch(error => console.error(`Impossibile caricare ${url}: ${error}`));
-        }
-
         document.addEventListener('DOMContentLoaded', function() {
-            loadComponent('nav.html', 'navbar-placeholder');
-            loadComponent('footer.html', 'footer-placeholder');
+            
+            // --- Script per la Navbar Statica (Corretto e Completo) ---
+            const NavApp = {
+                init() {
+                    this.htmlEl = document.documentElement;
+                    this.themeToggleBtn = document.getElementById('theme-toggle-btn');
+                    this.mobileMenuBtn = document.getElementById('mobileMenuBtn');
+                    this.closeMenuBtn = document.getElementById('closeMenuBtn');
+                    this.mobileMenu = document.getElementById('mobileMenu');
+                    this.overlay = document.getElementById('overlay');
+                    
+                    this.initTheme();
+                    this.initMobileMenu();
+                    this.initActiveLink();
+                },
+                
+                initTheme() {
+                    const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+                    this.applyTheme(savedTheme);
 
+                    this.themeToggleBtn.addEventListener('click', () => {
+                        const newTheme = this.htmlEl.classList.contains('dark-theme') ? 'light' : 'dark';
+                        this.applyTheme(newTheme);
+                    });
+                },
+
+                applyTheme(theme) {
+                    this.htmlEl.classList.toggle('dark-theme', theme === 'dark');
+                    this.themeToggleBtn.querySelector('i').className = theme === 'dark' ? 'ph-bold ph-sun' : 'ph-bold ph-moon';
+                    localStorage.setItem('theme', theme);
+                },
+
+                initMobileMenu() {
+                    if (!this.mobileMenuBtn) return;
+                    
+                    this.mobileMenuBtn.addEventListener('click', () => {
+                        this.mobileMenu.classList.add('is-open');
+                        this.overlay.classList.add('is-active');
+                    });
+
+                    this.closeMenuBtn.addEventListener('click', () => this.closeAll());
+                    this.overlay.addEventListener('click', () => this.closeAll());
+                },
+                
+                closeAll() {
+                    this.mobileMenu.classList.remove('is-open');
+                    this.overlay.classList.remove('is-active');
+                },
+
+                initActiveLink() {
+                    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+                    document.querySelectorAll('[data-page]').forEach(link => {
+                        const linkPage = new URL(link.href).pathname.split('/').pop();
+                        if (linkPage === currentPage) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            };
+            
+            NavApp.init();
+
+            // --- Script per la pagina Categorie ---
             document.querySelectorAll('.category-card .btn').forEach(button => {
                 button.addEventListener('click', function() {
                     const category = this.closest('.category-card').dataset.category;
                     window.location.href = `products.html?category=${category}`;
                 });
             });
+
+            // --- Caricamento Footer (opzionale) ---
+            fetch('footer.html')
+                .then(response => response.ok ? response.text() : Promise.reject('Errore'))
+                .then(data => {
+                    const placeholder = document.getElementById('footer-placeholder');
+                    if (placeholder) placeholder.innerHTML = data;
+                })
+                .catch(error => console.error(`Impossibile caricare il footer: ${error}`));
         });
     </script>
 </body>
