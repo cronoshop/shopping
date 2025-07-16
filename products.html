@@ -20,54 +20,24 @@
     ==========================================================================
     */
     :root {
-        /* Palette Colori (Tema Chiaro) */
-        --c-accent-primary: #007aff;
-        --c-success: #34c759;
-        --c-error: #ff3b30;
-        --c-warning: #ff9500;
-        --c-bg-primary: #f2f2f7;      /* Sfondo di sistema iOS */
-        --c-bg-secondary: #ffffff;   /* Sfondo per le card */
-        --c-bg-tertiary: #e5e5ea;     /* Sfondo per bottoni/elementi secondari */
-        --c-text-primary: #1d1d1f;
-        --c-text-secondary: #6e6e73;
-        --c-text-on-accent: #ffffff;
-        --c-separator: #E5E5EA;      /* Colore dei separatori di lista */
-
-        /* Effetto Vetro per la Navbar */
-        --nav-bg-color: rgba(242, 242, 247, 0.8);
-
-        /* Tipografia e Font */
+        --c-accent-primary: #007aff; --c-success: #34c759; --c-error: #ff3b30;
+        --c-bg-primary: #f2f2f7; --c-bg-secondary: #ffffff; --c-bg-tertiary: #e5e5ea;
+        --c-text-primary: #1d1d1f; --c-text-secondary: #6e6e73; --c-text-on-accent: #ffffff;
+        --c-separator: #E5E5EA; --nav-bg-color: rgba(242, 242, 247, 0.8);
         --font-system: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", Roboto, Helvetica, Arial, sans-serif;
-        
-        /* Bordi e Ombre */
-        --radius-sm: 8px;
-        --radius-md: 12px;
-        --radius-lg: 18px;
+        --radius-sm: 8px; --radius-md: 12px; --radius-lg: 18px;
         --shadow-subtle: 0 1px 2px rgba(0,0,0,0.03), 0 3px 10px rgba(0,0,0,0.06);
         --shadow-strong: 0 6px 20px rgba(0,0,0,0.1);
-
-        /* Spaziature e Layout */
-        --spacing-sm: 8px;
-        --spacing-md: 16px;
-        --spacing-lg: 24px;
-        --spacing-xl: 32px;
-        --header-height: 60px;
-        --transition-fast: 0.2s cubic-bezier(0.3, 0, 0.4, 1);
+        --spacing-sm: 8px; --spacing-md: 16px; --spacing-lg: 24px; --spacing-xl: 32px;
+        --header-height: 60px; --transition-fast: 0.2s cubic-bezier(0.3, 0, 0.4, 1);
         --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     html.dark-theme {
-        --c-accent-primary: #0a84ff;
-        --c-success: #30d158;
-        --c-error: #ff453a;
-        --c-warning: #ff9f0a;
-        --c-bg-primary: #000000;
-        --c-bg-secondary: #1c1c1e;
-        --c-bg-tertiary: #2c2c2e;
-        --c-text-primary: #f5f5f7;
-        --c-text-secondary: #8d8d92;
-        --c-separator: #38383A;
-        --nav-bg-color: rgba(28, 28, 30, 0.8);
+        --c-accent-primary: #0a84ff; --c-success: #30d158; --c-error: #ff453a;
+        --c-bg-primary: #000000; --c-bg-secondary: #1c1c1e; --c-bg-tertiary: #2c2c2e;
+        --c-text-primary: #f5f5f7; --c-text-secondary: #8d8d92;
+        --c-separator: #38383A; --nav-bg-color: rgba(28, 28, 30, 0.8);
         --shadow-subtle: 0 4px 12px rgba(0, 0, 0, 0.2);
         --shadow-strong: 0 8px 25px rgba(0, 0, 0, 0.3);
     }
@@ -80,13 +50,9 @@
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
-        font-family: var(--font-system);
-        background-color: var(--c-bg-primary);
-        color: var(--c-text-primary);
-        padding-top: var(--header-height);
-        line-height: 1.6;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
+        font-family: var(--font-system); background-color: var(--c-bg-primary); color: var(--c-text-primary);
+        padding-top: var(--header-height); line-height: 1.6;
+        -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
     }
     .container { max-width: 1400px; margin: 0 auto; padding: 0 var(--spacing-lg); }
 
@@ -95,24 +61,13 @@
     [3] NAVBAR STATICA COMPLETA
     ==========================================================================
     */
-    /* Header e Contenitore */
-    .glass-header {
-        position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
-        background-color: var(--nav-bg-color); backdrop-filter: saturate(180%) blur(20px);
-        -webkit-backdrop-filter: saturate(180%) blur(20px);
-        border-bottom: 1px solid var(--c-separator);
-        transition: background-color var(--transition-fast), border-color var(--transition-fast);
-    }
+    .glass-header { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; background-color: var(--nav-bg-color); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid var(--c-separator); transition: background-color var(--transition-fast), border-color var(--transition-fast); }
     .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto; padding: 0 var(--spacing-lg); height: var(--header-height); }
-    
-    /* Logo */
     .logo-link { display: flex; align-items: center; text-decoration: none; color: var(--c-text-primary); gap: 10px; flex-shrink: 0; }
     .logo-image { height: 32px; } .logo-dark { display: none; }
     html.dark-theme .logo-light { display: none; }
     html.dark-theme .logo-dark { display: block; }
     .logo-text { font-size: 20px; font-weight: 600; }
-    
-    /* Navigazione Desktop e Dropdown */
     .nav-desktop { display: flex; flex-grow: 1; justify-content: center; }
     .nav-desktop-list { display: flex; gap: var(--spacing-sm); list-style: none; }
     .nav-desktop-item { position: relative; }
@@ -124,14 +79,10 @@
     .dropdown.is-open .dropdown-menu { opacity: 1; visibility: visible; }
     .dropdown-item a { display: flex; align-items: center; gap: 12px; padding: 10px 12px; text-decoration: none; color: var(--c-text-primary); border-radius: var(--radius-sm); }
     .dropdown-item a:hover { background-color: var(--c-bg-tertiary); }
-
-    /* Azioni Header */
     .nav-actions { display: flex; align-items: center; gap: var(--spacing-sm); flex-shrink: 0; }
     .glass-btn { background: transparent; border: none; cursor: pointer; padding: 8px; border-radius: 50%; display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; position: relative; }
     .glass-btn:hover { background-color: var(--c-bg-tertiary); }
     .glass-btn i { font-size: 22px; color: var(--c-text-primary); }
-    
-    /* Menu Mobile e Overlay */
     .mobile-menu-btn { display: none; }
     .mobile-menu { position: fixed; top: 0; right: 0; width: 100%; height: 100%; max-width: 320px; background-color: var(--c-bg-secondary); z-index: 1002; transform: translateX(100%); transition: transform var(--transition-smooth); display: flex; flex-direction: column; border-left: 1px solid var(--c-separator); box-shadow: var(--shadow-strong); }
     .mobile-menu.is-open { transform: translateX(0); }
@@ -146,8 +97,6 @@
     .nav-mobile-list .nav-link.active i { color: inherit; }
     .overlay { position: fixed; inset: 0; background-color: rgba(0, 0, 0, 0.4); z-index: 1001; opacity: 0; visibility: hidden; transition: opacity var(--transition-fast); }
     .overlay.is-active { opacity: 1; visibility: visible; }
-    
-    /* Responsive Navbar */
     @media (max-width: 992px) { .nav-desktop { display: none; } .mobile-menu-btn { display: flex; } }
 
     /*
@@ -155,27 +104,20 @@
     [4] STILI PAGINA PRODOTTI
     ==========================================================================
     */
-    /* Intestazione Pagina */
     .page-header { padding: var(--spacing-xl) 0; text-align: center; }
     .page-header h1 { font-size: 2.8rem; font-weight: 700; }
     .page-header p { font-size: 1.1rem; color: var(--c-text-secondary); max-width: 600px; margin: var(--spacing-sm) auto 0; }
-    
-    /* Controlli Filtro e Ordinamento */
     .products-controls-wrapper { position: sticky; top: var(--header-height); background-color: var(--c-bg-primary); padding: var(--spacing-md) 0; z-index: 100; border-bottom: 1px solid var(--c-separator); }
     .products-controls { display: flex; justify-content: space-between; align-items: center; gap: var(--spacing-md); flex-wrap: wrap; }
     .filter-buttons { display: flex; gap: var(--spacing-sm); overflow-x: auto; padding-bottom: 10px; }
     .filter-btn { padding: 8px 16px; font-size: 0.95rem; font-weight: 500; border-radius: var(--radius-md); border: none; cursor: pointer; background-color: var(--c-bg-secondary); color: var(--c-text-primary); transition: all var(--transition-fast); flex-shrink: 0; }
     .filter-btn.active { background-color: var(--c-accent-primary); color: var(--c-text-on-accent); font-weight: 600; }
     .sort-controls select { background-color: var(--c-bg-secondary); border: 1px solid var(--c-separator); border-radius: var(--radius-md); color: var(--c-text-primary); padding: 8px 12px; font-size: 0.95rem; }
-    
-    /* Griglia Prodotti */
     .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: var(--spacing-lg); padding: var(--spacing-xl) 0; }
-    
-    /* Card Prodotto */
     .product-card { background-color: var(--c-bg-secondary); border-radius: var(--radius-lg); box-shadow: var(--shadow-subtle); display: flex; flex-direction: column; transition: transform var(--transition-fast), box-shadow var(--transition-fast); opacity: 0; transform: translateY(20px); animation: fadeIn 0.5s ease forwards; }
     @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
     .product-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-strong); }
-    .product-image-container { position: relative; width: 100%; padding-top: 100%; /* Aspect ratio 1:1 */ overflow: hidden; border-top-left-radius: var(--radius-lg); border-top-right-radius: var(--radius-lg); }
+    .product-image-container { position: relative; width: 100%; padding-top: 100%; overflow: hidden; border-top-left-radius: var(--radius-lg); border-top-right-radius: var(--radius-lg); }
     .product-image { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; }
     .product-info { padding: var(--spacing-md); flex-grow: 1; display: flex; flex-direction: column; }
     .product-name { font-size: 1.1rem; font-weight: 600; line-height: 1.4; margin-bottom: var(--spacing-sm); flex-grow: 1; }
@@ -188,8 +130,6 @@
     .buy-btn { width: 100%; padding: 12px; font-weight: 600; font-size: 1rem; background: var(--c-accent-primary); color: var(--c-text-on-accent); border: none; border-radius: var(--radius-md); cursor: pointer; transition: all var(--transition-fast); display: flex; align-items: center; justify-content: center; gap: var(--spacing-sm); }
     .secondary-actions { display: flex; gap: var(--spacing-sm); }
     .action-btn { flex: 1; padding: 10px; background-color: var(--c-bg-tertiary); border: none; color: var(--c-text-primary); border-radius: var(--radius-md); cursor: pointer; display: flex; align-items: center; justify-content: center; gap: var(--spacing-sm); font-size: 0.9rem; }
-    
-    /* Load More Button */
     .load-more-container { text-align: center; padding-bottom: var(--spacing-xl); }
     .load-more-btn { padding: 12px 24px; font-size: 1rem; font-weight: 600; }
     </style>
@@ -227,7 +167,6 @@
             </div>
         </nav>
     </header>
-
     <div class="mobile-menu" id="mobileMenu" role="dialog">
         <div class="mobile-menu-header">
             <span class="mobile-menu-title">Menu</span>
@@ -276,471 +215,113 @@
         </div>
 
         <div class="container">
-            <div class="products-grid" id="productsGrid">
-                <div class="product-card" data-category="smartphone">
-                    <div class="product-image-container"><img src="https://m.media-amazon.com/images/I/71T5N33c1-L._AC_SX679_.jpg" alt="Apple iPhone 16 Pro" class="product-image"></div>
-                    <div class="product-info">
-                        <p class="product-category">Smartphone</p>
-                        <h3 class="product-name">Apple iPhone 16 Pro (256 GB) - Titanio Naturale</h3>
-                        <div class="product-price">
-                            <span class="current-price">1.249,00€</span>
-                            <span class="original-price">1.489,00€</span>
-                            <span class="discount-badge">-16%</span>
-                        </div>
-                        <div class="product-actions">
-                            <a href="#" class="buy-btn">Acquista su Amazon</a>
-                            <div class="secondary-actions">
-                                <button class="action-btn"><i class="ph-bold ph-heart"></i></button>
-                                <button class="action-btn"><i class="ph-bold ph-share-network"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="product-card" data-category="tech">
-                    <div class="product-image-container"><img src="https://m.media-amazon.com/images/I/71pAAN-56QL._AC_SX679_.jpg" alt="Sony WH-1000XM5 Cuffie" class="product-image"></div>
-                    <div class="product-info">
-                        <p class="product-category">Tech</p>
-                        <h3 class="product-name">Sony WH-1000XM5 Cuffie Wireless con Noise Cancelling</h3>
-                        <div class="product-price">
-                            <span class="current-price">298,00€</span>
-                            <span class="original-price">419,99€</span>
-                            <span class="discount-badge">-29%</span>
-                        </div>
-                        <div class="product-actions">
-                            <a href="#" class="buy-btn">Acquista su Amazon</a>
-                            <div class="secondary-actions">
-                                <button class="action-btn"><i class="ph-bold ph-heart"></i></button>
-                                <button class="action-btn"><i class="ph-bold ph-share-network"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="product-card" data-category="fashion">
-                    <div class="product-image-container"><img src="https://m.media-amazon.com/images/I/81o9wS8rJ4L._AC_SX569_.jpg" alt="Levi's 501 Original Jeans" class="product-image"></div>
-                    <div class="product-info">
-                        <p class="product-category">Fashion</p>
-                        <h3 class="product-name">Levi's 501 Original, Jeans Uomo</h3>
-                        <div class="product-price">
-                            <span class="current-price">65,99€</span>
-                            <span class="original-price">110,00€</span>
-                            <span class="discount-badge">-40%</span>
-                        </div>
-                        <div class="product-actions">
-                            <a href="#" class="buy-btn">Acquista su Amazon</a>
-                            <div class="secondary-actions">
-                                <button class="action-btn"><i class="ph-bold ph-heart"></i></button>
-                                <button class="action-btn"><i class="ph-bold ph-share-network"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="product-card" data-category="casa">
-                    <div class="product-image-container"><img src="https://m.media-amazon.com/images/I/61k366n2yJL._AC_SX679_.jpg" alt="iRobot Roomba Combo j7+" class="product-image"></div>
-                    <div class="product-info">
-                        <p class="product-category">Casa</p>
-                        <h3 class="product-name">iRobot Roomba Combo j7+ Robot Aspirapolvere e Lavapavimenti</h3>
-                        <div class="product-price">
-                            <span class="current-price">699,00€</span>
-                            <span class="original-price">999,00€</span>
-                            <span class="discount-badge">-30%</span>
-                        </div>
-                        <div class="product-actions">
-                            <a href="#" class="buy-btn">Acquista su Amazon</a>
-                            <div class="secondary-actions">
-                                <button class="action-btn"><i class="ph-bold ph-heart"></i></button>
-                                <button class="action-btn"><i class="ph-bold ph-share-network"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="product-card" data-category="tech">
-                    <div class="product-image-container"><img src="https://m.media-amazon.com/images/I/61L5l34bKxL._AC_SX679_.jpg" alt="Apple Watch Series 9" class="product-image"></div>
-                    <div class="product-info">
-                        <p class="product-category">Tech</p>
-                        <h3 class="product-name">Apple Watch Series 9 (GPS) Cassa 45 mm in Alluminio</h3>
-                        <div class="product-price">
-                            <span class="current-price">419,00€</span>
-                            <span class="original-price">479,00€</span>
-                            <span class="discount-badge">-13%</span>
-                        </div>
-                        <div class="product-actions">
-                            <a href="#" class="buy-btn">Acquista su Amazon</a>
-                            <div class="secondary-actions">
-                                <button class="action-btn"><i class="ph-bold ph-heart"></i></button>
-                                <button class="action-btn"><i class="ph-bold ph-share-network"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="product-card" data-category="smartphone">
-                    <div class="product-image-container"><img src="https://m.media-amazon.com/images/I/71p-rA7-iWL._AC_SX679_.jpg" alt="Samsung Galaxy S24 Ultra" class="product-image"></div>
-                    <div class="product-info">
-                        <p class="product-category">Smartphone</p>
-                        <h3 class="product-name">Samsung Galaxy S24 Ultra, AI Smartphone, Caricatore incluso</h3>
-                        <div class="product-price">
-                            <span class="current-price">1.149,00€</span>
-                            <span class="original-price">1.499,00€</span>
-                            <span class="discount-badge">-23%</span>
-                        </div>
-                        <div class="product-actions">
-                            <a href="#" class="buy-btn">Acquista su Amazon</a>
-                            <div class="secondary-actions">
-                                <button class="action-btn"><i class="ph-bold ph-heart"></i></button>
-                                <button class="action-btn"><i class="ph-bold ph-share-network"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="product-card" data-category="casa">
-                    <div class="product-image-container"><img src="https://m.media-amazon.com/images/I/71gp48Hn3vL._AC_SX679_.jpg" alt="De'Longhi Magnifica S" class="product-image"></div>
-                    <div class="product-info">
-                        <p class="product-category">Casa</p>
-                        <h3 class="product-name">De'Longhi Magnifica S, Macchina da Caffè Automatica per Espresso</h3>
-                        <div class="product-price">
-                            <span class="current-price">319,99€</span>
-                            <span class="original-price">440,00€</span>
-                            <span class="discount-badge">-27%</span>
-                        </div>
-                        <div class="product-actions">
-                            <a href="#" class="buy-btn">Acquista su Amazon</a>
-                            <div class="secondary-actions">
-                                <button class="action-btn"><i class="ph-bold ph-heart"></i></button>
-                                <button class="action-btn"><i class="ph-bold ph-share-network"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="product-card" data-category="fashion">
-                    <div class="product-image-container"><img src="https://m.media-amazon.com/images/I/61Vq+pL5NCL._AC_SY500_.jpg" alt="Dr. Martens 1460 Stivali" class="product-image"></div>
-                    <div class="product-info">
-                        <p class="product-category">Fashion</p>
-                        <h3 class="product-name">Dr. Martens 1460, Stivali Classici Unisex Adulto</h3>
-                        <div class="product-price">
-                            <span class="current-price">125,00€</span>
-                            <span class="original-price">199,00€</span>
-                            <span class="discount-badge">-37%</span>
-                        </div>
-                        <div class="product-actions">
-                            <a href="#" class="buy-btn">Acquista su Amazon</a>
-                            <div class="secondary-actions">
-                                <button class="action-btn"><i class="ph-bold ph-heart"></i></button>
-                                <button class="action-btn"><i class="ph-bold ph-share-network"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="product-card" data-category="salute">
-                    <div class="product-image-container"><img src="https://m.media-amazon.com/images/I/815RIs5iV-L._AC_SX679_.jpg" alt="Oral-B iO 9 Spazzolino Elettrico" class="product-image"></div>
-                    <div class="product-info">
-                        <p class="product-category">Salute</p>
-                        <h3 class="product-name">Oral-B iO 9 Spazzolino Elettrico Ricaricabile, 1 Custodia da Viaggio</h3>
-                        <div class="product-price">
-                            <span class="current-price">199,99€</span>
-                            <span class="original-price">278,80€</span>
-                            <span class="discount-badge">-28%</span>
-                        </div>
-                        <div class="product-actions">
-                            <a href="#" class="buy-btn">Acquista su Amazon</a>
-                            <div class="secondary-actions">
-                                <button class="action-btn"><i class="ph-bold ph-heart"></i></button>
-                                <button class="action-btn"><i class="ph-bold ph-share-network"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="product-card" data-category="tech">
-                    <div class="product-image-container"><img src="https://m.media-amazon.com/images/I/61RJn0ofUsL._AC_SX679_.jpg" alt="Logitech MX Master 3S" class="product-image"></div>
-                    <div class="product-info">
-                        <p class="product-category">Tech</p>
-                        <h3 class="product-name">Logitech MX Master 3S Mouse Wireless Performance</h3>
-                        <div class="product-price">
-                            <span class="current-price">95,50€</span>
-                            <span class="original-price">134,99€</span>
-                            <span class="discount-badge">-29%</span>
-                        </div>
-                        <div class="product-actions">
-                            <a href="#" class="buy-btn">Acquista su Amazon</a>
-                            <div class="secondary-actions">
-                                <button class="action-btn"><i class="ph-bold ph-heart"></i></button>
-                                <button class="action-btn"><i class="ph-bold ph-share-network"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="product-card" data-category="smartphone">
-                    <div class="product-image-container"><img src="https://m.media-amazon.com/images/I/71ZDY57yTGL._AC_SX679_.jpg" alt="Google Pixel 8 Pro" class="product-image"></div>
-                    <div class="product-info">
-                        <p class="product-category">Smartphone</p>
-                        <h3 class="product-name">Google Pixel 8 Pro – Smartphone 5G Android sbloccato con teleobiettivo</h3>
-                        <div class="product-price">
-                            <span class="current-price">815,00€</span>
-                            <span class="original-price">1.099,00€</span>
-                            <span class="discount-badge">-26%</span>
-                        </div>
-                        <div class="product-actions">
-                            <a href="#" class="buy-btn">Acquista su Amazon</a>
-                            <div class="secondary-actions">
-                                <button class="action-btn"><i class="ph-bold ph-heart"></i></button>
-                                <button class="action-btn"><i class="ph-bold ph-share-network"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="product-card" data-category="casa">
-                    <div class="product-image-container"><img src="https://m.media-amazon.com/images/I/713QB39fAUL._AC_SX679_.jpg" alt="COSORI Friggitrice ad Aria 5.5L" class="product-image"></div>
-                    <div class="product-info">
-                        <p class="product-category">Casa</p>
-                        <h3 class="product-name">COSORI Friggitrice ad Aria 5.5L, 11 Programmi, Air Fryer con Circolazione d'Aria a 360°</h3>
-                        <div class="product-price">
-                            <span class="current-price">109,99€</span>
-                            <span class="original-price">139,99€</span>
-                            <span class="discount-badge">-21%</span>
-                        </div>
-                        <div class="product-actions">
-                            <a href="#" class="buy-btn">Acquista su Amazon</a>
-                            <div class="secondary-actions">
-                                <button class="action-btn"><i class="ph-bold ph-heart"></i></button>
-                                <button class="action-btn"><i class="ph-bold ph-share-network"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <div class="products-grid" id="productsGrid"></div>
+            
             <div class="load-more-container">
-                <button class="btn btn-primary load-more-btn" id="loadMoreBtn">Mostra Altri Prodotti</button>
+                <button class="btn btn-primary load-more-btn" id="loadMoreBtn" style="display: none;">Mostra Altri Prodotti</button>
             </div>
         </div>
     </main>
     
-    <footer id="footer-placeholder">
-        </footer>
+    <footer id="footer-placeholder"></footer>
 
+    <script src="main.js"></script>
     <script>
-    /*
-    ==========================================================================
-    [1] OGGETTO PRINCIPALE DELL'APPLICAZIONE
-    Incapsula tutta la logica per evitare di inquinare lo scope globale.
-    ==========================================================================
-    */
     const CronoshopApp = {
-        
-        // --- Stato dell'applicazione ---
-        state: {
-            allProducts: [],
-            productsToDisplay: [],
-            currentPage: 0,
-            productsPerPage: 12,
-            currentFilter: 'all',
-            currentSort: 'default',
-            isLoading: false,
-        },
-
-        // --- Cache degli elementi del DOM ---
+        state: { allProducts: [], productsToDisplay: [], currentPage: 0, productsPerPage: 12, currentFilter: 'all', currentSort: 'default', isLoading: false },
         elements: {},
 
-        /*
-        ==========================================================================
-        [2] INIZIALIZZAZIONE
-        ==========================================================================
-        */
         init() {
             this.cacheDOMElements();
             this.initNavbar();
             this.initProductsPage();
-            console.log("Cronoshop App Inizializzata. Trovati " + this.state.allProducts.length + " prodotti.");
         },
 
         cacheDOMElements() {
             this.elements = {
-                // Navbar
-                htmlEl: document.documentElement,
-                themeToggleBtn: document.getElementById('theme-toggle-btn'),
-                mobileMenuBtn: document.getElementById('mobileMenuBtn'),
-                closeMenuBtn: document.getElementById('closeMenuBtn'),
-                mobileMenu: document.getElementById('mobileMenu'),
-                overlay: document.getElementById('overlay'),
-                desktopDropdown: document.getElementById('categorie-desktop-dropdown'),
-                // Pagina Prodotti
-                productsGrid: document.getElementById('productsGrid'),
-                filterButtonsContainer: document.getElementById('filterButtons'),
-                sortSelect: document.getElementById('sortSelect'),
+                htmlEl: document.documentElement, themeToggleBtn: document.getElementById('theme-toggle-btn'),
+                mobileMenuBtn: document.getElementById('mobileMenuBtn'), closeMenuBtn: document.getElementById('closeMenuBtn'),
+                mobileMenu: document.getElementById('mobileMenu'), overlay: document.getElementById('overlay'),
+                desktopDropdown: document.getElementById('categorie-desktop-dropdown'), productsGrid: document.getElementById('productsGrid'),
+                filterButtonsContainer: document.getElementById('filterButtons'), sortSelect: document.getElementById('sortSelect'),
                 loadMoreBtn: document.getElementById('loadMoreBtn'),
             };
         },
 
-        /*
-        ==========================================================================
-        [3] LOGICA DELLA NAVBAR (Completa e Autonoma)
-        ==========================================================================
-        */
-        initNavbar() {
-            this.initTheme();
-            this.initMobileMenu();
-            this.initDropdowns();
-            this.initActiveLink();
-        },
-        
-        initTheme() {
-            const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-            this.applyTheme(savedTheme);
-            this.elements.themeToggleBtn.addEventListener('click', () => {
-                const newTheme = this.elements.htmlEl.classList.contains('dark-theme') ? 'light' : 'dark';
-                this.applyTheme(newTheme);
-            });
-        },
+        // --- SEZIONE NAVBAR ---
+        initNavbar() { this.initTheme(); this.initMobileMenu(); this.initDropdowns(); this.initActiveLink(); },
+        initTheme() { const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); this.applyTheme(savedTheme); this.elements.themeToggleBtn.addEventListener('click', () => { const newTheme = this.elements.htmlEl.classList.contains('dark-theme') ? 'light' : 'dark'; this.applyTheme(newTheme); }); },
+        applyTheme(theme) { this.elements.htmlEl.classList.toggle('dark-theme', theme === 'dark'); this.elements.themeToggleBtn.querySelector('i').className = theme === 'dark' ? 'ph-bold ph-sun' : 'ph-bold ph-moon'; localStorage.setItem('theme', theme); },
+        initMobileMenu() { if (!this.elements.mobileMenuBtn) return; this.elements.mobileMenuBtn.addEventListener('click', () => { this.elements.mobileMenu.classList.add('is-open'); this.elements.overlay.classList.add('is-active'); }); this.elements.closeMenuBtn.addEventListener('click', () => this.closeAllPopups()); this.elements.overlay.addEventListener('click', () => this.closeAllPopups()); },
+        initDropdowns() { if (!this.elements.desktopDropdown) return; const toggle = this.elements.desktopDropdown.querySelector('.dropdown-toggle'); toggle.addEventListener('click', (e) => { e.preventDefault(); this.elements.desktopDropdown.classList.toggle('is-open'); }); document.addEventListener('click', (e) => { if (!this.elements.desktopDropdown.contains(e.target)) { this.elements.desktopDropdown.classList.remove('is-open'); } }); },
+        closeAllPopups() { this.elements.mobileMenu?.classList.remove('is-open'); this.elements.overlay?.classList.remove('is-active'); },
+        initActiveLink() { const currentPage = window.location.pathname.split('/').pop() || 'index.html'; document.querySelectorAll('[data-page]').forEach(link => { const linkPage = new URL(link.href).pathname.split('/').pop(); if (linkPage === currentPage) { link.classList.add('active'); if(link.closest('.dropdown-item')) { link.closest('.dropdown').querySelector('.dropdown-toggle').classList.add('active'); } } }); },
 
-        applyTheme(theme) {
-            this.elements.htmlEl.classList.toggle('dark-theme', theme === 'dark');
-            this.elements.themeToggleBtn.querySelector('i').className = theme === 'dark' ? 'ph-bold ph-sun' : 'ph-bold ph-moon';
-            localStorage.setItem('theme', theme);
-        },
-
-        initMobileMenu() {
-            if (!this.elements.mobileMenuBtn) return;
-            this.elements.mobileMenuBtn.addEventListener('click', () => {
-                this.elements.mobileMenu.classList.add('is-open');
-                this.elements.overlay.classList.add('is-active');
-            });
-            this.elements.closeMenuBtn.addEventListener('click', () => this.closeAllPopups());
-            this.elements.overlay.addEventListener('click', () => this.closeAllPopups());
-        },
-
-        initDropdowns() {
-            if (!this.elements.desktopDropdown) return;
-            const toggle = this.elements.desktopDropdown.querySelector('.dropdown-toggle');
-            toggle.addEventListener('click', (e) => {
-                e.preventDefault();
-                this.elements.desktopDropdown.classList.toggle('is-open');
-            });
-            document.addEventListener('click', (e) => {
-                if (!this.elements.desktopDropdown.contains(e.target)) {
-                    this.elements.desktopDropdown.classList.remove('is-open');
-                }
-            });
-        },
-
-        closeAllPopups() {
-            this.elements.mobileMenu?.classList.remove('is-open');
-            this.elements.overlay?.classList.remove('is-active');
-        },
-
-        initActiveLink() {
-            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-            document.querySelectorAll('[data-page]').forEach(link => {
-                const linkPage = new URL(link.href).pathname.split('/').pop();
-                if (linkPage === currentPage) {
-                    link.classList.add('active');
-                    if(link.closest('.dropdown-item')) {
-                        link.closest('.dropdown').querySelector('.dropdown-toggle').classList.add('active');
-                    }
-                }
-            });
-        },
-
-        /*
-        ==========================================================================
-        [4] LOGICA DELLA PAGINA PRODOTTI
-        ==========================================================================
-        */
+        // --- SEZIONE PAGINA PRODOTTI ---
         initProductsPage() {
             this.loadProductsData();
             this.setupEventListeners();
             this.applyUrlParams();
-            this.updateFilteredAndSortedProducts();
-            this.renderInitialProducts(); // Renderizza solo i prodotti pre-caricati nell'HTML
+            this.resetAndRender();
         },
 
         loadProductsData() {
-            // I dati sono definiti alla fine di questo script
-            this.state.allProducts = window.PRODUCT_DATA || [];
+            // Carica i prodotti dall'array globale 'products' definito in main.js
+            if (typeof products !== 'undefined' && Array.isArray(products)) {
+                this.state.allProducts = products;
+                console.log(`Caricati ${products.length} prodotti da main.js`);
+            } else {
+                console.error("Errore: La variabile 'products' non è stata trovata o non è un array. Assicurati che main.js sia caricato correttamente e definisca 'const products = [...]'.");
+                this.elements.productsGrid.innerHTML = "<p>Errore nel caricamento dei prodotti.</p>";
+            }
         },
         
         setupEventListeners() {
-            this.elements.filterButtonsContainer.addEventListener('click', (e) => {
-                if (e.target.classList.contains('filter-btn')) {
-                    this.handleFilterClick(e.target);
-                }
-            });
+            this.elements.filterButtonsContainer.addEventListener('click', (e) => { if (e.target.classList.contains('filter-btn')) { this.handleFilterClick(e.target); } });
             this.elements.sortSelect.addEventListener('change', () => this.handleSortChange());
             this.elements.loadMoreBtn.addEventListener('click', () => this.loadMoreProducts());
         },
 
-        // Legge i parametri dall'URL per pre-filtrare
         applyUrlParams() {
             const params = new URLSearchParams(window.location.search);
             const category = params.get('category');
             if (category) {
-                this.state.currentFilter = category;
-                this.elements.filterButtonsContainer.querySelectorAll('.filter-btn').forEach(btn => {
-                    btn.classList.toggle('active', btn.dataset.category === category);
-                });
+                const targetBtn = this.elements.filterButtonsContainer.querySelector(`[data-category="${category}"]`);
+                if (targetBtn) {
+                    this.state.currentFilter = category;
+                    this.elements.filterButtonsContainer.querySelector('.active').classList.remove('active');
+                    targetBtn.classList.add('active');
+                }
             }
         },
 
-        handleFilterClick(button) {
-            this.state.currentFilter = button.dataset.category;
-            this.elements.filterButtonsContainer.querySelector('.active').classList.remove('active');
-            button.classList.add('active');
-            
-            this.resetAndRender();
-        },
-
-        handleSortChange() {
-            this.state.currentSort = this.elements.sortSelect.value;
-            this.resetAndRender();
-        },
+        handleFilterClick(button) { this.state.currentFilter = button.dataset.category; this.elements.filterButtonsContainer.querySelector('.active').classList.remove('active'); button.classList.add('active'); this.resetAndRender(); },
+        handleSortChange() { this.state.currentSort = this.elements.sortSelect.value; this.resetAndRender(); },
         
         loadMoreProducts() {
             if (this.state.isLoading) return;
             this.state.isLoading = true;
             this.elements.loadMoreBtn.textContent = 'Caricamento...';
-
-            // Simula un caricamento di rete
-            setTimeout(() => {
-                this.state.currentPage++;
-                this.renderProductsBatch();
-                this.state.isLoading = false;
-                this.elements.loadMoreBtn.textContent = 'Mostra Altri Prodotti';
-            }, 500);
+            setTimeout(() => { this.state.currentPage++; this.renderProductsBatch(); this.state.isLoading = false; this.elements.loadMoreBtn.textContent = 'Mostra Altri Prodotti'; }, 300);
         },
 
         resetAndRender() {
             this.state.currentPage = 0;
             this.updateFilteredAndSortedProducts();
-            this.elements.productsGrid.innerHTML = ''; // Pulisce la griglia per un nuovo render
+            this.elements.productsGrid.innerHTML = '';
             this.renderProductsBatch();
         },
 
         updateFilteredAndSortedProducts() {
             let products = [...this.state.allProducts];
-            
-            // Filtro
-            if (this.state.currentFilter !== 'all') {
-                products = products.filter(p => p.categoria === this.state.currentFilter);
-            }
-            
-            // Ordinamento
+            if (this.state.currentFilter !== 'all') { products = products.filter(p => p.categoria === this.state.currentFilter); }
+            const parsePrice = p => typeof p.prezzo === 'string' ? parseFloat(p.prezzo.replace(/[^0-9,-]+/g, '').replace(',', '.')) : p.prezzo;
             switch (this.state.currentSort) {
-                case 'price-asc':
-                    products.sort((a, b) => a.prezzo - b.prezzo);
-                    break;
-                case 'price-desc':
-                    products.sort((a, b) => b.prezzo - a.prezzo);
-                    break;
-                case 'name-asc':
-                    products.sort((a, b) => a.nome.localeCompare(b.nome));
-                    break;
+                case 'price-asc': products.sort((a, b) => parsePrice(a) - parsePrice(b)); break;
+                case 'price-desc': products.sort((a, b) => parsePrice(b) - parsePrice(a)); break;
+                case 'name-asc': products.sort((a, b) => a.nome.localeCompare(b.nome)); break;
             }
-            
             this.state.productsToDisplay = products;
-        },
-
-        renderInitialProducts() {
-            // Questa funzione ora serve solo ad aggiornare lo stato del bottone "Load More"
-            // basandosi sui prodotti già presenti nell'HTML.
-            const initialProductCount = this.elements.productsGrid.children.length;
-            this.state.currentPage = Math.floor(initialProductCount / this.state.productsPerPage);
-            this.updateLoadMoreButtonVisibility(initialProductCount);
         },
         
         renderProductsBatch() {
@@ -751,38 +332,30 @@
             batch.forEach((product, index) => {
                 const productCard = this.createProductCard(product);
                 this.elements.productsGrid.appendChild(productCard);
-                // Animazione in entrata
-                setTimeout(() => productCard.classList.add('visible'), index * 50);
             });
-
             this.updateLoadMoreButtonVisibility(end);
         },
         
         updateLoadMoreButtonVisibility(renderedCount) {
-             if (renderedCount >= this.state.productsToDisplay.length) {
-                this.elements.loadMoreBtn.style.display = 'none';
-            } else {
-                this.elements.loadMoreBtn.style.display = 'inline-flex';
-            }
+             this.elements.loadMoreBtn.style.display = renderedCount >= this.state.productsToDisplay.length ? 'none' : 'inline-flex';
         },
 
         createProductCard(product) {
             const card = document.createElement('div');
             card.className = 'product-card';
             card.dataset.category = product.categoria;
-
-            const originalPriceHTML = product.prezzo_originale ? `<span class="original-price">${product.prezzo_originale.toFixed(2)}€</span>` : '';
-            const discountBadgeHTML = product.sconto ? `<span class="discount-badge">${product.sconto}%</span>` : '';
+            const price = typeof product.prezzo === 'number' ? product.prezzo.toFixed(2) : product.prezzo;
+            const originalPrice = typeof product.prezzo_originale === 'number' ? product.prezzo_originale.toFixed(2) : product.prezzo_originale;
+            const originalPriceHTML = originalPrice ? `<span class="original-price">${originalPrice}€</span>` : '';
+            const discountBadgeHTML = product.sconto ? `<span class="discount-badge">-${product.sconto}%</span>` : '';
 
             card.innerHTML = `
-                <div class="product-image-container">
-                    <img src="${product.img}" alt="${product.nome}" class="product-image" loading="lazy">
-                </div>
+                <div class="product-image-container"><a href="${product.link}" target="_blank" rel="noopener noreferrer"><img src="${product.img}" alt="${product.nome}" class="product-image" loading="lazy"></a></div>
                 <div class="product-info">
                     <p class="product-category">${product.categoria}</p>
-                    <h3 class="product-name">${product.nome}</h3>
+                    <h3 class="product-name"><a href="${product.link}" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">${product.nome}</a></h3>
                     <div class="product-price">
-                        <span class="current-price">${product.prezzo.toFixed(2)}€</span>
+                        <span class="current-price">${price}€</span>
                         ${originalPriceHTML}
                         ${discountBadgeHTML}
                     </div>
@@ -798,72 +371,6 @@
         }
     };
 
-    /*
-    ==========================================================================
-    [5] DATI DEI PRODOTTI (Array Esteso)
-    Questo array contiene tutti i dati dei prodotti usati dalla pagina.
-    ==========================================================================
-    */
-    window.PRODUCT_DATA = [
-      {id:1,nome:"Apple iPhone 16 Pro (256 GB) - Titanio Naturale",categoria:"smartphone",prezzo:1249.00,prezzo_originale:1489.00,sconto:16,img:"https://m.media-amazon.com/images/I/71T5N33c1-L._AC_SX679_.jpg",link:"#"},
-      {id:2,nome:"Sony WH-1000XM5 Cuffie Wireless con Noise Cancelling",categoria:"tech",prezzo:298.00,prezzo_originale:419.99,sconto:29,img:"https://m.media-amazon.com/images/I/71pAAN-56QL._AC_SX679_.jpg",link:"#"},
-      {id:3,nome:"Levi's 501 Original, Jeans Uomo, Blu (Stonewash)",categoria:"fashion",prezzo:65.99,prezzo_originale:110.00,sconto:40,img:"https://m.media-amazon.com/images/I/81o9wS8rJ4L._AC_SX569_.jpg",link:"#"},
-      {id:4,nome:"iRobot Roomba Combo j7+ Robot Aspirapolvere e Lavapavimenti",categoria:"casa",prezzo:699.00,prezzo_originale:999.00,sconto:30,img:"https://m.media-amazon.com/images/I/61k366n2yJL._AC_SX679_.jpg",link:"#"},
-      {id:5,nome:"Apple Watch Series 9 (GPS) Cassa 45 mm in Alluminio",categoria:"tech",prezzo:419.00,prezzo_originale:479.00,sconto:13,img:"https://m.media-amazon.com/images/I/61L5l34bKxL._AC_SX679_.jpg",link:"#"},
-      {id:6,nome:"Samsung Galaxy S24 Ultra, AI Smartphone, Caricatore incluso, 256GB",categoria:"smartphone",prezzo:1149.00,prezzo_originale:1499.00,sconto:23,img:"https://m.media-amazon.com/images/I/71p-rA7-iWL._AC_SX679_.jpg",link:"#"},
-      {id:7,nome:"De'Longhi Magnifica S, Macchina da Caffè Automatica",categoria:"casa",prezzo:319.99,prezzo_originale:440.00,sconto:27,img:"https://m.media-amazon.com/images/I/71gp48Hn3vL._AC_SX679_.jpg",link:"#"},
-      {id:8,nome:"Dr. Martens 1460, Stivali Classici Unisex Adulto, Pelle Liscia",categoria:"fashion",prezzo:125.00,prezzo_originale:199.00,sconto:37,img:"https://m.media-amazon.com/images/I/61Vq+pL5NCL._AC_SY500_.jpg",link:"#"},
-      {id:9,nome:"Oral-B iO 9 Spazzolino Elettrico Ricaricabile, Nero",categoria:"salute",prezzo:199.99,prezzo_originale:278.80,sconto:28,img:"https://m.media-amazon.com/images/I/815RIs5iV-L._AC_SX679_.jpg",link:"#"},
-      {id:10,nome:"Logitech MX Master 3S Mouse Wireless Performance",categoria:"tech",prezzo:95.50,prezzo_originale:134.99,sconto:29,img:"https://m.media-amazon.com/images/I/61RJn0ofUsL._AC_SX679_.jpg",link:"#"},
-      {id:11,nome:"Google Pixel 8 Pro – Smartphone 5G Android sbloccato",categoria:"smartphone",prezzo:815.00,prezzo_originale:1099.00,sconto:26,img:"https://m.media-amazon.com/images/I/71ZDY57yTGL._AC_SX679_.jpg",link:"#"},
-      {id:12,nome:"COSORI Friggitrice ad Aria 5.5L, 11 Programmi",categoria:"casa",prezzo:109.99,prezzo_originale:139.99,sconto:21,img:"https://m.media-amazon.com/images/I/713QB39fAUL._AC_SX679_.jpg",link:"#"},
-      {id:13,nome:"Apple AirPods Pro (2ª generazione) con custodia MagSafe (USB-C)",categoria:"tech",prezzo:229.00,prezzo_originale:279.00,sconto:18,img:"https://m.media-amazon.com/images/I/61SUj2aKoEL._AC_SX679_.jpg",link:"#"},
-      {id:14,nome:"The North Face, Giacca Uomo Resolve",categoria:"fashion",prezzo:89.95,prezzo_originale:120.00,sconto:25,img:"https://m.media-amazon.com/images/I/81L6pS72IAL._AC_SX569_.jpg",link:"#"},
-      {id:15,nome:"Nespresso Vertuo Pop Macchina da caffè di De'Longhi",categoria:"casa",prezzo:59.00,prezzo_originale:99.00,sconto:40,img:"https://m.media-amazon.com/images/I/71H4aC2g2yL._AC_SX679_.jpg",link:"#"},
-      {id:16,nome:"Anker Power Bank, Caricabatterie Portatile 20.000 mAh",categoria:"tech",prezzo:39.99,prezzo_originale:59.99,sconto:33,img:"https://m.media-amazon.com/images/I/61fD5k3p2DL._AC_SX679_.jpg",link:"#"},
-      {id:17,nome:"Xiaomi Robot Vacuum S12, Sistema di navigazione laser (LDS)",categoria:"casa",prezzo:199.99,prezzo_originale:299.99,sconto:33,img:"https://m.media-amazon.com/images/I/618x4rI1s5L._AC_SX679_.jpg",link:"#"},
-      {id:18,nome:"Garmin Forerunner 255, GPS Running Smartwatch",categoria:"tech",prezzo:279.90,prezzo_originale:349.99,sconto:20,img:"https://m.media-amazon.com/images/I/61LdJcS2dFL._AC_SX679_.jpg",link:"#"},
-      {id:19,nome:"Nike Sportswear Club Fleece, Pantaloni Uomo",categoria:"fashion",prezzo:38.50,prezzo_originale:55.00,sconto:30,img:"https://m.media-amazon.com/images/I/51r5YyVdJDL._AC_SX569_.jpg",link:"#"},
-      {id:20,nome:"Braun MultiQuick 9 Minipimer, Mixer Immersione 1200W",categoria:"casa",prezzo:129.99,prezzo_originale:179.99,sconto:28,img:"https://m.media-amazon.com/images/I/71g0r1j+Y+L._AC_SX679_.jpg",link:"#"},
-      {id:21,nome:"GoPro HERO12 Black - Action camera impermeabile",categoria:"tech",prezzo:379.00,prezzo_originale:449.99,sconto:16,img:"https://m.media-amazon.com/images/I/71Iq5cft7zL._AC_SX679_.jpg",link:"#"},
-      {id:22,nome:"Samsung Monitor Gaming Odyssey G5 (C27G55), 27 Curvo",categoria:"tech",prezzo:229.00,prezzo_originale:299.00,sconto:23,img:"https://m.media-amazon.com/images/I/81lAAVf3gFL._AC_SX679_.jpg",link:"#"},
-      {id:23,nome:"Suunto 9 Peak Pro, Orologio GPS Multisport",categoria:"tech",prezzo:339.00,prezzo_originale:499.00,sconto:32,img:"https://m.media-amazon.com/images/I/61X-2y-w+NL._AC_SX679_.jpg",link:"#"},
-      {id:24,nome:"Dyson V11 Aspirapolvere Senza Fili",categoria:"casa",prezzo:499.00,prezzo_originale:629.00,sconto:21,img:"https://m.media-amazon.com/images/I/61P0YjD3vIL._AC_SX679_.jpg",link:"#"},
-      {id:25,nome:"Kindle Paperwhite (16 GB) – Ora con schermo da 6,8''",categoria:"tech",prezzo:129.99,prezzo_originale:159.99,sconto:19,img:"https://m.media-amazon.com/images/I/61AeAgeA2GL._AC_SX679_.jpg",link:"#"},
-      {id:26,nome:"Adidas Stan Smith, Scarpe da Ginnastica Unisex",categoria:"fashion",prezzo:72.00,prezzo_originale:110.00,sconto:35,img:"https://m.media-amazon.com/images/I/71DbA2dJvTL._AC_SY500_.jpg",link:"#"},
-      {id:27,nome:"Philips Airfryer 3000 Serie L, 4.1L (0.8kg)",categoria:"casa",prezzo:79.99,prezzo_originale:129.99,sconto:38,img:"https://m.media-amazon.com/images/I/815LpaCjJ+L._AC_SX679_.jpg",link:"#"},
-      {id:28,nome:"Meta Quest 3 128GB — Visore per Realtà Mista",categoria:"tech",prezzo:479.99,prezzo_originale:549.99,sconto:13,img:"https://m.media-amazon.com/images/I/71R3dbaUT2L._AC_SX679_.jpg",link:"#"},
-      {id:29,nome:"Foodspring Proteine Whey, 750g, Cioccolato",categoria:"salute",prezzo:29.99,prezzo_originale:39.99,sconto:25,img:"https://m.media-amazon.com/images/I/61-gSCLvrbL._AC_SX679_.jpg",link:"#"},
-      {id:30,nome:"Razer BlackWidow V4 Pro, Tastiera Meccanica Gaming",categoria:"tech",prezzo:199.99,prezzo_originale:259.99,sconto:23,img:"https://m.media-amazon.com/images/I/81a8G2+43FL._AC_SX679_.jpg",link:"#"},
-      {id:31,nome:"Apple 2023 MacBook Pro con chip M3 Pro",categoria:"tech",prezzo:2349.00,prezzo_originale:2649.00,sconto:11,img:"https://m.media-amazon.com/images/I/61Rn1s5-2KL._AC_SX679_.jpg",link:"#"},
-      {id:32,nome:"Bialetti Moka Express, Caffettiera Originale",categoria:"casa",prezzo:21.90,prezzo_originale:29.90,sconto:27,img:"https://m.media-amazon.com/images/I/813n1Vz40sL._AC_SX679_.jpg",link:"#"},
-      {id:33,nome:"Tommy Hilfiger, Polo Uomo",categoria:"fashion",prezzo:54.90,prezzo_originale:89.90,sconto:39,img:"https://m.media-amazon.com/images/I/61kYdFmx68L._AC_SX569_.jpg",link:"#"},
-      {id:34,nome:"Beurer BR 60 Insetti e Zanzare, per il Trattamento delle Punture",categoria:"salute",prezzo:24.99,prezzo_originale:34.99,sconto:29,img:"https://m.media-amazon.com/images/I/5176rARb0iL._AC_SX679_.jpg",link:"#"},
-      {id:35,nome:"Logitech G PRO X SUPERLIGHT Mouse Gaming Wireless",categoria:"tech",prezzo:109.99,prezzo_originale:159.00,sconto:31,img:"https://m.media-amazon.com/images/I/51uyWJjQjBL._AC_SX679_.jpg",link:"#"},
-      {id:36,nome:"Amazon Echo Pop | Altoparlante Bluetooth intelligente",categoria:"tech",prezzo:24.99,prezzo_originale:54.99,sconto:55,img:"https://m.media-amazon.com/images/I/61gC-i4K-ML._AC_SX679_.jpg",link:"#"},
-      {id:37,nome:"Oura Ring Gen3 Horizon, Fitness Tracker",categoria:"salute",prezzo:329.00,prezzo_originale:349.00,sconto:6,img:"https://m.media-amazon.com/images/I/61dSTnBKhKL._AC_SX679_.jpg",link:"#"},
-      {id:38,nome:"Barilla Pesto alla Genovese, 12 Vasetti da 190g",categoria:"casa",prezzo:19.99,prezzo_originale:25.80,sconto:23,img:"https://m.media-amazon.com/images/I/81Y7y6O+SFL._AC_SX679_.jpg",link:"#"},
-      {id:39,nome:"Ray-Ban, Occhiali da Sole Unisex, Wayfarer",categoria:"fashion",prezzo:99.90,prezzo_originale:145.00,sconto:31,img:"https://m.media-amazon.com/images/I/61-D5kl1x5L._AC_SY500_.jpg",link:"#"},
-      {id:40,nome:"DJI Mini 4 Pro, Drone con fotocamera 4K",categoria:"tech",prezzo:729.00,prezzo_originale:799.00,sconto:9,img:"https://m.media-amazon.com/images/I/71CVT0ABM6L._AC_SX679_.jpg",link:"#"},
-      {id:41,nome:"Anker 737 Power Bank (PowerCore 24K), 24.000 mAh",categoria:"tech",prezzo:99.99,prezzo_originale:149.99,sconto:33,img:"https://m.media-amazon.com/images/I/71e7aXQdkDL._AC_SX679_.jpg",link:"#"},
-      {id:42,nome:"Withings Body Smart – Bilancia pesapersone smart Wi-Fi",categoria:"salute",prezzo:79.95,prezzo_originale:99.95,sconto:20,img:"https://m.media-amazon.com/images/I/61bxeuWJqNL._AC_SX679_.jpg",link:"#"},
-      {id:43,nome:"Stanley Quencher H2.0 FlowState, Bicchiere termico",categoria:"casa",prezzo:44.95,prezzo_originale:54.95,sconto:18,img:"https://m.media-amazon.com/images/I/51rY52L+CjL._AC_SX679_.jpg",link:"#"},
-      {id:44,nome:"LEGO Technic Lamborghini Sián FKP 37, Modellino Auto",categoria:"tech",prezzo:349.99,prezzo_originale:449.99,sconto:22,img:"https://m.media-amazon.com/images/I/8144s2deIWL._AC_SX679_.jpg",link:"#"},
-      {id:45,nome:"Calvin Klein, Confezione da 3 Boxer Uomo",categoria:"fashion",prezzo:29.90,prezzo_originale:44.90,sconto:33,img:"https://m.media-amazon.com/images/I/81e5KMXN3KL._AC_SX569_.jpg",link:"#"},
-      {id:46,nome:"Samsung TV QE55S90CATXXH, Smart TV 55 pollici, OLED 4K",categoria:"tech",prezzo:1199.00,prezzo_originale:1899.00,sconto:37,img:"https://m.media-amazon.com/images/I/81SST8AHeQL._AC_SX679_.jpg",link:"#"},
-      {id:47,nome:"Vitamix A3500i Ascent Series Smart Frullatore",categoria:"casa",prezzo:799.00,prezzo_originale:999.00,sconto:20,img:"https://m.media-amazon.com/images/I/71s8e2XJkAL._AC_SX679_.jpg",link:"#"},
-      {id:48,nome:"Optimum Nutrition Gold Standard 100% Whey Proteine",categoria:"salute",prezzo:65.99,prezzo_originale:89.99,sconto:27,img:"https://m.media-amazon.com/images/I/61MDbe2S8KL._AC_SX679_.jpg",link:"#"},
-      {id:49,nome:"Google Nest Hub (2ª generazione), Smart Display",categoria:"tech",prezzo:59.99,prezzo_originale:99.99,sconto:40,img:"https://m.media-amazon.com/images/I/61eK6a3f6OL._AC_SX679_.jpg",link:"#"},
-      {id:50,nome:"Xiaomi Smart Band 8, Fitness Tracker",categoria:"tech",prezzo:32.99,prezzo_originale:39.99,sconto:18,img:"https://m.media-amazon.com/images/I/61SS2GzD6GL._AC_SX679_.jpg",link:"#"}
-    ];
-
-
-    /*
-    ==========================================================================
-    [6] INIZIALIZZAZIONE DELL'APPLICAZIONE
-    Lancia l'app dopo che il DOM è stato completamente caricato.
-    ==========================================================================
-    */
     document.addEventListener('DOMContentLoaded', () => {
         CronoshopApp.init();
     });
