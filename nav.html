@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="it">
-<head>
+<html lang="it"> <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cronoshop Navigation</title>
@@ -10,26 +9,41 @@
     <style>
         /* --- Impostazioni Globali e Variabili di Stile --- */
         :root {
-            --background-color: #f0f2f5; /* Sfondo leggermente grigio come in iOS */
+            /* Tema Chiaro (Default) */
+            --bg-color: #f0f2f5;
             --text-color: #1d1d1f;
             --text-color-secondary: #6e6e73;
             --accent-color: #007aff;
             --divider-color: #d1d1d6;
-            --card-background-light: rgba(255, 255, 255, 0.7);
-            --card-background-dark: rgba(28, 28, 30, 0.7);
-            --hover-light: rgba(0, 0, 0, 0.05);
-            --hover-dark: rgba(255, 255, 255, 0.1);
+            --card-bg: rgba(255, 255, 255, 0.7);
+            --hover-bg: rgba(0, 0, 0, 0.05);
+            --input-bg: rgba(118, 118, 128, 0.12);
+            --input-focus-bg: rgba(118, 118, 128, 0.20);
             --border-radius: 12px;
             --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        /* --- Variabili per il Tema Scuro --- */
+        html.dark-theme {
+            --bg-color: #000000;
+            --text-color: #f5f5f7;
+            --text-color-secondary: #86868b;
+            --accent-color: #0a84ff;
+            --divider-color: #424245;
+            --card-bg: rgba(28, 28, 30, 0.75);
+            --hover-bg: rgba(255, 255, 255, 0.1);
+            --input-bg: rgba(118, 118, 128, 0.24);
+            --input-focus-bg: rgba(118, 118, 128, 0.32);
         }
 
         /* Stili base per il corpo della pagina */
         body {
             font-family: var(--font-family);
-            background-color: var(--background-color);
+            background-color: var(--bg-color);
             color: var(--text-color);
             margin: 0;
             padding-top: 70px; /* Spazio per l'header fisso */
+            transition: background-color 0.3s ease, color 0.3s ease;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
@@ -41,11 +55,14 @@
             left: 0;
             width: 100%;
             z-index: 1000;
-            background-color: var(--card-background-light);
+            background-color: var(--card-bg);
             backdrop-filter: saturate(180%) blur(20px);
             -webkit-backdrop-filter: saturate(180%) blur(20px);
             border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+        html.dark-theme .glass-header {
+            border-bottom-color: rgba(255, 255, 255, 0.15);
         }
 
         .nav-container {
@@ -58,32 +75,23 @@
             height: 60px;
         }
 
-        /* --- Logo --- */
+        /* --- Logica per il cambio Logo --- */
         .logo-link {
             display: flex;
             align-items: center;
             text-decoration: none;
             color: var(--text-color);
         }
+        .logo-image { height: 32px; width: 32px; margin-right: 8px; }
+        .logo-dark { display: none; } /* Nascosto di default */
+        
+        html.dark-theme .logo-light { display: none; } /* Nascondi logo chiaro in dark mode */
+        html.dark-theme .logo-dark { display: block; } /* Mostra logo scuro in dark mode */
 
-        .logo-image {
-            height: 32px;
-            width: 32px;
-            margin-right: 8px;
-        }
-
-        .logo-text {
-            font-size: 20px;
-            font-weight: 600;
-            letter-spacing: -0.5px;
-        }
+        .logo-text { font-size: 20px; font-weight: 600; letter-spacing: -0.5px; }
 
         /* --- Azioni Navigazione (Bottoni) --- */
-        .nav-actions {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
+        .nav-actions { display: flex; align-items: center; gap: 8px; }
 
         .glass-btn {
             background-color: transparent;
@@ -99,17 +107,10 @@
             position: relative;
             transition: background-color 0.2s ease;
         }
+        .glass-btn:hover { background-color: var(--hover-bg); }
+        .glass-btn i { font-size: 22px; color: var(--text-color); }
+        .cart-btn { text-decoration: none; }
 
-        .glass-btn:hover {
-            background-color: var(--hover-light);
-        }
-
-        .glass-btn i {
-            font-size: 22px;
-            color: var(--text-color);
-        }
-
-        /* Conteggio Carrello */
         .cart-count {
             position: absolute;
             top: 4px;
@@ -130,7 +131,6 @@
         /* --- Visibilità Mobile/Desktop --- */
         .search-btn-desktop { display: flex; }
         .mobile-menu-btn { display: none; }
-
         @media (max-width: 768px) {
             .search-btn-desktop { display: none; }
             .mobile-menu-btn { display: flex; }
@@ -144,21 +144,19 @@
             width: 100%;
             height: 100%;
             max-width: 320px;
-            background-color: var(--card-background-light);
+            background-color: var(--card-bg);
             backdrop-filter: saturate(180%) blur(20px);
             -webkit-backdrop-filter: saturate(180%) blur(20px);
             z-index: 1002;
             transform: translateX(100%);
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease;
             display: flex;
             flex-direction: column;
         }
-
         .mobile-menu.is-open {
             transform: translateX(0);
             box-shadow: -10px 0px 40px rgba(0, 0, 0, 0.15);
         }
-
         .mobile-menu-header {
             display: flex;
             justify-content: space-between;
@@ -167,25 +165,13 @@
             height: 60px;
             flex-shrink: 0;
             border-bottom: 1px solid var(--divider-color);
+            transition: border-color 0.3s ease;
         }
-        
-        .mobile-menu-title {
-            font-size: 17px;
-            font-weight: 600;
-        }
-
-        .mobile-menu-content {
-            padding: 16px;
-            overflow-y: auto;
-            flex-grow: 1;
-        }
+        .mobile-menu-title { font-size: 17px; font-weight: 600; }
+        .mobile-menu-content { padding: 16px; overflow-y: auto; flex-grow: 1; }
         
         /* Barra di ricerca mobile */
-        .search-bar-mobile {
-            margin-bottom: 16px;
-            position: relative;
-        }
-
+        .search-bar-mobile { margin-bottom: 16px; position: relative; }
         .search-bar-mobile .search-icon {
             position: absolute;
             left: 12px;
@@ -194,30 +180,26 @@
             color: var(--text-color-secondary);
             font-size: 18px;
         }
-
         .glass-input {
             width: 100%;
-            padding: 10px 12px 10px 40px; /* Spazio per l'icona */
+            padding: 10px 12px 10px 40px;
             border-radius: var(--border-radius);
             border: 1px solid transparent;
-            background-color: rgba(118, 118, 128, 0.12); /* Colore input iOS */
+            background-color: var(--input-bg);
             font-size: 16px;
             color: var(--text-color);
+            transition: background-color 0.3s ease, border-color 0.3s ease;
             -webkit-appearance: none;
             box-sizing: border-box;
         }
-
-        .glass-input::placeholder {
-            color: var(--text-color-secondary);
-        }
-
+        .glass-input::placeholder { color: var(--text-color-secondary); }
         .glass-input:focus {
             outline: none;
             border-color: rgba(0, 122, 255, 0.5);
-            background-color: rgba(118, 118, 128, 0.20);
+            background-color: var(--input-focus-bg);
         }
 
-        /* Link di navigazione nel menu mobile */
+        /* Link di navigazione */
         .nav-link {
             display: flex;
             align-items: center;
@@ -226,32 +208,23 @@
             color: var(--text-color);
             font-size: 17px;
             border-radius: 8px;
-            transition: background-color 0.2s ease;
+            transition: background-color 0.2s ease, color 0.3s ease;
         }
-        
-        .nav-link:hover {
-            background-color: var(--hover-light);
-        }
-        
+        .nav-link:hover { background-color: var(--hover-bg); }
         .nav-link i {
             font-size: 22px;
             margin-right: 16px;
             color: var(--accent-color);
-            width: 24px; /* Allineamento */
+            width: 24px;
             text-align: center;
         }
-        
         .nav-divider {
             border: none;
             border-top: 1px solid var(--divider-color);
             margin: 8px 0;
+            transition: border-color 0.3s ease;
         }
-
-        .ai-link {
-            color: var(--accent-color);
-            font-weight: 500;
-        }
-
+        .ai-link { color: var(--accent-color); font-weight: 500; }
         .new-badge {
             background-color: var(--accent-color);
             color: white;
@@ -262,18 +235,23 @@
             margin-left: auto;
         }
 
+        /* Bottone Tema */
         .theme-btn-mobile {
             width: 100%;
             justify-content: center;
             margin-top: 16px;
-            background-color: rgba(118, 118, 128, 0.12);
+            background-color: var(--input-bg);
             border-radius: var(--border-radius);
             font-size: 16px;
             height: 44px;
             gap: 8px;
         }
+        .theme-btn-mobile .icon-sun { display: none; } /* Nascosto di default */
+        html.dark-theme .theme-btn-mobile .icon-moon { display: none; }
+        html.dark-theme .theme-btn-mobile .icon-sun { display: block; }
+        
 
-        /* Overlay per chiudere il menu */
+        /* Overlay */
         .overlay {
             position: fixed;
             top: 0;
@@ -286,11 +264,7 @@
             visibility: hidden;
             transition: opacity 0.4s ease, visibility 0.4s ease;
         }
-
-        .overlay.is-active {
-            opacity: 1;
-            visibility: visible;
-        }
+        .overlay.is-active { opacity: 1; visibility: visible; }
 
     </style>
 </head>
@@ -299,7 +273,8 @@
 <header class="glass-header">
     <nav class="nav-container" role="navigation" aria-label="Menu principale">
         <a href="index.html" class="logo-link" aria-label="Cronoshop - Torna alla homepage">
-            <img src="assets/cronoshop-logo.png" alt="Logo Cronoshop" class="logo-image">
+            <img src="assets/cronoshop-logo.png" alt="Logo Cronoshop" class="logo-image logo-light">
+            <img src="assets/cronoshop-logo-black.png" alt="Logo Cronoshop" class="logo-image logo-dark">
             <span class="logo-text">Cronoshop</span>
         </a>
 
@@ -345,8 +320,9 @@
         <a href="faq.html" class="nav-link" data-page="faq"><i class="ph-fill ph-question"></i> FAQ</a>
         <a href="chisiamo.html" class="nav-link" data-page="chisiamo"><i class="ph-fill ph-info"></i> Chi Siamo</a>
         <button class="glass-btn theme-btn-mobile">
-            <i class="ph-fill ph-moon"></i>
-            <span>Cambia Tema</span>
+            <i class="ph-fill ph-moon icon-moon"></i>
+            <i class="ph-fill ph-sun icon-sun"></i>
+            <span class="theme-btn-text">Cambia Tema</span>
         </button>
     </div>
 </div>
@@ -354,6 +330,7 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
+        // --- LOGICA MENU MOBILE ---
         const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
         const closeMenuBtn = document.querySelector('.close-menu-btn');
         const mobileMenu = document.getElementById('mobileMenu');
@@ -362,14 +339,12 @@
         function openMenu() {
             mobileMenu.classList.add('is-open');
             overlay.classList.add('is-active');
-            document.body.style.overflow = 'hidden'; // Blocca lo scroll del body
             mobileMenuBtn.setAttribute('aria-expanded', 'true');
         }
 
         function closeMenu() {
             mobileMenu.classList.remove('is-open');
             overlay.classList.remove('is-active');
-            document.body.style.overflow = ''; // Riattiva lo scroll
             mobileMenuBtn.setAttribute('aria-expanded', 'false');
         }
 
@@ -377,12 +352,36 @@
         closeMenuBtn.addEventListener('click', closeMenu);
         overlay.addEventListener('click', closeMenu);
 
-        // Chiudi menu con il tasto Escape
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape' && mobileMenu.classList.contains('is-open')) {
-                closeMenu();
+        // --- LOGICA TEMA SCURO/CHIARO ---
+        const themeToggleBtn = document.querySelector('.theme-btn-mobile');
+        const htmlElement = document.documentElement;
+
+        // Funzione per applicare il tema
+        const applyTheme = (theme) => {
+            if (theme === 'dark') {
+                htmlElement.classList.add('dark-theme');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                htmlElement.classList.remove('dark-theme');
+                localStorage.setItem('theme', 'light');
             }
+        };
+
+        // Event listener per il pulsante
+        themeToggleBtn.addEventListener('click', () => {
+            const isDark = htmlElement.classList.contains('dark-theme');
+            applyTheme(isDark ? 'light' : 'dark');
         });
+
+        // Controlla il tema salvato o le preferenze di sistema all'avvio
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        if (savedTheme) {
+            applyTheme(savedTheme);
+        } else {
+            applyTheme(prefersDark ? 'dark' : 'light');
+        }
     });
 </script>
 
