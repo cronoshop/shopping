@@ -26,7 +26,7 @@
             --font-system: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", Roboto, Helvetica, Arial, sans-serif;
             --radius-md: 14px; --radius-lg: 20px; --radius-full: 999px;
             --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08); --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.1);
-            --spacing-md: 16px; --spacing-lg: 24px; --spacing-xl: 32px; --spacing-2xl: 48px;
+            --spacing-sm: 8px; --spacing-md: 16px; --spacing-lg: 24px; --spacing-xl: 32px; --spacing-2xl: 48px;
             --header-height: 60px;
             --transition-fast: 0.2s cubic-bezier(0.3, 0, 0.4, 1);
         }
@@ -58,9 +58,59 @@
         .btn-whatsapp { background-color: var(--c-whatsapp); color: #fff; }
         .btn-telegram { background-color: var(--c-telegram); color: #fff; }
         
-        /* --- SEZIONI SPECIFICHE --- */
-        
-        /* Hero Section */
+        /* --- [4] STILI HEADER STATICO --- */
+        body { padding-top: var(--header-height); }
+        .glass-header {
+            position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+            background-color: color-mix(in srgb, var(--c-bg-secondary), transparent 30%);
+            backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 1px solid var(--c-border);
+            transition: background-color var(--transition-fast), border-color var(--transition-fast);
+        }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; height: var(--header-height); }
+        .logo-link { display: flex; align-items: center; text-decoration: none; color: var(--c-text-primary); flex-shrink: 0; }
+        .logo-image { height: 32px; width: 32px; margin-right: 8px; }
+        .logo-dark { display: none; }
+        html.dark-theme .logo-light { display: none; }
+        html.dark-theme .logo-dark { display: block; }
+        .logo-text { font-size: 20px; font-weight: 600; }
+        .nav-desktop { display: flex; align-items: center; justify-content: center; flex-grow: 1; margin: 0 24px; }
+        .nav-desktop-list { display: flex; align-items: center; gap: var(--spacing-sm); list-style: none; }
+        .nav-desktop-item { position: relative; }
+        .nav-desktop-link { display: flex; align-items: center; gap: 6px; padding: 8px 12px; text-decoration: none; color: var(--c-text-secondary); font-size: 14px; font-weight: 500; border-radius: var(--radius-sm); transition: background-color var(--transition-fast), color var(--transition-fast); }
+        .nav-desktop-link:hover { background-color: color-mix(in srgb, var(--c-text-primary), transparent 90%); color: var(--c-text-primary); }
+        .nav-desktop-link.active { color: var(--c-text-primary); font-weight: 600; }
+        .dropdown-menu { position: absolute; top: calc(100% + 8px); left: 50%; transform: translateX(-50%); min-width: 200px; background-color: var(--c-bg-secondary); border: 1px solid var(--c-border); border-radius: var(--radius-md); padding: var(--spacing-sm); box-shadow: var(--shadow-lg); list-style: none; opacity: 0; visibility: hidden; z-index: 1001; transition: opacity var(--transition-fast), visibility var(--transition-fast); }
+        .dropdown.is-open .dropdown-menu { opacity: 1; visibility: visible; }
+        .dropdown-item a { display: flex; align-items: center; gap: 12px; padding: 10px 12px; font-size: 15px; text-decoration: none; color: var(--c-text-primary); border-radius: var(--radius-sm); }
+        .dropdown-item a:hover { background-color: color-mix(in srgb, var(--c-text-primary), transparent 90%); }
+        .nav-actions { display: flex; align-items: center; gap: var(--spacing-sm); flex-shrink: 0; }
+        .glass-btn { background: transparent; border: none; cursor: pointer; padding: 8px; border-radius: 50%; display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; position: relative; color: var(--c-text-primary); }
+        .glass-btn:hover { background-color: color-mix(in srgb, var(--c-text-primary), transparent 90%); }
+        .glass-btn i { font-size: 22px; }
+        .mobile-menu-btn { display: none; }
+        @media (max-width: 992px) { .nav-desktop { display: none; } .mobile-menu-btn { display: flex; } }
+        .mobile-menu { position: fixed; top: 0; right: 0; width: 100%; height: 100%; max-width: 320px; background-color: color-mix(in srgb, var(--c-bg-secondary), transparent 10%); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); z-index: 1002; transform: translateX(100%); transition: transform 0.4s cubic-bezier(0.2, 1, 0.3, 1); display: flex; flex-direction: column; }
+        .mobile-menu.is-open { transform: translateX(0); }
+        .mobile-menu-header { display: flex; justify-content: space-between; align-items: center; padding: 0 var(--spacing-md); height: var(--header-height); flex-shrink: 0; border-bottom: 1px solid var(--c-border); }
+        .mobile-menu-title { font-size: 17px; font-weight: 600; }
+        .mobile-menu-content { padding: var(--spacing-md); overflow-y: auto; flex-grow: 1; }
+        .overlay { position: fixed; inset: 0; background-color: rgba(0, 0, 0, 0.3); z-index: 1001; opacity: 0; visibility: hidden; transition: opacity 0.4s ease; }
+        .overlay.is-active { opacity: 1; visibility: visible; }
+
+        /* --- [5] STILI FOOTER STATICO --- */
+        .main-footer { background-color: var(--c-bg-secondary); padding: var(--spacing-2xl) 0; border-top: 1px solid var(--c-border); }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--spacing-xl); margin-bottom: var(--spacing-2xl); }
+        .footer-column h4 { font-size: 1rem; font-weight: 600; margin-bottom: var(--spacing-md); }
+        .footer-column ul { list-style: none; }
+        .footer-column li { margin-bottom: 10px; }
+        .footer-column a { text-decoration: none; color: var(--c-text-secondary); transition: color var(--transition-fast); }
+        .footer-column a:hover { color: var(--c-accent-primary); }
+        .footer-socials { display: flex; gap: var(--spacing-md); }
+        .footer-socials a { font-size: 1.5rem; }
+        .footer-bottom { border-top: 1px solid var(--c-border); padding-top: var(--spacing-lg); text-align: center; color: var(--c-text-secondary); font-size: 0.9rem; }
+
+        /* --- [6] SEZIONI SPECIFICHE DELLA PAGINA --- */
         .hero-section { padding: 100px 0; text-align: center; position: relative; overflow: hidden; }
         .hero-background { position: absolute; inset: 0; z-index: -1; }
         .gradient-orb { position: absolute; border-radius: 50%; filter: blur(100px); opacity: 0.2; }
@@ -80,81 +130,111 @@
         .hero-actions { display: flex; justify-content: center; gap: var(--spacing-md); margin-bottom: var(--spacing-xl); }
         .hero-trust { display: flex; justify-content: center; flex-wrap: wrap; gap: var(--spacing-lg); color: var(--c-text-secondary); }
         .trust-item { display: flex; align-items: center; gap: var(--spacing-sm); }
-        
-        /* Quick Actions & Promo */
         .actions-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--spacing-lg); }
         .action-card { display: flex; align-items: center; gap: var(--spacing-md); padding: var(--spacing-lg); background-color: var(--c-bg-secondary); border-radius: var(--radius-lg); text-decoration: none; color: var(--c-text-primary); box-shadow: var(--shadow-md); transition: transform var(--transition-fast), box-shadow var(--transition-fast); }
         .action-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
         .action-icon { font-size: 2rem; color: var(--c-accent-primary); }
+        .action-content h3 { font-size: 1.1rem; margin-bottom: 4px; }
         .action-count { font-size: 0.9rem; color: var(--c-text-secondary); }
-
         .cronoai-promo { background-color: color-mix(in srgb, var(--c-bg-primary), #000 3%); }
         html.dark-theme .cronoai-promo { background-color: #111; }
-        .promo-card { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: var(--spacing-2xl); background-color: var(--c-bg-secondary); border-radius: var(--radius-lg); padding: var(--spacing-2xl); }
+        .promo-card { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: var(--spacing-2xl); background-color: var(--c-bg-secondary); border-radius: var(--radius-lg); padding: var(--spacing-2xl); overflow: hidden; }
         .promo-visual { display: flex; justify-content: center; }
         .ai-chat-preview { background-color: var(--c-bg-primary); padding: var(--spacing-md); border-radius: var(--radius-md); width: 100%; max-width: 350px; }
         .chat-message { padding: 10px 14px; border-radius: var(--radius-md); margin-bottom: var(--spacing-sm); max-width: 85%; }
         .chat-message.user { background-color: var(--c-accent-primary); color: #fff; margin-left: auto; }
         .chat-message.ai { background-color: var(--c-bg-secondary); }
-
-        /* Today's Offers */
-        .offers-filter { display: flex; justify-content: center; gap: var(--spacing-sm); background-color: var(--c-bg-secondary); padding: var(--spacing-sm); border-radius: var(--radius-full); margin-bottom: var(--spacing-xl); }
-        .filter-btn { background-color: transparent; border: none; padding: 10px 20px; border-radius: var(--radius-full); font-weight: 500; cursor: pointer; }
+        .offers-filter { display: flex; justify-content: center; flex-wrap: wrap; gap: var(--spacing-sm); background-color: var(--c-bg-secondary); padding: var(--spacing-sm); border-radius: var(--radius-full); margin: 0 auto var(--spacing-xl); max-width: fit-content; }
+        .filter-btn { background-color: transparent; border: none; padding: 10px 20px; border-radius: var(--radius-full); font-weight: 500; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; }
         .filter-btn.active { background-color: var(--c-accent-primary); color: #fff; }
         .offers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: var(--spacing-lg); margin-bottom: var(--spacing-xl); }
-        .offer-card { background-color: var(--c-bg-secondary); border-radius: var(--radius-lg); overflow: hidden; text-decoration: none; color: var(--c-text-primary); }
-        .offer-image { position: relative; height: 200px; }
+        .offer-card { background-color: var(--c-bg-secondary); border-radius: var(--radius-lg); overflow: hidden; text-decoration: none; color: var(--c-text-primary); display: flex; flex-direction: column; box-shadow: var(--shadow-md); transition: transform var(--transition-fast), box-shadow var(--transition-fast); }
+        .offer-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+        .offer-image { position: relative; height: 200px; background-color: #eee; }
         .offer-image img { width: 100%; height: 100%; object-fit: cover; }
         .offer-badge { position: absolute; top: var(--spacing-md); left: var(--spacing-md); background-color: var(--c-error); color: #fff; padding: 4px 10px; border-radius: var(--radius-full); font-size: 0.8rem; font-weight: 600; }
-        .offer-content { padding: var(--spacing-md); }
-        .offer-title { font-size: 1rem; font-weight: 600; margin-bottom: var(--spacing-sm); }
+        .offer-content { padding: var(--spacing-md); flex-grow: 1; display: flex; flex-direction: column; }
+        .offer-title { font-size: 1rem; font-weight: 600; margin-bottom: var(--spacing-sm); line-height: 1.4; flex-grow: 1; }
+        .offer-price-container { display: flex; justify-content: space-between; align-items: baseline; margin-top: auto; padding-top: var(--spacing-md); }
         .offer-price { font-size: 1.2rem; font-weight: 700; color: var(--c-accent-primary); }
-        .offer-actions { display: flex; gap: var(--spacing-sm); margin-top: var(--spacing-md); }
+        .offer-old-price { font-size: 0.9rem; color: var(--c-text-secondary); text-decoration: line-through; }
         .offers-actions { display: flex; justify-content: center; gap: var(--spacing-md); }
-
-        /* Community & How It Works */
         .whatsapp-community { background-color: color-mix(in srgb, var(--c-success), transparent 90%); }
-        .community-card { display: grid; grid-template-columns: 2fr 1fr; align-items: center; gap: var(--spacing-2xl); }
-        
+        .community-card { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: var(--spacing-2xl); background-color: var(--c-bg-secondary); border-radius: var(--radius-lg); padding: var(--spacing-xl); }
+        .community-icon-container { display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-md); }
+        .community-icon { font-size: 3rem; color: var(--c-text-secondary); }
+        .community-icon.whatsapp { color: var(--c-whatsapp); }
+        .community-icon.telegram { color: var(--c-telegram); }
+        .community-actions { display: flex; flex-wrap: wrap; gap: var(--spacing-md); margin-top: var(--spacing-lg); }
         .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--spacing-lg); }
         .step-card { text-align: center; padding: var(--spacing-lg); background-color: var(--c-bg-secondary); border-radius: var(--radius-lg); }
-        .step-icon { font-size: 2.5rem; color: var(--c-accent-primary); }
-        
-        /* Categories & Blog & FAQ */
-        .categories-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--spacing-lg); margin-bottom: var(--spacing-xl); }
-        .category-card { position: relative; height: 250px; border-radius: var(--radius-lg); overflow: hidden; padding: var(--spacing-lg); display: flex; align-items: flex-end; color: #fff; text-decoration: none; }
-        .category-background { position: absolute; inset: 0; background-size: cover; background-position: center; transition: transform 0.4s ease; filter: brightness(0.6); }
-        .category-card:hover .category-background { transform: scale(1.05); }
-        .category-content { position: relative; z-index: 1; }
-        
-        .blog-grid { display: grid; grid-template-columns: 2fr 1fr; gap: var(--spacing-lg); }
-        
-        .faq-grid { max-width: 800px; margin: 0 auto var(--spacing-xl); }
-        .faq-item { background-color: var(--c-bg-secondary); border-radius: var(--radius-md); margin-bottom: var(--spacing-sm); }
+        .step-icon { font-size: 2.5rem; color: var(--c-accent-primary); margin-bottom: var(--spacing-md); }
+        .faq-grid { max-width: 800px; margin: 0 auto; }
+        .faq-item { background-color: var(--c-bg-secondary); border-radius: var(--radius-md); margin-bottom: var(--spacing-sm); overflow: hidden; }
         .faq-question { display: flex; justify-content: space-between; align-items: center; padding: var(--spacing-md) var(--spacing-lg); cursor: pointer; font-weight: 600; }
         .faq-icon { transition: transform var(--transition-fast); }
-        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out, padding 0.4s ease-out; padding: 0 var(--spacing-lg); }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; }
+        .faq-answer p { padding: 0 var(--spacing-lg) var(--spacing-lg) var(--spacing-lg); color: var(--c-text-secondary); }
         .faq-item.active .faq-question { color: var(--c-accent-primary); }
         .faq-item.active .faq-icon { transform: rotate(45deg); }
-        .faq-item.active .faq-answer { max-height: 200px; padding: 0 var(--spacing-lg) var(--spacing-lg) var(--spacing-lg); }
+        .faq-item.active .faq-answer { max-height: 200px; }
 
-        /* Responsive */
         @media(max-width: 900px) {
-            .promo-card, .community-card, .blog-grid { grid-template-columns: 1fr; }
+            .promo-card, .community-card { grid-template-columns: 1fr; }
             .promo-visual { order: -1; margin-bottom: var(--spacing-lg); }
         }
     </style>
 </head>
 <body>
-    
-    <div id="navbar-placeholder"></div>
 
+    <header class="glass-header" id="mainHeader">
+        <nav class="nav-container container">
+            <a href="index.html" class="logo-link" aria-label="Cronoshop - Torna alla homepage">
+                <img src="assets/cronoshop-logo.png" alt="Logo Cronoshop Chiaro" class="logo-image logo-light">
+                <img src="assets/cronoshop-logo-black.png" alt="Logo Cronoshop Scuro" class="logo-image logo-dark">
+                <span class="logo-text">Cronoshop</span>
+            </a>
+            
+            <div class="nav-desktop">
+                <ul class="nav-desktop-list">
+                    <li class="nav-desktop-item"><a href="index.html" class="nav-desktop-link" data-page="index">Home</a></li>
+                    <li class="nav-desktop-item"><a href="products.html" class="nav-desktop-link" data-page="products">Prodotti</a></li>
+                    <li class="nav-desktop-item dropdown" id="categorie-desktop-dropdown">
+                        <a href="categorie.html" class="nav-desktop-link dropdown-toggle" data-page="categorie" aria-haspopup="true" aria-expanded="false">Categorie <i class="ph ph-caret-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-item"><a href="categorie.html?cat=elettronica"><i class="ph-bold ph-plugs"></i>Elettronica</a></li>
+                            <li class="dropdown-item"><a href="categorie.html?cat=casa"><i class="ph-bold ph-house-line"></i>Casa e Cucina</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-desktop-item"><a href="cronoai.html" class="nav-desktop-link" data-page="cronoai">CronoAI</a></li>
+                    <li class="nav-desktop-item"><a href="blog.html" class="nav-desktop-link" data-page="blog">Blog</a></li>
+                </ul>
+            </div>
+            
+            <div class="nav-actions">
+                <button class="glass-btn theme-btn-desktop" aria-label="Cambia tema"><i class="ph-bold ph-moon"></i></button>
+                <a href="cart.html" class="glass-btn cart-btn" aria-label="Carrello"><i class="ph-bold ph-shopping-cart-simple"></i></a>
+                <button class="glass-btn mobile-menu-btn" id="mobileMenuBtn" aria-label="Apri menu" aria-expanded="false" aria-controls="mobileMenu"><i class="ph-bold ph-list"></i></button>
+            </div>
+        </nav>
+    </header>
+
+    <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-labelledby="mobileMenuTitle">
+        <div class="mobile-menu-header">
+            <span class="mobile-menu-title" id="mobileMenuTitle">Menu</span>
+            <button class="glass-btn" id="closeMenuBtn" aria-label="Chiudi menu"><i class="ph-bold ph-x"></i></button>
+        </div>
+        <div class="mobile-menu-content">
+            </div>
+    </div>
+    
+    <div class="overlay" id="overlay"></div>
     <main>
         <section class="hero-section" id="home">
             <div class="hero-background">
                 <div class="gradient-orb orb-1"></div><div class="gradient-orb orb-2"></div><div class="gradient-orb orb-3"></div>
             </div>
-            <div class="hero-content">
+            <div class="container hero-content">
                 <div class="hero-badge"><i class="ph-fill ph-fire"></i><span>Oltre 2.500 utenti attivi</span></div>
                 <h1 class="hero-title">Le Migliori <span class="gradient-text">Offerte Amazon</span> del 2025</h1>
                 <p class="hero-description">Selezione quotidiana dei migliori prodotti con <strong>sconti reali fino al 70%</strong>. Risparmia tempo e denaro con Cronoshop.</p>
@@ -165,7 +245,7 @@
                 </div>
                 <div class="hero-actions">
                     <a href="#offerte-oggi" class="btn btn-primary"><i class="ph-fill ph-shopping-bag-open"></i>Scopri le Offerte</a>
-                    <a href="cronoai.html" class="btn btn-secondary"><i class="ph-fill ph-sparkle"></i>Prova CronoAI</a>
+                    <a href="cronoai.html" class="btn btn-ai"><i class="ph-fill ph-sparkle"></i>Prova CronoAI</a>
                 </div>
                 <div class="hero-trust">
                     <div class="trust-item"><i class="ph-fill ph-check-circle"></i><span>100% Gratuito</span></div>
@@ -190,14 +270,16 @@
             <div class="container">
                 <div class="promo-card">
                     <div class="promo-content">
-                        <h2><i class="ph-fill ph-sparkle"></i> Scopri CronoAI</h2>
-                        <p>L'assistente intelligente che trova le offerte perfette per te. Powered by AI avanzata.</p>
+                        <div class="section-header" style="text-align: left; margin-bottom: var(--spacing-lg);">
+                            <h2 style="font-size: 2rem;"><i class="ph-fill ph-sparkle" style="color: var(--c-ai-accent);"></i> L'Intelligenza che ti fa Risparmiare</h2>
+                            <p>Basta ricerche infinite. Chiedi a CronoAI di trovare il prodotto perfetto per te, analizzare i prezzi e scovare offerte nascoste.</p>
+                        </div>
                         <a href="cronoai.html" class="btn btn-ai"><i class="ph-fill ph-rocket-launch"></i>Prova CronoAI Gratis</a>
                     </div>
                     <div class="promo-visual">
                         <div class="ai-chat-preview">
-                            <div class="chat-message user"><span>Trova smartphone sotto 300€</span></div>
-                            <div class="chat-message ai"><span><i class="ph-fill ph-magnifying-glass"></i> Ho trovato 5 offerte per te!</span></div>
+                            <div class="chat-message user"><span>Trovami delle cuffie noise-cancelling sotto i 100€</span></div>
+                            <div class="chat-message ai"><span>Certo! Ho trovato 3 modelli con recensioni eccellenti. Te li mostro.</span></div>
                         </div>
                     </div>
                 </div>
@@ -207,34 +289,37 @@
         <section class="todays-offers" id="offerte-oggi">
             <div class="container">
                 <div class="section-header">
-                    <h2><i class="ph-fill ph-fire"></i> Offerte Imperdibili di Oggi</h2>
-                    <p>Selezione curata delle migliori promozioni Amazon disponibili ora.</p>
+                    <h2><i class="ph-fill ph-fire" style="color: var(--c-error);"></i> Offerte Imperdibili di Oggi</h2>
+                    <p>La nostra selezione delle migliori promozioni Amazon disponibili solo per poche ore. Verificate una ad una dal nostro team.</p>
                 </div>
                 <div class="offers-filter">
                     <button class="filter-btn active" data-category="all"><i class="ph-fill ph-star"></i>Tutte</button>
-                    <button class="filter-btn" data-category="smartphone"><i class="ph-fill ph-device-mobile"></i>Tech</button>
+                    <button class="filter-btn" data-category="tech"><i class="ph-fill ph-laptop"></i>Tech</button>
                     <button class="filter-btn" data-category="fashion"><i class="ph-fill ph-t-shirt"></i>Moda</button>
                     <button class="filter-btn" data-category="casa"><i class="ph-fill ph-house"></i>Casa</button>
                 </div>
-                <div class="offers-grid" id="offersGrid"></div>
-                <div class="offers-actions"><a href="products.html" class="btn btn-primary"><i class="ph-fill ph-shopping-bag-open"></i>Vedi Tutte le Offerte</a></div>
+                <div class="offers-grid" id="offersGrid">
+                    </div>
+                <div class="offers-actions"><a href="products.html" class="btn btn-primary"><i class="ph-fill ph-arrow-right"></i>Vedi Tutte le 150+ Offerte</a></div>
             </div>
         </section>
         
         <section class="whatsapp-community">
              <div class="container">
                 <div class="community-card">
+                    <div class="community-icon-container">
+                        <i class="ph-fill ph-whatsapp-logo community-icon whatsapp"></i>
+                        <i class="ph-fill ph-telegram-logo community-icon telegram"></i>
+                    </div>
                     <div class="community-content">
-                        <h2><i class="ph-fill ph-users-three"></i> Unisciti alla Community</h2>
-                        <p>Oltre <strong>2.500 utenti</strong> ricevono le migliori offerte in tempo reale sui nostri canali.</p>
+                        <div class="section-header" style="text-align: left; margin-bottom: var(--spacing-lg);">
+                            <h2>Entra nella Community</h2>
+                            <p>Unisciti a migliaia di risparmiatori e ricevi le offerte lampo e gli errori di prezzo direttamente sul tuo smartphone. Non perdere più un'occasione!</p>
+                        </div>
                         <div class="community-actions">
-                            <a href="groups.html" class="btn btn-whatsapp"><i class="ph-fill ph-whatsapp-logo"></i>Unisciti su WhatsApp</a>
+                            <a href="groups.html" class="btn btn-whatsapp"><i class="ph-fill ph-whatsapp-logo"></i>Canale WhatsApp</a>
                             <a href="groups.html" class="btn btn-telegram"><i class="ph-fill ph-telegram-logo"></i>Canale Telegram</a>
                         </div>
-                    </div>
-                    <div class="community-stats">
-                        <div class="stat-item"><div class="stat-number">2.5K+</div><div class="stat-label">Membri Attivi</div></div>
-                        <div class="stat-item"><div class="stat-number">50+</div><div class="stat-label">Offerte/Giorno</div></div>
                     </div>
                 </div>
             </div>
@@ -242,42 +327,169 @@
 
         <section class="how-it-works">
             <div class="container">
-                <div class="section-header"><h2>Come Funziona</h2><p>Il modo più semplice per risparmiare su Amazon.</p></div>
+                <div class="section-header"><h2>Come Funziona</h2><p>Risparmiare su Amazon non è mai stato così semplice, veloce e sicuro.</p></div>
                 <div class="steps-grid">
-                    <div class="step-card"><div class="step-icon"><i class="ph-fill ph-magnifying-glass"></i></div><h3>Esplora</h3><p>Naviga tra le nostre offerte verificate.</p></div>
-                    <div class="step-card"><div class="step-icon"><i class="ph-fill ph-heart"></i></div><h3>Salva</h3><p>Aggiungi i prodotti alla tua wishlist.</p></div>
-                    <div class="step-card"><div class="step-icon"><i class="ph-fill ph-shopping-cart"></i></div><h3>Acquista</h3><p>Completa l'acquisto su Amazon.</p></div>
+                    <div class="step-card"><div class="step-icon"><i class="ph-fill ph-magnifying-glass"></i></div><h3>1. Esplora</h3><p>Naviga tra le centinaia di offerte che il nostro team e la nostra AI trovano e verificano ogni giorno.</p></div>
+                    <div class="step-card"><div class="step-icon"><i class="ph-fill ph-arrow-square-out"></i></div><h3>2. Clicca</h3><p>Hai trovato il prodotto giusto? Clicca per visualizzare l'offerta direttamente sulla pagina ufficiale di Amazon.</p></div>
+                    <div class="step-card"><div class="step-icon"><i class="ph-fill ph-shopping-cart-simple"></i></div><h3>3. Risparmia</h3><p>Aggiungi il prodotto al carrello e completa il tuo acquisto su Amazon, godendoti il risparmio che hai ottenuto.</p></div>
                 </div>
             </div>
         </section>
+
+        <section class="faq-section" id="faq">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Domande Frequenti</h2>
+                    <p>Hai dei dubbi? Qui trovi le risposte alle domande più comuni sul nostro servizio.</p>
+                </div>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <div class="faq-question"><span>Cronoshop è un servizio gratuito?</span><i class="ph-bold ph-plus faq-icon"></i></div>
+                        <div class="faq-answer"><p>Assolutamente sì. Cronoshop è e sarà sempre 100% gratuito. Guadagniamo una piccola commissione tramite il Programma di Affiliazione Amazon per gli acquisti idonei, senza alcun costo aggiuntivo per te.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question"><span>Le offerte sono sicure e verificate?</span><i class="ph-bold ph-plus faq-icon"></i></div>
+                        <div class="faq-answer"><p>Sì. Ogni link punta direttamente al sito ufficiale di Amazon.it. Il nostro team verifica manualmente la validità delle offerte principali per garantirti la massima sicurezza e trasparenza.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question"><span>Come funziona CronoAI?</span><i class="ph-bold ph-plus faq-icon"></i></div>
+                        <div class="faq-answer"><p>CronoAI è un assistente basato su intelligenza artificiale addestrato per analizzare le tue richieste e cercare le migliori offerte corrispondenti nel catalogo Amazon. Può anche analizzare l'andamento dei prezzi e fornirti consigli personalizzati.</p></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
     
-    <div id="footer-placeholder"></div>
-
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h4>Cronoshop</h4>
+                    <p class="footer-description" style="color: var(--c-text-secondary); font-size: 0.9rem;">Il tuo alleato quotidiano per scovare le migliori offerte su Amazon e risparmiare senza fatica.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Esplora</h4>
+                    <ul>
+                        <li><a href="products.html">Tutte le Offerte</a></li>
+                        <li><a href="cronoai.html">CronoAI</a></li>
+                        <li><a href="categorie.html">Categorie</a></li>
+                        <li><a href="blog.html">Blog & Guide</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Supporto</h4>
+                    <ul>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="chisiamo.html">Chi Siamo</a></li>
+                        <li><a href="contatti.html">Contatti</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Seguici</h4>
+                    <div class="footer-socials">
+                        <a href="#" aria-label="WhatsApp"><i class="ph-fill ph-whatsapp-logo"></i></a>
+                        <a href="#" aria-label="Telegram"><i class="ph-fill ph-telegram-logo"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="ph-fill ph-instagram-logo"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Cronoshop. Tutti i diritti riservati. Cronoshop è un membro del Programma di Affiliazione Amazon EU.</p>
+            </div>
+        </div>
+    </footer>
     <script>
-        function loadComponent(url, placeholderId) {
-            fetch(url)
-                .then(response => response.ok ? response.text() : Promise.reject('Errore'))
-                .then(data => {
-                    const placeholder = document.getElementById(placeholderId);
-                    if (!placeholder) return;
-                    const tempDiv = document.createElement('div');
-                    tempDiv.innerHTML = data;
-                    const script = tempDiv.querySelector('script');
-                    placeholder.innerHTML = tempDiv.innerHTML;
-                    if (script) {
-                        const newScript = document.createElement('script');
-                        newScript.textContent = script.textContent;
-                        document.body.appendChild(newScript).remove();
-                    }
-                });
-        }
-        
         document.addEventListener('DOMContentLoaded', function() {
-            loadComponent('nav.html', 'navbar-placeholder');
-            loadComponent('footer.html', 'footer-placeholder');
             
-            // Logica specifica della homepage
+            // --- Logica Navigazione Statica ---
+            (function() {
+                const navApp = {
+                    elements: {
+                        html: document.documentElement,
+                        mobileMenu: document.getElementById('mobileMenu'),
+                        mobileMenuBtn: document.getElementById('mobileMenuBtn'),
+                        closeMenuBtn: document.getElementById('closeMenuBtn'),
+                        overlay: document.getElementById('overlay'),
+                        themeToggleButtons: document.querySelectorAll('.theme-btn-desktop'),
+                        desktopDropdown: document.getElementById('categorie-desktop-dropdown'),
+                    },
+                    init() {
+                        if (this.initialized) return;
+                        this.initialized = true;
+                        this.initMobileMenu();
+                        this.initTheme();
+                        this.initActiveLink();
+                        this.initDropdowns();
+                    },
+                    initMobileMenu() {
+                        if (!this.elements.mobileMenu) return;
+                        this.elements.mobileMenuBtn.addEventListener('click', () => {
+                            this.elements.mobileMenu.classList.add('is-open');
+                            this.elements.overlay.classList.add('is-active');
+                        });
+                        this.elements.closeMenuBtn.addEventListener('click', () => this.closeAll());
+                        this.elements.overlay.addEventListener('click', () => this.closeAll());
+                    },
+                    closeAll() {
+                        if (this.elements.mobileMenu) this.elements.mobileMenu.classList.remove('is-open');
+                        this.elements.overlay.classList.remove('is-active');
+                    },
+                    initTheme() {
+                        const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+                        this.applyTheme(savedTheme);
+                        this.elements.themeToggleButtons.forEach(btn => {
+                            btn.addEventListener('click', () => {
+                                const isDark = this.elements.html.classList.contains('dark-theme');
+                                this.applyTheme(isDark ? 'light' : 'dark');
+                                this.updateThemeIcon(!isDark);
+                            });
+                        });
+                        this.updateThemeIcon(this.elements.html.classList.contains('dark-theme'));
+                    },
+                    applyTheme(theme) {
+                        this.elements.html.classList.toggle('dark-theme', theme === 'dark');
+                        localStorage.setItem('theme', theme);
+                    },
+                    updateThemeIcon(isDark) {
+                        this.elements.themeToggleButtons.forEach(btn => {
+                            const icon = btn.querySelector('i');
+                            icon.className = isDark ? 'ph-bold ph-sun' : 'ph-bold ph-moon';
+                        });
+                    },
+                    initActiveLink() {
+                        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+                        document.querySelectorAll('[data-page]').forEach(link => {
+                            const pageName = new URL(link.href, window.location.href).pathname.split('/').pop();
+                            if (pageName === currentPage) {
+                                link.classList.add('active');
+                            }
+                        });
+                    },
+                    initDropdowns() {
+                        if (this.elements.desktopDropdown) {
+                            const toggle = this.elements.desktopDropdown.querySelector('.dropdown-toggle');
+                            toggle.addEventListener('click', (e) => {
+                                if (e.button === 0 && window.innerWidth > 992) {
+                                    e.preventDefault();
+                                    this.elements.desktopDropdown.classList.toggle('is-open');
+                                }
+                            });
+                        }
+                        document.addEventListener('click', (e) => {
+                            if (this.elements.desktopDropdown && !this.elements.desktopDropdown.contains(e.target)) {
+                                this.elements.desktopDropdown.classList.remove('is-open');
+                            }
+                        });
+                    }
+                };
+                navApp.init();
+            })();
+
+            // --- Logica Specifica della Pagina ---
+            
+            // Logica per la sezione FAQ
             const faqItems = document.querySelectorAll('.faq-item');
             faqItems.forEach(item => {
                 const question = item.querySelector('.faq-question');
@@ -287,6 +499,51 @@
                     if (!isActive) item.classList.add('active');
                 });
             });
+
+            // Popolamento dinamico delle offerte (Esempio)
+            const offersGrid = document.getElementById('offersGrid');
+            const sampleOffers = [
+                { title: 'Smartwatch F25 con GPS e Cardiofrequenzimetro', price: '79,99€', oldPrice: '129,99€', discount: '-38%', image: 'assets/offer1.jpg', category: 'tech' },
+                { title: 'Cuffie Bluetooth 5.3 con Cancellazione del Rumore', price: '49,90€', oldPrice: '89,90€', discount: '-44%', image: 'assets/offer2.jpg', category: 'tech' },
+                { title: 'Sneakers Uomo in Pelle Sintetica Stile Vintage', price: '34,99€', oldPrice: '59,99€', discount: '-42%', image: 'assets/offer3.jpg', category: 'fashion' },
+                { title: 'Friggitrice ad Aria 5.5L con 11 Programmi Cottura', price: '89,00€', oldPrice: '139,00€', discount: '-36%', image: 'assets/offer4.jpg', category: 'casa' }
+            ];
+
+            function renderOffers(offers) {
+                if (!offersGrid) return;
+                offersGrid.innerHTML = '';
+                offers.forEach(offer => {
+                    offersGrid.innerHTML += `
+                        <a href="#" class="offer-card" data-category="${offer.category}">
+                            <div class="offer-image">
+                                <img src="${offer.image}" alt="${offer.title}" loading="lazy">
+                                <span class="offer-badge">${offer.discount}</span>
+                            </div>
+                            <div class="offer-content">
+                                <h3 class="offer-title">${offer.title}</h3>
+                                <div class="offer-price-container">
+                                    <span class="offer-price">${offer.price}</span>
+                                    <span class="offer-old-price">${offer.oldPrice}</span>
+                                </div>
+                            </div>
+                        </a>
+                    `;
+                });
+            }
+            renderOffers(sampleOffers);
+
+            // Logica Filtri
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    const category = button.dataset.category;
+                    const filteredOffers = category === 'all' ? sampleOffers : sampleOffers.filter(o => o.category === category);
+                    renderOffers(filteredOffers);
+                });
+            });
+
         });
     </script>
 </body>
