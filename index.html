@@ -2,723 +2,292 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Cronoshop - Le Migliori Offerte Amazon Giornaliere 2025 | Sconti Esclusivi fino al 70%</title>
-    <meta name="description" content="🛍️ Scopri ogni giorno le migliori offerte Amazon selezionate da Cronoshop. Smartphone, tecnologia, casa, moda e molto altro con sconti fino al 70%. Risparmia con le nostre promozioni esclusive aggiornate 24/7! Oltre 2.500 utenti attivi nei nostri gruppi WhatsApp." />
-    <meta name="keywords" content="offerte amazon, cronoshop, sconti amazon, promozioni giornaliere, risparmio online, shopping amazon, offerte tech, offerte smartphone, offerte casa, offerte moda, deals amazon italia, coupon amazon, black friday, cyber monday, offerte lampo, sconti esclusivi" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cronoshop - Le Migliori Offerte Amazon Giornaliere 2025</title>
+    
+    <meta name="description" content="Scopri ogni giorno le migliori offerte Amazon selezionate da Cronoshop. Smartphone, tecnologia, casa, moda e molto altro con sconti fino al 70%." />
     <meta name="author" content="Cronoshop Team" />
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <link rel="canonical" href="https://www.cronoshop.eu/" />
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/cronoshop-logo.png">
+    <link rel="icon" type="image/png" href="assets/cronoshop-logo.png">
     <link rel="apple-touch-icon" href="assets/cronoshop-logo.png">
-    <link rel="manifest" href="/manifest.json">
-    <meta name="theme-color" content="#007AFF">
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.cronoshop.eu/">
-    <meta property="og:title" content="Cronoshop - Le Migliori Offerte Amazon Giornaliere 2025">
-    <meta property="og:description" content="Scopri ogni giorno le migliori offerte Amazon con sconti fino al 70%. Oltre 2.500 utenti attivi nei nostri gruppi WhatsApp per offerte esclusive!">
-    <meta property="og:image" content="https://www.cronoshop.eu/assets/cronoshop-logo.png">
-    <meta property="og:site_name" content="Cronoshop">
-    <meta property="og:locale" content="it_IT">
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://www.cronoshop.eu/">
-    <meta property="twitter:title" content="Cronoshop - Le Migliori Offerte Amazon Giornaliere 2025">
-    <meta property="twitter:description" content="Scopri ogni giorno le migliori offerte Amazon con sconti fino al 70%. Oltre 2.500 utenti attivi!">
-    <meta property="twitter:image" content="https://www.cronoshop.eu/assets/cronoshop-logo.png">
-
-    <!-- Preconnect for performance -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://m.media-amazon.com" />
     
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-    
-    <!-- Styles -->
-    <link rel="stylesheet" href="style.css?v=3.0" />
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
-    <!-- Structured Data -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "Cronoshop",
-        "url": "https://www.cronoshop.eu",
-        "description": "La piattaforma italiana per le migliori offerte Amazon giornaliere con sconti esclusivi fino al 70%",
-        "publisher": {
-            "@type": "Organization",
-            "name": "Cronoshop",
-            "logo": {
-                "@type": "ImageObject",
-                "url": "https://www.cronoshop.eu/assets/cronoshop-logo.png"
-            }
-        },
-        "potentialAction": {
-            "@type": "SearchAction",
-            "target": "https://www.cronoshop.eu/products.html?search={search_term_string}",
-            "query-input": "required name=search_term_string"
+    <style>
+        /* --- [1] IMPOSTAZIONI GLOBALI E VARIABILI --- */
+        :root {
+            --c-accent-primary: #007aff; --c-accent-secondary: #5ac8fa;
+            --c-ai-accent: #a855f7; --c-ai-accent-dark: #7d44c6;
+            --c-whatsapp: #25d366; --c-telegram: #0088cc;
+            --c-success: #34c759; --c-error: #ff3b30; --c-warning: #ff9500;
+            --c-bg-primary: #f2f2f7; --c-bg-secondary: #ffffff;
+            --c-text-primary: #1d1d1f; --c-text-secondary: #6e6e73; --c-text-on-accent: #ffffff;
+            --c-border: rgba(60, 60, 67, 0.15); --c-separator: var(--c-border);
+            --font-system: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", Roboto, Helvetica, Arial, sans-serif;
+            --radius-md: 14px; --radius-lg: 20px; --radius-full: 999px;
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08); --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --spacing-md: 16px; --spacing-lg: 24px; --spacing-xl: 32px; --spacing-2xl: 48px;
+            --header-height: 60px;
+            --transition-fast: 0.2s cubic-bezier(0.3, 0, 0.4, 1);
         }
-    }
-    </script>
+        html.dark-theme {
+            --c-accent-primary: #0a84ff; --c-accent-secondary: #64d2ff;
+            --c-ai-accent: #bf5af2; --c-ai-accent-dark: #9a48d1;
+            --c-bg-primary: #000000; --c-bg-secondary: #1c1c1e;
+            --c-text-primary: #f5f5f7; --c-text-secondary: #8d8d92;
+            --c-border: rgba(84, 84, 88, 0.5);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.2); --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.25);
+        }
+        
+        /* --- [2] RESET E STILI BASE --- */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: var(--font-system); background-color: var(--c-bg-primary); color: var(--c-text-primary); }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 var(--spacing-lg); }
+        section { padding: var(--spacing-2xl) 0; }
+        .section-header { text-align: center; max-width: 700px; margin: 0 auto var(--spacing-xl); }
+        .section-header h2 { font-size: 2.5rem; font-weight: 700; margin-bottom: var(--spacing-md); }
+        .section-header p { font-size: 1.1rem; color: var(--c-text-secondary); }
+        
+        /* --- [3] BOTTONI --- */
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--spacing-sm); padding: 12px 24px; font-size: 1rem; font-weight: 600; border-radius: var(--radius-md); border: none; cursor: pointer; text-decoration: none; transition: transform var(--transition-fast), box-shadow var(--transition-fast); }
+        .btn:hover { transform: translateY(-2px); }
+        .btn-primary { background-color: var(--c-accent-primary); color: var(--c-text-on-accent); box-shadow: 0 4px 15px color-mix(in srgb, var(--c-accent-primary), transparent 60%); }
+        .btn-secondary { background-color: var(--c-bg-secondary); color: var(--c-text-primary); box-shadow: var(--shadow-md); }
+        .btn-outline { background-color: transparent; color: var(--c-accent-primary); border: 1px solid var(--c-accent-primary); }
+        .btn-ai { background: linear-gradient(45deg, var(--c-ai-accent), var(--c-ai-accent-dark)); color: var(--c-text-on-accent); }
+        .btn-whatsapp { background-color: var(--c-whatsapp); color: #fff; }
+        .btn-telegram { background-color: var(--c-telegram); color: #fff; }
+        
+        /* --- SEZIONI SPECIFICHE --- */
+        
+        /* Hero Section */
+        .hero-section { padding: 100px 0; text-align: center; position: relative; overflow: hidden; }
+        .hero-background { position: absolute; inset: 0; z-index: -1; }
+        .gradient-orb { position: absolute; border-radius: 50%; filter: blur(100px); opacity: 0.2; }
+        html.dark-theme .gradient-orb { opacity: 0.3; }
+        .orb-1 { width: 400px; height: 400px; background: var(--c-accent-primary); top: 10%; left: 5%; }
+        .orb-2 { width: 500px; height: 500px; background: var(--c-accent-secondary); bottom: 5%; right: 10%; }
+        .orb-3 { width: 300px; height: 300px; background: var(--c-warning); top: 50%; left: 45%; }
+        .hero-content { position: relative; }
+        .hero-badge { display: inline-flex; align-items: center; gap: var(--spacing-sm); background-color: color-mix(in srgb, var(--c-bg-secondary), transparent 10%); padding: 8px 16px; border-radius: var(--radius-full); margin-bottom: var(--spacing-lg); border: 1px solid var(--c-border); }
+        .hero-title { font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 800; line-height: 1.2; margin-bottom: var(--spacing-lg); }
+        .gradient-text { background: linear-gradient(45deg, var(--c-accent-primary), var(--c-accent-secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero-description { font-size: 1.2rem; max-width: 700px; margin: 0 auto var(--spacing-xl); color: var(--c-text-secondary); }
+        .hero-stats { display: flex; justify-content: center; gap: var(--spacing-xl); margin-bottom: var(--spacing-xl); }
+        .stat-item { text-align: center; }
+        .stat-number { font-size: 2rem; font-weight: 700; }
+        .stat-label { font-size: 0.9rem; color: var(--c-text-secondary); }
+        .hero-actions { display: flex; justify-content: center; gap: var(--spacing-md); margin-bottom: var(--spacing-xl); }
+        .hero-trust { display: flex; justify-content: center; flex-wrap: wrap; gap: var(--spacing-lg); color: var(--c-text-secondary); }
+        .trust-item { display: flex; align-items: center; gap: var(--spacing-sm); }
+        
+        /* Quick Actions & Promo */
+        .actions-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--spacing-lg); }
+        .action-card { display: flex; align-items: center; gap: var(--spacing-md); padding: var(--spacing-lg); background-color: var(--c-bg-secondary); border-radius: var(--radius-lg); text-decoration: none; color: var(--c-text-primary); box-shadow: var(--shadow-md); transition: transform var(--transition-fast), box-shadow var(--transition-fast); }
+        .action-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+        .action-icon { font-size: 2rem; color: var(--c-accent-primary); }
+        .action-count { font-size: 0.9rem; color: var(--c-text-secondary); }
+
+        .cronoai-promo { background-color: color-mix(in srgb, var(--c-bg-primary), #000 3%); }
+        html.dark-theme .cronoai-promo { background-color: #111; }
+        .promo-card { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: var(--spacing-2xl); background-color: var(--c-bg-secondary); border-radius: var(--radius-lg); padding: var(--spacing-2xl); }
+        .promo-visual { display: flex; justify-content: center; }
+        .ai-chat-preview { background-color: var(--c-bg-primary); padding: var(--spacing-md); border-radius: var(--radius-md); width: 100%; max-width: 350px; }
+        .chat-message { padding: 10px 14px; border-radius: var(--radius-md); margin-bottom: var(--spacing-sm); max-width: 85%; }
+        .chat-message.user { background-color: var(--c-accent-primary); color: #fff; margin-left: auto; }
+        .chat-message.ai { background-color: var(--c-bg-secondary); }
+
+        /* Today's Offers */
+        .offers-filter { display: flex; justify-content: center; gap: var(--spacing-sm); background-color: var(--c-bg-secondary); padding: var(--spacing-sm); border-radius: var(--radius-full); margin-bottom: var(--spacing-xl); }
+        .filter-btn { background-color: transparent; border: none; padding: 10px 20px; border-radius: var(--radius-full); font-weight: 500; cursor: pointer; }
+        .filter-btn.active { background-color: var(--c-accent-primary); color: #fff; }
+        .offers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: var(--spacing-lg); margin-bottom: var(--spacing-xl); }
+        .offer-card { background-color: var(--c-bg-secondary); border-radius: var(--radius-lg); overflow: hidden; text-decoration: none; color: var(--c-text-primary); }
+        .offer-image { position: relative; height: 200px; }
+        .offer-image img { width: 100%; height: 100%; object-fit: cover; }
+        .offer-badge { position: absolute; top: var(--spacing-md); left: var(--spacing-md); background-color: var(--c-error); color: #fff; padding: 4px 10px; border-radius: var(--radius-full); font-size: 0.8rem; font-weight: 600; }
+        .offer-content { padding: var(--spacing-md); }
+        .offer-title { font-size: 1rem; font-weight: 600; margin-bottom: var(--spacing-sm); }
+        .offer-price { font-size: 1.2rem; font-weight: 700; color: var(--c-accent-primary); }
+        .offer-actions { display: flex; gap: var(--spacing-sm); margin-top: var(--spacing-md); }
+        .offers-actions { display: flex; justify-content: center; gap: var(--spacing-md); }
+
+        /* Community & How It Works */
+        .whatsapp-community { background-color: color-mix(in srgb, var(--c-success), transparent 90%); }
+        .community-card { display: grid; grid-template-columns: 2fr 1fr; align-items: center; gap: var(--spacing-2xl); }
+        
+        .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--spacing-lg); }
+        .step-card { text-align: center; padding: var(--spacing-lg); background-color: var(--c-bg-secondary); border-radius: var(--radius-lg); }
+        .step-icon { font-size: 2.5rem; color: var(--c-accent-primary); }
+        
+        /* Categories & Blog & FAQ */
+        .categories-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--spacing-lg); margin-bottom: var(--spacing-xl); }
+        .category-card { position: relative; height: 250px; border-radius: var(--radius-lg); overflow: hidden; padding: var(--spacing-lg); display: flex; align-items: flex-end; color: #fff; text-decoration: none; }
+        .category-background { position: absolute; inset: 0; background-size: cover; background-position: center; transition: transform 0.4s ease; filter: brightness(0.6); }
+        .category-card:hover .category-background { transform: scale(1.05); }
+        .category-content { position: relative; z-index: 1; }
+        
+        .blog-grid { display: grid; grid-template-columns: 2fr 1fr; gap: var(--spacing-lg); }
+        
+        .faq-grid { max-width: 800px; margin: 0 auto var(--spacing-xl); }
+        .faq-item { background-color: var(--c-bg-secondary); border-radius: var(--radius-md); margin-bottom: var(--spacing-sm); }
+        .faq-question { display: flex; justify-content: space-between; align-items: center; padding: var(--spacing-md) var(--spacing-lg); cursor: pointer; font-weight: 600; }
+        .faq-icon { transition: transform var(--transition-fast); }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out, padding 0.4s ease-out; padding: 0 var(--spacing-lg); }
+        .faq-item.active .faq-question { color: var(--c-accent-primary); }
+        .faq-item.active .faq-icon { transform: rotate(45deg); }
+        .faq-item.active .faq-answer { max-height: 200px; padding: 0 var(--spacing-lg) var(--spacing-lg) var(--spacing-lg); }
+
+        /* Responsive */
+        @media(max-width: 900px) {
+            .promo-card, .community-card, .blog-grid { grid-template-columns: 1fr; }
+            .promo-visual { order: -1; margin-bottom: var(--spacing-lg); }
+        }
+    </style>
 </head>
 <body>
-    <!-- Navigation will be loaded dynamically -->
-    <div id="navigation-container"></div>
+    
+    <div id="navbar-placeholder"></div>
 
-    <!-- Hero Section -->
-    <section class="hero-section" id="home">
-        <div class="hero-background">
-            <div class="gradient-orb orb-1"></div>
-            <div class="gradient-orb orb-2"></div>
-            <div class="gradient-orb orb-3"></div>
-        </div>
+    <main>
+        <section class="hero-section" id="home">
+            <div class="hero-background">
+                <div class="gradient-orb orb-1"></div><div class="gradient-orb orb-2"></div><div class="gradient-orb orb-3"></div>
+            </div>
+            <div class="hero-content">
+                <div class="hero-badge"><i class="ph-fill ph-fire"></i><span>Oltre 2.500 utenti attivi</span></div>
+                <h1 class="hero-title">Le Migliori <span class="gradient-text">Offerte Amazon</span> del 2025</h1>
+                <p class="hero-description">Selezione quotidiana dei migliori prodotti con <strong>sconti reali fino al 70%</strong>. Risparmia tempo e denaro con Cronoshop.</p>
+                <div class="hero-stats">
+                    <div class="stat-item"><div class="stat-number">2.5K+</div><div class="stat-label">Utenti Attivi</div></div>
+                    <div class="stat-item"><div class="stat-number">50+</div><div class="stat-label">Offerte/Giorno</div></div>
+                    <div class="stat-item"><div class="stat-number">70%</div><div class="stat-label">Sconto Max</div></div>
+                </div>
+                <div class="hero-actions">
+                    <a href="#offerte-oggi" class="btn btn-primary"><i class="ph-fill ph-shopping-bag-open"></i>Scopri le Offerte</a>
+                    <a href="cronoai.html" class="btn btn-secondary"><i class="ph-fill ph-sparkle"></i>Prova CronoAI</a>
+                </div>
+                <div class="hero-trust">
+                    <div class="trust-item"><i class="ph-fill ph-check-circle"></i><span>100% Gratuito</span></div>
+                    <div class="trust-item"><i class="ph-fill ph-lock"></i><span>Link Sicuri</span></div>
+                    <div class="trust-item"><i class="ph-fill ph-clock-clockwise"></i><span>Aggiornato 24/7</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="quick-actions">
+            <div class="container">
+                <div class="actions-grid">
+                    <a href="products.html?category=smartphone" class="action-card"><div class="action-icon"><i class="ph-fill ph-device-mobile"></i></div><div class="action-content"><h3>Smartphone</h3><span class="action-count">24 offerte</span></div></a>
+                    <a href="products.html?category=tech" class="action-card"><div class="action-icon"><i class="ph-fill ph-laptop"></i></div><div class="action-content"><h3>Tecnologia</h3><span class="action-count">18 offerte</span></div></a>
+                    <a href="products.html?category=casa" class="action-card"><div class="action-icon"><i class="ph-fill ph-house"></i></div><div class="action-content"><h3>Casa & Cucina</h3><span class="action-count">15 offerte</span></div></a>
+                    <a href="products.html?category=fashion" class="action-card"><div class="action-icon"><i class="ph-fill ph-t-shirt"></i></div><div class="action-content"><h3>Fashion</h3><span class="action-count">12 offerte</span></div></a>
+                </div>
+            </div>
+        </section>
+
+        <section class="cronoai-promo">
+            <div class="container">
+                <div class="promo-card">
+                    <div class="promo-content">
+                        <h2><i class="ph-fill ph-sparkle"></i> Scopri CronoAI</h2>
+                        <p>L'assistente intelligente che trova le offerte perfette per te. Powered by AI avanzata.</p>
+                        <a href="cronoai.html" class="btn btn-ai"><i class="ph-fill ph-rocket-launch"></i>Prova CronoAI Gratis</a>
+                    </div>
+                    <div class="promo-visual">
+                        <div class="ai-chat-preview">
+                            <div class="chat-message user"><span>Trova smartphone sotto 300€</span></div>
+                            <div class="chat-message ai"><span><i class="ph-fill ph-magnifying-glass"></i> Ho trovato 5 offerte per te!</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="todays-offers" id="offerte-oggi">
+            <div class="container">
+                <div class="section-header">
+                    <h2><i class="ph-fill ph-fire"></i> Offerte Imperdibili di Oggi</h2>
+                    <p>Selezione curata delle migliori promozioni Amazon disponibili ora.</p>
+                </div>
+                <div class="offers-filter">
+                    <button class="filter-btn active" data-category="all"><i class="ph-fill ph-star"></i>Tutte</button>
+                    <button class="filter-btn" data-category="smartphone"><i class="ph-fill ph-device-mobile"></i>Tech</button>
+                    <button class="filter-btn" data-category="fashion"><i class="ph-fill ph-t-shirt"></i>Moda</button>
+                    <button class="filter-btn" data-category="casa"><i class="ph-fill ph-house"></i>Casa</button>
+                </div>
+                <div class="offers-grid" id="offersGrid"></div>
+                <div class="offers-actions"><a href="products.html" class="btn btn-primary"><i class="ph-fill ph-shopping-bag-open"></i>Vedi Tutte le Offerte</a></div>
+            </div>
+        </section>
         
-        <div class="hero-content">
-            <div class="hero-badge">
-                <span class="badge-icon">🔥</span>
-                <span>Oltre 2.500 utenti attivi</span>
-            </div>
-            
-            <h1 class="hero-title">
-                Le Migliori <span class="gradient-text">Offerte Amazon</span> del 2025
-            </h1>
-            
-            <p class="hero-description">
-                Selezione quotidiana dei migliori prodotti con <strong>sconti reali fino al 70%</strong>. 
-                Risparmia tempo e denaro con Cronoshop - la piattaforma italiana più affidabile per le offerte Amazon.
-            </p>
-            
-            <div class="hero-stats">
-                <div class="stat-item">
-                    <div class="stat-number">2.5K+</div>
-                    <div class="stat-label">Utenti Attivi</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">50+</div>
-                    <div class="stat-label">Offerte/Giorno</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">70%</div>
-                    <div class="stat-label">Sconto Max</div>
+        <section class="whatsapp-community">
+             <div class="container">
+                <div class="community-card">
+                    <div class="community-content">
+                        <h2><i class="ph-fill ph-users-three"></i> Unisciti alla Community</h2>
+                        <p>Oltre <strong>2.500 utenti</strong> ricevono le migliori offerte in tempo reale sui nostri canali.</p>
+                        <div class="community-actions">
+                            <a href="groups.html" class="btn btn-whatsapp"><i class="ph-fill ph-whatsapp-logo"></i>Unisciti su WhatsApp</a>
+                            <a href="groups.html" class="btn btn-telegram"><i class="ph-fill ph-telegram-logo"></i>Canale Telegram</a>
+                        </div>
+                    </div>
+                    <div class="community-stats">
+                        <div class="stat-item"><div class="stat-number">2.5K+</div><div class="stat-label">Membri Attivi</div></div>
+                        <div class="stat-item"><div class="stat-number">50+</div><div class="stat-label">Offerte/Giorno</div></div>
+                    </div>
                 </div>
             </div>
-            
-            <div class="hero-actions">
-                <a href="#offerte-oggi" class="btn btn-primary">
-                    <span class="btn-icon">🛍️</span>
-                    Scopri le Offerte
-                </a>
-                <a href="cronoai.html" class="btn btn-secondary">
-                    <span class="btn-icon">✨</span>
-                    Prova CronoAI
-                </a>
-            </div>
-            
-            <div class="hero-trust">
-                <div class="trust-item">
-                    <span class="trust-icon">✅</span>
-                    <span>100% Gratuito</span>
-                </div>
-                <div class="trust-item">
-                    <span class="trust-icon">🔒</span>
-                    <span>Link Sicuri</span>
-                </div>
-                <div class="trust-item">
-                    <span class="trust-icon">⚡</span>
-                    <span>Aggiornato 24/7</span>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Quick Actions -->
-    <section class="quick-actions">
-        <div class="container">
-            <div class="actions-grid">
-                <a href="products.html?category=smartphone" class="action-card">
-                    <div class="action-icon">📱</div>
-                    <div class="action-content">
-                        <h3>Smartphone</h3>
-                        <p>iPhone, Samsung, Google</p>
-                        <span class="action-count">24 offerte</span>
-                    </div>
-                </a>
-                
-                <a href="products.html?category=tech" class="action-card">
-                    <div class="action-icon">💻</div>
-                    <div class="action-content">
-                        <h3>Tecnologia</h3>
-                        <p>Gadget, PC, Accessori</p>
-                        <span class="action-count">18 offerte</span>
-                    </div>
-                </a>
-                
-                <a href="products.html?category=casa" class="action-card">
-                    <div class="action-icon">🏠</div>
-                    <div class="action-content">
-                        <h3>Casa & Cucina</h3>
-                        <p>Elettrodomestici, Arredo</p>
-                        <span class="action-count">15 offerte</span>
-                    </div>
-                </a>
-                
-                <a href="products.html?category=fashion" class="action-card">
-                    <div class="action-icon">👕</div>
-                    <div class="action-content">
-                        <h3>Fashion</h3>
-                        <p>Abbigliamento, Scarpe</p>
-                        <span class="action-count">12 offerte</span>
-                    </div>
-                </a>
+        <section class="how-it-works">
+            <div class="container">
+                <div class="section-header"><h2>Come Funziona</h2><p>Il modo più semplice per risparmiare su Amazon.</p></div>
+                <div class="steps-grid">
+                    <div class="step-card"><div class="step-icon"><i class="ph-fill ph-magnifying-glass"></i></div><h3>Esplora</h3><p>Naviga tra le nostre offerte verificate.</p></div>
+                    <div class="step-card"><div class="step-icon"><i class="ph-fill ph-heart"></i></div><h3>Salva</h3><p>Aggiungi i prodotti alla tua wishlist.</p></div>
+                    <div class="step-card"><div class="step-icon"><i class="ph-fill ph-shopping-cart"></i></div><h3>Acquista</h3><p>Completa l'acquisto su Amazon.</p></div>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
+    
+    <div id="footer-placeholder"></div>
 
-    <!-- CronoAI Promo -->
-    <section class="cronoai-promo">
-        <div class="container">
-            <div class="promo-card">
-                <div class="promo-content">
-                    <div class="promo-badge">
-                        <span class="badge-icon">✨</span>
-                        <span>NUOVO</span>
-                    </div>
-                    <h2>Scopri CronoAI</h2>
-                    <p>L'assistente intelligente che trova le offerte perfette per te. Powered by AI avanzata.</p>
-                    <div class="promo-features">
-                        <div class="feature-item">
-                            <span class="feature-icon">🎯</span>
-                            <span>Ricerca Intelligente</span>
-                        </div>
-                        <div class="feature-item">
-                            <span class="feature-icon">💡</span>
-                            <span>Consigli Personalizzati</span>
-                        </div>
-                        <div class="feature-item">
-                            <span class="feature-icon">⚡</span>
-                            <span>Risposte Istantanee</span>
-                        </div>
-                    </div>
-                    <a href="cronoai.html" class="btn btn-ai">
-                        <span class="btn-icon">🚀</span>
-                        Prova CronoAI Gratis
-                    </a>
-                </div>
-                <div class="promo-visual">
-                    <div class="ai-chat-preview">
-                        <div class="chat-message user">
-                            <span>Trova smartphone sotto 300€</span>
-                        </div>
-                        <div class="chat-message ai">
-                            <span>🔍 Ho trovato 5 offerte perfette per te!</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Today's Offers -->
-    <section class="todays-offers" id="offerte-oggi">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-badge">
-                    <span class="badge-icon">🔥</span>
-                    <span>AGGIORNATO OGGI</span>
-                </div>
-                <h2>Offerte Imperdibili di Oggi</h2>
-                <p>Selezione curata delle migliori promozioni Amazon disponibili ora</p>
-            </div>
-            
-            <div class="offers-filter">
-                <button class="filter-btn active" data-category="all">
-                    <span class="filter-icon">🎯</span>
-                    Tutte
-                </button>
-                <button class="filter-btn" data-category="smartphone">
-                    <span class="filter-icon">📱</span>
-                    Tech
-                </button>
-                <button class="filter-btn" data-category="fashion">
-                    <span class="filter-icon">👕</span>
-                    Moda
-                </button>
-                <button class="filter-btn" data-category="casa">
-                    <span class="filter-icon">🏠</span>
-                    Casa
-                </button>
-            </div>
-            
-            <div class="offers-grid" id="offersGrid">
-                <!-- Offers will be loaded dynamically -->
-            </div>
-            
-            <div class="offers-actions">
-                <button class="btn btn-outline" id="loadMoreOffers">
-                    <span class="btn-icon">⬇️</span>
-                    Carica Altre Offerte
-                </button>
-                <a href="products.html" class="btn btn-primary">
-                    <span class="btn-icon">🛍️</span>
-                    Vedi Tutte le Offerte
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- WhatsApp Community -->
-    <section class="whatsapp-community">
-        <div class="container">
-            <div class="community-card">
-                <div class="community-content">
-                    <div class="community-icon">📱</div>
-                    <h2>Unisciti alla Community</h2>
-                    <p>Oltre <strong>2.500 utenti</strong> ricevono le migliori offerte in tempo reale sui nostri canali WhatsApp e Telegram</p>
-                    
-                    <div class="community-benefits">
-                        <div class="benefit-item">
-                            <span class="benefit-icon">⚡</span>
-                            <span>Notifiche Istantanee</span>
-                        </div>
-                        <div class="benefit-item">
-                            <span class="benefit-icon">🎯</span>
-                            <span>Offerte Esclusive</span>
-                        </div>
-                        <div class="benefit-item">
-                            <span class="benefit-icon">👥</span>
-                            <span>Community Attiva</span>
-                        </div>
-                    </div>
-                    
-                    <div class="community-actions">
-                        <a href="groups.html" class="btn btn-whatsapp">
-                            <span class="btn-icon">📱</span>
-                            Unisciti su WhatsApp
-                        </a>
-                        <a href="groups.html" class="btn btn-telegram">
-                            <span class="btn-icon">✈️</span>
-                            Canale Telegram
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="community-stats">
-                    <div class="stat-card">
-                        <div class="stat-number">2.5K+</div>
-                        <div class="stat-label">Membri Attivi</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-number">50+</div>
-                        <div class="stat-label">Offerte/Giorno</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-number">24/7</div>
-                        <div class="stat-label">Sempre Attivo</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- How It Works -->
-    <section class="how-it-works">
-        <div class="container">
-            <div class="section-header">
-                <h2>Come Funziona Cronoshop</h2>
-                <p>Il modo più semplice per risparmiare su Amazon</p>
-            </div>
-            
-            <div class="steps-grid">
-                <div class="step-card">
-                    <div class="step-number">1</div>
-                    <div class="step-icon">🔍</div>
-                    <h3>Esplora</h3>
-                    <p>Naviga tra le nostre offerte verificate quotidianamente dal team</p>
-                </div>
-                
-                <div class="step-card">
-                    <div class="step-number">2</div>
-                    <div class="step-icon">❤️</div>
-                    <h3>Salva</h3>
-                    <p>Aggiungi i prodotti alla tua wishlist per non perderli mai</p>
-                </div>
-                
-                <div class="step-card">
-                    <div class="step-number">3</div>
-                    <div class="step-icon">🛒</div>
-                    <h3>Acquista</h3>
-                    <p>Completa l'acquisto in sicurezza direttamente su Amazon</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Categories Showcase -->
-    <section class="categories-showcase">
-        <div class="container">
-            <div class="section-header">
-                <h2>Esplora per Categoria</h2>
-                <p>Trova esattamente quello che stai cercando</p>
-            </div>
-            
-            <div class="categories-grid">
-                <a href="products.html?category=smartphone" class="category-card smartphone">
-                    <div class="category-background"></div>
-                    <div class="category-content">
-                        <div class="category-icon">📱</div>
-                        <h3>Smartphone & Tech</h3>
-                        <p>iPhone, Samsung, Google Pixel, accessori tech</p>
-                        <div class="category-stats">
-                            <span class="stat">24 offerte</span>
-                            <span class="stat">Fino -60%</span>
-                        </div>
-                    </div>
-                </a>
-                
-                <a href="products.html?category=fashion" class="category-card fashion">
-                    <div class="category-background"></div>
-                    <div class="category-content">
-                        <div class="category-icon">👕</div>
-                        <h3>Fashion & Style</h3>
-                        <p>Abbigliamento, scarpe, accessori moda</p>
-                        <div class="category-stats">
-                            <span class="stat">18 offerte</span>
-                            <span class="stat">Fino -50%</span>
-                        </div>
-                    </div>
-                </a>
-                
-                <a href="products.html?category=casa" class="category-card casa">
-                    <div class="category-background"></div>
-                    <div class="category-content">
-                        <div class="category-icon">🏠</div>
-                        <h3>Casa & Cucina</h3>
-                        <p>Elettrodomestici, arredamento, cucina</p>
-                        <div class="category-stats">
-                            <span class="stat">15 offerte</span>
-                            <span class="stat">Fino -45%</span>
-                        </div>
-                    </div>
-                </a>
-                
-                <a href="products.html?category=salute" class="category-card salute">
-                    <div class="category-background"></div>
-                    <div class="category-content">
-                        <div class="category-icon">💊</div>
-                        <h3>Salute & Benessere</h3>
-                        <p>Integratori, vitamine, cura personale</p>
-                        <div class="category-stats">
-                            <span class="stat">12 offerte</span>
-                            <span class="stat">Fino -40%</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            
-            <div class="categories-action">
-                <a href="categorie.html" class="btn btn-outline">
-                    <span class="btn-icon">📂</span>
-                    Vedi Tutte le Categorie
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Blog Preview -->
-    <section class="blog-preview">
-        <div class="container">
-            <div class="section-header">
-                <h2>Guide e Consigli</h2>
-                <p>Scopri come massimizzare i tuoi risparmi</p>
-            </div>
-            
-            <div class="blog-grid">
-                <a href="blog.html" class="blog-card featured">
-                    <div class="blog-image">
-                        <img src="https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="Guida risparmio Amazon" loading="lazy">
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-badge">💡 Guida</div>
-                        <h3>Come Massimizzare i Risparmi con le Offerte Amazon</h3>
-                        <p>Scopri le strategie avanzate per trovare le migliori offerte e risparmiare centinaia di euro ogni anno.</p>
-                        <div class="blog-meta">
-                            <span class="blog-date">15 Gen 2025</span>
-                            <span class="blog-read">8 min</span>
-                        </div>
-                    </div>
-                </a>
-                
-                <div class="blog-list">
-                    <a href="blog.html" class="blog-item">
-                        <div class="blog-icon">📱</div>
-                        <div class="blog-info">
-                            <h4>Migliori Smartphone 2025</h4>
-                            <span class="blog-date">Prossimamente</span>
-                        </div>
-                    </a>
-                    
-                    <a href="blog.html" class="blog-item">
-                        <div class="blog-icon">🛍️</div>
-                        <div class="blog-info">
-                            <h4>Black Friday 2025: Strategie</h4>
-                            <span class="blog-date">Prossimamente</span>
-                        </div>
-                    </a>
-                    
-                    <a href="blog.html" class="blog-item">
-                        <div class="blog-icon">🏠</div>
-                        <div class="blog-info">
-                            <h4>Arredare Casa Risparmiando</h4>
-                            <span class="blog-date">Prossimamente</span>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section class="faq-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Domande Frequenti</h2>
-                <p>Tutto quello che devi sapere su Cronoshop</p>
-            </div>
-            
-            <div class="faq-grid">
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>È gratuito usare Cronoshop?</span>
-                        <span class="faq-icon">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        Sì, Cronoshop è completamente gratuito. Guadagniamo solo attraverso le commissioni di affiliazione Amazon quando acquisti tramite i nostri link, senza costi aggiuntivi per te.
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Come vengono selezionate le offerte?</span>
-                        <span class="faq-icon">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        Il nostro team verifica manualmente ogni offerta per garantire sconti reali e prodotti di qualità. Utilizziamo anche algoritmi per monitorare i prezzi in tempo reale.
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Quanto spesso vengono aggiornate le offerte?</span>
-                        <span class="faq-icon">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        Le offerte vengono aggiornate ogni 24 ore. I membri dei nostri gruppi WhatsApp ricevono notifiche in tempo reale per le offerte lampo.
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Posso fidarmi dei link di Cronoshop?</span>
-                        <span class="faq-icon">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        Assolutamente sì. Tutti i nostri link reindirizzano direttamente ad Amazon Italia. Non raccogliamo dati di pagamento e l'acquisto avviene in totale sicurezza su Amazon.
-                    </div>
-                </div>
-            </div>
-            
-            <div class="faq-action">
-                <a href="faq.html" class="btn btn-outline">
-                    <span class="btn-icon">❓</span>
-                    Vedi Tutte le FAQ
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <div class="footer-logo">
-                        <img src="assets/cronoshop-logo.png" alt="Cronoshop Logo">
-                        <span>Cronoshop</span>
-                    </div>
-                    <p>La piattaforma italiana per le migliori offerte Amazon giornaliere. Risparmia tempo e denaro con le nostre selezioni curate.</p>
-                    <div class="footer-social">
-                        <a href="groups.html" class="social-link whatsapp">📱</a>
-                        <a href="groups.html" class="social-link telegram">✈️</a>
-                    </div>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Prodotti</h4>
-                    <a href="products.html">Tutte le Offerte</a>
-                    <a href="products.html?category=smartphone">Smartphone</a>
-                    <a href="products.html?category=tech">Tecnologia</a>
-                    <a href="products.html?category=casa">Casa & Cucina</a>
-                    <a href="products.html?category=fashion">Fashion</a>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Servizi</h4>
-                    <a href="cronoai.html">CronoAI</a>
-                    <a href="groups.html">Gruppi WhatsApp</a>
-                    <a href="wishlist.html">Wishlist</a>
-                    <a href="account.html">Account</a>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Supporto</h4>
-                    <a href="faq.html">FAQ</a>
-                    <a href="chisiamo.html">Chi Siamo</a>
-                    <a href="blog.html">Blog</a>
-                    <a href="privacy.html">Privacy</a>
-                    <a href="terms.html">Termini</a>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2025 Cronoshop. Tutti i diritti riservati.</p>
-                <p class="affiliate-disclaimer">In qualità di Affiliato Amazon io ricevo un guadagno dagli acquisti idonei.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Scripts -->
-    <script src="src/utils/nav-loader.js" defer></script>
-    <script src="main.js?v=3.0" defer></script>
     <script>
-        // Initialize homepage functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            initializeHomepage();
-        });
-
-        function initializeHomepage() {
-            loadTodaysOffers();
-            setupFilterButtons();
-            setupFAQToggle();
-            setupScrollAnimations();
-        }
-
-        function loadTodaysOffers() {
-            // Load offers from main.js products array
-            if (typeof products !== 'undefined') {
-                const shuffledProducts = [...products].sort(() => 0.5 - Math.random());
-                const todaysOffers = shuffledProducts.slice(0, 8);
-                renderOffers(todaysOffers);
-            }
-        }
-
-        function renderOffers(offers) {
-            const offersGrid = document.getElementById('offersGrid');
-            if (!offersGrid) return;
-
-            offersGrid.innerHTML = offers.map(offer => `
-                <div class="offer-card" data-category="${offer.categoria}">
-                    <div class="offer-image">
-                        <img src="${offer.img}" alt="${offer.nome}" loading="lazy">
-                        <div class="offer-badge">-${Math.floor(Math.random() * 50 + 20)}%</div>
-                    </div>
-                    <div class="offer-content">
-                        <h3 class="offer-title">${offer.nome}</h3>
-                        <div class="offer-price">
-                            <span class="current-price">${offer.prezzo}</span>
-                        </div>
-                        <div class="offer-actions">
-                            <button class="btn btn-primary btn-small" onclick="buyProduct('${offer.link}')">
-                                <span class="btn-icon">🛒</span>
-                                Acquista
-                            </button>
-                            <button class="btn btn-outline btn-small" onclick="addToWishlist('${offer.id}')">
-                                <span class="btn-icon">❤️</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        function setupFilterButtons() {
-            const filterButtons = document.querySelectorAll('.filter-btn');
-            const offerCards = document.querySelectorAll('.offer-card');
-
-            filterButtons.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const category = this.dataset.category;
-                    
-                    // Update active button
-                    filterButtons.forEach(b => b.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    // Filter offers
-                    offerCards.forEach(card => {
-                        if (category === 'all' || card.dataset.category === category) {
-                            card.style.display = 'block';
-                        } else {
-                            card.style.display = 'none';
-                        }
-                    });
+        function loadComponent(url, placeholderId) {
+            fetch(url)
+                .then(response => response.ok ? response.text() : Promise.reject('Errore'))
+                .then(data => {
+                    const placeholder = document.getElementById(placeholderId);
+                    if (!placeholder) return;
+                    const tempDiv = document.createElement('div');
+                    tempDiv.innerHTML = data;
+                    const script = tempDiv.querySelector('script');
+                    placeholder.innerHTML = tempDiv.innerHTML;
+                    if (script) {
+                        const newScript = document.createElement('script');
+                        newScript.textContent = script.textContent;
+                        document.body.appendChild(newScript).remove();
+                    }
                 });
-            });
         }
-
-        function setupFAQToggle() {
-            const faqItems = document.querySelectorAll('.faq-item');
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            loadComponent('nav.html', 'navbar-placeholder');
+            loadComponent('footer.html', 'footer-placeholder');
             
+            // Logica specifica della homepage
+            const faqItems = document.querySelectorAll('.faq-item');
             faqItems.forEach(item => {
                 const question = item.querySelector('.faq-question');
-                question.addEventListener('click', function() {
+                question.addEventListener('click', () => {
                     const isActive = item.classList.contains('active');
-                    
-                    // Close all FAQ items
-                    faqItems.forEach(faq => faq.classList.remove('active'));
-                    
-                    // Open clicked item if it wasn't active
-                    if (!isActive) {
-                        item.classList.add('active');
-                    }
+                    faqItems.forEach(i => i.classList.remove('active'));
+                    if (!isActive) item.classList.add('active');
                 });
             });
-        }
-
-        function setupScrollAnimations() {
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('animate-in');
-                    }
-                });
-            }, observerOptions);
-
-            // Observe all sections
-            document.querySelectorAll('section').forEach(section => {
-                observer.observe(section);
-            });
-        }
-
-        function buyProduct(link) {
-            if (link) {
-                window.open(link, '_blank');
-            }
-        }
-
-        function addToWishlist(productId) {
-            // Add to wishlist functionality
-            console.log('Adding to wishlist:', productId);
-        }
+        });
     </script>
 </body>
-    </html>
+</html>
