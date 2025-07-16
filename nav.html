@@ -1,3 +1,301 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cronoshop Navigation</title>
+    
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <style>
+        /* --- Impostazioni Globali e Variabili di Stile --- */
+        :root {
+            --background-color: #f0f2f5; /* Sfondo leggermente grigio come in iOS */
+            --text-color: #1d1d1f;
+            --text-color-secondary: #6e6e73;
+            --accent-color: #007aff;
+            --divider-color: #d1d1d6;
+            --card-background-light: rgba(255, 255, 255, 0.7);
+            --card-background-dark: rgba(28, 28, 30, 0.7);
+            --hover-light: rgba(0, 0, 0, 0.05);
+            --hover-dark: rgba(255, 255, 255, 0.1);
+            --border-radius: 12px;
+            --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        /* Stili base per il corpo della pagina */
+        body {
+            font-family: var(--font-family);
+            background-color: var(--background-color);
+            color: var(--text-color);
+            margin: 0;
+            padding-top: 70px; /* Spazio per l'header fisso */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* --- Stile Header "Liquid Glass" --- */
+        .glass-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: var(--card-background-light);
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 16px;
+            height: 60px;
+        }
+
+        /* --- Logo --- */
+        .logo-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--text-color);
+        }
+
+        .logo-image {
+            height: 32px;
+            width: 32px;
+            margin-right: 8px;
+        }
+
+        .logo-text {
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        /* --- Azioni Navigazione (Bottoni) --- */
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .glass-btn {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            position: relative;
+            transition: background-color 0.2s ease;
+        }
+
+        .glass-btn:hover {
+            background-color: var(--hover-light);
+        }
+
+        .glass-btn i {
+            font-size: 22px;
+            color: var(--text-color);
+        }
+
+        /* Conteggio Carrello */
+        .cart-count {
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            background-color: var(--accent-color);
+            color: white;
+            border-radius: 50%;
+            font-size: 10px;
+            font-weight: 600;
+            min-width: 16px;
+            height: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 2px;
+        }
+
+        /* --- Visibilità Mobile/Desktop --- */
+        .search-btn-desktop { display: flex; }
+        .mobile-menu-btn { display: none; }
+
+        @media (max-width: 768px) {
+            .search-btn-desktop { display: none; }
+            .mobile-menu-btn { display: flex; }
+        }
+
+        /* --- Menu Mobile --- */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            max-width: 320px;
+            background-color: var(--card-background-light);
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            z-index: 1002;
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mobile-menu.is-open {
+            transform: translateX(0);
+            box-shadow: -10px 0px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .mobile-menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 16px;
+            height: 60px;
+            flex-shrink: 0;
+            border-bottom: 1px solid var(--divider-color);
+        }
+        
+        .mobile-menu-title {
+            font-size: 17px;
+            font-weight: 600;
+        }
+
+        .mobile-menu-content {
+            padding: 16px;
+            overflow-y: auto;
+            flex-grow: 1;
+        }
+        
+        /* Barra di ricerca mobile */
+        .search-bar-mobile {
+            margin-bottom: 16px;
+            position: relative;
+        }
+
+        .search-bar-mobile .search-icon {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-color-secondary);
+            font-size: 18px;
+        }
+
+        .glass-input {
+            width: 100%;
+            padding: 10px 12px 10px 40px; /* Spazio per l'icona */
+            border-radius: var(--border-radius);
+            border: 1px solid transparent;
+            background-color: rgba(118, 118, 128, 0.12); /* Colore input iOS */
+            font-size: 16px;
+            color: var(--text-color);
+            -webkit-appearance: none;
+            box-sizing: border-box;
+        }
+
+        .glass-input::placeholder {
+            color: var(--text-color-secondary);
+        }
+
+        .glass-input:focus {
+            outline: none;
+            border-color: rgba(0, 122, 255, 0.5);
+            background-color: rgba(118, 118, 128, 0.20);
+        }
+
+        /* Link di navigazione nel menu mobile */
+        .nav-link {
+            display: flex;
+            align-items: center;
+            padding: 12px 8px;
+            text-decoration: none;
+            color: var(--text-color);
+            font-size: 17px;
+            border-radius: 8px;
+            transition: background-color 0.2s ease;
+        }
+        
+        .nav-link:hover {
+            background-color: var(--hover-light);
+        }
+        
+        .nav-link i {
+            font-size: 22px;
+            margin-right: 16px;
+            color: var(--accent-color);
+            width: 24px; /* Allineamento */
+            text-align: center;
+        }
+        
+        .nav-divider {
+            border: none;
+            border-top: 1px solid var(--divider-color);
+            margin: 8px 0;
+        }
+
+        .ai-link {
+            color: var(--accent-color);
+            font-weight: 500;
+        }
+
+        .new-badge {
+            background-color: var(--accent-color);
+            color: white;
+            font-size: 10px;
+            font-weight: bold;
+            padding: 2px 6px;
+            border-radius: 8px;
+            margin-left: auto;
+        }
+
+        .theme-btn-mobile {
+            width: 100%;
+            justify-content: center;
+            margin-top: 16px;
+            background-color: rgba(118, 118, 128, 0.12);
+            border-radius: var(--border-radius);
+            font-size: 16px;
+            height: 44px;
+            gap: 8px;
+        }
+
+        /* Overlay per chiudere il menu */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.3);
+            z-index: 1001;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+        }
+
+        .overlay.is-active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+    </style>
+</head>
+<body>
+
 <header class="glass-header">
     <nav class="nav-container" role="navigation" aria-label="Menu principale">
         <a href="index.html" class="logo-link" aria-label="Cronoshop - Torna alla homepage">
@@ -6,11 +304,16 @@
         </a>
 
         <div class="nav-actions">
-            <button class="glass-btn search-btn-desktop" aria-label="Cerca">🔍</button>
+            <button class="glass-btn search-btn-desktop" aria-label="Cerca">
+                <i class="ph-bold ph-magnifying-glass"></i>
+            </button>
             <a href="cart.html" class="glass-btn cart-btn" aria-label="Carrello">
-                🛒 <span class="cart-count">0</span>
+                <i class="ph-bold ph-shopping-cart-simple"></i>
+                <span class="cart-count">0</span>
             </a>
-            <button class="glass-btn mobile-menu-btn" aria-label="Apri menu" aria-expanded="false">☰</button>
+            <button class="glass-btn mobile-menu-btn" aria-label="Apri menu" aria-expanded="false">
+                <i class="ph-bold ph-list"></i>
+            </button>
         </div>
     </nav>
 </header>
@@ -18,27 +321,70 @@
 <div class="mobile-menu" id="mobileMenu">
     <div class="mobile-menu-header">
         <span class="mobile-menu-title">Menu</span>
-        <button class="glass-btn close-menu-btn" aria-label="Chiudi menu">✕</button>
+        <button class="glass-btn close-menu-btn" aria-label="Chiudi menu">
+            <i class="ph-bold ph-x"></i>
+        </button>
     </div>
     <div class="mobile-menu-content">
         <div class="search-bar-mobile">
+            <i class="ph ph-magnifying-glass search-icon"></i>
             <input type="search" placeholder="Cerca offerte..." class="glass-input">
         </div>
-        <a href="index.html" class="nav-link" data-page="index">🏠 Home</a>
-        <a href="products.html" class="nav-link" data-page="products">📦 Prodotti</a>
-        <a href="categorie.html" class="nav-link" data-page="categorie">📂 Categorie</a>
-        <a href="wishlist.html" class="nav-link" data-page="wishlist">❤️ Wishlist</a>
-        <a href="account.html" class="nav-link" data-page="account">👤 Account</a>
+        <a href="index.html" class="nav-link" data-page="index"><i class="ph-fill ph-house"></i> Home</a>
+        <a href="products.html" class="nav-link" data-page="products"><i class="ph-fill ph-package"></i> Prodotti</a>
+        <a href="categorie.html" class="nav-link" data-page="categorie"><i class="ph-fill ph-folder-simple"></i> Categorie</a>
+        <a href="wishlist.html" class="nav-link" data-page="wishlist"><i class="ph-fill ph-heart"></i> Wishlist</a>
+        <a href="account.html" class="nav-link" data-page="account"><i class="ph-fill ph-user-circle"></i> Account</a>
         <hr class="nav-divider">
         <a href="cronoai.html" class="nav-link ai-link" data-page="cronoai">
-            ✨ Scopri CronoAI <span class="new-badge">NEW</span>
+            <i class="ph-fill ph-sparkle"></i> Scopri CronoAI <span class="new-badge">NEW</span>
         </a>
         <hr class="nav-divider">
-        <a href="groups.html" class="nav-link" data-page="groups">📱 Gruppi</a>
-        <a href="blog.html" class="nav-link" data-page="blog">📝 Blog</a>
-        <a href="faq.html" class="nav-link" data-page="faq">❓ FAQ</a>
-        <a href="chisiamo.html" class="nav-link" data-page="chisiamo">🧭 Chi Siamo</a>
-        <button class="glass-btn theme-btn-mobile">🌙 Cambia Tema</button>
+        <a href="groups.html" class="nav-link" data-page="groups"><i class="ph-fill ph-users"></i> Gruppi</a>
+        <a href="blog.html" class="nav-link" data-page="blog"><i class="ph-fill ph-newspaper"></i> Blog</a>
+        <a href="faq.html" class="nav-link" data-page="faq"><i class="ph-fill ph-question"></i> FAQ</a>
+        <a href="chisiamo.html" class="nav-link" data-page="chisiamo"><i class="ph-fill ph-info"></i> Chi Siamo</a>
+        <button class="glass-btn theme-btn-mobile">
+            <i class="ph-fill ph-moon"></i>
+            <span>Cambia Tema</span>
+        </button>
     </div>
 </div>
 <div class="overlay" id="overlay"></div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const closeMenuBtn = document.querySelector('.close-menu-btn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const overlay = document.getElementById('overlay');
+
+        function openMenu() {
+            mobileMenu.classList.add('is-open');
+            overlay.classList.add('is-active');
+            document.body.style.overflow = 'hidden'; // Blocca lo scroll del body
+            mobileMenuBtn.setAttribute('aria-expanded', 'true');
+        }
+
+        function closeMenu() {
+            mobileMenu.classList.remove('is-open');
+            overlay.classList.remove('is-active');
+            document.body.style.overflow = ''; // Riattiva lo scroll
+            mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        }
+
+        mobileMenuBtn.addEventListener('click', openMenu);
+        closeMenuBtn.addEventListener('click', closeMenu);
+        overlay.addEventListener('click', closeMenu);
+
+        // Chiudi menu con il tasto Escape
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' && mobileMenu.classList.contains('is-open')) {
+                closeMenu();
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
