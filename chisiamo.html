@@ -1,121 +1,169 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<!-- Favicon -->
-<link rel="icon" type="image/png" sizes="32x32" href="assets/cronoshop-logo.png">
-<link rel="icon" type="image/png" sizes="16x16" href="assets/cronoshop-logo.png">
-<link rel="apple-touch-icon" href="assets/cronoshop-logo.png">
-<meta name="author" content="Cronoshop Team" />
-<link rel="canonical" href="https://www.cronoshop.eu/chisiamo.html" />
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Chi Siamo - Cronoshop</title>
-  <meta name="description" content="Scopri la missione e la visione di Cronoshop: offrire le migliori offerte Amazon ogni giorno. Affidabilità, risparmio e tecnologia al tuo servizio.">
-  <meta name="keywords" content="cronoshop, chi siamo, offerte amazon, risparmio online, cronoshop.eu, missione, visione, shopping online">
-  <meta name="author" content="Team Cronoshop">
-  <meta property="og:title" content="Chi Siamo - Cronoshop">
-  <meta property="og:description" content="Conosci il progetto Cronoshop e scopri come ti aiuta a trovare ogni giorno le offerte migliori su Amazon.">
-  <meta property="og:url" content="https://www.cronoshop.eu/chisiamo.html">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="https://www.cronoshop.eu/assets/logo.png">
-  <link rel="canonical" href="https://www.cronoshop.eu/chisiamo.html">
-  <link rel="stylesheet" href="style.css?v=2.3">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chi Siamo - Cronoshop</title>
+    
+    <meta name="description" content="Scopri la missione e la visione di Cronoshop: offrire le migliori offerte Amazon ogni giorno. Affidabilità, risparmio e tecnologia al tuo servizio.">
+    <meta name="author" content="Cronoshop Team" />
+    <link rel="canonical" href="https://www.cronoshop.eu/chisiamo.html" />
+    <link rel="icon" type="image/png" href="assets/cronoshop-logo.png">
+    <link rel="apple-touch-icon" href="assets/cronoshop-logo.png">
+
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <style>
+        /* --- [1] IMPOSTAZIONI GLOBALI E VARIABILI --- */
+        :root {
+            --c-accent-primary: #007aff;
+            --c-bg-primary: #f2f2f7;
+            --c-bg-secondary: #ffffff;
+            --c-text-primary: #1d1d1f;
+            --c-text-secondary: #6e6e73;
+            --c-separator: rgba(60, 60, 67, 0.29);
+            --font-system: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", Roboto, Helvetica, Arial, sans-serif;
+            --radius-lg: 20px;
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --spacing-md: 16px;
+            --spacing-lg: 24px;
+            --spacing-xl: 32px;
+            --header-height: 60px;
+            --transition-fast: 0.2s cubic-bezier(0.3, 0, 0.4, 1);
+        }
+        html.dark-theme {
+            --c-accent-primary: #0a84ff;
+            --c-bg-primary: #000000;
+            --c-bg-secondary: #1c1c1e;
+            --c-text-primary: #f5f5f7;
+            --c-text-secondary: #8d8d92;
+            --c-separator: rgba(84, 84, 88, 0.65);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        /* --- [2] RESET E STILI BASE --- */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: var(--font-system);
+            background-color: var(--c-bg-primary);
+            color: var(--c-text-primary);
+            padding-top: var(--header-height);
+            line-height: 1.6;
+        }
+        a { color: var(--c-accent-primary); text-decoration: none; }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 var(--spacing-lg); }
+
+        /* --- [3] STILI SPECIFICI DELLA PAGINA --- */
+        .about-section { padding: var(--spacing-xl) 0; }
+        .section-header { text-align: center; margin-bottom: var(--spacing-xl); }
+        .section-header h2 { font-size: 2.2rem; display: flex; align-items: center; justify-content: center; gap: var(--spacing-md); }
+        .section-header p { color: var(--c-text-secondary); max-width: 650px; margin: var(--spacing-md) auto 0; }
+        
+        .info-card {
+            background-color: var(--c-bg-secondary);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            margin-bottom: var(--spacing-lg);
+            box-shadow: var(--shadow-md);
+        }
+        .info-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: var(--spacing-md);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+        .info-card p, .info-card li {
+            color: var(--c-text-secondary);
+            margin-bottom: var(--spacing-md);
+        }
+        .info-card p:last-child, .info-card li:last-child {
+            margin-bottom: 0;
+        }
+        .info-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .info-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--spacing-md);
+        }
+        .info-card li i {
+            color: var(--c-accent-primary);
+            margin-top: 4px; /* Allineamento verticale icona */
+        }
+        .info-card strong {
+            font-weight: 600;
+            color: var(--c-text-primary);
+        }
+    </style>
 </head>
 <body>
-  <div class="animated-background"></div>
-<!-- Header -->
-<header class="glass-header">
-    <nav class="nav-container" role="navigation" aria-label="Menu principale">
-        <div class="logo">
-            <a href="index.html" class="logo-link">
-                <img src="assets/cronoshop-logo.png" alt="Cronoshop Logo" class="logo-image">
-                <span class="logo-text">Cronoshop</span>
-            </a>
-        </div>
-      <div class="nav-menu" id="navMenu">
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="index.html#offerte" class="nav-link">Offerte</a>
-        <a href="products.html" class="nav-link">Prodotti</a>
-        <a href="categorie.html" class="nav-link">Categorie</a>
-        <a href="wishlist.html" class="nav-link">Wishlist</a>
-        <a href="stats.html" class="nav-link">Statistiche</a>
-        <a href="blog.html" class="nav-link">Blog</a>
-        <a href="account.html" class="nav-link">Profilo</a>
-        <a href="faq.html" class="nav-link">FAQ</a>
+
+  <div id="navbar-placeholder"></div>
+
+  <div class="container">
+    <section class="about-section">
+      <div class="section-header">
+        <h2><i class="ph-fill ph-info"></i> Chi Siamo</h2>
+        <p>Cronoshop è la piattaforma per chi cerca davvero il risparmio senza rinunciare alla qualità.</p>
       </div>
-      <div class="nav-actions">
-        <a href="cart.html" class="glass-btn cart-btn">🛒 <span class="cart-count">0</span></a>
-        <button class="glass-btn theme-btn">🌙</button>
-        <button class="glass-btn mobile-menu-btn">☰</button>
+
+      <div class="info-card">
+        <h3><i class="ph-fill ph-flag"></i> La nostra missione</h3>
+        <p>Cronoshop nasce dall'esigenza concreta di offrire agli utenti italiani un portale aggiornato, curato e automatizzato dove trovare le migliori offerte Amazon giornaliere.</p>
+        <p>Non vendiamo direttamente prodotti: siamo un <strong>aggregatore di offerte</strong> e affiliati Amazon. Questo ci consente di restare obiettivi e proporre solo quello che conviene davvero.</p>
       </div>
-    </nav>
-  </header>
 
-  <section class="stats-section" style="padding-top: 120px;">
-    <div class="section-header">
-      <h2>🧭 Chi Siamo</h2>
-      <p style="color: var(--text-secondary); margin-bottom: 2rem;">
-        Cronoshop è la piattaforma per chi cerca davvero il risparmio senza rinunciare alla qualità.
-      </p>
-    </div>
-
-    <div class="glass-card stats-card" style="margin-bottom: 2rem;">
-      <h3>🎯 La nostra missione</h3>
-      <p>Cronoshop nasce dall'esigenza concreta di offrire agli utenti italiani un portale aggiornato, curato e automatizzato dove trovare le migliori offerte Amazon giornaliere.</p>
-      <p>Non vendiamo direttamente prodotti: siamo un <strong>aggregatore di offerte</strong> e affiliati Amazon. Questo ci consente di restare obiettivi e proporre solo quello che conviene davvero, sia dal punto di vista del prezzo che dell'affidabilità del venditore.</p>
-    </div>
-
-    <div class="glass-card stats-card" style="margin-bottom: 2rem;">
-      <h3>⚙️ Come funziona Cronoshop</h3>
-      <ul>
-        <li>✅ Selezione ibrida (manuale + automatizzata) delle offerte più interessanti</li>
-        <li>📊 Aggiornamenti ogni 24h e prodotti sempre verificati</li>
-        <li>🔗 Collegamenti diretti e sicuri ad Amazon</li>
-        <li>🔐 Nessuna registrazione obbligatoria per visualizzare i contenuti</li>
-        <li>🛒 Wishlist, carrello, profilo e personalizzazione tema per gli utenti registrati</li>
-      </ul>
-    </div>
-
-    <div class="glass-card stats-card" style="margin-bottom: 2rem;">
-      <h3>🌍 La nostra visione</h3>
-      <p>Crediamo che il risparmio intelligente passi dalla trasparenza, dalla semplicità d'uso e da un design curato. Per questo Cronoshop è <strong>mobile-friendly</strong>, leggero e accessibile a tutti, con uno stile minimale ma premium.</p>
-      <p>Vogliamo diventare il punto di riferimento per chi cerca promozioni affidabili, senza perdite di tempo e senza spam.</p>
-    </div>
-
-    <div class="glass-card stats-card">
-      <h3>🔍 Visibilità Google</h3>
-      <p>Vuoi cercarci su Google? Clicca qui:</p>
-      <a href="cronoshop.eu">
-        🔗 Offerte di Amazon imperdibili su Cronoshop.eu
-      </a>
-    </div>
-  </section>
-
-  <footer class="glass-footer">
-    <div class="footer-content">
-      <div class="footer-section">
-        <h4>Cronoshop</h4>
-        <p>La tua piattaforma per le migliori offerte Amazon</p>
+      <div class="info-card">
+        <h3><i class="ph-fill ph-gear-six"></i> Come funziona Cronoshop</h3>
+        <ul>
+          <li><i class="ph-fill ph-check-circle"></i> <div>Selezione ibrida (manuale + automatizzata) delle offerte più interessanti.</div></li>
+          <li><i class="ph-fill ph-check-circle"></i> <div>Aggiornamenti ogni 24h e prodotti sempre verificati.</div></li>
+          <li><i class="ph-fill ph-check-circle"></i> <div>Collegamenti diretti e sicuri ad Amazon.</div></li>
+          <li><i class="ph-fill ph-check-circle"></i> <div>Nessuna registrazione obbligatoria per visualizzare i contenuti.</div></li>
+          <li><i class="ph-fill ph-check-circle"></i> <div>Wishlist, carrello e personalizzazione per gli utenti registrati.</div></li>
+        </ul>
       </div>
-      <div class="footer-section">
-        <h4>Link Utili</h4>
-        <a href="groups.html">Gruppi WhatsApp</a>
-        <a href="categorie.html">Categorie</a>
-        <a href="account.html">Account</a>
-      </div>
-      <div class="footer-section">
-        <h4>Contatti</h4>
-        <a href="groups.html">WhatsApp</a>
-        <a href="#email">Email</a>
-        <a href="#social">Social</a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2025 Cronoshop. Tutti i diritti riservati.</p>
-    </div>
-  </footer>
 
-  <script src="main.js?v=2.3"></script>
+      <div class="info-card">
+        <h3><i class="ph-fill ph-rocket-launch"></i> La nostra visione</h3>
+        <p>Crediamo che il risparmio intelligente passi dalla trasparenza, dalla semplicità d'uso e da un design curato. Per questo Cronoshop è <strong>mobile-friendly</strong>, leggero e accessibile a tutti, con uno stile minimale ma premium.</p>
+        <p>Vogliamo diventare il punto di riferimento per chi cerca promozioni affidabili, senza perdite di tempo e senza spam.</p>
+      </div>
+    </section>
+  </div>
+
+  <div id="footer-placeholder"></div>
+
+  <script>
+    function loadComponent(url, placeholderId) {
+        fetch(url)
+            .then(response => response.ok ? response.text() : Promise.reject('Errore nel caricamento'))
+            .then(data => {
+                const placeholder = document.getElementById(placeholderId);
+                if (!placeholder) return;
+                
+                const tempDiv = document.createElement('div');
+                tempDiv.innerHTML = data;
+                
+                const script = tempDiv.querySelector('script');
+                placeholder.innerHTML = tempDiv.innerHTML;
+
+                if (script) {
+                    const newScript = document.createElement('script');
+                    newScript.textContent = script.textContent;
+                    document.body.appendChild(newScript).remove();
+                }
+            })
+            .catch(error => console.error(`Impossibile caricare ${url}: ${error}`));
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        loadComponent('nav.html', 'navbar-placeholder');
+        loadComponent('footer.html', 'footer-placeholder');
+    });
+  </script>
 </body>
 </html>
