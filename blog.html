@@ -14,44 +14,52 @@
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
     <style>
-        /* --- [1] IMPOSTAZIONI GLOBALI E VARIABILI --- */
+        /* --- [1] IMPOSTAZIONI GLOBALI E VARIABILI (Stile Unificato iOS) --- */
         :root {
             /* Palette Colori (Tema Chiaro) */
             --c-accent-primary: #007aff;
-            --c-success: #34c759;
-            --c-error: #ff3b30;
-            --c-bg-primary: #f2f2f7;
-            --c-bg-secondary: #ffffff;
+            --c-bg-primary: #f2f2f7;      /* Sfondo di sistema iOS */
+            --c-bg-secondary: #ffffff;   /* Sfondo per le card */
+            --c-bg-tertiary: #e5e5ea;     /* Sfondo per bottoni/elementi secondari */
             --c-text-primary: #1d1d1f;
             --c-text-secondary: #6e6e73;
             --c-text-on-accent: #ffffff;
-            --c-border: rgba(60, 60, 67, 0.29);
-            --c-separator: var(--c-border);
+            --c-separator: #E5E5EA;      /* Colore dei separatori di lista */
+            --c-success: #34c759;
+            --c-error: #ff3b30;
+
+            /* Navbar Glass Effect */
+            --nav-bg-color: rgba(242, 242, 247, 0.8);
+
             /* Tipografia e Font */
             --font-system: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", Roboto, Helvetica, Arial, sans-serif;
+            
             /* Bordi e Ombre */
-            --radius-sm: 8px;
-            --radius-md: 14px;
-            --radius-lg: 20px;
-            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
-            /* Spaziature */
+            --radius-md: 12px;
+            --radius-lg: 18px;
+            --shadow-subtle: 0 1px 2px rgba(0,0,0,0.03), 0 3px 10px rgba(0,0,0,0.06);
+
+            /* Spaziature e Layout */
             --spacing-sm: 8px;
             --spacing-md: 16px;
             --spacing-lg: 24px;
             --spacing-xl: 32px;
             --header-height: 60px;
-            /* Transizioni */
             --transition-fast: 0.2s cubic-bezier(0.3, 0, 0.4, 1);
         }
+
         html.dark-theme {
             --c-accent-primary: #0a84ff;
-            --c-success: #30d158;
             --c-bg-primary: #000000;
             --c-bg-secondary: #1c1c1e;
+            --c-bg-tertiary: #2c2c2e;
             --c-text-primary: #f5f5f7;
             --c-text-secondary: #8d8d92;
-            --c-border: rgba(84, 84, 88, 0.65);
-            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.2);
+            --c-separator: #38383A;
+            --c-success: #30d158;
+            --c-error: #ff453a;
+            --nav-bg-color: rgba(28, 28, 30, 0.8);
+            --shadow-subtle: 0 4px 12px rgba(0, 0, 0, 0.25);
         }
 
         /* --- [2] RESET E STILI BASE --- */
@@ -62,106 +70,124 @@
             color: var(--c-text-primary);
             padding-top: var(--header-height);
             line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
         .container { max-width: 900px; margin: 0 auto; padding: 0 var(--spacing-lg); }
+        
+        /* --- [3] STILI NAVBAR STATICA --- */
+        .glass-header {
+            position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+            background-color: var(--nav-bg-color); backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 1px solid var(--c-separator);
+        }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 20px; height: var(--header-height); }
+        .logo-link { display: flex; align-items: center; text-decoration: none; color: var(--c-text-primary); gap: 10px; }
+        .logo-image { height: 32px; }
+        .logo-dark { display: none; }
+        html.dark-theme .logo-light { display: none; }
+        html.dark-theme .logo-dark { display: block; }
+        .logo-text { font-size: 20px; font-weight: 600; }
+        .nav-desktop { display: flex; }
+        .nav-desktop-list { display: flex; gap: var(--spacing-sm); list-style: none; }
+        .nav-desktop-link { padding: 8px 12px; text-decoration: none; color: var(--c-text-secondary); font-size: 15px; font-weight: 500; border-radius: var(--radius-sm); transition: background-color var(--transition-fast), color var(--transition-fast); }
+        .nav-desktop-link:hover { background-color: var(--c-bg-tertiary); color: var(--c-text-primary); }
+        .nav-desktop-link.active { color: var(--c-text-primary); font-weight: 600; }
+        .nav-actions { display: flex; align-items: center; gap: var(--spacing-sm); }
+        .glass-btn { background: transparent; border: none; cursor: pointer; padding: 8px; border-radius: 50%; display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; }
+        .glass-btn:hover { background-color: var(--c-bg-tertiary); }
+        .glass-btn i { font-size: 22px; color: var(--c-text-primary); }
+        .mobile-menu-btn { display: none; }
+        @media (max-width: 992px) { .nav-desktop { display: none; } .mobile-menu-btn { display: flex; } }
 
-        /* --- [3] STILI SPECIFICI DEL BLOG --- */
+
+        /* --- [4] STILI SPECIFICI DEL BLOG (Stile iOS) --- */
         .blog-section { padding: var(--spacing-xl) 0; }
         .section-header { text-align: center; margin-bottom: var(--spacing-xl); }
         .section-header h1 { font-size: 2.5rem; display: flex; align-items: center; justify-content: center; gap: var(--spacing-md); }
         .section-header p { color: var(--c-text-secondary); font-size: 1.1rem; max-width: 650px; margin: var(--spacing-sm) auto 0; }
         
-        /* Card Articolo */
-        .card { background-color: var(--c-bg-secondary); border-radius: var(--radius-lg); overflow: hidden; }
-        .featured-article { margin-bottom: var(--spacing-xl); }
-        
-        .article-image { width: 100%; height: 350px; overflow: hidden; }
+        /* Card e Contenuto Articolo */
+        .card { background-color: var(--c-bg-secondary); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-subtle); margin-bottom: var(--spacing-xl); }
+        .article-image { width: 100%; height: 350px; }
         .article-image img { width: 100%; height: 100%; object-fit: cover; }
-        
         .article-body { padding: var(--spacing-xl); }
-        
         .article-meta { display: flex; flex-wrap: wrap; gap: var(--spacing-md); align-items: center; margin-bottom: var(--spacing-md); }
         .article-meta span { display: inline-flex; align-items: center; gap: var(--spacing-sm); font-size: 0.9rem; color: var(--c-text-secondary); }
         .article-category { background-color: color-mix(in srgb, var(--c-accent-primary), transparent 85%); color: var(--c-accent-primary); padding: 4px 10px; border-radius: var(--radius-lg); font-weight: 500; }
         html.dark-theme .article-category { background-color: color-mix(in srgb, var(--c-accent-primary), transparent 75%); }
-
         .article-title { font-size: 2rem; font-weight: 700; line-height: 1.3; margin-bottom: var(--spacing-md); }
         .article-excerpt { font-size: 1.1rem; color: var(--c-text-secondary); margin-bottom: var(--spacing-xl); }
-
         .article-content h3 { font-size: 1.5rem; font-weight: 600; margin: var(--spacing-xl) 0 var(--spacing-md) 0; }
         .article-content p, .article-content li { color: var(--c-text-secondary); margin-bottom: var(--spacing-md); }
-        .article-content ul, .article-content ol { padding-left: var(--spacing-lg); }
         .article-content strong { font-weight: 600; color: var(--c-text-primary); }
         
-        /* CTA (Call to Action) dentro l'articolo */
-        .article-cta {
-            background-color: color-mix(in srgb, var(--c-bg-primary), #000 5%);
-            padding: var(--spacing-xl); border-radius: var(--radius-md);
-            margin: var(--spacing-xl) 0; text-align: center;
-        }
-        html.dark-theme .article-cta { background-color: color-mix(in srgb, var(--c-bg-primary), #fff 5%); }
-        .article-cta h4 { font-size: 1.2rem; margin-bottom: var(--spacing-sm); }
-        .article-cta .btn-group { display: flex; gap: var(--spacing-md); justify-content: center; flex-wrap: wrap; margin-top: var(--spacing-md); }
-
-        /* Azioni e Condivisione */
-        .article-actions {
-            padding: var(--spacing-lg);
-            border-top: 1px solid var(--c-separator);
-            display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--spacing-lg);
-        }
-        .article-stats { display: flex; align-items: center; gap: var(--spacing-lg); }
-        .action-btn { display: flex; align-items: center; gap: var(--spacing-sm); background-color: color-mix(in srgb, var(--c-bg-primary), #000 5%); padding: 10px 14px; border-radius: var(--radius-md); cursor: pointer; border: none; font-size: 0.9rem; transition: background-color var(--transition-fast); }
-        html.dark-theme .action-btn { background-color: color-mix(in srgb, var(--c-bg-primary), #fff 10%); }
-        .action-btn:hover, .action-btn.liked { background-color: color-mix(in srgb, var(--c-accent-primary), transparent 85%); color: var(--c-accent-primary); }
-        .share-buttons { text-align: right; }
-        .share-buttons h4 { font-size: 1rem; margin-bottom: var(--spacing-sm); }
-        .share-grid { display: flex; flex-wrap: wrap; gap: var(--spacing-sm); justify-content: flex-end; }
-        .share-btn { width: 40px; height: 40px; padding: 0; border-radius: 50%; border: none; background-color: color-mix(in srgb, var(--c-bg-primary), #000 5%); font-size: 1.2rem; cursor: pointer; transition: background-color var(--transition-fast), color var(--transition-fast); }
-        html.dark-theme .share-btn { background-color: color-mix(in srgb, var(--c-bg-primary), #fff 10%); }
+        /* CTA, Azioni e Condivisione */
+        .article-cta { background-color: var(--c-bg-primary); padding: var(--spacing-xl); border-radius: var(--radius-md); margin: var(--spacing-xl) 0; text-align: center; }
+        .btn { display: inline-flex; align-items: center; justify-content: center; padding: 10px 16px; font-size: 0.95rem; font-weight: 600; border-radius: var(--radius-md); border: none; cursor: pointer; }
+        .btn-primary { background-color: var(--c-accent-primary); color: var(--c-text-on-accent); }
+        .btn-secondary { background-color: var(--c-bg-tertiary); color: var(--c-text-primary); }
+        .article-actions { padding: var(--spacing-lg); border-top: 1px solid var(--c-separator); display: flex; justify-content: space-between; align-items: center; }
+        .action-btn { background-color: var(--c-bg-tertiary); }
+        .action-btn.liked { background-color: color-mix(in srgb, var(--c-accent-primary), transparent 85%); color: var(--c-accent-primary); }
+        .share-btn { background-color: var(--c-bg-tertiary); }
         .share-btn:hover { color: #fff; }
         .facebook-btn:hover { background-color: #1877F2; }
         .twitter-btn:hover { background-color: #1DA1F2; }
         .whatsapp-btn:hover { background-color: #25D366; }
-        .copy-btn:hover { background-color: var(--c-success); }
-        
+
         /* Sezione Commenti */
-        .comments-section { padding: var(--spacing-xl); margin-top: var(--spacing-xl); }
-        .comments-section h3 { display: flex; align-items: center; gap: var(--spacing-sm); margin-bottom: var(--spacing-lg); }
-        .comment-form textarea { width: 100%; min-height: 80px; resize: vertical; padding: 12px; font-size: 1rem; border-radius: var(--radius-md); color: var(--c-text-primary); background-color: color-mix(in srgb, var(--c-bg-primary), #000 5%); border: none; }
-        html.dark-theme .comment-form textarea { background-color: color-mix(in srgb, var(--c-bg-primary), #fff 10%); }
-        .comment-form .btn-group { display: flex; gap: var(--spacing-md); margin-top: var(--spacing-md); }
-        .comments-list { margin-top: var(--spacing-xl); }
-        .comment-item { display: flex; gap: var(--spacing-md); padding: var(--spacing-lg) 0; border-bottom: 1px solid var(--c-separator); }
+        .comments-section h3 { margin-bottom: var(--spacing-lg); }
+        .comment-form textarea { width: 100%; background-color: var(--c-bg-primary); border: none; border-radius: var(--radius-md); padding: 12px; color: var(--c-text-primary); }
+        .comment-item { padding: var(--spacing-lg) 0; border-bottom: 1px solid var(--c-separator); }
         .comment-item:last-child { border-bottom: none; }
-        .comment-avatar { width: 40px; height: 40px; border-radius: 50%; background-color: color-mix(in srgb, var(--c-bg-primary), #000 5%); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: var(--c-text-secondary); flex-shrink: 0; }
-        .comment-body { flex-grow: 1; }
-        .comment-header { display: flex; align-items: center; gap: var(--spacing-sm); margin-bottom: var(--spacing-sm); }
-        .comment-author { font-weight: 600; }
-        .comment-date { font-size: 0.8rem; color: var(--c-text-secondary); }
-        .comment-content p { font-size: 0.95rem; color: var(--c-text-secondary); }
-        .comment-actions { display: flex; gap: var(--spacing-md); margin-top: var(--spacing-sm); }
-        .comment-actions button { background: none; border: none; font-size: 0.85rem; cursor: pointer; color: var(--c-text-secondary); display: flex; align-items: center; gap: 4px; }
+        .comment-avatar { background-color: var(--c-bg-tertiary); }
 
         /* Articoli Correlati */
-        .related-articles { margin-top: var(--spacing-xl); }
-        .related-articles h3 { text-align: center; margin-bottom: var(--spacing-lg); font-size: 1.5rem; }
+        .related-articles { margin-top: var(--spacing-xl); background: transparent; box-shadow: none; }
+        .related-articles h3 { text-align: center; margin-bottom: var(--spacing-lg); }
         .articles-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--spacing-lg); }
-        .article-preview { cursor: pointer; transition: transform var(--transition-fast); }
+        .article-preview { background-color: var(--c-bg-secondary); box-shadow: var(--shadow-subtle); transition: transform var(--transition-fast); border-radius: var(--radius-lg); }
         .article-preview:hover { transform: translateY(-5px); }
-        .preview-image { width: 100%; height: 180px; border-radius: var(--radius-md); overflow: hidden; }
-        .preview-image img { width: 100%; height: 100%; object-fit: cover; }
-        .preview-content { padding: var(--spacing-md) 0; }
-        .preview-category { font-size: 0.8rem; font-weight: 500; color: var(--c-accent-primary); }
-        .preview-content h4 { font-size: 1.1rem; margin: 4px 0; }
-        .preview-content p { font-size: 0.9rem; color: var(--c-text-secondary); }
-        .preview-date { font-size: 0.8rem; color: var(--c-text-secondary); }
+        .preview-image { height: 180px; }
+        .preview-content { padding: var(--spacing-md); }
     </style>
 
 </head>
 <body>
 
-    <div id="navbar-placeholder"></div>
-
+    <header class="glass-header" id="mainHeader">
+        <nav class="nav-container">
+            <a href="index.html" class="logo-link">
+                <img src="assets/cronoshop-logo.png" alt="Logo Cronoshop" class="logo-image logo-light">
+                <img src="assets/cronoshop-logo-black.png" alt="Logo Cronoshop" class="logo-image logo-dark">
+                <span class="logo-text">Cronoshop</span>
+            </a>
+            <div class="nav-desktop">
+                <ul class="nav-desktop-list">
+                    <li><a href="index.html" class="nav-desktop-link" data-page="index">Home</a></li>
+                    <li><a href="products.html" class="nav-desktop-link" data-page="products">Prodotti</a></li>
+                    <li><a href="cronoai.html" class="nav-desktop-link" data-page="cronoai">CronoAI</a></li>
+                    <li><a href="blog.html" class="nav-desktop-link" data-page="blog">Blog</a></li>
+                </ul>
+            </div>
+            <div class="nav-actions">
+                <button class="glass-btn" id="theme-toggle-btn" aria-label="Cambia tema">
+                    <i class="ph-bold ph-moon"></i>
+                </button>
+                <a href="cart.html" class="glass-btn" aria-label="Carrello">
+                    <i class="ph-bold ph-shopping-cart-simple"></i>
+                </a>
+                <a href="account.html" class="glass-btn" aria-label="Account">
+                    <i class="ph-bold ph-user-circle"></i>
+                </a>
+                <button class="glass-btn mobile-menu-btn" aria-label="Apri menu">
+                    <i class="ph-bold ph-list"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
     <div class="container">
         <section class="blog-section">
             <div class="section-header">
@@ -176,148 +202,62 @@
                 <div class="article-body">
                     <div class="article-meta">
                         <span class="article-category"><i class="ph-fill ph-lightbulb"></i> Guide al Risparmio</span>
-                        <span><i class="ph-fill ph-calendar"></i> 15 Luglio 2025</span>
+                        <span><i class="ph-fill ph-calendar"></i> 17 Luglio 2025</span>
                         <span><i class="ph-fill ph-timer"></i> 8 min di lettura</span>
                     </div>
                     <h2 class="article-title">Come Massimizzare i Risparmi con le Offerte Amazon: La Guida Completa 2025</h2>
-                    <p class="article-excerpt">Scopri le strategie avanzate e i segreti per trovare le migliori offerte Amazon quotidiane. Una guida completa per risparmiare centinaia di euro ogni anno con le promozioni giornaliere.</p>
+                    <p class="article-excerpt">Scopri le strategie avanzate e i segreti per trovare le migliori offerte Amazon quotidiane. Una guida completa per risparmiare centinaia di euro ogni anno.</p>
                 
                     <div class="article-content">
-                        <h3><i class="ph-fill ph-crosshair"></i> Introduzione: Il Mondo delle Offerte Amazon</h3>
-                        <p>Nel panorama dello shopping online, <strong>Amazon</strong> rappresenta il gigante indiscusso, offrendo milioni di prodotti con <strong>offerte giornaliere</strong> che possono far risparmiare centinaia di euro ai consumatori attenti. Ecco dove entra in gioco <strong>Cronoshop</strong>: la nostra piattaforma seleziona quotidianamente le migliori offerte.</p>
-
-                        <h3><i class="ph-fill ph-magnifying-glass"></i> Strategie Avanzate per Trovare le Offerte</h3>
-                        <p>Il <strong>timing</strong> è fondamentale. Le offerte migliori si concentrano in specifici momenti come il <strong>Prime Day</strong>, il <strong>Black Friday</strong> e durante le <strong>Offerte Lampo</strong>.</p>
-                        
-                        <h3><i class="ph-fill ph-coins"></i> Come Cronoshop Ti Aiuta a Risparmiare</h3>
-                        <p>La nostra piattaforma utilizza algoritmi avanzati e selezione manuale per identificare le offerte più vantaggiose, con aggiornamenti in tempo reale e notifiche istantanee tramite i nostri gruppi WhatsApp.</p>
-
-                        <h3><i class="ph-fill ph-trend-up"></i> Tendenze e Previsioni 2025</h3>
-                        <p>Il mercato delle offerte online è in continua evoluzione. Per il 2025, prevediamo offerte personalizzate basate su intelligenza artificiale, maggiori sconti su prodotti eco-friendly e promozioni esclusive per app mobile.</p>
-
-                        <h3><i class="ph-fill ph-rocket-launch"></i> Conclusioni: Il Futuro del Risparmio Online</h3>
-                        <p>Il risparmio intelligente non è solo una questione di trovare il prezzo più basso, ma di sviluppare una strategia completa. Cronoshop si posiziona come il tuo alleato principale in questa missione.</p>
-                    </div>
+                        </div>
 
                     <div class="article-cta">
                         <h4><i class="ph-fill ph-gift"></i> Inizia a Risparmiare Oggi!</h4>
-                        <p>Unisciti a migliaia di utenti che risparmiano ogni giorno con Cronoshop.</p>
-                        <div class="btn-group">
+                        <div class="btn-group" style="margin-top: 16px;">
                             <a href="index.html#offerte" class="btn btn-primary">Scopri le Offerte</a>
                             <a href="groups.html" class="btn btn-secondary">Unisciti ai Gruppi</a>
                         </div>
                     </div>
                 </div>
-
-                <div class="article-actions">
-                    <div class="article-stats">
-                        <button class="action-btn" id="likeBtn">
-                            <i class="ph-fill ph-thumbs-up"></i>
-                            <span class="like-count">247</span>
-                        </button>
-                        <span><i class="ph-fill ph-eye"></i> 1,234 visualizzazioni</span>
-                    </div>
-                    <div class="share-buttons">
-                        <button class="share-btn facebook-btn" title="Condividi su Facebook"><i class="ph-fill ph-facebook-logo"></i></button>
-                        <button class="share-btn twitter-btn" title="Condividi su X/Twitter"><i class="ph-fill ph-twitter-logo"></i></button>
-                        <button class="share-btn whatsapp-btn" title="Condividi su WhatsApp"><i class="ph-fill ph-whatsapp-logo"></i></button>
-                        <button class="share-btn copy-btn" title="Copia Link"><i class="ph-fill ph-link"></i></button>
-                    </div>
-                </div>
             </article>
 
-            <section class="card comments-section">
-                <h3><i class="ph-fill ph-chats"></i> Commenti (<span id="commentCount">3</span>)</h3>
-                <div class="comment-form">
-                    <textarea id="commentText" placeholder="Scrivi il tuo commento..." rows="3"></textarea>
-                    <div class="btn-group">
-                        <button class="btn btn-primary" id="submitComment">Pubblica</button>
-                    </div>
-                </div>
-                <div class="comments-list">
-                    <div class="comment-item">
-                        <div class="comment-avatar"><i class="ph-fill ph-user-circle"></i></div>
-                        <div class="comment-body">
-                            <div class="comment-header"><span class="comment-author">Marco R.</span><span class="comment-date">2 giorni fa</span></div>
-                            <div class="comment-content"><p>Ottima guida! Ho già risparmiato €150 questo mese. Grazie!</p></div>
-                            <div class="comment-actions"><button><i class="ph-fill ph-thumbs-up"></i> 12</button><button><i class="ph-fill ph-chat-circle-dots"></i> Rispondi</button></div>
-                        </div>
-                    </div>
-                    <div class="comment-item">
-                        <div class="comment-avatar"><i class="ph-fill ph-user-circle"></i></div>
-                        <div class="comment-body">
-                            <div class="comment-header"><span class="comment-author">Giulia M.</span><span class="comment-date">1 giorno fa</span></div>
-                            <div class="comment-content"><p>Molto utile la sezione sui timing degli acquisti!</p></div>
-                            <div class="comment-actions"><button><i class="ph-fill ph-thumbs-up"></i> 8</button><button><i class="ph-fill ph-chat-circle-dots"></i> Rispondi</button></div>
-                        </div>
-                    </div>
-                </div>
             </section>
-
-            <section class="related-articles">
-                <h3><i class="ph-fill ph-books"></i> Altri Articoli del Blog</h3>
-                <div class="articles-grid">
-                    <div class="card article-preview">
-                        <div class="preview-image"><img src="https://images.pexels.com/photos/4968630/pexels-photo-4968630.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop" alt="Black Friday 2025" loading="lazy"></div>
-                        <div class="preview-content">
-                            <span class="preview-category">Eventi</span>
-                            <h4>Black Friday 2025: Le Migliori Strategie</h4>
-                            <p class="preview-date">Prossimamente</p>
-                        </div>
-                    </div>
-                    <div class="card article-preview">
-                        <div class="preview-image"><img src="https://images.pexels.com/photos/4386321/pexels-photo-4386321.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop" alt="Tecnologia 2025" loading="lazy"></div>
-                        <div class="preview-content">
-                            <span class="preview-category">Tech</span>
-                            <h4>Migliori Smartphone 2025: Guida all'Acquisto</h4>
-                            <p class="preview-date">Prossimamente</p>
-                        </div>
-                    </div>
-                    <div class="card article-preview">
-                        <div class="preview-image"><img src="https://images.pexels.com/photos/4386370/pexels-photo-4386370.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop" alt="Casa e Cucina" loading="lazy"></div>
-                        <div class="preview-content">
-                            <span class="preview-category">Casa</span>
-                            <h4>Arredare Casa Risparmiando: Guida Completa</h4>
-                            <p class="preview-date">Prossimamente</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </section>
     </div>
     
     <div id="footer-placeholder"></div>
 
     <script>
-        // Funzione per caricare componenti HTML dinamicamente
-        function loadComponent(url, placeholderId) {
-            fetch(url)
-                .then(response => response.ok ? response.text() : Promise.reject('Errore nel caricamento'))
-                .then(data => {
-                    const placeholder = document.getElementById(placeholderId);
-                    if (!placeholder) return;
-                    
-                    const tempDiv = document.createElement('div');
-                    tempDiv.innerHTML = data;
-                    
-                    const script = tempDiv.querySelector('script');
-                    placeholder.innerHTML = tempDiv.innerHTML;
-
-                    if (script) {
-                        const newScript = document.createElement('script');
-                        newScript.textContent = script.textContent;
-                        document.body.appendChild(newScript).remove();
-                    }
-                })
-                .catch(error => console.error(`Impossibile caricare ${url}: ${error}`));
-        }
-
         document.addEventListener('DOMContentLoaded', function() {
-            // Carica navbar e footer
-            loadComponent('nav.html', 'navbar-placeholder');
-            loadComponent('footer.html', 'footer-placeholder');
+            
+            // --- Script per la Navbar Statica ---
+            const themeToggleBtn = document.getElementById('theme-toggle-btn');
+            const htmlEl = document.documentElement;
 
-            // Logica specifica della pagina Blog (semplificata)
+            // Applica il tema salvato al caricamento
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const currentTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+            
+            htmlEl.classList.toggle('dark-theme', currentTheme === 'dark');
+            themeToggleBtn.querySelector('i').className = currentTheme === 'dark' ? 'ph-bold ph-sun' : 'ph-bold ph-moon';
+
+            // Gestore per il click sul pulsante del tema
+            themeToggleBtn.addEventListener('click', () => {
+                const isDark = htmlEl.classList.toggle('dark-theme');
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+                themeToggleBtn.querySelector('i').className = isDark ? 'ph-bold ph-sun' : 'ph-bold ph-moon';
+            });
+
+            // Evidenzia il link attivo nella navbar
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            document.querySelectorAll('.nav-desktop-link[data-page]').forEach(link => {
+                const pageName = new URL(link.href).pathname.split('/').pop();
+                if (pageName === currentPage) {
+                    link.classList.add('active');
+                }
+            });
+
+            // --- Script per la pagina Blog ---
             const likeBtn = document.getElementById('likeBtn');
             if (likeBtn) {
                 likeBtn.addEventListener('click', () => {
@@ -327,6 +267,15 @@
                     countSpan.textContent = likeBtn.classList.contains('liked') ? currentCount + 1 : currentCount - 1;
                 });
             }
+            
+            // --- Caricamento Footer (opzionale) ---
+            fetch('footer.html')
+                .then(response => response.ok ? response.text() : Promise.reject('Errore'))
+                .then(data => {
+                    const placeholder = document.getElementById('footer-placeholder');
+                    if (placeholder) placeholder.innerHTML = data;
+                })
+                .catch(error => console.error(`Impossibile caricare il footer: ${error}`));
         });
     </script>
 </body>
