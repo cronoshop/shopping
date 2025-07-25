@@ -1,817 +1,247 @@
-<!DOCTYPE html>
-<html lang="it">
+<nav class="navbar" id="mainNavbar">
+  <div class="navbar-container">
+    <!-- Brand -->
+    <a href="index.html" class="navbar-brand">
+      <img src="assets/cronoshop-logo.png" alt="Cronoshop" id="brandLogo">
+      <span>Cronoshop</span>
+    </a>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cronoshop Navigation - Versione Avanzata</title>
-    
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <!-- Desktop Navigation -->
+    <ul class="navbar-nav" id="desktopNav">
+      <li><a href="index.html" class="nav-link" data-page="index">🏠 Home</a></li>
+      <li><a href="products.html" class="nav-link" data-page="products">🛍️ Prodotti</a></li>
+      <li><a href="categorie.html" class="nav-link" data-page="categorie">📂 Categorie</a></li>
+      <li><a href="cronoai.html" class="nav-link" data-page="cronoai">🤖 CronoAI</a></li>
+      <li><a href="blog.html" class="nav-link" data-page="blog">📝 Blog</a></li>
+      <li><a href="groups.html" class="nav-link" data-page="groups">💬 Gruppi</a></li>
+    </ul>
 
-    <style>
-    /* -------------------------------------------------------------------------- */
-    /* IMPOSTAZIONI GLOBALI E TEMI                        */
-    /* -------------------------------------------------------------------------- */
-    :root {
-        /* Tema Chiaro (Default) */
-        --bg-color: #f0f2f5;
-        --text-color: #1d1d1f;
-        --text-color-secondary: #6e6e73;
-        --accent-color: #007aff;
-        --divider-color: #d1d1d6;
-        --card-bg: rgba(255, 255, 255, 0.7);
-        --hover-bg: rgba(0, 0, 0, 0.05);
-        --input-bg: rgba(118, 118, 128, 0.12);
-        --input-focus-bg: rgba(118, 118, 128, 0.20);
-        --modal-bg: rgba(242, 242, 247, 0.95);
-        --border-radius-sm: 8px;
-        --border-radius-md: 12px;
-        --border-radius-lg: 16px;
-        --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        --transition-fast: 0.2s ease;
-        --transition-normal: 0.3s ease;
-        --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    /* Tema Scuro */
-    html.dark-theme {
-        --bg-color: #000000;
-        --text-color: #f5f5f7;
-        --text-color-secondary: #86868b;
-        --accent-color: #0a84ff;
-        --divider-color: #424245;
-        --card-bg: rgba(28, 28, 30, 0.75);
-        --hover-bg: rgba(255, 255, 255, 0.1);
-        --input-bg: rgba(118, 118, 128, 0.24);
-        --input-focus-bg: rgba(118, 118, 128, 0.32);
-        --modal-bg: rgba(28, 28, 30, 0.95);
-    }
-
-    /* Stili base */
-    body {
-        font-family: var(--font-family);
-        background-color: var(--bg-color);
-        color: var(--text-color);
-        margin: 0;
-        padding-top: 61px; /* Spazio per l'header fisso */
-        transition: background-color var(--transition-normal), color var(--transition-normal);
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-    }
-    
-    * {
-        box-sizing: border-box;
-    }
-
-
-    /* -------------------------------------------------------------------------- */
-    /* HEADER E NAVIGAZIONE                          */
-    /* -------------------------------------------------------------------------- */
-    .glass-header {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        z-index: 1000;
-        background-color: var(--card-bg);
-        backdrop-filter: saturate(180%) blur(20px);
-        -webkit-backdrop-filter: saturate(180%) blur(20px);
-        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-        transition: background-color var(--transition-normal), border-color var(--transition-normal);
-    }
-    html.dark-theme .glass-header {
-        border-bottom-color: var(--divider-color);
-    }
-
-    .nav-container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 20px;
-        height: 60px;
-    }
-
-    /* Logo */
-    .logo-link {
-        display: flex;
-        align-items: center;
-        text-decoration: none;
-        color: var(--text-color);
-        flex-shrink: 0;
-    }
-    .logo-image { height: 32px; width: 32px; margin-right: 8px; }
-    .logo-dark { display: none; }
-    html.dark-theme .logo-light { display: none; }
-    html.dark-theme .logo-dark { display: block; }
-    .logo-text { font-size: 20px; font-weight: 600; letter-spacing: -0.5px; }
-
-
-    /* -------------------------------------------------------------------------- */
-    /* NAVIGAZIONE DESKTOP                              */
-    /* -------------------------------------------------------------------------- */
-    .nav-desktop {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-grow: 1;
-        margin: 0 24px;
-    }
-    .nav-desktop-list {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        list-style: none;
-        margin: 0;
-        padding: 0;
-    }
-    .nav-desktop-item {
-        position: relative;
-    }
-    .nav-desktop-link {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        padding: 8px 12px;
-        text-decoration: none;
-        color: var(--text-color-secondary);
-        font-size: 14px;
-        font-weight: 500;
-        border-radius: var(--border-radius-sm);
-        transition: background-color var(--transition-fast), color var(--transition-fast);
-    }
-    .nav-desktop-link:hover {
-        background-color: var(--hover-bg);
-        color: var(--text-color);
-    }
-    .nav-desktop-link.active {
-        color: var(--text-color);
-        font-weight: 600;
-    }
-    .nav-desktop-link .new-badge {
-        font-size: 9px;
-        padding: 2px 5px;
-        margin-left: 2px;
-        line-height: 1;
-    }
-    .dropdown-toggle i {
-        font-size: 14px;
-        transition: transform var(--transition-fast);
-    }
-    .dropdown.is-open .dropdown-toggle i {
-        transform: rotate(180deg);
-    }
-
-    /* Sottomenu a tendina (Dropdown) */
-    .dropdown-menu {
-        position: absolute;
-        top: calc(100% + 8px);
-        left: 50%;
-        transform: translateX(-50%);
-        min-width: 200px;
-        background-color: var(--modal-bg);
-        border: 1px solid var(--divider-color);
-        border-radius: var(--border-radius-md);
-        padding: 8px;
-        box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-        list-style: none;
-        opacity: 0;
-        visibility: hidden;
-        transform-origin: top center;
-        transition: opacity var(--transition-fast), visibility var(--transition-fast), transform 0.2s ease-out;
-        z-index: 1001;
-    }
-    .dropdown.is-open .dropdown-menu {
-        opacity: 1;
-        visibility: visible;
-        transform: translateX(-50%) translateY(0);
-    }
-    .dropdown-item a {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        padding: 10px 12px;
-        font-size: 15px;
-        text-decoration: none;
-        color: var(--text-color);
-        border-radius: var(--border-radius-sm);
-        transition: background-color var(--transition-fast);
-    }
-    .dropdown-item a i {
-        font-size: 18px;
-        color: var(--text-color-secondary);
-        width: 20px;
-        text-align: center;
-    }
-    .dropdown-item a:hover {
-        background-color: var(--hover-bg);
-    }
-
-
-    /* -------------------------------------------------------------------------- */
-    /* AZIONI E BOTTONI HEADER                          */
-    /* -------------------------------------------------------------------------- */
-    .nav-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
-    .glass-btn {
-        background-color: transparent;
-        border: none;
-        cursor: pointer;
-        padding: 8px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 40px;
-        height: 40px;
-        position: relative;
-        transition: background-color var(--transition-fast);
-    }
-    .glass-btn:hover { background-color: var(--hover-bg); }
-    .glass-btn i { font-size: 22px; color: var(--text-color); }
-    
-    /* Logica tema desktop */
-    .theme-btn-desktop .icon-sun { display: none; }
-    html.dark-theme .theme-btn-desktop .icon-moon { display: none; }
-    html.dark-theme .theme-btn-desktop .icon-sun { display: block; }
-    
-    .cart-btn { text-decoration: none; }
-    .cart-count {
-        position: absolute;
-        top: 4px;
-        right: 4px;
-        background-color: var(--accent-color);
-        color: white;
-        border-radius: 50%;
-        font-size: 10px;
-        font-weight: 600;
-        min-width: 16px;
-        height: 16px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 0 2px;
-    }
-
-    
-    /* -------------------------------------------------------------------------- */
-    /* VISIBILITÀ RESPONSIVE                         */
-    /* -------------------------------------------------------------------------- */
-    .mobile-menu-btn { display: none; }
-    @media (max-width: 992px) {
-        .nav-desktop { display: none; }
-        .mobile-menu-btn { display: flex; }
-    }
-
-
-    /* -------------------------------------------------------------------------- */
-    /* MENU MOBILE                                */
-    /* -------------------------------------------------------------------------- */
-    .mobile-menu {
-        position: fixed;
-        top: 0;
-        right: 0;
-        width: 100%;
-        height: 100%;
-        max-width: 320px;
-        background-color: var(--card-bg);
-        backdrop-filter: saturate(180%) blur(20px);
-        -webkit-backdrop-filter: saturate(180%) blur(20px);
-        z-index: 1002;
-        transform: translateX(100%);
-        transition: transform var(--transition-smooth), background-color var(--transition-normal);
-        display: flex;
-        flex-direction: column;
-    }
-    .mobile-menu.is-open {
-        transform: translateX(0);
-        box-shadow: -10px 0px 40px rgba(0, 0, 0, 0.15);
-    }
-    .mobile-menu-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 8px 16px;
-        height: 61px;
-        flex-shrink: 0;
-        border-bottom: 1px solid var(--divider-color);
-        transition: border-color var(--transition-normal);
-    }
-    .mobile-menu-title { font-size: 17px; font-weight: 600; }
-    .mobile-menu-content { padding: 16px; overflow-y: auto; flex-grow: 1; }
-
-    /* Barra ricerca mobile */
-    .search-bar-mobile { margin-bottom: 16px; position: relative; }
-    .search-bar-mobile .search-icon {
-        position: absolute;
-        left: 12px;
-        top: 50%;
-        transform: translateY(-50%);
-        color: var(--text-color-secondary);
-        font-size: 18px;
-    }
-
-    /* Link di navigazione mobile */
-    .nav-mobile-list { padding: 0; margin: 0; list-style: none; }
-    .nav-mobile-list .nav-link {
-        display: flex;
-        align-items: center;
-        padding: 12px 8px;
-        text-decoration: none;
-        color: var(--text-color);
-        font-size: 17px;
-        border-radius: var(--border-radius-sm);
-        transition: background-color var(--transition-fast), color var(--transition-normal);
-    }
-    .nav-mobile-list .nav-link:hover { background-color: var(--hover-bg); }
-    .nav-mobile-list .nav-link.active {
-        background-color: var(--accent-color);
-        color: white;
-    }
-    .nav-mobile-list .nav-link.active i { color: white; }
-
-    .nav-mobile-list .nav-link i {
-        font-size: 22px;
-        margin-right: 16px;
-        color: var(--accent-color);
-        width: 24px;
-        text-align: center;
-        transition: color var(--transition-fast);
-    }
-    .nav-link.ai-link { color: var(--accent-color); font-weight: 500; }
-    .nav-link.ai-link.active { color: white; }
-    
-    .new-badge {
-        background-color: var(--accent-color);
-        color: white;
-        font-size: 10px;
-        font-weight: bold;
-        padding: 2px 6px;
-        border-radius: var(--border-radius-sm);
-        margin-left: auto;
-    }
-    .nav-link.active .new-badge {
-        background-color: white;
-        color: var(--accent-color);
-    }
-
-    /* Dropdown mobile */
-    .mobile-dropdown-menu {
-        list-style: none;
-        padding-left: 30px; /* Indentazione per sottomenu */
-        margin: 0;
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.4s ease-in-out;
-    }
-    .mobile-dropdown-menu a {
-        font-size: 15px !important;
-        padding-top: 10px !important;
-        padding-bottom: 10px !important;
-    }
-    .mobile-dropdown-menu a i {
-        font-size: 18px !important;
-    }
-
-    /* Utilità e divisori */
-    .nav-divider {
-        border: none;
-        border-top: 1px solid var(--divider-color);
-        margin: 8px 0;
-        transition: border-color var(--transition-normal);
-    }
-
-    /* Bottone Tema Mobile */
-    .theme-btn-mobile {
-        width: 100%;
-        justify-content: center;
-        margin-top: 16px;
-        background-color: var(--input-bg);
-        border-radius: var(--border-radius-md);
-        font-size: 16px;
-        height: 44px;
-        gap: 8px;
-    }
-    .theme-btn-mobile .icon-sun { display: none; }
-    html.dark-theme .theme-btn-mobile .icon-moon { display: none; }
-    html.dark-theme .theme-btn-mobile .icon-sun { display: block; }
-    
-    /* -------------------------------------------------------------------------- */
-    /* MODAL E OVERLAY                              */
-    /* -------------------------------------------------------------------------- */
-    .overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.3);
-        z-index: 1001;
-        opacity: 0;
-        visibility: hidden;
-        transition: opacity var(--transition-smooth), visibility var(--transition-smooth);
-    }
-    .overlay.is-active {
-        opacity: 1;
-        visibility: visible;
-    }
-    
-    .search-modal {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 1003;
-        display: flex;
-        justify-content: center;
-        align-items: flex-start;
-        padding: 10vh 20px;
-        opacity: 0;
-        visibility: hidden;
-        transition: opacity var(--transition-fast), visibility var(--transition-fast);
-    }
-    .search-modal.is-open {
-        opacity: 1;
-        visibility: visible;
-    }
-    .search-modal-content {
-        position: relative;
-        width: 100%;
-        max-width: 600px;
-        background-color: var(--modal-bg);
-        border: 1px solid var(--divider-color);
-        border-radius: var(--border-radius-lg);
-        padding: 16px;
-        box-shadow: 0 16px 64px rgba(0,0,0,0.2);
-        transform: scale(0.95);
-        transition: transform var(--transition-smooth);
-    }
-    .search-modal.is-open .search-modal-content {
-        transform: scale(1);
-    }
-
-    .search-modal .search-bar-modal { position: relative; }
-    .search-modal .search-icon {
-        position: absolute;
-        left: 16px;
-        top: 50%;
-        transform: translateY(-50%);
-        color: var(--text-color-secondary);
-        font-size: 20px;
-    }
-    .search-modal .glass-input {
-        height: 50px;
-        padding-left: 50px;
-        font-size: 18px;
-        border-radius: var(--border-radius-md);
-    }
-    
-    /* Input di base */
-    .glass-input {
-        width: 100%;
-        padding: 10px 12px 10px 40px;
-        border-radius: var(--border-radius-md);
-        border: 1px solid transparent;
-        background-color: var(--input-bg);
-        font-size: 16px;
-        font-family: var(--font-family);
-        color: var(--text-color);
-        transition: background-color var(--transition-normal), border-color var(--transition-normal);
-        -webkit-appearance: none;
-        box-sizing: border-box;
-    }
-    .glass-input::placeholder { color: var(--text-color-secondary); }
-    .glass-input:focus {
-        outline: none;
-        border-color: rgba(0, 122, 255, 0.5);
-        background-color: var(--input-focus-bg);
-    }
-    
-    </style>
-</head>
-
-<body>
-    
-    <header class="glass-header" id="mainHeader">
-        <nav class="nav-container" role="navigation" aria-label="Menu principale">
-            
-            <a href="index.html" class="logo-link" aria-label="Cronoshop - Torna alla homepage">
-                <img src="assets/cronoshop-logo.png" alt="Logo Cronoshop Chiaro" class="logo-image logo-light">
-                <img src="assets/cronoshop-logo-black.png" alt="Logo Cronoshop Scuro" class="logo-image logo-dark">
-                <span class="logo-text">Cronoshop</span>
-            </a>
-            
-            <div class="nav-desktop">
-                <ul class="nav-desktop-list">
-                    <li class="nav-desktop-item">
-                        <a href="index.html" class="nav-desktop-link" data-page="index">Home</a>
-                    </li>
-                    <li class="nav-desktop-item">
-                        <a href="products.html" class="nav-desktop-link" data-page="products">Prodotti</a>
-                    </li>
-                    <li class="nav-desktop-item dropdown" id="categorie-desktop-dropdown">
-                        <a href="#" class="nav-desktop-link dropdown-toggle" data-page="categorie" aria-haspopup="true" aria-expanded="false">
-                            Categorie <i class="ph ph-caret-down"></i>
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="categorie-desktop-dropdown">
-                            <li class="dropdown-item"><a href="categorie.html?cat=elettronica"><i class="ph-bold ph-plugs"></i> Elettronica</a></li>
-                            <li class="dropdown-item"><a href="categorie.html?cat=casa"><i class="ph-bold ph-house-line"></i> Casa e Cucina</a></li>
-                            <li class="dropdown-item"><a href="categorie.html?cat=informatica"><i class="ph-bold ph-desktop"></i> Informatica</a></li>
-                            <li class="dropdown-item"><a href="categorie.html?cat=moda"><i class="ph-bold ph-t-shirt"></i> Moda</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-desktop-item">
-                        <a href="cronoai.html" class="nav-desktop-link" data-page="cronoai">
-                            CronoAI <span class="new-badge">NEW</span>
-                        </a>
-                    </li>
-                    <li class="nav-desktop-item">
-                        <a href="blog.html" class="nav-desktop-link" data-page="blog">Blog</a>
-                    </li>
-                </ul>
-            </div>
-            
-            <div class="nav-actions">
-                <button class="glass-btn theme-btn-desktop" aria-label="Cambia tema">
-                    <i class="ph-bold ph-moon icon-moon"></i>
-                    <i class="ph-bold ph-sun icon-sun"></i>
-                </button>
-                <button class="glass-btn search-btn-desktop" id="searchBtnDesktop" aria-label="Cerca">
-                    <i class="ph-bold ph-magnifying-glass"></i>
-                </button>
-                <a href="cart.html" class="glass-btn cart-btn" aria-label="Carrello con 0 articoli">
-                    <i class="ph-bold ph-shopping-cart-simple"></i>
-                    <span class="cart-count" id="cartCount">0</span>
-                </a>
-                <button class="glass-btn mobile-menu-btn" id="mobileMenuBtn" aria-label="Apri menu" aria-expanded="false" aria-controls="mobileMenu">
-                    <i class="ph-bold ph-list"></i>
-                </button>
-            </div>
-        </nav>
-    </header>
-    
-    <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-labelledby="mobileMenuTitle">
-        <div class="mobile-menu-header">
-            <span class="mobile-menu-title" id="mobileMenuTitle">Menu</span>
-            <button class="glass-btn close-menu-btn" id="closeMenuBtn" aria-label="Chiudi menu">
-                <i class="ph-bold ph-x"></i>
-            </button>
-        </div>
-        <div class="mobile-menu-content">
-            <div class="search-bar-mobile">
-                <i class="ph ph-magnifying-glass search-icon"></i>
-                <input type="search" placeholder="Cerca offerte..." class="glass-input">
-            </div>
-            
-            <ul class="nav-mobile-list">
-                <li><a href="index.html" class="nav-link" data-page="index"><i class="ph-fill ph-house"></i> Home</a></li>
-                <li><a href="products.html" class="nav-link" data-page="products"><i class="ph-fill ph-package"></i> Prodotti</a></li>
-                <li class="dropdown" id="categorie-mobile-dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-page="categorie" aria-haspopup="true" aria-expanded="false"><i class="ph-fill ph-folder-simple"></i> Categorie</a>
-                    <ul class="mobile-dropdown-menu">
-                        <li><a href="categorie.html?cat=elettronica" class="nav-link"><i class="ph-bold ph-plugs"></i> Elettronica</a></li>
-                        <li><a href="categorie.html?cat=casa" class="nav-link"><i class="ph-bold ph-house-line"></i> Casa e Cucina</a></li>
-                        <li><a href="categorie.html?cat=informatica" class="nav-link"><i class="ph-bold ph-desktop"></i> Informatica</a></li>
-                        <li><a href="categorie.html?cat=moda" class="nav-link"><i class="ph-bold ph-t-shirt"></i> Moda</a></li>
-                    </ul>
-                </li>
-                <li><a href="wishlist.html" class="nav-link" data-page="wishlist"><i class="ph-fill ph-heart"></i> Wishlist</a></li>
-                <li><a href="account.html" class="nav-link" data-page="account"><i class="ph-fill ph-user-circle"></i> Account</a></li>
-                
-                <li><hr class="nav-divider"></li>
-                
-                <li><a href="cronoai.html" class="nav-link ai-link" data-page="cronoai">
-                    <i class="ph-fill ph-sparkle"></i> Scopri CronoAI <span class="new-badge">NEW</span>
-                </a></li>
-                
-                <li><hr class="nav-divider"></li>
-                
-                <li><a href="groups.html" class="nav-link" data-page="groups"><i class="ph-fill ph-users"></i> Gruppi</a></li>
-                <li><a href="blog.html" class="nav-link" data-page="blog"><i class="ph-fill ph-newspaper"></i> Blog</a></li>
-                <li><a href="faq.html" class="nav-link" data-page="faq"><i class="ph-fill ph-question"></i> FAQ</a></li>
-                <li><a href="chisiamo.html" class="nav-link" data-page="chisiamo"><i class="ph-fill ph-info"></i> Chi Siamo</a></li>
-            </ul>
-            
-            <button class="glass-btn theme-btn-mobile">
-                <i class="ph-fill ph-moon icon-moon"></i>
-                <i class="ph-fill ph-sun icon-sun"></i>
-                <span class="theme-btn-text">Cambia Tema</span>
-            </button>
-        </div>
+    <!-- Actions -->
+    <div class="navbar-actions">
+      <button class="btn-icon" id="themeToggle" title="Cambia tema">
+        🌙
+      </button>
+      <button class="btn-icon" id="searchToggle" title="Cerca">
+        🔍
+      </button>
+      <a href="cart.html" class="btn-icon" title="Carrello">
+        🛒
+        <span class="cart-badge" id="cartBadge">0</span>
+      </a>
+      <a href="account.html" class="btn-icon" title="Account">
+        👤
+      </a>
+      <button class="btn-icon mobile-menu-toggle" id="mobileMenuToggle" title="Menu">
+        ☰
+      </button>
     </div>
-    
-    <div class="search-modal" id="searchModal" role="dialog" aria-modal="true" aria-hidden="true">
-        <div class="search-modal-content">
-            <div class="search-bar-modal">
-                <i class="ph ph-magnifying-glass search-icon"></i>
-                <input type="search" placeholder="Cerca su Cronoshop..." class="glass-input" id="searchInputModal">
-            </div>
-        </div>
-    </div>
+  </div>
+</nav>
 
-    <div class="overlay" id="overlay"></div>
-    
-    <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        
-        /**
-         * @namespace CronoshopApp
-         * @description Oggetto principale per incapsulare tutta la logica dell'applicazione.
-         */
-        const CronoshopApp = {
-            
-            /**
-             * Elementi del DOM usati frequentemente.
-             */
-            elements: {
-                html: document.documentElement,
-                header: document.getElementById('mainHeader'),
-                mobileMenu: document.getElementById('mobileMenu'),
-                mobileMenuBtn: document.getElementById('mobileMenuBtn'),
-                closeMenuBtn: document.getElementById('closeMenuBtn'),
-                overlay: document.getElementById('overlay'),
-                searchModal: document.getElementById('searchModal'),
-                searchBtnDesktop: document.getElementById('searchBtnDesktop'),
-                themeToggleButtons: document.querySelectorAll('.theme-btn-desktop, .theme-btn-mobile'),
-                desktopDropdown: document.getElementById('categorie-desktop-dropdown'),
-                mobileDropdown: document.getElementById('categorie-mobile-dropdown'),
-                navLinks: document.querySelectorAll('[data-page]'),
-            },
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-header">
+    <h3>Menu</h3>
+    <button class="btn-icon" id="closeMobileMenu">✕</button>
+  </div>
+  <ul class="mobile-nav">
+    <li><a href="index.html" class="nav-link" data-page="index">🏠 Home</a></li>
+    <li><a href="products.html" class="nav-link" data-page="products">🛍️ Prodotti</a></li>
+    <li><a href="categorie.html" class="nav-link" data-page="categorie">📂 Categorie</a></li>
+    <li><a href="cronoai.html" class="nav-link" data-page="cronoai">🤖 CronoAI</a></li>
+    <li><a href="blog.html" class="nav-link" data-page="blog">📝 Blog</a></li>
+    <li><a href="groups.html" class="nav-link" data-page="groups">💬 Gruppi</a></li>
+    <li><a href="wishlist.html" class="nav-link" data-page="wishlist">❤️ Wishlist</a></li>
+    <li><a href="account.html" class="nav-link" data-page="account">👤 Account</a></li>
+    <li><a href="faq.html" class="nav-link" data-page="faq">❓ FAQ</a></li>
+    <li><a href="chisiamo.html" class="nav-link" data-page="chisiamo">ℹ️ Chi Siamo</a></li>
+  </ul>
+</div>
 
-            /**
-             * Inizializza tutte le funzionalità dell'applicazione.
-             */
-            init() {
-                this.initMobileMenu();
-                this.initTheme();
-                this.initActiveLink();
-                this.initDropdowns();
-                this.initSearchModal();
-                this.updateCartCount(5); // Esempio: aggiorna il carrello con 5 articoli
-            },
+<!-- Overlay -->
+<div class="overlay" id="overlay"></div>
 
-            /**
-             * Gestisce la logica per il menu mobile (apertura/chiusura).
-             */
-            initMobileMenu() {
-                if (!this.elements.mobileMenu || !this.elements.mobileMenuBtn || !this.elements.closeMenuBtn) return;
-                
-                this.elements.mobileMenuBtn.addEventListener('click', this.openMobileMenu.bind(this));
-                this.elements.closeMenuBtn.addEventListener('click', this.closeMobileMenu.bind(this));
-                this.elements.overlay.addEventListener('click', this.closeAll.bind(this));
-            },
-            
-            openMobileMenu() {
-                this.elements.mobileMenu.classList.add('is-open');
-                this.elements.overlay.classList.add('is-active');
-                this.elements.mobileMenuBtn.setAttribute('aria-expanded', 'true');
-                document.body.style.overflow = 'hidden'; // Blocca lo scroll del body
-            },
-            
-            closeMobileMenu() {
-                this.elements.mobileMenu.classList.remove('is-open');
-                this.elements.overlay.classList.remove('is-active');
-                this.elements.mobileMenuBtn.setAttribute('aria-expanded', 'false');
-                document.body.style.overflow = ''; // Ripristina lo scroll
-            },
+<script>
+class NavigationManager {
+  constructor() {
+    this.currentTheme = localStorage.getItem('theme') || 'light';
+    this.init();
+  }
 
-            /**
-             * Gestisce la logica per la modal di ricerca.
-             */
-            initSearchModal() {
-                if (!this.elements.searchModal || !this.elements.searchBtnDesktop) return;
+  init() {
+    this.setupEventListeners();
+    this.updateCartBadge();
+    this.setActiveNavLink();
+    this.applyTheme();
+  }
 
-                this.elements.searchBtnDesktop.addEventListener('click', () => {
-                    this.elements.searchModal.classList.add('is-open');
-                    this.elements.searchModal.setAttribute('aria-hidden', 'false');
-                    this.elements.overlay.classList.add('is-active');
-                    document.getElementById('searchInputModal').focus();
-                });
-            },
-
-            closeSearchModal() {
-                this.elements.searchModal.classList.remove('is-open');
-                this.elements.searchModal.setAttribute('aria-hidden', 'true');
-                this.elements.overlay.classList.remove('is-active');
-            },
-            
-            /**
-             * Chiude tutti gli elementi attivi (menu, modal).
-             */
-            closeAll() {
-                this.closeMobileMenu();
-                this.closeSearchModal();
-            },
-
-            /**
-             * Gestisce la logica per il tema scuro/chiaro.
-             */
-            initTheme() {
-                const savedTheme = localStorage.getItem('theme');
-                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-                if (savedTheme) {
-                    this.applyTheme(savedTheme);
-                } else {
-                    this.applyTheme(prefersDark ? 'dark' : 'light');
-                }
-
-                this.elements.themeToggleButtons.forEach(btn => {
-                    btn.addEventListener('click', () => {
-                        const isDark = this.elements.html.classList.contains('dark-theme');
-                        this.applyTheme(isDark ? 'light' : 'dark');
-                    });
-                });
-            },
-            
-            applyTheme(theme) {
-                if (theme === 'dark') {
-                    this.elements.html.classList.add('dark-theme');
-                } else {
-                    this.elements.html.classList.remove('dark-theme');
-                }
-                localStorage.setItem('theme', theme);
-            },
-
-            /**
-             * Evidenzia il link di navigazione corrispondente alla pagina corrente.
-             */
-            initActiveLink() {
-                const currentPage = window.location.pathname.split('/').pop().split('.').shift();
-                if (!currentPage || currentPage === '') {
-                    this.setActiveLink('index');
-                    return;
-                };
-
-                this.setActiveLink(currentPage);
-            },
-
-            setActiveLink(pageIdentifier) {
-                 this.elements.navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.dataset.page === pageIdentifier) {
-                        link.classList.add('active');
-                    }
-                });
-            },
-            
-            /**
-             * Gestisce la logica per i menu a tendina.
-             */
-            initDropdowns() {
-                // Dropdown Desktop
-                if (this.elements.desktopDropdown) {
-                    const toggle = this.elements.desktopDropdown.querySelector('.dropdown-toggle');
-                    toggle.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        this.elements.desktopDropdown.classList.toggle('is-open');
-                        toggle.setAttribute('aria-expanded', this.elements.desktopDropdown.classList.contains('is-open'));
-                    });
-                }
-                
-                // Dropdown Mobile
-                if (this.elements.mobileDropdown) {
-                    const toggle = this.elements.mobileDropdown.querySelector('.dropdown-toggle');
-                    const submenu = this.elements.mobileDropdown.querySelector('.mobile-dropdown-menu');
-                    toggle.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        const isOpen = submenu.style.maxHeight && submenu.style.maxHeight !== '0px';
-                        if (isOpen) {
-                            submenu.style.maxHeight = '0px';
-                        } else {
-                            submenu.style.maxHeight = submenu.scrollHeight + 'px';
-                        }
-                        toggle.setAttribute('aria-expanded', !isOpen);
-                    });
-                }
-                
-                // Chiude i dropdown se si clicca altrove
-                document.addEventListener('click', (e) => {
-                    if (this.elements.desktopDropdown && !this.elements.desktopDropdown.contains(e.target)) {
-                        this.elements.desktopDropdown.classList.remove('is-open');
-                        this.elements.desktopDropdown.querySelector('.dropdown-toggle').setAttribute('aria-expanded', 'false');
-                    }
-                });
-            },
-
-            /**
-             * Aggiorna il contatore del carrello.
-             * @param {number} count - Il numero di articoli nel carrello.
-             */
-            updateCartCount(count) {
-                const cartCountEl = document.getElementById('cartCount');
-                if (cartCountEl) {
-                    cartCountEl.textContent = count;
-                    cartCountEl.closest('.cart-btn').setAttribute('aria-label', `Carrello con ${count} articoli`);
-                }
-            }
-        };
-
-        // Avvia l'applicazione
-        CronoshopApp.init();
-
+  setupEventListeners() {
+    // Theme toggle
+    document.getElementById('themeToggle')?.addEventListener('click', () => {
+      this.toggleTheme();
     });
-    </script>
-</body>
-</html>
+
+    // Mobile menu
+    document.getElementById('mobileMenuToggle')?.addEventListener('click', () => {
+      this.toggleMobileMenu();
+    });
+
+    document.getElementById('closeMobileMenu')?.addEventListener('click', () => {
+      this.closeMobileMenu();
+    });
+
+    document.getElementById('overlay')?.addEventListener('click', () => {
+      this.closeMobileMenu();
+    });
+
+    // Search toggle
+    document.getElementById('searchToggle')?.addEventListener('click', () => {
+      this.toggleSearch();
+    });
+
+    // Close mobile menu on nav link click
+    document.querySelectorAll('.mobile-nav .nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        this.closeMobileMenu();
+      });
+    });
+  }
+
+  toggleTheme() {
+    this.currentTheme = this.currentTheme === 'light' ? 'dark' : 'light';
+    localStorage.setItem('theme', this.currentTheme);
+    this.applyTheme();
+    this.showNotification(`Tema ${this.currentTheme === 'dark' ? 'scuro' : 'chiaro'} attivato`);
+  }
+
+  applyTheme() {
+    document.documentElement.setAttribute('data-theme', this.currentTheme);
+    const themeButton = document.getElementById('themeToggle');
+    if (themeButton) {
+      themeButton.textContent = this.currentTheme === 'dark' ? '☀️' : '🌙';
+    }
+
+    // Update logo for dark theme
+    const logo = document.getElementById('brandLogo');
+    if (logo) {
+      logo.src = this.currentTheme === 'dark' 
+        ? 'assets/cronoshop-logo-black.png' 
+        : 'assets/cronoshop-logo.png';
+    }
+  }
+
+  toggleMobileMenu() {
+    const mobileMenu = document.getElementById('mobileMenu');
+    const overlay = document.getElementById('overlay');
+    
+    mobileMenu?.classList.add('active');
+    overlay?.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  closeMobileMenu() {
+    const mobileMenu = document.getElementById('mobileMenu');
+    const overlay = document.getElementById('overlay');
+    
+    mobileMenu?.classList.remove('active');
+    overlay?.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  toggleSearch() {
+    // Implementa la logica di ricerca
+    this.showNotification('Funzione di ricerca in arrivo!');
+  }
+
+  updateCartBadge() {
+    try {
+      const savedData = localStorage.getItem('cronoshop_data');
+      if (savedData) {
+        const userData = JSON.parse(savedData);
+        const cart = userData.cart || [];
+        const totalItems = cart.reduce((sum, item) => sum + (item.quantity || 0), 0);
+        
+        const badge = document.getElementById('cartBadge');
+        if (badge) {
+          badge.textContent = totalItems;
+          badge.style.display = totalItems > 0 ? 'flex' : 'none';
+        }
+      }
+    } catch (error) {
+      console.error('Errore nel caricamento del carrello:', error);
+    }
+  }
+
+  setActiveNavLink() {
+    const currentPage = window.location.pathname.split('/').pop().replace('.html', '') || 'index';
+    
+    document.querySelectorAll('.nav-link[data-page]').forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('data-page') === currentPage) {
+        link.classList.add('active');
+      }
+    });
+  }
+
+  showNotification(message, type = 'info') {
+    // Rimuovi notifiche esistenti
+    const existingNotification = document.querySelector('.notification');
+    if (existingNotification) {
+      existingNotification.remove();
+    }
+
+    // Crea nuova notifica
+    const notification = document.createElement('div');
+    notification.className = `notification ${type}`;
+    notification.innerHTML = `
+      <div style="display: flex; align-items: center; gap: 0.5rem;">
+        <span>${this.getNotificationIcon(type)}</span>
+        <span>${message}</span>
+      </div>
+    `;
+
+    document.body.appendChild(notification);
+
+    // Mostra notifica
+    setTimeout(() => notification.classList.add('show'), 100);
+
+    // Nascondi notifica dopo 3 secondi
+    setTimeout(() => {
+      notification.classList.remove('show');
+      setTimeout(() => notification.remove(), 300);
+    }, 3000);
+  }
+
+  getNotificationIcon(type) {
+    const icons = {
+      success: '✅',
+      error: '❌',
+      warning: '⚠️',
+      info: 'ℹ️'
+    };
+    return icons[type] || icons.info;
+  }
+}
+
+// Inizializza la navigazione quando il DOM è pronto
+document.addEventListener('DOMContentLoaded', () => {
+  window.navigationManager = new NavigationManager();
+});
+
+// Aggiorna il badge del carrello quando cambia
+window.addEventListener('storage', (e) => {
+  if (e.key === 'cronoshop_data') {
+    window.navigationManager?.updateCartBadge();
+  }
+});
+
+// Esporta per uso globale
+window.updateCartBadge = () => {
+  window.navigationManager?.updateCartBadge();
+};
+
+window.showNotification = (message, type) => {
+  window.navigationManager?.showNotification(message, type);
+};
+</script>
+</nav>

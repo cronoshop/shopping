@@ -1,119 +1,287 @@
-<!DOCTYPE html><html lang="it">
+<!DOCTYPE html>
+<html lang="it">
 <head>
-<!-- Favicon -->
-<link rel="icon" type="image/png" sizes="32x32" href="assets/cronoshop-logo.png">
-<link rel="icon" type="image/png" sizes="16x16" href="assets/cronoshop-logo.png">
-<link rel="apple-touch-icon" href="assets/cronoshop-logo.png">
-<meta name="author" content="Cronoshop Team" />
-<link rel="canonical" href="https://www.cronoshop.eu/faq.html" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FAQ - Cronoshop</title>
-    <meta name="description" content="Domande frequenti su Cronoshop: scopri come funziona, come trovare le offerte migliori, come registrarti, usare il carrello, wishlist e molto altro.">
-    <meta name="keywords" content="faq, domande frequenti, cronoshop, offerte amazon, come funziona, cronoshop help">
-    <meta name="author" content="Cronoshop Team">
-    <link rel="stylesheet" href="style.css?v=2.3">
+    <meta name="description" content="Domande frequenti su Cronoshop. Trova risposte a tutte le tue domande sul nostro servizio di offerte Amazon.">
+    <link rel="icon" type="image/png" href="assets/cronoshop-logo.png">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Header -->
-<header class="glass-header">
-    <nav class="nav-container" role="navigation" aria-label="Menu principale">
-        <div class="logo">
-            <a href="index.html" class="logo-link">
-                <img src="assets/cronoshop-logo.png" alt="Cronoshop Logo" class="logo-image">
-                <span class="logo-text">Cronoshop</span>
-            </a>
+    <!-- Navigation -->
+    <div id="navigation"></div>
+
+    <!-- Hero Section -->
+    <section class="hero-section" style="min-height: 40vh;">
+        <div class="hero-content">
+            <h1 class="hero-title">❓ Domande Frequenti</h1>
+            <p class="hero-subtitle">Trova risposte a tutte le tue domande su Cronoshop</p>
         </div>
-            <div class="nav-menu" id="navMenu">
-                <a href="index.html" class="nav-link">Home</a>
-                <a href="index.html#offerte" class="nav-link">Offerte</a>
-                <a href="products.html" class="nav-link">Prodotti</a>
-                <a href="categorie.html" class="nav-link">Categorie</a>
-                <a href="wishlist.html" class="nav-link">Wishlist</a>
-                <a href="stats.html" class="nav-link">Statistiche</a>
-                <a href="blog.html" class="nav-link">Blog</a>
-                <a href="account.html" class="nav-link">Profilo</a>
-                <a href="faq.html" class="nav-link">FAQ</a>
+    </section>
+
+    <!-- FAQ Content -->
+    <section class="container" style="margin-top: -50px; position: relative; z-index: 10;">
+        <div class="row">
+            <div class="col-sm-8 mx-auto">
+                <!-- General Questions -->
+                <div class="card mb-4">
+                    <h3 class="mb-4">🏠 Domande Generali</h3>
+                    
+                    <div class="faq-item mb-4">
+                        <h5 class="faq-question" onclick="toggleFAQ(this)">
+                            Cos'è Cronoshop? <span class="float-right">+</span>
+                        </h5>
+                        <div class="faq-answer" style="display: none;">
+                            <p class="text-secondary">Cronoshop è una piattaforma che raccoglie e segnala le migliori offerte Amazon ogni giorno. Non vendiamo prodotti direttamente, ma ti aiutiamo a trovare le migliori occasioni di risparmio.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item mb-4">
+                        <h5 class="faq-question" onclick="toggleFAQ(this)">
+                            Devo pagare per usare Cronoshop? <span class="float-right">+</span>
+                        </h5>
+                        <div class="faq-answer" style="display: none;">
+                            <p class="text-secondary">No, l'accesso a Cronoshop è completamente gratuito. Guadagniamo attraverso il programma di affiliazione Amazon quando acquisti tramite i nostri link.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item mb-4">
+                        <h5 class="faq-question" onclick="toggleFAQ(this)">
+                            Come fate a trovare le offerte? <span class="float-right">+</span>
+                        </h5>
+                        <div class="faq-answer" style="display: none;">
+                            <p class="text-secondary">Usiamo una combinazione di sistemi automatizzati e analisi manuale da parte del nostro team per selezionare solo le migliori offerte disponibili su Amazon.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Account & Features -->
+                <div class="card mb-4">
+                    <h3 class="mb-4">👤 Account e Funzionalità</h3>
+                    
+                    <div class="faq-item mb-4">
+                        <h5 class="faq-question" onclick="toggleFAQ(this)">
+                            Serve un account per usare Cronoshop? <span class="float-right">+</span>
+                        </h5>
+                        <div class="faq-answer" style="display: none;">
+                            <p class="text-secondary">Puoi navigare liberamente senza account, ma alcune funzionalità come wishlist e carrello richiedono la registrazione per salvare i tuoi dati.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item mb-4">
+                        <h5 class="faq-question" onclick="toggleFAQ(this)">
+                            Come funziona la wishlist? <span class="float-right">+</span>
+                        </h5>
+                        <div class="faq-answer" style="display: none;">
+                            <p class="text-secondary">La wishlist ti permette di salvare i prodotti che ti interessano per consultarli in seguito. I dati vengono salvati nel tuo browser e sincronizzati se crei un account.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item mb-4">
+                        <h5 class="faq-question" onclick="toggleFAQ(this)">
+                            Cos'è CronoAI? <span class="float-right">+</span>
+                        </h5>
+                        <div class="faq-answer" style="display: none;">
+                            <p class="text-secondary">CronoAI è il nostro assistente intelligente che ti aiuta a trovare prodotti, confrontare prezzi e ricevere consigli personalizzati per i tuoi acquisti.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Shopping & Purchases -->
+                <div class="card mb-4">
+                    <h3 class="mb-4">🛒 Acquisti e Offerte</h3>
+                    
+                    <div class="faq-item mb-4">
+                        <h5 class="faq-question" onclick="toggleFAQ(this)">
+                            Gli sconti sono sempre aggiornati? <span class="float-right">+</span>
+                        </h5>
+                        <div class="faq-answer" style="display: none;">
+                            <p class="text-secondary">Sì, le offerte sono aggiornate quotidianamente. Tuttavia, i prezzi su Amazon possono cambiare rapidamente, quindi ti consigliamo di verificare sempre il prezzo finale prima dell'acquisto.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item mb-4">
+                        <h5 class="faq-question" onclick="toggleFAQ(this)">
+                            Perché dovrei usare i vostri link? <span class="float-right">+</span>
+                        </h5>
+                        <div class="faq-answer" style="display: none;">
+                            <p class="text-secondary">Usando i nostri link il prezzo non cambia per te, ma ci supporti nel mantenere attivo il servizio gratuito. Inoltre, i nostri link sono sempre verificati e sicuri.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item mb-4">
+                        <h5 class="faq-question" onclick="toggleFAQ(this)">
+                            Cosa succede se un'offerta non è più disponibile? <span class="float-right">+</span>
+                        </h5>
+                        <div class="faq-answer" style="display: none;">
+                            <p class="text-secondary">Le offerte Amazon hanno durata limitata. Se un'offerta non è più disponibile, ti consigliamo di controllare la nostra sezione "Offerte Simili" o iscriverti ai nostri gruppi per ricevere nuove offerte in tempo reale.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Technical Support -->
+                <div class="card mb-4">
+                    <h3 class="mb-4">🔧 Supporto Tecnico</h3>
+                    
+                    <div class="faq-item mb-4">
+                        <h5 class="faq-question" onclick="toggleFAQ(this)">
+                            Il sito non funziona correttamente, cosa faccio? <span class="float-right">+</span>
+                        </h5>
+                        <div class="faq-answer" style="display: none;">
+                            <p class="text-secondary">Prova a svuotare la cache del browser o usa la modalità incognito. Se il problema persiste, contattaci tramite i nostri gruppi WhatsApp o Telegram.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item mb-4">
+                        <h5 class="faq-question" onclick="toggleFAQ(this)">
+                            Posso usare Cronoshop su mobile? <span class="float-right">+</span>
+                        </h5>
+                        <div class="faq-answer" style="display: none;">
+                            <p class="text-secondary">Assolutamente sì! Cronoshop è ottimizzato per dispositivi mobili e offre un'esperienza fluida su smartphone e tablet.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item mb-4">
+                        <h5 class="faq-question" onclick="toggleFAQ(this)">
+                            Come posso cancellare i miei dati? <span class="float-right">+</span>
+                        </h5>
+                        <div class="faq-answer" style="display: none;">
+                            <p class="text-secondary">Puoi cancellare i tuoi dati dalla sezione Account > Gestione Dati. Questo rimuoverà wishlist, carrello e tutte le preferenze salvate.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Community -->
+                <div class="card mb-4">
+                    <h3 class="mb-4">💬 Community e Gruppi</h3>
+                    
+                    <div class="faq-item mb-4">
+                        <h5 class="faq-question" onclick="toggleFAQ(this)">
+                            Come posso unirmi ai gruppi WhatsApp? <span class="float-right">+</span>
+                        </h5>
+                        <div class="faq-answer" style="display: none;">
+                            <p class="text-secondary">Visita la nostra <a href="groups.html">pagina Gruppi</a> e scegli i canali che ti interessano di più. Tutti i gruppi sono gratuiti e puoi uscire in qualsiasi momento.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item mb-4">
+                        <h5 class="faq-question" onclick="toggleFAQ(this)">
+                            Quante offerte ricevo al giorno? <span class="float-right">+</span>
+                        </h5>
+                        <div class="faq-answer" style="display: none;">
+                            <p class="text-secondary">Dipende dai gruppi che scegli. Il canale principale invia 20-50 offerte al giorno, mentre i gruppi specializzati inviano 5-15 offerte mirate per categoria.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item mb-4">
+                        <h5 class="faq-question" onclick="toggleFAQ(this)">
+                            Posso suggerire prodotti o offerte? <span class="float-right">+</span>
+                        </h5>
+                        <div class="faq-answer" style="display: none;">
+                            <p class="text-secondary">Certamente! Siamo sempre aperti a suggerimenti. Puoi inviarci le tue segnalazioni tramite i nostri gruppi WhatsApp o Telegram.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="nav-actions">
-                <a href="cart.html" class="glass-btn cart-btn">🛒 <span class="cart-count">0</span></a>
-                <button class="glass-btn theme-btn">🌙</button>
-                <button class="glass-btn mobile-menu-btn">☰</button>
+        </div>
+    </section>
+
+    <!-- Contact CTA -->
+    <section class="container" style="margin-top: 2rem;">
+        <div class="card text-center" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+            <h3 style="color: white;">Non hai trovato la risposta che cercavi?</h3>
+            <p style="color: rgba(255,255,255,0.9); margin-bottom: 2rem;">Contattaci direttamente tramite i nostri canali ufficiali</p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="groups.html" class="btn btn-success">💬 WhatsApp</a>
+                <a href="groups.html" class="btn btn-info">✈️ Telegram</a>
+                <a href="chisiamo.html" class="btn btn-secondary">ℹ️ Chi Siamo</a>
             </div>
-        </nav>
-    </header><main class="faq-section" style="padding: 120px 2rem 2rem; max-width: 900px; margin: auto;">
-    <h2 class="text-center mb-4">❓ Domande Frequenti (FAQ)</h2>
-    <div class="faq-grid d-grid gap-3">
-        <div class="glass-card p-3">
-            <h3>1. Cos'è Cronoshop?</h3>
-            <p>Cronoshop è una piattaforma che raccoglie e segnala le migliori offerte Amazon ogni giorno.</p>
         </div>
-        <div class="glass-card p-3">
-            <h3>2. Devo pagare per usare Cronoshop?</h3>
-            <p>No, l'accesso a Cronoshop è completamente gratuito.</p>
-        </div>
-        <div class="glass-card p-3">
-            <h3>3. Vendete prodotti direttamente?</h3>
-            <p>No, Cronoshop non vende prodotti direttamente ma ti reindirizza su Amazon tramite link affiliati.</p>
-        </div>
-        <div class="glass-card p-3">
-            <h3>4. Perché dovrei usare i vostri link?</h3>
-            <p>Usando i nostri link il prezzo non cambia, ma ci supporti nel mantenere attivo il servizio.</p>
-        </div>
-        <div class="glass-card p-3">
-            <h3>5. Come fate a trovare le offerte?</h3>
-            <p>Usiamo una combinazione di sistemi automatizzati e analisi manuale da parte del team.</p>
-        </div>
-        <div class="glass-card p-3">
-            <h3>6. Gli sconti sono sempre aggiornati?</h3>
-            <p>Sì, le offerte sono aggiornate quotidianamente e hanno validità limitata.</p>
-        </div>
-        <div class="glass-card p-3">
-            <h3>7. Posso salvare i miei prodotti preferiti?</h3>
-            <p>Sì, puoi aggiungerli alla tua wishlist personale se sei registrato.</p>
-        </div>
-        <div class="glass-card p-3">
-            <h3>8. Serve un account per usare Cronoshop?</h3>
-            <p>Puoi navigare liberamente, ma alcune funzionalità avanzate richiedono la registrazione.</p>
-        </div>
-        <div class="glass-card p-3">
-            <h3>9. Come mi registro?</h3>
-            <p>Vai su <a href="account.html">account.html</a> e segui la procedura guidata.</p>
-        </div>
-        <div class="glass-card p-3">
-            <h3>10. Come funziona il carrello?</h3>
-            <p>Il carrello serve a salvare i tuoi articoli preferiti, anche se il vero acquisto avviene su Amazon.</p>
-        </div>
-        
-        <!-- Altre 30 domande qui di seguito -->
-    </div>
-</main>
+    </section>
 
-<footer class="glass-footer">
-    <div class="footer-content">
-        <div class="footer-section">
-            <h4>Cronoshop</h4>
-            <p>La tua piattaforma per le migliori offerte Amazon</p>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Cronoshop</h4>
+                    <p>La tua piattaforma per le migliori offerte Amazon.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Supporto</h4>
+                    <a href="faq.html">FAQ</a>
+                    <a href="chisiamo.html">Chi Siamo</a>
+                    <a href="groups.html">Contatti</a>
+                    <a href="privacy.html">Privacy</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Community</h4>
+                    <a href="groups.html">WhatsApp</a>
+                    <a href="groups.html">Telegram</a>
+                    <a href="blog.html">Blog</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Cronoshop. Tutti i diritti riservati.</p>
+            </div>
         </div>
-        <div class="footer-section">
-            <h4>Link Utili</h4>
-            <a href="groups.html">Gruppi WhatsApp</a>
-            <a href="categorie.html">Categorie</a>
-            <a href="account.html">Account</a>
-        </div>
-        <div class="footer-section">
-            <h4>Contatti</h4>
-            <a href="groups.html">WhatsApp</a>
-            <a href="#email">Email</a>
-            <a href="#social">Social</a>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        <p>&copy; 2025 Cronoshop. Tutti i diritti riservati.</p>
-    </div>
-</footer>
+    </footer>
 
-<script src="main.js?v=2.3"></script>
+    <script src="main.js"></script>
+    <script>
+        // Load navigation
+        fetch('nav.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navigation').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading navigation:', error));
 
+        // FAQ Toggle functionality
+        function toggleFAQ(element) {
+            const answer = element.nextElementSibling;
+            const icon = element.querySelector('span');
+            
+            if (answer.style.display === 'none' || answer.style.display === '') {
+                answer.style.display = 'block';
+                icon.textContent = '−';
+                element.style.color = 'var(--primary-blue)';
+            } else {
+                answer.style.display = 'none';
+                icon.textContent = '+';
+                element.style.color = '';
+            }
+        }
+
+        // Add hover effects to FAQ questions
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.faq-question').forEach(question => {
+                question.style.cursor = 'pointer';
+                question.style.transition = 'color 0.3s ease';
+                
+                question.addEventListener('mouseenter', () => {
+                    if (question.style.color !== 'var(--primary-blue)') {
+                        question.style.color = 'var(--text-primary)';
+                    }
+                });
+                
+                question.addEventListener('mouseleave', () => {
+                    if (question.nextElementSibling.style.display !== 'block') {
+                        question.style.color = '';
+                    }
+                });
+            });
+
+            // Add fade-in animation to cards
+            setTimeout(() => {
+                document.querySelectorAll('.card').forEach((card, index) => {
+                    setTimeout(() => {
+                        card.classList.add('fade-in');
+                    }, index * 100);
+                });
+            }, 100);
+        });
+    </script>
 </body>
 </html>

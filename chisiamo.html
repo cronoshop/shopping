@@ -1,169 +1,243 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chi Siamo - Cronoshop</title>
-    
-    <meta name="description" content="Scopri la missione e la visione di Cronoshop: offrire le migliori offerte Amazon ogni giorno. Affidabilità, risparmio e tecnologia al tuo servizio.">
-    <meta name="author" content="Cronoshop Team" />
-    <link rel="canonical" href="https://www.cronoshop.eu/chisiamo.html" />
+    <meta name="description" content="Scopri la storia e la missione di Cronoshop. Il team dietro la piattaforma di offerte Amazon più affidabile d'Italia.">
     <link rel="icon" type="image/png" href="assets/cronoshop-logo.png">
-    <link rel="apple-touch-icon" href="assets/cronoshop-logo.png">
-
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
-
-    <style>
-        /* --- [1] IMPOSTAZIONI GLOBALI E VARIABILI --- */
-        :root {
-            --c-accent-primary: #007aff;
-            --c-bg-primary: #f2f2f7;
-            --c-bg-secondary: #ffffff;
-            --c-text-primary: #1d1d1f;
-            --c-text-secondary: #6e6e73;
-            --c-separator: rgba(60, 60, 67, 0.29);
-            --font-system: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", Roboto, Helvetica, Arial, sans-serif;
-            --radius-lg: 20px;
-            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
-            --spacing-md: 16px;
-            --spacing-lg: 24px;
-            --spacing-xl: 32px;
-            --header-height: 60px;
-            --transition-fast: 0.2s cubic-bezier(0.3, 0, 0.4, 1);
-        }
-        html.dark-theme {
-            --c-accent-primary: #0a84ff;
-            --c-bg-primary: #000000;
-            --c-bg-secondary: #1c1c1e;
-            --c-text-primary: #f5f5f7;
-            --c-text-secondary: #8d8d92;
-            --c-separator: rgba(84, 84, 88, 0.65);
-            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.2);
-        }
-
-        /* --- [2] RESET E STILI BASE --- */
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: var(--font-system);
-            background-color: var(--c-bg-primary);
-            color: var(--c-text-primary);
-            padding-top: var(--header-height);
-            line-height: 1.6;
-        }
-        a { color: var(--c-accent-primary); text-decoration: none; }
-        .container { max-width: 900px; margin: 0 auto; padding: 0 var(--spacing-lg); }
-
-        /* --- [3] STILI SPECIFICI DELLA PAGINA --- */
-        .about-section { padding: var(--spacing-xl) 0; }
-        .section-header { text-align: center; margin-bottom: var(--spacing-xl); }
-        .section-header h2 { font-size: 2.2rem; display: flex; align-items: center; justify-content: center; gap: var(--spacing-md); }
-        .section-header p { color: var(--c-text-secondary); max-width: 650px; margin: var(--spacing-md) auto 0; }
-        
-        .info-card {
-            background-color: var(--c-bg-secondary);
-            border-radius: var(--radius-lg);
-            padding: var(--spacing-xl);
-            margin-bottom: var(--spacing-lg);
-            box-shadow: var(--shadow-md);
-        }
-        .info-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: var(--spacing-md);
-            display: flex;
-            align-items: center;
-            gap: var(--spacing-sm);
-        }
-        .info-card p, .info-card li {
-            color: var(--c-text-secondary);
-            margin-bottom: var(--spacing-md);
-        }
-        .info-card p:last-child, .info-card li:last-child {
-            margin-bottom: 0;
-        }
-        .info-card ul {
-            list-style: none;
-            padding-left: 0;
-        }
-        .info-card li {
-            display: flex;
-            align-items: flex-start;
-            gap: var(--spacing-md);
-        }
-        .info-card li i {
-            color: var(--c-accent-primary);
-            margin-top: 4px; /* Allineamento verticale icona */
-        }
-        .info-card strong {
-            font-weight: 600;
-            color: var(--c-text-primary);
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Navigation -->
+    <div id="navigation"></div>
 
-  <div id="navbar-placeholder"></div>
-
-  <div class="container">
-    <section class="about-section">
-      <div class="section-header">
-        <h2><i class="ph-fill ph-info"></i> Chi Siamo</h2>
-        <p>Cronoshop è la piattaforma per chi cerca davvero il risparmio senza rinunciare alla qualità.</p>
-      </div>
-
-      <div class="info-card">
-        <h3><i class="ph-fill ph-flag"></i> La nostra missione</h3>
-        <p>Cronoshop nasce dall'esigenza concreta di offrire agli utenti italiani un portale aggiornato, curato e automatizzato dove trovare le migliori offerte Amazon giornaliere.</p>
-        <p>Non vendiamo direttamente prodotti: siamo un <strong>aggregatore di offerte</strong> e affiliati Amazon. Questo ci consente di restare obiettivi e proporre solo quello che conviene davvero.</p>
-      </div>
-
-      <div class="info-card">
-        <h3><i class="ph-fill ph-gear-six"></i> Come funziona Cronoshop</h3>
-        <ul>
-          <li><i class="ph-fill ph-check-circle"></i> <div>Selezione ibrida (manuale + automatizzata) delle offerte più interessanti.</div></li>
-          <li><i class="ph-fill ph-check-circle"></i> <div>Aggiornamenti ogni 24h e prodotti sempre verificati.</div></li>
-          <li><i class="ph-fill ph-check-circle"></i> <div>Collegamenti diretti e sicuri ad Amazon.</div></li>
-          <li><i class="ph-fill ph-check-circle"></i> <div>Nessuna registrazione obbligatoria per visualizzare i contenuti.</div></li>
-          <li><i class="ph-fill ph-check-circle"></i> <div>Wishlist, carrello e personalizzazione per gli utenti registrati.</div></li>
-        </ul>
-      </div>
-
-      <div class="info-card">
-        <h3><i class="ph-fill ph-rocket-launch"></i> La nostra visione</h3>
-        <p>Crediamo che il risparmio intelligente passi dalla trasparenza, dalla semplicità d'uso e da un design curato. Per questo Cronoshop è <strong>mobile-friendly</strong>, leggero e accessibile a tutti, con uno stile minimale ma premium.</p>
-        <p>Vogliamo diventare il punto di riferimento per chi cerca promozioni affidabili, senza perdite di tempo e senza spam.</p>
-      </div>
+    <!-- Hero Section -->
+    <section class="hero-section" style="min-height: 60vh;">
+        <div class="hero-content">
+            <h1 class="hero-title">ℹ️ Chi Siamo</h1>
+            <p class="hero-subtitle">La storia e la missione dietro Cronoshop</p>
+        </div>
     </section>
-  </div>
 
-  <div id="footer-placeholder"></div>
+    <!-- About Content -->
+    <section class="container" style="margin-top: -50px; position: relative; z-index: 10;">
+        <div class="row">
+            <div class="col-sm-8 mx-auto">
+                <!-- Mission -->
+                <div class="card mb-5">
+                    <div class="text-center mb-4">
+                        <div style="font-size: 4rem; margin-bottom: 1rem;">🎯</div>
+                        <h2>La Nostra Missione</h2>
+                    </div>
+                    <p>Cronoshop nasce dall'esigenza concreta di offrire agli utenti italiani un portale aggiornato, curato e automatizzato dove trovare le migliori offerte Amazon giornaliere.</p>
+                    <p>Non vendiamo direttamente prodotti: siamo un <strong>aggregatore di offerte</strong> e affiliati Amazon. Questo ci consente di restare obiettivi e proporre solo quello che conviene davvero.</p>
+                    <p>La nostra missione è semplice: <strong>farti risparmiare tempo e denaro</strong> selezionando manualmente le migliori occasioni disponibili su Amazon Italia.</p>
+                </div>
 
-  <script>
-    function loadComponent(url, placeholderId) {
-        fetch(url)
-            .then(response => response.ok ? response.text() : Promise.reject('Errore nel caricamento'))
+                <!-- How it Works -->
+                <div class="card mb-5">
+                    <div class="text-center mb-4">
+                        <div style="font-size: 4rem; margin-bottom: 1rem;">⚙️</div>
+                        <h2>Come Funziona Cronoshop</h2>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 mb-3">
+                            <div class="d-flex align-items-start">
+                                <div style="font-size: 2rem; margin-right: 1rem;">✅</div>
+                                <div>
+                                    <h5>Selezione Ibrida</h5>
+                                    <p class="text-secondary">Combinazione di analisi manuale e automatizzata per trovare le offerte più interessanti</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 mb-3">
+                            <div class="d-flex align-items-start">
+                                <div style="font-size: 2rem; margin-right: 1rem;">🔄</div>
+                                <div>
+                                    <h5>Aggiornamenti Continui</h5>
+                                    <p class="text-secondary">Monitoraggio 24/7 dei prezzi e verifica costante della disponibilità</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 mb-3">
+                            <div class="d-flex align-items-start">
+                                <div style="font-size: 2rem; margin-right: 1rem;">🔗</div>
+                                <div>
+                                    <h5>Link Sicuri</h5>
+                                    <p class="text-secondary">Tutti i collegamenti sono verificati e portano direttamente ad Amazon Italia</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 mb-3">
+                            <div class="d-flex align-items-start">
+                                <div style="font-size: 2rem; margin-right: 1rem;">👥</div>
+                                <div>
+                                    <h5>Community Attiva</h5>
+                                    <p class="text-secondary">Gruppi WhatsApp e Telegram per condividere offerte in tempo reale</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vision -->
+                <div class="card mb-5">
+                    <div class="text-center mb-4">
+                        <div style="font-size: 4rem; margin-bottom: 1rem;">🚀</div>
+                        <h2>La Nostra Visione</h2>
+                    </div>
+                    <p>Crediamo che il risparmio intelligente passi dalla <strong>trasparenza</strong>, dalla <strong>semplicità d'uso</strong> e da un design curato. Per questo Cronoshop è mobile-friendly, leggero e accessibile a tutti, con uno stile moderno e intuitivo.</p>
+                    <p>Vogliamo diventare il <strong>punto di riferimento</strong> per chi cerca promozioni affidabili, senza perdite di tempo e senza spam.</p>
+                    <div class="row mt-4">
+                        <div class="col-sm-4 text-center mb-3">
+                            <h3 class="text-primary">2.5K+</h3>
+                            <p>Utenti Attivi</p>
+                        </div>
+                        <div class="col-sm-4 text-center mb-3">
+                            <h3 class="text-primary">150+</h3>
+                            <p>Offerte Giornaliere</p>
+                        </div>
+                        <div class="col-sm-4 text-center mb-3">
+                            <h3 class="text-primary">99.9%</h3>
+                            <p>Uptime</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Values -->
+                <div class="card mb-5">
+                    <div class="text-center mb-4">
+                        <div style="font-size: 4rem; margin-bottom: 1rem;">💎</div>
+                        <h2>I Nostri Valori</h2>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 mb-4">
+                            <div class="card" style="height: 100%;">
+                                <div class="text-center">
+                                    <div style="font-size: 3rem; margin-bottom: 1rem;">🔍</div>
+                                    <h4>Trasparenza</h4>
+                                    <p class="text-secondary">Siamo chiari sui nostri guadagni tramite affiliazione Amazon e non nascondiamo mai informazioni importanti</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 mb-4">
+                            <div class="card" style="height: 100%;">
+                                <div class="text-center">
+                                    <div style="font-size: 3rem; margin-bottom: 1rem;">⚡</div>
+                                    <h4>Velocità</h4>
+                                    <p class="text-secondary">Le migliori offerte durano poco. Per questo aggiorniamo il sito continuamente e inviamo notifiche immediate</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 mb-4">
+                            <div class="card" style="height: 100%;">
+                                <div class="text-center">
+                                    <div style="font-size: 3rem; margin-bottom: 1rem;">🎯</div>
+                                    <h4>Qualità</h4>
+                                    <p class="text-secondary">Selezioniamo solo offerte reali e significative, evitando sconti fittizi o prodotti di scarsa qualità</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 mb-4">
+                            <div class="card" style="height: 100%;">
+                                <div class="text-center">
+                                    <div style="font-size: 3rem; margin-bottom: 1rem;">🤝</div>
+                                    <h4>Community</h4>
+                                    <p class="text-secondary">Crediamo nel potere della condivisione. La nostra community è il cuore pulsante di Cronoshop</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team -->
+                <div class="card mb-5">
+                    <div class="text-center mb-4">
+                        <div style="font-size: 4rem; margin-bottom: 1rem;">👥</div>
+                        <h2>Il Nostro Team</h2>
+                    </div>
+                    <p class="text-center text-secondary mb-4">Un gruppo di appassionati di tecnologia e risparmio che lavora ogni giorno per offrirti il meglio</p>
+                    <div class="row">
+                        <div class="col-sm-4 text-center mb-4">
+                            <div style="font-size: 4rem; margin-bottom: 1rem;">👨‍💻</div>
+                            <h5>Sviluppo & Tech</h5>
+                            <p class="text-secondary">Il nostro team tecnico mantiene la piattaforma sempre aggiornata e performante</p>
+                        </div>
+                        <div class="col-sm-4 text-center mb-4">
+                            <div style="font-size: 4rem; margin-bottom: 1rem;">🔍</div>
+                            <h5>Ricerca Offerte</h5>
+                            <p class="text-secondary">Specialisti nella ricerca e verifica delle migliori promozioni Amazon</p>
+                        </div>
+                        <div class="col-sm-4 text-center mb-4">
+                            <div style="font-size: 4rem; margin-bottom: 1rem;">💬</div>
+                            <h5>Community Manager</h5>
+                            <p class="text-secondary">Gestiscono i nostri canali social e mantengono attiva la community</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact -->
+                <div class="card text-center" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+                    <h2 style="color: white;">🤝 Entra a Far Parte della Famiglia Cronoshop</h2>
+                    <p style="color: rgba(255,255,255,0.9); margin-bottom: 2rem;">Unisciti alla nostra community e inizia a risparmiare oggi stesso</p>
+                    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                        <a href="groups.html" class="btn btn-success btn-lg">💬 Unisciti ai Gruppi</a>
+                        <a href="products.html" class="btn btn-secondary btn-lg">🛍️ Scopri le Offerte</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Cronoshop</h4>
+                    <p>La tua piattaforma per le migliori offerte Amazon.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Chi Siamo</h4>
+                    <a href="chisiamo.html">La Nostra Storia</a>
+                    <a href="faq.html">FAQ</a>
+                    <a href="privacy.html">Privacy</a>
+                    <a href="terms.html">Termini</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Community</h4>
+                    <a href="groups.html">WhatsApp</a>
+                    <a href="groups.html">Telegram</a>
+                    <a href="blog.html">Blog</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Cronoshop. Tutti i diritti riservati.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script>
+        // Load navigation
+        fetch('nav.html')
+            .then(response => response.text())
             .then(data => {
-                const placeholder = document.getElementById(placeholderId);
-                if (!placeholder) return;
-                
-                const tempDiv = document.createElement('div');
-                tempDiv.innerHTML = data;
-                
-                const script = tempDiv.querySelector('script');
-                placeholder.innerHTML = tempDiv.innerHTML;
-
-                if (script) {
-                    const newScript = document.createElement('script');
-                    newScript.textContent = script.textContent;
-                    document.body.appendChild(newScript).remove();
-                }
+                document.getElementById('navigation').innerHTML = data;
             })
-            .catch(error => console.error(`Impossibile caricare ${url}: ${error}`));
-    }
+            .catch(error => console.error('Error loading navigation:', error));
 
-    document.addEventListener('DOMContentLoaded', function() {
-        loadComponent('nav.html', 'navbar-placeholder');
-        loadComponent('footer.html', 'footer-placeholder');
-    });
-  </script>
+        // Add fade-in animation to cards
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                document.querySelectorAll('.card').forEach((card, index) => {
+                    setTimeout(() => {
+                        card.classList.add('fade-in');
+                    }, index * 100);
+                });
+            }, 100);
+        });
+    </script>
 </body>
 </html>

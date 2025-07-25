@@ -4,406 +4,313 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carrello - Cronoshop</title>
-
-    <meta name="author" content="Cronoshop Team" />
-    <link rel="canonical" href="https://www.cronoshop.eu/cart.html" />
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/cronoshop-logo.png">
-    <link rel="apple-touch-icon" href="assets/cronoshop-logo.png">
-    
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
-
-    <style>
-        /* --- [1] IMPOSTAZIONI GLOBALI E VARIABILI --- */
-        :root {
-            /* Palette Colori (Tema Chiaro) */
-            --c-accent-primary: #007aff;
-            --c-success: #34c759;
-            --c-error: #ff3b30;
-            --c-bg-primary: #f2f2f7;
-            --c-bg-secondary: #ffffff;
-            --c-text-primary: #1d1d1f;
-            --c-text-secondary: #6e6e73;
-            --c-text-on-accent: #ffffff;
-            --c-border: rgba(60, 60, 67, 0.29);
-            --c-separator: var(--c-border);
-            /* Tipografia e Font */
-            --font-system: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", Roboto, Helvetica, Arial, sans-serif;
-            /* Bordi e Ombre */
-            --radius-md: 14px;
-            --radius-lg: 20px;
-            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
-            /* Spaziature */
-            --spacing-sm: 8px;
-            --spacing-md: 16px;
-            --spacing-lg: 24px;
-            --spacing-xl: 32px;
-            --header-height: 60px;
-            /* Transizioni */
-            --transition-fast: 0.2s cubic-bezier(0.3, 0, 0.4, 1);
-        }
-        html.dark-theme {
-            --c-accent-primary: #0a84ff;
-            --c-success: #30d158;
-            --c-error: #ff453a;
-            --c-bg-primary: #000000;
-            --c-bg-secondary: #1c1c1e;
-            --c-text-primary: #f5f5f7;
-            --c-text-secondary: #8d8d92;
-            --c-border: rgba(84, 84, 88, 0.65);
-            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.2);
-        }
-
-        /* --- [2] RESET E STILI BASE --- */
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: var(--font-system);
-            background-color: var(--c-bg-primary);
-            color: var(--c-text-primary);
-            padding-top: var(--header-height);
-        }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 var(--spacing-lg); }
-
-        /* --- [3] STILI SPECIFICI DEL CARRELLO --- */
-        .cart-section { padding: var(--spacing-xl) 0; }
-        .section-header { text-align: center; margin-bottom: var(--spacing-xl); }
-        .section-header h2 { font-size: 2.2rem; display: flex; align-items: center; justify-content: center; gap: var(--spacing-md); }
-        .section-header p { color: var(--c-text-secondary); }
-
-        .cart-container {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: var(--spacing-xl);
-            align-items: flex-start;
-        }
-
-        /* Colonna sinistra: Lista Prodotti */
-        .cart-items .list-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: var(--spacing-md) var(--spacing-lg);
-            background-color: var(--c-bg-secondary);
-            border-radius: var(--radius-lg);
-            margin-bottom: var(--spacing-md);
-        }
-        .cart-items .list-header h3 { font-size: 1.1rem; }
-
-        .cart-list { display: flex; flex-direction: column; gap: var(--spacing-md); }
-
-        .cart-item {
-            background-color: var(--c-bg-secondary);
-            border-radius: var(--radius-lg);
-            padding: var(--spacing-md);
-            display: flex;
-            align-items: center;
-            gap: var(--spacing-md);
-        }
-        .cart-item-image {
-            width: 80px; height: 80px;
-            object-fit: cover; border-radius: var(--radius-md);
-            flex-shrink: 0;
-        }
-        .cart-item-info { flex-grow: 1; }
-        .cart-item-info h4 { font-size: 1rem; font-weight: 600; margin-bottom: 4px; }
-        .cart-item-price { font-size: 1rem; font-weight: 500; color: var(--c-text-secondary); }
-
-        .cart-item-controls { display: flex; align-items: center; gap: var(--spacing-md); }
-        .quantity-controls { display: flex; align-items: center; background-color: color-mix(in srgb, var(--c-bg-primary), #000 5%); border-radius: var(--radius-lg); padding: 4px; }
-        html.dark-theme .quantity-controls { background-color: color-mix(in srgb, var(--c-bg-primary), #fff 10%); }
-        .quantity-btn { background: none; border: none; width: 28px; height: 28px; cursor: pointer; color: var(--c-text-secondary); font-size: 1.2rem; }
-        .quantity-display { font-weight: 600; min-width: 30px; text-align: center; }
-
-        .remove-item-btn {
-            background-color: color-mix(in srgb, var(--c-error), transparent 85%);
-            color: var(--c-error);
-            width: 36px; height: 36px;
-            border-radius: 50%; border: none; cursor: pointer;
-            font-size: 1.1rem;
-            display: flex; align-items: center; justify-content: center;
-            transition: background-color var(--transition-fast), color var(--transition-fast);
-        }
-        .remove-item-btn:hover { background-color: var(--c-error); color: #fff; }
-
-        .empty-cart { text-align: center; padding: var(--spacing-xl); background-color: var(--c-bg-secondary); border-radius: var(--radius-lg); }
-        .empty-cart i { font-size: 4rem; color: var(--c-text-secondary); margin-bottom: var(--spacing-md); }
-        .empty-cart h3 { font-size: 1.5rem; margin-bottom: var(--spacing-sm); }
-        .empty-cart p { color: var(--c-text-secondary); margin-bottom: var(--spacing-lg); }
-
-        /* Colonna destra: Riepilogo */
-        .cart-summary { position: sticky; top: calc(var(--header-height) + var(--spacing-lg)); }
-        .card { background-color: var(--c-bg-secondary); border-radius: var(--radius-lg); padding: var(--spacing-lg); box-shadow: var(--shadow-md); }
-        .card h3, .card h4 { margin-bottom: var(--spacing-lg); }
-        
-        .summary-row { display: flex; justify-content: space-between; margin-bottom: var(--spacing-sm); color: var(--c-text-secondary); }
-        .summary-row span:last-child { font-weight: 500; color: var(--c-text-primary); }
-        .summary-row.total-row { font-size: 1.2rem; font-weight: 600; color: var(--c-text-primary); }
-        .summary-row .price-success { color: var(--c-success); }
-        hr { border: none; border-top: 1px solid var(--c-separator); margin: var(--spacing-md) 0; }
-        
-        .promo-code { display: flex; gap: var(--spacing-sm); margin: var(--spacing-lg) 0; }
-        .promo-code input { flex-grow: 1; padding: 12px; background-color: color-mix(in srgb, var(--c-bg-primary), #000 5%); border: none; border-radius: var(--radius-md); }
-        html.dark-theme .promo-code input { background-color: color-mix(in srgb, var(--c-bg-primary), #fff 10%); }
-        .promo-code button { padding: 0 var(--spacing-lg); }
-        
-        .btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--spacing-sm); padding: 12px 18px; font-size: 1rem; font-weight: 600; border-radius: var(--radius-md); border: none; cursor: pointer; transition: transform var(--transition-fast), background-color var(--transition-fast); }
-        .btn:hover { transform: translateY(-2px); }
-        .btn-primary { background-color: var(--c-accent-primary); color: var(--c-text-on-accent); }
-        .btn-secondary { background-color: color-mix(in srgb, var(--c-bg-primary), #000 5%); color: var(--c-text-primary); }
-        html.dark-theme .btn-secondary { background-color: color-mix(in srgb, var(--c-bg-primary), #fff 10%); }
-        .btn.full-width { width: 100%; }
-
-        .disclaimer-text { font-size: 0.8rem; text-align: center; color: var(--c-text-secondary); margin-top: var(--spacing-md); }
-        
-        /* Prodotti consigliati */
-        .recommended-card { margin-top: var(--spacing-lg); }
-        .recommended-items { display: flex; flex-direction: column; gap: var(--spacing-sm); }
-        .recommended-item { display: flex; align-items: center; gap: var(--spacing-md); padding: var(--spacing-sm); border-radius: var(--radius-md); cursor: pointer; transition: background-color var(--transition-fast); }
-        .recommended-item:hover { background-color: color-mix(in srgb, var(--c-bg-secondary), #000 3%); }
-        html.dark-theme .recommended-item:hover { background-color: color-mix(in srgb, var(--c-bg-secondary), #fff 3%); }
-        .recommended-item img { width: 40px; height: 40px; object-fit: cover; border-radius: var(--radius-sm); }
-        .recommended-item-info h5 { font-size: 0.9rem; margin: 0; }
-        .recommended-item-price { font-size: 0.9rem; font-weight: 500; color: var(--c-text-secondary); }
-
-        /* --- [4] RESPONSIVE --- */
-        @media (max-width: 900px) {
-            .cart-container { grid-template-columns: 1fr; }
-            .cart-summary { position: static; }
-        }
-    </style>
+    <meta name="description" content="Il tuo carrello Cronoshop con tutti i prodotti selezionati.">
+    <link rel="icon" type="image/png" href="assets/cronoshop-logo.png">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Navigation -->
+    <div id="navigation"></div>
 
-    <div id="navbar-placeholder"></div>
+    <!-- Page Header -->
+    <section class="hero-section" style="min-height: 40vh;">
+        <div class="hero-content">
+            <h1 class="hero-title">🛒 Il Tuo Carrello</h1>
+            <p class="hero-subtitle">Prodotti pronti per l'acquisto su Amazon</p>
+        </div>
+    </section>
 
-    <div class="container">
-        <section class="cart-section">
-            <div class="section-header">
-                <h2><i class="ph-fill ph-shopping-cart-simple"></i> Il Tuo Carrello</h2>
-                <p>Prodotti pronti per l'acquisto</p>
-            </div>
-            
-            <div class="cart-container">
-                <div class="cart-items">
-                    <div class="list-header">
+    <!-- Cart Content -->
+    <section class="container" style="margin-top: -50px; position: relative; z-index: 10;">
+        <div class="row">
+            <!-- Cart Items -->
+            <div class="col-sm-8">
+                <div class="card">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
                         <h3>Prodotti nel Carrello</h3>
-                        <button class="btn btn-secondary" id="clearCart"><i class="ph-fill ph-trash"></i> Svuota</button>
+                        <button class="btn btn-danger btn-sm" id="clearCartBtn">🗑️ Svuota Carrello</button>
                     </div>
                     
-                    <div class="cart-list" id="cartList">
-                        </div>
-
-                    <div class="empty-cart" id="emptyCart" style="display: none;">
-                        <i class="ph-light ph-shopping-cart"></i>
+                    <div id="cartItems">
+                        <!-- Cart items will be loaded here -->
+                    </div>
+                    
+                    <div id="emptyCart" class="text-center" style="display: none; padding: 3rem;">
+                        <div style="font-size: 4rem; margin-bottom: 1rem;">🛒</div>
                         <h3>Il tuo carrello è vuoto</h3>
-                        <p>Aggiungi prodotti per iniziare lo shopping!</p>
-                        <a href="index.html#offerte" class="btn btn-primary">Scopri le Offerte</a>
+                        <p class="text-secondary">Aggiungi prodotti per iniziare lo shopping!</p>
+                        <a href="products.html" class="btn btn-primary">Scopri le Offerte</a>
                     </div>
                 </div>
-
-                <aside class="cart-summary">
-                    <div class="card summary-card">
-                        <h3><i class="ph-fill ph-chart-pie-slice"></i> Riepilogo Ordine</h3>
-                        
-                        <div class="summary-row">
-                            <span>Prodotti (<span id="totalItems">0</span>)</span>
-                            <span id="subtotal">€0.00</span>
-                        </div>
-                        
-                        <div class="summary-row">
-                            <span>Spedizione</span>
-                            <span class="price-success">Gratuita</span>
-                        </div>
-                        
-                        <div class="summary-row discount-row" id="discountRow" style="display: none;">
-                            <span>Sconto</span>
-                            <span id="discount" class="price-success">-€0.00</span>
-                        </div>
-                        
-                        <hr>
-                        
-                        <div class="summary-row total-row">
-                            <span>Totale</span>
-                            <span id="total">€0.00</span>
-                        </div>
-                        
-                        <div class="promo-code">
-                            <input type="text" placeholder="Codice promozionale" id="promoCode">
-                            <button class="btn btn-secondary" id="applyPromo">Applica</button>
-                        </div>
-                        
-                        <button class="btn btn-primary full-width" id="checkoutBtn" style="margin-top: 1rem;">
-                            <i class="ph-fill ph-rocket-launch"></i> Procedi all'Acquisto
-                        </button>
-                        
-                        <p class="disclaimer-text">Verrai reindirizzato ad Amazon per completare l'acquisto.</p>
-                    </div>
-
-                    <div class="card recommended-card">
-                        <h4><i class="ph-fill ph-lightbulb"></i> Potrebbero interessarti</h4>
-                        <div class="recommended-items" id="recommendedItems">
-                            </div>
-                    </div>
-                </aside>
             </div>
-        </section>
-    </div>
-
-    <div id="footer-placeholder"></div>
-
-    <script>
-        // Funzione per caricare componenti HTML dinamicamente
-        function loadComponent(url, placeholderId) {
-            fetch(url)
-                .then(response => response.ok ? response.text() : Promise.reject('Errore nel caricamento'))
-                .then(data => {
-                    const placeholder = document.getElementById(placeholderId);
-                    if (!placeholder) return;
-                    
-                    const tempDiv = document.createElement('div');
-                    tempDiv.innerHTML = data;
-                    
-                    const script = tempDiv.querySelector('script');
-                    placeholder.innerHTML = tempDiv.innerHTML;
-
-                    if (script) {
-                        const newScript = document.createElement('script');
-                        newScript.textContent = script.textContent;
-                        document.body.appendChild(newScript).remove();
-                    }
-                })
-                .catch(error => console.error(`Impossibile caricare ${url}: ${error}`));
-        }
-        
-        // Logica specifica della pagina Carrello
-        let cart = [];
-        const recommendedProducts = [
-            { id: "rec1", img: "https://m.media-amazon.com/images/I/71d7rfSl0wL._AC_SL1500_.jpg", nome: "Apple iPhone 15 (128 GB)", prezzo: "645.00", link: "https://www.amazon.it/dp/B0CHWV5HTM" },
-            { id: "rec2", img: "https://m.media-amazon.com/images/I/51B45gaTgjL._AC_SL1000_.jpg", nome: "Amazon Fire TV Stick HD", prezzo: "28.99", link: "https://amzn.to/4jhgwHr" }
-        ];
-
-        function showNotification(message) {
-            // Semplice implementazione di notifica
-            console.log(`NOTIFICA: ${message}`);
-        }
-
-        function loadCartData() {
-            try {
-                const savedData = localStorage.getItem('cronoshop_data');
-                cart = savedData ? (JSON.parse(savedData).cart || []) : [];
-            } catch (error) { console.error('Error loading cart data:', error); }
-        }
-
-        function saveCartData() {
-            try {
-                const savedData = localStorage.getItem('cronoshop_data') || '{}';
-                let userData = JSON.parse(savedData);
-                userData.cart = cart;
-                localStorage.setItem('cronoshop_data', JSON.stringify(userData));
-            } catch (error) { console.error('Error saving cart data:', error); }
-        }
-
-        function renderCart() {
-            const cartList = document.getElementById('cartList');
-            const emptyCart = document.getElementById('emptyCart');
-            if (cart.length === 0) {
-                cartList.style.display = 'none';
-                emptyCart.style.display = 'block';
-            } else {
-                cartList.style.display = 'flex';
-                emptyCart.style.display = 'none';
-                cartList.innerHTML = cart.map(item => `
-                    <div class="cart-item">
-                        <img src="${item.img}" alt="${item.nome}" class="cart-item-image">
-                        <div class="cart-item-info">
-                            <h4>${item.nome}</h4>
-                            <div class="cart-item-price">€${item.prezzo}</div>
-                        </div>
-                        <div class="cart-item-controls">
-                            <div class="quantity-controls">
-                                <button class="quantity-btn" onclick="updateQuantity('${item.id}', -1)">-</button>
-                                <span class="quantity-display">${item.quantity}</span>
-                                <button class="quantity-btn" onclick="updateQuantity('${item.id}', 1)">+</button>
-                            </div>
-                            <button class="remove-item-btn" onclick="removeFromCart('${item.id}')" title="Rimuovi"><i class="ph-bold ph-x"></i></button>
-                        </div>
-                    </div>`).join('');
-            }
-            updateCartSummary();
-        }
-
-        function updateCartSummary() {
-            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-            const subtotal = cart.reduce((sum, item) => sum + (parseFloat(item.prezzo) * item.quantity), 0);
-            document.getElementById('totalItems').textContent = totalItems;
-            document.getElementById('subtotal').textContent = `€${subtotal.toFixed(2)}`;
-            document.getElementById('total').textContent = `€${subtotal.toFixed(2)}`;
-        }
-
-        function updateQuantity(productId, change) {
-            const item = cart.find(i => i.id === productId);
-            if (item) {
-                item.quantity += change;
-                if (item.quantity <= 0) removeFromCart(productId);
-                else { saveCartData(); renderCart(); }
-            }
-        }
-
-        function removeFromCart(productId) {
-            cart = cart.filter(item => item.id !== productId);
-            saveCartData();
-            renderCart();
-            showNotification('Prodotto rimosso dal carrello');
-        }
-
-        function clearCart() {
-            if (cart.length > 0 && confirm('Sei sicuro di voler svuotare il carrello?')) {
-                cart = [];
-                saveCartData();
-                renderCart();
-                showNotification('Carrello svuotato');
-            }
-        }
-
-        function addRecommendedToCart(productId) {
-            const product = recommendedProducts.find(p => p.id === productId);
-            if (product) {
-                const existingItem = cart.find(item => item.id === productId);
-                if (existingItem) existingItem.quantity++;
-                else cart.push({ ...product, quantity: 1 });
-                saveCartData();
-                renderCart();
-                showNotification('Prodotto aggiunto al carrello');
-            }
-        }
-
-        function renderRecommendedProducts() {
-            const container = document.getElementById('recommendedItems');
-            if(container) {
-                container.innerHTML = recommendedProducts.map(product => `
-                    <div class="recommended-item" onclick="addRecommendedToCart('${product.id}')">
-                        <img src="${product.img}" alt="${product.nome}">
-                        <div class="recommended-item-info">
-                            <h5>${product.nome}</h5>
-                            <div class="recommended-item-price">€${product.prezzo}</div>
-                        </div>
-                    </div>`).join('');
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', function() {
-            loadComponent('nav.html', 'navbar-placeholder');
-            loadComponent('footer.html', 'footer-placeholder');
-
-            loadCartData();
-            renderCart();
-            renderRecommendedProducts();
             
-            document.getElementById('clearCart')?.addEventListener('click', clearCart);
-            document.getElementById('applyPromo')?.addEventListener('click', () => showNotification('Funzionalità codice promo non ancora implementata.'));
-            document.getElementById('checkoutBtn')?.addEventListener('click', () => {
-                if(cart.length > 0) window.open(cart[0].link, '_blank');
-                else showNotification('Il tuo carrello è vuoto!');
-            });
+            <!-- Cart Summary -->
+            <div class="col-sm-4">
+                <div class="card" style="position: sticky; top: 100px;">
+                    <h4 class="mb-4">📊 Riepilogo Ordine</h4>
+                    
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>Prodotti (<span id="totalItems">0</span>)</span>
+                        <span id="subtotal">€0.00</span>
+                    </div>
+                    
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>Spedizione</span>
+                        <span class="text-success">Gratuita</span>
+                    </div>
+                    
+                    <hr>
+                    
+                    <div class="d-flex justify-content-between mb-4">
+                        <strong>Totale</strong>
+                        <strong id="total">€0.00</strong>
+                    </div>
+                    
+                    <button class="btn btn-success btn-block btn-lg mb-3" id="checkoutBtn">
+                        🚀 Procedi all'Acquisto
+                    </button>
+                    
+                    <small class="text-secondary text-center d-block">
+                        Verrai reindirizzato ad Amazon per completare l'acquisto
+                    </small>
+                </div>
+                
+                <!-- Recommended Products -->
+                <div class="card mt-4">
+                    <h5 class="mb-3">💡 Potrebbero interessarti</h5>
+                    <div id="recommendedProducts">
+                        <!-- Recommended products will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Cronoshop</h4>
+                    <p>La tua piattaforma per le migliori offerte Amazon.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Link Utili</h4>
+                    <a href="products.html">Prodotti</a>
+                    <a href="wishlist.html">Wishlist</a>
+                    <a href="account.html">Account</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Supporto</h4>
+                    <a href="faq.html">FAQ</a>
+                    <a href="groups.html">Contatti</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Cronoshop. Tutti i diritti riservati.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script>
+        class CartManager {
+            constructor() {
+                this.cart = [];
+                this.init();
+            }
+
+            init() {
+                this.loadNavigation();
+                this.loadCartData();
+                this.renderCart();
+                this.loadRecommendedProducts();
+                this.setupEventListeners();
+            }
+
+            loadNavigation() {
+                fetch('nav.html')
+                    .then(response => response.text())
+                    .then(data => {
+                        document.getElementById('navigation').innerHTML = data;
+                    })
+                    .catch(error => console.error('Error loading navigation:', error));
+            }
+
+            loadCartData() {
+                try {
+                    const savedData = localStorage.getItem('cronoshop_data');
+                    if (savedData) {
+                        const userData = JSON.parse(savedData);
+                        this.cart = userData.cart || [];
+                    }
+                } catch (error) {
+                    console.error('Error loading cart data:', error);
+                }
+            }
+
+            saveCartData() {
+                try {
+                    const savedData = localStorage.getItem('cronoshop_data');
+                    let userData = savedData ? JSON.parse(savedData) : {};
+                    userData.cart = this.cart;
+                    localStorage.setItem('cronoshop_data', JSON.stringify(userData));
+                    
+                    // Update cart badge
+                    if (window.updateCartBadge) {
+                        window.updateCartBadge();
+                    }
+                } catch (error) {
+                    console.error('Error saving cart data:', error);
+                }
+            }
+
+            renderCart() {
+                const cartItemsContainer = document.getElementById('cartItems');
+                const emptyCartContainer = document.getElementById('emptyCart');
+
+                if (this.cart.length === 0) {
+                    cartItemsContainer.style.display = 'none';
+                    emptyCartContainer.style.display = 'block';
+                } else {
+                    cartItemsContainer.style.display = 'block';
+                    emptyCartContainer.style.display = 'none';
+
+                    cartItemsContainer.innerHTML = this.cart.map(item => `
+                        <div class="card mb-3" style="padding: 1rem;">
+                            <div class="row align-items-center">
+                                <div class="col-3">
+                                    <img src="${item.img}" alt="${item.nome}" style="width: 100%; height: 80px; object-fit: cover; border-radius: 8px;">
+                                </div>
+                                <div class="col-6">
+                                    <h6 class="mb-1">${item.nome}</h6>
+                                    <p class="text-success mb-0">€${item.prezzo}</p>
+                                </div>
+                                <div class="col-3 text-right">
+                                    <div class="d-flex align-items-center justify-content-end mb-2">
+                                        <button class="btn btn-sm btn-secondary" onclick="cartManager.updateQuantity('${item.id}', -1)">-</button>
+                                        <span class="mx-2">${item.quantity}</span>
+                                        <button class="btn btn-sm btn-secondary" onclick="cartManager.updateQuantity('${item.id}', 1)">+</button>
+                                    </div>
+                                    <button class="btn btn-sm btn-danger" onclick="cartManager.removeFromCart('${item.id}')">🗑️</button>
+                                </div>
+                            </div>
+                        </div>
+                    `).join('');
+                }
+
+                this.updateSummary();
+            }
+
+            updateQuantity(productId, change) {
+                const item = this.cart.find(item => item.id === productId);
+                if (item) {
+                    item.quantity += change;
+                    if (item.quantity <= 0) {
+                        this.removeFromCart(productId);
+                    } else {
+                        this.saveCartData();
+                        this.renderCart();
+                    }
+                }
+            }
+
+            removeFromCart(productId) {
+                this.cart = this.cart.filter(item => item.id !== productId);
+                this.saveCartData();
+                this.renderCart();
+                this.showNotification('Prodotto rimosso dal carrello', 'success');
+            }
+
+            clearCart() {
+                if (this.cart.length > 0 && confirm('Sei sicuro di voler svuotare il carrello?')) {
+                    this.cart = [];
+                    this.saveCartData();
+                    this.renderCart();
+                    this.showNotification('Carrello svuotato', 'success');
+                }
+            }
+
+            updateSummary() {
+                const totalItems = this.cart.reduce((sum, item) => sum + item.quantity, 0);
+                const subtotal = this.cart.reduce((sum, item) => sum + (parseFloat(item.prezzo) * item.quantity), 0);
+
+                document.getElementById('totalItems').textContent = totalItems;
+                document.getElementById('subtotal').textContent = `€${subtotal.toFixed(2)}`;
+                document.getElementById('total').textContent = `€${subtotal.toFixed(2)}`;
+            }
+
+            loadRecommendedProducts() {
+                if (typeof products === 'undefined') return;
+
+                const recommended = products.slice(0, 3);
+                const container = document.getElementById('recommendedProducts');
+                
+                container.innerHTML = recommended.map(product => `
+                    <div class="d-flex align-items-center mb-3 p-2" style="border: 1px solid var(--border-color); border-radius: 8px; cursor: pointer;" onclick="cartManager.addRecommendedToCart('${product.id}')">
+                        <img src="${product.img}" alt="${product.nome}" style="width: 50px; height: 50px; object-fit: cover; border-radius: 4px; margin-right: 0.75rem;">
+                        <div style="flex: 1;">
+                            <h6 class="mb-1" style="font-size: 0.85rem;">${product.nome.substring(0, 40)}...</h6>
+                            <p class="text-success mb-0" style="font-size: 0.8rem;">€${product.prezzo}</p>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            addRecommendedToCart(productId) {
+                if (typeof products === 'undefined') return;
+
+                const product = products.find(p => p.id === productId);
+                if (product) {
+                    const existingItem = this.cart.find(item => item.id === productId);
+                    if (existingItem) {
+                        existingItem.quantity++;
+                    } else {
+                        this.cart.push({ ...product, quantity: 1 });
+                    }
+                    this.saveCartData();
+                    this.renderCart();
+                    this.showNotification('Prodotto aggiunto al carrello!', 'success');
+                }
+            }
+
+            checkout() {
+                if (this.cart.length === 0) {
+                    this.showNotification('Il carrello è vuoto!', 'warning');
+                    return;
+                }
+
+                // Redirect to first product's Amazon page
+                const firstProduct = this.cart[0];
+                this.showNotification('Reindirizzamento ad Amazon...', 'info');
+                setTimeout(() => {
+                    window.open(firstProduct.link, '_blank');
+                }, 1000);
+            }
+
+            setupEventListeners() {
+                document.getElementById('clearCartBtn').addEventListener('click', () => {
+                    this.clearCart();
+                });
+
+                document.getElementById('checkoutBtn').addEventListener('click', () => {
+                    this.checkout();
+                });
+            }
+
+            showNotification(message, type = 'info') {
+                if (window.showNotification) {
+                    window.showNotification(message, type);
+                } else {
+                    console.log(`${type.toUpperCase()}: ${message}`);
+                }
+            }
+        }
+
+        // Initialize cart manager
+        let cartManager;
+        document.addEventListener('DOMContentLoaded', () => {
+            cartManager = new CartManager();
         });
     </script>
 </body>

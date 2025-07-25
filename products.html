@@ -4,376 +4,324 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prodotti in Offerta - Cronoshop</title>
-
-    <meta name="description" content="Sfoglia tutti i prodotti selezionati da Cronoshop. Trova le migliori offerte su smartphone, tech, moda, casa e molto altro. Filtra e ordina per trovare subito quello che cerchi.">
-    <meta name="author" content="Cronoshop Team" />
-    <link rel="canonical" href="https://www.cronoshop.eu/products.html" />
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/cronoshop-logo.png">
-    <link rel="apple-touch-icon" href="assets/cronoshop-logo.png">
-    
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
-    
-    <style>
-    /*
-    ==========================================================================
-    [1] IMPOSTAZIONI GLOBALI E VARIABILI (Stile iOS Unificato)
-    ==========================================================================
-    */
-    :root {
-        --c-accent-primary: #007aff; --c-success: #34c759; --c-error: #ff3b30;
-        --c-bg-primary: #f2f2f7; --c-bg-secondary: #ffffff; --c-bg-tertiary: #e5e5ea;
-        --c-text-primary: #1d1d1f; --c-text-secondary: #6e6e73; --c-text-on-accent: #ffffff;
-        --c-separator: #E5E5EA; --nav-bg-color: rgba(242, 242, 247, 0.8);
-        --font-system: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", Roboto, Helvetica, Arial, sans-serif;
-        --radius-sm: 8px; --radius-md: 12px; --radius-lg: 18px;
-        --shadow-subtle: 0 1px 2px rgba(0,0,0,0.03), 0 3px 10px rgba(0,0,0,0.06);
-        --shadow-strong: 0 6px 20px rgba(0,0,0,0.1);
-        --spacing-sm: 8px; --spacing-md: 16px; --spacing-lg: 24px; --spacing-xl: 32px;
-        --header-height: 60px; --transition-fast: 0.2s cubic-bezier(0.3, 0, 0.4, 1);
-        --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    html.dark-theme {
-        --c-accent-primary: #0a84ff; --c-success: #30d158; --c-error: #ff453a;
-        --c-bg-primary: #000000; --c-bg-secondary: #1c1c1e; --c-bg-tertiary: #2c2c2e;
-        --c-text-primary: #f5f5f7; --c-text-secondary: #8d8d92;
-        --c-separator: #38383A; --nav-bg-color: rgba(28, 28, 30, 0.8);
-        --shadow-subtle: 0 4px 12px rgba(0, 0, 0, 0.2);
-        --shadow-strong: 0 8px 25px rgba(0, 0, 0, 0.3);
-    }
-
-    /*
-    ==========================================================================
-    [2] RESET GLOBALE E STILI DI BASE
-    ==========================================================================
-    */
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-        font-family: var(--font-system); background-color: var(--c-bg-primary); color: var(--c-text-primary);
-        padding-top: var(--header-height); line-height: 1.6;
-        -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
-    }
-    .container { max-width: 1400px; margin: 0 auto; padding: 0 var(--spacing-lg); }
-
-    /*
-    ==========================================================================
-    [3] NAVBAR STATICA COMPLETA
-    ==========================================================================
-    */
-    .glass-header { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; background-color: var(--nav-bg-color); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid var(--c-separator); transition: background-color var(--transition-fast), border-color var(--transition-fast); }
-    .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto; padding: 0 var(--spacing-lg); height: var(--header-height); }
-    .logo-link { display: flex; align-items: center; text-decoration: none; color: var(--c-text-primary); gap: 10px; flex-shrink: 0; }
-    .logo-image { height: 32px; } .logo-dark { display: none; }
-    html.dark-theme .logo-light { display: none; }
-    html.dark-theme .logo-dark { display: block; }
-    .logo-text { font-size: 20px; font-weight: 600; }
-    .nav-desktop { display: flex; flex-grow: 1; justify-content: center; }
-    .nav-desktop-list { display: flex; gap: var(--spacing-sm); list-style: none; }
-    .nav-desktop-item { position: relative; }
-    .nav-desktop-link { display: flex; align-items: center; gap: 6px; padding: 8px 12px; text-decoration: none; color: var(--c-text-secondary); font-size: 15px; font-weight: 500; border-radius: var(--radius-sm); transition: background-color var(--transition-fast), color var(--transition-fast); }
-    .nav-desktop-link:hover { background-color: var(--c-bg-tertiary); color: var(--c-text-primary); }
-    .nav-desktop-link.active { color: var(--c-text-primary); font-weight: 600; }
-    .dropdown.is-open .dropdown-toggle i { transform: rotate(180deg); }
-    .dropdown-menu { position: absolute; top: calc(100% + 8px); left: 50%; transform: translateX(-50%); min-width: 220px; background-color: var(--c-bg-secondary); border: 1px solid var(--c-separator); border-radius: var(--radius-md); padding: var(--spacing-sm); box-shadow: var(--shadow-strong); list-style: none; opacity: 0; visibility: hidden; z-index: 1001; transition: opacity var(--transition-fast), visibility var(--transition-fast); }
-    .dropdown.is-open .dropdown-menu { opacity: 1; visibility: visible; }
-    .dropdown-item a { display: flex; align-items: center; gap: 12px; padding: 10px 12px; text-decoration: none; color: var(--c-text-primary); border-radius: var(--radius-sm); }
-    .dropdown-item a:hover { background-color: var(--c-bg-tertiary); }
-    .nav-actions { display: flex; align-items: center; gap: var(--spacing-sm); flex-shrink: 0; }
-    .glass-btn { background: transparent; border: none; cursor: pointer; padding: 8px; border-radius: 50%; display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; position: relative; }
-    .glass-btn:hover { background-color: var(--c-bg-tertiary); }
-    .glass-btn i { font-size: 22px; color: var(--c-text-primary); }
-    .mobile-menu-btn { display: none; }
-    .mobile-menu { position: fixed; top: 0; right: 0; width: 100%; height: 100%; max-width: 320px; background-color: var(--c-bg-secondary); z-index: 1002; transform: translateX(100%); transition: transform var(--transition-smooth); display: flex; flex-direction: column; border-left: 1px solid var(--c-separator); box-shadow: var(--shadow-strong); }
-    .mobile-menu.is-open { transform: translateX(0); }
-    .mobile-menu-header { display: flex; justify-content: space-between; align-items: center; padding: 8px 16px; height: var(--header-height); flex-shrink: 0; border-bottom: 1px solid var(--c-separator); }
-    .mobile-menu-title { font-size: 17px; font-weight: 600; }
-    .mobile-menu-content { padding: var(--spacing-md); overflow-y: auto; flex-grow: 1; }
-    .nav-mobile-list { list-style: none; }
-    .nav-mobile-list .nav-link { display: flex; align-items: center; padding: 12px 8px; text-decoration: none; color: var(--c-text-primary); font-size: 17px; border-radius: var(--radius-sm); }
-    .nav-mobile-list .nav-link:hover { background-color: var(--c-bg-tertiary); }
-    .nav-mobile-list .nav-link.active { background-color: var(--c-accent-primary); color: var(--c-text-on-accent); }
-    .nav-mobile-list .nav-link i { font-size: 22px; margin-right: 16px; color: var(--c-accent-primary); width: 24px; text-align: center; }
-    .nav-mobile-list .nav-link.active i { color: inherit; }
-    .overlay { position: fixed; inset: 0; background-color: rgba(0, 0, 0, 0.4); z-index: 1001; opacity: 0; visibility: hidden; transition: opacity var(--transition-fast); }
-    .overlay.is-active { opacity: 1; visibility: visible; }
-    @media (max-width: 992px) { .nav-desktop { display: none; } .mobile-menu-btn { display: flex; } }
-
-    /*
-    ==========================================================================
-    [4] STILI PAGINA PRODOTTI
-    ==========================================================================
-    */
-    .page-header { padding: var(--spacing-xl) 0; text-align: center; }
-    .page-header h1 { font-size: 2.8rem; font-weight: 700; }
-    .page-header p { font-size: 1.1rem; color: var(--c-text-secondary); max-width: 600px; margin: var(--spacing-sm) auto 0; }
-    .products-controls-wrapper { position: sticky; top: var(--header-height); background-color: var(--c-bg-primary); padding: var(--spacing-md) 0; z-index: 100; border-bottom: 1px solid var(--c-separator); }
-    .products-controls { display: flex; justify-content: space-between; align-items: center; gap: var(--spacing-md); flex-wrap: wrap; }
-    .filter-buttons { display: flex; gap: var(--spacing-sm); overflow-x: auto; padding-bottom: 10px; }
-    .filter-btn { padding: 8px 16px; font-size: 0.95rem; font-weight: 500; border-radius: var(--radius-md); border: none; cursor: pointer; background-color: var(--c-bg-secondary); color: var(--c-text-primary); transition: all var(--transition-fast); flex-shrink: 0; }
-    .filter-btn.active { background-color: var(--c-accent-primary); color: var(--c-text-on-accent); font-weight: 600; }
-    .sort-controls select { background-color: var(--c-bg-secondary); border: 1px solid var(--c-separator); border-radius: var(--radius-md); color: var(--c-text-primary); padding: 8px 12px; font-size: 0.95rem; }
-    .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: var(--spacing-lg); padding: var(--spacing-xl) 0; }
-    .product-card { background-color: var(--c-bg-secondary); border-radius: var(--radius-lg); box-shadow: var(--shadow-subtle); display: flex; flex-direction: column; transition: transform var(--transition-fast), box-shadow var(--transition-fast); opacity: 0; transform: translateY(20px); animation: fadeIn 0.5s ease forwards; }
-    @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
-    .product-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-strong); }
-    .product-image-container { position: relative; width: 100%; padding-top: 100%; overflow: hidden; border-top-left-radius: var(--radius-lg); border-top-right-radius: var(--radius-lg); }
-    .product-image { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; }
-    .product-info { padding: var(--spacing-md); flex-grow: 1; display: flex; flex-direction: column; }
-    .product-name { font-size: 1.1rem; font-weight: 600; line-height: 1.4; margin-bottom: var(--spacing-sm); flex-grow: 1; }
-    .product-price { display: flex; align-items: baseline; gap: var(--spacing-sm); margin-bottom: var(--spacing-sm); }
-    .current-price { font-size: 1.4rem; font-weight: 700; color: var(--c-text-primary); }
-    .original-price { color: var(--c-text-secondary); text-decoration: line-through; }
-    .discount-badge { background: var(--c-error); color: var(--c-text-on-accent); padding: 3px 8px; border-radius: var(--radius-sm); font-size: 0.8rem; font-weight: 600; }
-    .product-category { font-size: 0.9rem; font-weight: 500; color: var(--c-accent-primary); margin-bottom: var(--spacing-md); }
-    .product-actions { margin-top: auto; display: flex; flex-direction: column; gap: var(--spacing-sm); }
-    .buy-btn { width: 100%; padding: 12px; font-weight: 600; font-size: 1rem; background: var(--c-accent-primary); color: var(--c-text-on-accent); border: none; border-radius: var(--radius-md); cursor: pointer; transition: all var(--transition-fast); display: flex; align-items: center; justify-content: center; gap: var(--spacing-sm); }
-    .secondary-actions { display: flex; gap: var(--spacing-sm); }
-    .action-btn { flex: 1; padding: 10px; background-color: var(--c-bg-tertiary); border: none; color: var(--c-text-primary); border-radius: var(--radius-md); cursor: pointer; display: flex; align-items: center; justify-content: center; gap: var(--spacing-sm); font-size: 0.9rem; }
-    .load-more-container { text-align: center; padding-bottom: var(--spacing-xl); }
-    .load-more-btn { padding: 12px 24px; font-size: 1rem; font-weight: 600; }
-    </style>
+    <meta name="description" content="Sfoglia tutti i prodotti in offerta su Cronoshop. Trova le migliori occasioni su smartphone, tech, moda, casa e molto altro.">
+    <link rel="icon" type="image/png" href="assets/cronoshop-logo.png">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Navigation -->
+    <div id="navigation"></div>
 
-    <header class="glass-header" id="mainHeader">
-        <nav class="nav-container">
-            <a href="index.html" class="logo-link">
-                <img src="assets/cronoshop-logo.png" alt="Logo Cronoshop" class="logo-image logo-light">
-                <img src="assets/cronoshop-logo-black.png" alt="Logo Cronoshop" class="logo-image logo-dark">
-                <span class="logo-text">Cronoshop</span>
-            </a>
-            <div class="nav-desktop">
-                <ul class="nav-desktop-list">
-                    <li class="nav-desktop-item"><a href="index.html" class="nav-desktop-link" data-page="index">Home</a></li>
-                    <li class="nav-desktop-item"><a href="products.html" class="nav-desktop-link" data-page="products">Prodotti</a></li>
-                    <li class="nav-desktop-item dropdown" id="categorie-desktop-dropdown">
-                        <a href="categorie.html" class="nav-desktop-link dropdown-toggle" data-page="categorie">Categorie <i class="ph ph-caret-down"></i></a>
-                        <ul class="dropdown-menu">
-                            <li class="dropdown-item"><a href="products.html?category=tech"><i class="ph-bold ph-laptop"></i>Tech</a></li>
-                            <li class="dropdown-item"><a href="products.html?category=smartphone"><i class="ph-bold ph-device-mobile"></i>Smartphone</a></li>
-                            <li class="dropdown-item"><a href="products.html?category=casa"><i class="ph-bold ph-house-line"></i>Casa</a></li>
-                            <li class="dropdown-item"><a href="products.html?category=fashion"><i class="ph-bold ph-t-shirt"></i>Fashion</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-desktop-item"><a href="blog.html" class="nav-desktop-link" data-page="blog">Blog</a></li>
-                </ul>
-            </div>
-            <div class="nav-actions">
-                <button class="glass-btn" id="theme-toggle-btn" aria-label="Cambia tema"><i class="ph-bold ph-moon"></i></button>
-                <a href="cart.html" class="glass-btn" aria-label="Carrello"><i class="ph-bold ph-shopping-cart-simple"></i></a>
-                <a href="account.html" class="glass-btn" aria-label="Account"><i class="ph-bold ph-user-circle"></i></a>
-                <button class="glass-btn mobile-menu-btn" id="mobileMenuBtn" aria-label="Apri menu"><i class="ph-bold ph-list"></i></button>
-            </div>
-        </nav>
-    </header>
-    <div class="mobile-menu" id="mobileMenu" role="dialog">
-        <div class="mobile-menu-header">
-            <span class="mobile-menu-title">Menu</span>
-            <button class="glass-btn" id="closeMenuBtn" aria-label="Chiudi menu"><i class="ph-bold ph-x"></i></button>
+    <!-- Page Header -->
+    <section class="hero-section" style="min-height: 60vh;">
+        <div class="hero-content">
+            <h1 class="hero-title">🛍️ Tutti i Prodotti</h1>
+            <p class="hero-subtitle">Esplora la nostra selezione completa di offerte Amazon</p>
         </div>
-        <div class="mobile-menu-content">
-            <ul class="nav-mobile-list">
-                <li><a href="index.html" class="nav-link" data-page="index"><i class="ph-fill ph-house"></i>Home</a></li>
-                <li><a href="products.html" class="nav-link" data-page="products"><i class="ph-fill ph-package"></i>Prodotti</a></li>
-                <li><a href="categorie.html" class="nav-link" data-page="categorie"><i class="ph-fill ph-folder-simple"></i>Categorie</a></li>
-                <li><a href="blog.html" class="nav-link" data-page="blog"><i class="ph-fill ph-newspaper"></i>Blog</a></li>
-                <li><a href="account.html" class="nav-link" data-page="account"><i class="ph-fill ph-user-circle"></i>Account</a></li>
-            </ul>
-        </div>
-    </div>
-    <div class="overlay" id="overlay"></div>
-    <main>
-        <div class="page-header">
-            <div class="container">
-                <h1>Tutti i Prodotti</h1>
-                <p>Esplora la nostra selezione curata di offerte. Usa i filtri per trovare esattamente ciò che cerchi.</p>
-            </div>
-        </div>
+    </section>
 
-        <div class="products-controls-wrapper">
-            <div class="container">
-                <div class="products-controls">
-                    <div class="filter-buttons" id="filterButtons">
-                        <button class="filter-btn active" data-category="all">Tutti</button>
-                        <button class="filter-btn" data-category="smartphone">📱 Smartphone</button>
-                        <button class="filter-btn" data-category="tech">💻 Tech</button>
-                        <button class="filter-btn" data-category="fashion">👕 Fashion</button>
-                        <button class="filter-btn" data-category="casa">🏠 Casa</button>
-                        <button class="filter-btn" data-category="salute">💊 Salute</button>
+    <!-- Filters -->
+    <section class="container" style="margin-top: -50px; position: relative; z-index: 10;">
+        <div class="card">
+            <div class="row align-items-center">
+                <div class="col-sm-8">
+                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                        <button class="btn btn-primary btn-sm filter-btn active" data-category="all">Tutti</button>
+                        <button class="btn btn-secondary btn-sm filter-btn" data-category="smartphone">📱 Smartphone</button>
+                        <button class="btn btn-secondary btn-sm filter-btn" data-category="tech">💻 Tech</button>
+                        <button class="btn btn-secondary btn-sm filter-btn" data-category="fashion">👕 Fashion</button>
+                        <button class="btn btn-secondary btn-sm filter-btn" data-category="casa">🏠 Casa</button>
+                        <button class="btn btn-secondary btn-sm filter-btn" data-category="salute">💊 Salute</button>
                     </div>
-                    <div class="sort-controls">
-                        <select class="sort-select" id="sortSelect">
-                            <option value="default">Ordina per: Rilevanza</option>
-                            <option value="price-asc">Prezzo: Crescente</option>
-                            <option value="price-desc">Prezzo: Decrescente</option>
-                            <option value="name-asc">Nome: A-Z</option>
-                        </select>
-                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <select class="form-control" id="sortSelect">
+                        <option value="default">Ordina per: Rilevanza</option>
+                        <option value="price-asc">Prezzo: Crescente</option>
+                        <option value="price-desc">Prezzo: Decrescente</option>
+                        <option value="discount-desc">Sconto: Maggiore</option>
+                        <option value="name-asc">Nome: A-Z</option>
+                    </select>
                 </div>
             </div>
         </div>
+    </section>
 
-        <div class="container">
-            <div class="products-grid" id="productsGrid"></div>
-            
-            <div class="load-more-container">
-                <button class="btn btn-primary load-more-btn" id="loadMoreBtn" style="display: none;">Mostra Altri Prodotti</button>
+    <!-- Products Grid -->
+    <section class="container" style="margin-top: 2rem;">
+        <div class="row" id="productsGrid">
+            <!-- Products will be loaded here -->
+        </div>
+        
+        <div class="text-center mt-5" id="loadMoreContainer" style="display: none;">
+            <button class="btn btn-primary btn-lg" id="loadMoreBtn">Carica Altri Prodotti</button>
+        </div>
+        
+        <div class="text-center mt-5" id="noProductsMessage" style="display: none;">
+            <div class="card">
+                <h3>😔 Nessun prodotto trovato</h3>
+                <p>Prova a cambiare i filtri o torna più tardi per nuove offerte!</p>
+                <a href="index.html" class="btn btn-primary">Torna alla Home</a>
             </div>
         </div>
-    </main>
-    
-    <footer id="footer-placeholder"></footer>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Cronoshop</h4>
+                    <p>La tua piattaforma per le migliori offerte Amazon.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Link Utili</h4>
+                    <a href="index.html">Home</a>
+                    <a href="categorie.html">Categorie</a>
+                    <a href="groups.html">Gruppi</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Supporto</h4>
+                    <a href="faq.html">FAQ</a>
+                    <a href="chisiamo.html">Chi Siamo</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Cronoshop. Tutti i diritti riservati.</p>
+            </div>
+        </div>
+    </footer>
 
     <script src="main.js"></script>
     <script>
-    const CronoshopApp = {
-        state: { allProducts: [], productsToDisplay: [], currentPage: 0, productsPerPage: 12, currentFilter: 'all', currentSort: 'default', isLoading: false },
-        elements: {},
-
-        init() {
-            this.cacheDOMElements();
-            this.initNavbar();
-            this.initProductsPage();
-        },
-
-        cacheDOMElements() {
-            this.elements = {
-                htmlEl: document.documentElement, themeToggleBtn: document.getElementById('theme-toggle-btn'),
-                mobileMenuBtn: document.getElementById('mobileMenuBtn'), closeMenuBtn: document.getElementById('closeMenuBtn'),
-                mobileMenu: document.getElementById('mobileMenu'), overlay: document.getElementById('overlay'),
-                desktopDropdown: document.getElementById('categorie-desktop-dropdown'), productsGrid: document.getElementById('productsGrid'),
-                filterButtonsContainer: document.getElementById('filterButtons'), sortSelect: document.getElementById('sortSelect'),
-                loadMoreBtn: document.getElementById('loadMoreBtn'),
-            };
-        },
-
-        // --- SEZIONE NAVBAR ---
-        initNavbar() { this.initTheme(); this.initMobileMenu(); this.initDropdowns(); this.initActiveLink(); },
-        initTheme() { const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); this.applyTheme(savedTheme); this.elements.themeToggleBtn.addEventListener('click', () => { const newTheme = this.elements.htmlEl.classList.contains('dark-theme') ? 'light' : 'dark'; this.applyTheme(newTheme); }); },
-        applyTheme(theme) { this.elements.htmlEl.classList.toggle('dark-theme', theme === 'dark'); this.elements.themeToggleBtn.querySelector('i').className = theme === 'dark' ? 'ph-bold ph-sun' : 'ph-bold ph-moon'; localStorage.setItem('theme', theme); },
-        initMobileMenu() { if (!this.elements.mobileMenuBtn) return; this.elements.mobileMenuBtn.addEventListener('click', () => { this.elements.mobileMenu.classList.add('is-open'); this.elements.overlay.classList.add('is-active'); }); this.elements.closeMenuBtn.addEventListener('click', () => this.closeAllPopups()); this.elements.overlay.addEventListener('click', () => this.closeAllPopups()); },
-        initDropdowns() { if (!this.elements.desktopDropdown) return; const toggle = this.elements.desktopDropdown.querySelector('.dropdown-toggle'); toggle.addEventListener('click', (e) => { e.preventDefault(); this.elements.desktopDropdown.classList.toggle('is-open'); }); document.addEventListener('click', (e) => { if (!this.elements.desktopDropdown.contains(e.target)) { this.elements.desktopDropdown.classList.remove('is-open'); } }); },
-        closeAllPopups() { this.elements.mobileMenu?.classList.remove('is-open'); this.elements.overlay?.classList.remove('is-active'); },
-        initActiveLink() { const currentPage = window.location.pathname.split('/').pop() || 'index.html'; document.querySelectorAll('[data-page]').forEach(link => { const linkPage = new URL(link.href).pathname.split('/').pop(); if (linkPage === currentPage) { link.classList.add('active'); if(link.closest('.dropdown-item')) { link.closest('.dropdown').querySelector('.dropdown-toggle').classList.add('active'); } } }); },
-
-        // --- SEZIONE PAGINA PRODOTTI ---
-        initProductsPage() {
-            this.loadProductsData();
-            this.setupEventListeners();
-            this.applyUrlParams();
-            this.resetAndRender();
-        },
-
-        loadProductsData() {
-            // Carica i prodotti dall'array globale 'products' definito in main.js
-            if (typeof products !== 'undefined' && Array.isArray(products)) {
-                this.state.allProducts = products;
-                console.log(`Caricati ${products.length} prodotti da main.js`);
-            } else {
-                console.error("Errore: La variabile 'products' non è stata trovata o non è un array. Assicurati che main.js sia caricato correttamente e definisca 'const products = [...]'.");
-                this.elements.productsGrid.innerHTML = "<p>Errore nel caricamento dei prodotti.</p>";
+        class ProductsManager {
+            constructor() {
+                this.allProducts = [];
+                this.filteredProducts = [];
+                this.currentPage = 0;
+                this.productsPerPage = 12;
+                this.currentFilter = 'all';
+                this.currentSort = 'default';
+                this.init();
             }
-        },
-        
-        setupEventListeners() {
-            this.elements.filterButtonsContainer.addEventListener('click', (e) => { if (e.target.classList.contains('filter-btn')) { this.handleFilterClick(e.target); } });
-            this.elements.sortSelect.addEventListener('change', () => this.handleSortChange());
-            this.elements.loadMoreBtn.addEventListener('click', () => this.loadMoreProducts());
-        },
 
-        applyUrlParams() {
-            const params = new URLSearchParams(window.location.search);
-            const category = params.get('category');
-            if (category) {
-                const targetBtn = this.elements.filterButtonsContainer.querySelector(`[data-category="${category}"]`);
-                if (targetBtn) {
-                    this.state.currentFilter = category;
-                    this.elements.filterButtonsContainer.querySelector('.active').classList.remove('active');
-                    targetBtn.classList.add('active');
+            init() {
+                this.loadNavigation();
+                this.loadProducts();
+                this.setupEventListeners();
+                this.applyUrlFilters();
+            }
+
+            loadNavigation() {
+                fetch('nav.html')
+                    .then(response => response.text())
+                    .then(data => {
+                        document.getElementById('navigation').innerHTML = data;
+                    })
+                    .catch(error => console.error('Error loading navigation:', error));
+            }
+
+            loadProducts() {
+                if (typeof products === 'undefined') {
+                    console.error('Products data not available');
+                    return;
+                }
+                this.allProducts = products;
+                this.filterAndSortProducts();
+                this.renderProducts();
+            }
+
+            setupEventListeners() {
+                // Filter buttons
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        this.handleFilterClick(e.target);
+                    });
+                });
+
+                // Sort select
+                document.getElementById('sortSelect').addEventListener('change', (e) => {
+                    this.currentSort = e.target.value;
+                    this.currentPage = 0;
+                    this.filterAndSortProducts();
+                    this.renderProducts();
+                });
+
+                // Load more button
+                document.getElementById('loadMoreBtn').addEventListener('click', () => {
+                    this.loadMoreProducts();
+                });
+            }
+
+            applyUrlFilters() {
+                const urlParams = new URLSearchParams(window.location.search);
+                const category = urlParams.get('category');
+                
+                if (category) {
+                    const filterBtn = document.querySelector(`[data-category="${category}"]`);
+                    if (filterBtn) {
+                        this.handleFilterClick(filterBtn);
+                    }
                 }
             }
-        },
 
-        handleFilterClick(button) { this.state.currentFilter = button.dataset.category; this.elements.filterButtonsContainer.querySelector('.active').classList.remove('active'); button.classList.add('active'); this.resetAndRender(); },
-        handleSortChange() { this.state.currentSort = this.elements.sortSelect.value; this.resetAndRender(); },
-        
-        loadMoreProducts() {
-            if (this.state.isLoading) return;
-            this.state.isLoading = true;
-            this.elements.loadMoreBtn.textContent = 'Caricamento...';
-            setTimeout(() => { this.state.currentPage++; this.renderProductsBatch(); this.state.isLoading = false; this.elements.loadMoreBtn.textContent = 'Mostra Altri Prodotti'; }, 300);
-        },
+            handleFilterClick(button) {
+                // Update active button
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.classList.remove('btn-primary', 'active');
+                    btn.classList.add('btn-secondary');
+                });
+                button.classList.remove('btn-secondary');
+                button.classList.add('btn-primary', 'active');
 
-        resetAndRender() {
-            this.state.currentPage = 0;
-            this.updateFilteredAndSortedProducts();
-            this.elements.productsGrid.innerHTML = '';
-            this.renderProductsBatch();
-        },
-
-        updateFilteredAndSortedProducts() {
-            let products = [...this.state.allProducts];
-            if (this.state.currentFilter !== 'all') { products = products.filter(p => p.categoria === this.state.currentFilter); }
-            const parsePrice = p => typeof p.prezzo === 'string' ? parseFloat(p.prezzo.replace(/[^0-9,-]+/g, '').replace(',', '.')) : p.prezzo;
-            switch (this.state.currentSort) {
-                case 'price-asc': products.sort((a, b) => parsePrice(a) - parsePrice(b)); break;
-                case 'price-desc': products.sort((a, b) => parsePrice(b) - parsePrice(a)); break;
-                case 'name-asc': products.sort((a, b) => a.nome.localeCompare(b.nome)); break;
+                // Update filter
+                this.currentFilter = button.dataset.category;
+                this.currentPage = 0;
+                this.filterAndSortProducts();
+                this.renderProducts();
             }
-            this.state.productsToDisplay = products;
-        },
-        
-        renderProductsBatch() {
-            const start = this.state.currentPage * this.state.productsPerPage;
-            const end = start + this.state.productsPerPage;
-            const batch = this.state.productsToDisplay.slice(start, end);
 
-            batch.forEach((product, index) => {
-                const productCard = this.createProductCard(product);
-                this.elements.productsGrid.appendChild(productCard);
-            });
-            this.updateLoadMoreButtonVisibility(end);
-        },
-        
-        updateLoadMoreButtonVisibility(renderedCount) {
-             this.elements.loadMoreBtn.style.display = renderedCount >= this.state.productsToDisplay.length ? 'none' : 'inline-flex';
-        },
+            filterAndSortProducts() {
+                // Filter products
+                this.filteredProducts = this.currentFilter === 'all' 
+                    ? [...this.allProducts]
+                    : this.allProducts.filter(product => product.categoria === this.currentFilter);
 
-        createProductCard(product) {
-            const card = document.createElement('div');
-            card.className = 'product-card';
-            card.dataset.category = product.categoria;
-            const price = typeof product.prezzo === 'number' ? product.prezzo.toFixed(2) : product.prezzo;
-            const originalPrice = typeof product.prezzo_originale === 'number' ? product.prezzo_originale.toFixed(2) : product.prezzo_originale;
-            const originalPriceHTML = originalPrice ? `<span class="original-price">${originalPrice}€</span>` : '';
-            const discountBadgeHTML = product.sconto ? `<span class="discount-badge">-${product.sconto}%</span>` : '';
+                // Sort products
+                this.filteredProducts.sort((a, b) => {
+                    switch (this.currentSort) {
+                        case 'price-asc':
+                            return parseFloat(a.prezzo) - parseFloat(b.prezzo);
+                        case 'price-desc':
+                            return parseFloat(b.prezzo) - parseFloat(a.prezzo);
+                        case 'discount-desc':
+                            return (b.sconto || 0) - (a.sconto || 0);
+                        case 'name-asc':
+                            return a.nome.localeCompare(b.nome);
+                        default:
+                            return 0;
+                    }
+                });
+            }
 
-            card.innerHTML = `
-                <div class="product-image-container"><a href="${product.link}" target="_blank" rel="noopener noreferrer"><img src="${product.img}" alt="${product.nome}" class="product-image" loading="lazy"></a></div>
-                <div class="product-info">
-                    <p class="product-category">${product.categoria}</p>
-                    <h3 class="product-name"><a href="${product.link}" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">${product.nome}</a></h3>
-                    <div class="product-price">
-                        <span class="current-price">${price}€</span>
-                        ${originalPriceHTML}
-                        ${discountBadgeHTML}
-                    </div>
-                    <div class="product-actions">
-                        <a href="${product.link}" class="buy-btn" target="_blank" rel="noopener noreferrer">Acquista su Amazon</a>
-                        <div class="secondary-actions">
-                            <button class="action-btn" title="Aggiungi alla Wishlist"><i class="ph-bold ph-heart"></i></button>
-                            <button class="action-btn" title="Condividi"><i class="ph-bold ph-share-network"></i></button>
+            renderProducts() {
+                const container = document.getElementById('productsGrid');
+                const loadMoreContainer = document.getElementById('loadMoreContainer');
+                const noProductsMessage = document.getElementById('noProductsMessage');
+
+                if (this.filteredProducts.length === 0) {
+                    container.innerHTML = '';
+                    loadMoreContainer.style.display = 'none';
+                    noProductsMessage.style.display = 'block';
+                    return;
+                }
+
+                noProductsMessage.style.display = 'none';
+
+                const startIndex = this.currentPage * this.productsPerPage;
+                const endIndex = startIndex + this.productsPerPage;
+                const productsToShow = this.filteredProducts.slice(0, endIndex);
+
+                container.innerHTML = productsToShow.map(product => `
+                    <div class="col-sm-4 col-6 mb-4">
+                        <div class="card product-card">
+                            <img src="${product.img}" alt="${product.nome}" class="product-image" loading="lazy">
+                            <div class="product-info">
+                                <div class="mb-2">
+                                    <small class="text-primary">${this.getCategoryName(product.categoria)}</small>
+                                </div>
+                                <h5 class="product-title">${product.nome}</h5>
+                                <div class="product-price">
+                                    <span class="price-current">€${product.prezzo}</span>
+                                    ${product.prezzo_originale ? `<span class="price-original">€${product.prezzo_originale}</span>` : ''}
+                                    ${product.sconto ? `<span class="discount-badge">-${product.sconto}%</span>` : ''}
+                                </div>
+                                <div class="product-actions">
+                                    <div class="row">
+                                        <div class="col-8">
+                                            <a href="${product.link}" target="_blank" class="btn btn-primary btn-sm btn-block">🛒 Acquista</a>
+                                        </div>
+                                        <div class="col-4">
+                                            <button class="btn btn-secondary btn-sm btn-block" onclick="addToWishlist('${product.id}')" title="Aggiungi alla wishlist">❤️</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>`;
-            return card;
-        }
-    };
+                `).join('');
 
-    document.addEventListener('DOMContentLoaded', () => {
-        CronoshopApp.init();
-    });
+                // Show/hide load more button
+                loadMoreContainer.style.display = endIndex < this.filteredProducts.length ? 'block' : 'none';
+
+                // Add fade-in animation
+                setTimeout(() => {
+                    container.querySelectorAll('.card').forEach((card, index) => {
+                        setTimeout(() => {
+                            card.classList.add('fade-in');
+                        }, index * 50);
+                    });
+                }, 100);
+            }
+
+            loadMoreProducts() {
+                this.currentPage++;
+                this.renderProducts();
+            }
+
+            getCategoryName(category) {
+                const categoryNames = {
+                    smartphone: '📱 Smartphone',
+                    tech: '💻 Tech',
+                    fashion: '👕 Fashion',
+                    casa: '🏠 Casa',
+                    salute: '💊 Salute'
+                };
+                return categoryNames[category] || category;
+            }
+        }
+
+        // Global functions
+        function addToWishlist(productId) {
+            try {
+                const savedData = localStorage.getItem('cronoshop_data');
+                let userData = savedData ? JSON.parse(savedData) : {};
+                let wishlist = userData.wishlist || [];
+                
+                const product = products.find(p => p.id === productId);
+                if (!product) {
+                    showNotification('Prodotto non trovato', 'error');
+                    return;
+                }
+
+                if (wishlist.find(item => item.id === productId)) {
+                    showNotification('Prodotto già nella wishlist', 'warning');
+                    return;
+                }
+
+                wishlist.push(product);
+                userData.wishlist = wishlist;
+                localStorage.setItem('cronoshop_data', JSON.stringify(userData));
+                
+                showNotification('Prodotto aggiunto alla wishlist!', 'success');
+            } catch (error) {
+                console.error('Error adding to wishlist:', error);
+                showNotification('Errore durante l\'aggiunta alla wishlist', 'error');
+            }
+        }
+
+        function showNotification(message, type = 'info') {
+            if (window.showNotification) {
+                window.showNotification(message, type);
+            } else {
+                console.log(`${type.toUpperCase()}: ${message}`);
+            }
+        }
+
+        // Initialize when DOM is ready
+        document.addEventListener('DOMContentLoaded', () => {
+            new ProductsManager();
+        });
     </script>
 </body>
 </html>

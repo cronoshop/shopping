@@ -1,266 +1,382 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>CronoAI - Intelligenza Artificiale Avanzata per Offerte Amazon | Cronoshop</title>
-    <meta name="description" content="🤖 Potenzia il tuo shopping con l'Intelligenza Artificiale di CronoAI. Analizza trend di prezzo, confronta prodotti, trova offerte nascoste e ricevi consigli personalizzati." />
-    <link rel="stylesheet" href="style.css?v=3.0" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        body { padding-top: 70px; }
-        .ai-main { padding: 2rem 1rem; max-width: 1200px; margin: auto; }
-        .ai-header { text-align: center; margin-bottom: 3rem; }
-        .ai-header h1 { font-size: 3.5rem; font-weight: 800; color: var(--text-blue); margin-bottom: 1rem; }
-        .ai-header p { font-size: 1.3rem; color: var(--text-secondary); max-width: 800px; margin: auto; }
-        
-        .section-title { text-align: center; font-size: 2.5rem; font-weight: 700; margin: 4rem 0 2rem 0; color: var(--text-primary); }
-
-        /* Stile per le nuove sezioni */
-        .intro-section p { font-size: 1.1rem; line-height: 1.7; margin-bottom: 1rem; }
-        .intro-section a { font-weight: 600; color: var(--primary-blue); text-decoration: none; }
-        .intro-section a:hover { text-decoration: underline; }
-
-        .advanced-ai-grid, .quick-tools-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-        .ai-card {
-            padding: 2rem;
-            text-align: left;
-            display: flex;
-            flex-direction: column;
-        }
-        .ai-card-header { display: flex; align-items: center; margin-bottom: 1rem; }
-        .ai-card-header i { font-size: 1.8rem; margin-right: 1rem; color: var(--primary-blue); width: 40px; text-align: center; }
-        .ai-card-header h3 { font-size: 1.5rem; margin: 0; }
-        .ai-card p { font-size: 1rem; line-height: 1.6; flex-grow: 1; }
-        .ai-card .glass-input, .ai-card .glass-textarea { width: 100%; margin: 1rem 0; }
-        .ai-card .result { margin-top: 1rem; font-weight: bold; min-height: 24px; font-size: 1.1rem; }
-        .ai-card .glass-btn { margin-top: auto; } /* Allinea il bottone in fondo */
-
-        .disclaimer-section { padding: 2rem; border-top: 4px solid var(--warning-orange); margin: 3rem 0; }
-        
-        .promo-banner-whatsapp, .promo-banner-products { margin: 4rem 0; padding: 2.5rem; text-align: center; border-radius: var(--radius-xl); }
-        .promo-banner-whatsapp { background: linear-gradient(135deg, #25D366, #128C7E); color: white; }
-        .promo-banner-products { background: var(--glass-white-strong); }
-        .promo-banner-products a { margin: 0.5rem; }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CronoAI - Intelligenza Artificiale per lo Shopping | Cronoshop</title>
+    <meta name="description" content="Scopri CronoAI, l'assistente intelligente di Cronoshop. Analizza prezzi, confronta prodotti e ricevi consigli personalizzati per i tuoi acquisti.">
+    <link rel="icon" type="image/png" href="assets/cronoshop-logo.png">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Navigation -->
+    <div id="navigation"></div>
 
-<div class="animated-background"></div>
-<div id="navigation-container"></div>
-
-<main class="ai-main">
-    <section class="ai-header">
-        <h1><i class="fa-solid fa-brain"></i> Benvenuto in CronoAI 2.0</h1>
-        <p>Il tuo copilota per lo shopping. Sfrutta la vera intelligenza artificiale per fare acquisti più intelligenti, veloci e convenienti su Amazon.</p>
+    <!-- Hero Section -->
+    <section class="hero-section" style="min-height: 70vh;">
+        <div class="hero-content">
+            <h1 class="hero-title">🤖 Benvenuto in CronoAI</h1>
+            <p class="hero-subtitle">Il tuo assistente intelligente per lo shopping. Sfrutta l'AI per fare acquisti più intelligenti e convenienti</p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <button class="btn btn-primary btn-lg" onclick="scrollToTools()">🚀 Prova gli Strumenti</button>
+                <a href="products.html" class="btn btn-secondary btn-lg">🛍️ Vedi le Offerte</a>
+            </div>
+        </div>
     </section>
 
-    <section class="intro-section glass-card" style="padding: 2rem;">
-        <p><strong>CronoAI</strong> è l'ecosistema di intelligenza artificiale sviluppato da <a href="index.html" title="Vai alla home di Cronoshop">Cronoshop</a> per rivoluzionare la tua esperienza di acquisto. Dimentica i dubbi e le ricerche infinite: i nostri strumenti analizzano per te dati complessi e ti forniscono risposte chiare e immediate. Prima di iniziare, ti invitiamo a leggere la nostra <a href="about.html" title="Scopri chi siamo">pagina di presentazione</a> e a unirti ai nostri <a href="groups.html" title="Unisciti ai canali di offerte">canali di offerte</a> per non perdere nessuna occasione. Ricorda che questo è uno strumento di supporto: verifica sempre il prezzo finale su Amazon.</p>
+    <!-- AI Tools -->
+    <section class="container" id="aiTools" style="margin-top: -50px; position: relative; z-index: 10;">
+        <div class="text-center mb-5">
+            <h2>🧠 Strumenti AI Avanzati</h2>
+            <p>Utilizza l'intelligenza artificiale per ottimizzare i tuoi acquisti</p>
+        </div>
+        
+        <div class="row">
+            <!-- Price Analyzer -->
+            <div class="col-sm-6 mb-4">
+                <div class="card">
+                    <div class="text-center mb-3">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">📈</div>
+                        <h4>Analizzatore Prezzi</h4>
+                        <p class="text-secondary">Incolla l'URL di un prodotto Amazon per analizzarne lo storico prezzi</p>
+                    </div>
+                    <div class="form-group">
+                        <input type="url" class="form-control" id="priceAnalyzerInput" placeholder="Incolla qui l'URL Amazon...">
+                    </div>
+                    <button class="btn btn-primary btn-block" onclick="analyzePrices()">🔍 Analizza Prezzo</button>
+                    <div id="priceAnalyzerResult" class="mt-3" style="min-height: 50px;"></div>
+                </div>
+            </div>
+            
+            <!-- Product Comparator -->
+            <div class="col-sm-6 mb-4">
+                <div class="card">
+                    <div class="text-center mb-3">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">⚖️</div>
+                        <h4>Confronta Prodotti</h4>
+                        <p class="text-secondary">Inserisci due URL per confrontare prodotti simili</p>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" id="productComparatorInput" rows="3" placeholder="Incolla gli URL dei prodotti (uno per riga)..."></textarea>
+                    </div>
+                    <button class="btn btn-primary btn-block" onclick="compareProducts()">⚖️ Confronta</button>
+                    <div id="productComparatorResult" class="mt-3" style="min-height: 50px;"></div>
+                </div>
+            </div>
+            
+            <!-- Gift Finder -->
+            <div class="col-sm-6 mb-4">
+                <div class="card">
+                    <div class="text-center mb-3">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">🎁</div>
+                        <h4>Trova Regalo Perfetto</h4>
+                        <p class="text-secondary">Descrivi la persona e ricevi suggerimenti personalizzati</p>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="giftFinderInput" placeholder="Es: Regalo per papà 50 anni, ama il giardinaggio, budget 100€">
+                    </div>
+                    <button class="btn btn-primary btn-block" onclick="findGifts()">🎁 Trova Regalo</button>
+                    <div id="giftFinderResult" class="mt-3" style="min-height: 50px;"></div>
+                </div>
+            </div>
+            
+            <!-- Deal Hunter -->
+            <div class="col-sm-6 mb-4">
+                <div class="card">
+                    <div class="text-center mb-3">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">🎯</div>
+                        <h4>Cacciatore di Offerte</h4>
+                        <p class="text-secondary">Trova offerte nascoste e coupon speciali</p>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="dealHunterInput" placeholder="Es: Cuffie Bluetooth, Smartphone Samsung...">
+                    </div>
+                    <button class="btn btn-primary btn-block" onclick="huntDeals()">🔍 Cerca Offerte</button>
+                    <div id="dealHunterResult" class="mt-3" style="min-height: 50px;"></div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <h2 class="section-title">Intelligenza Avanzata: Funzioni Esclusive</h2>
-    <div class="advanced-ai-grid">
-        <div class="glass-card ai-card">
-            <div class="ai-card-header">
-                <i class="fa-solid fa-chart-line"></i>
-                <h3>Analizzatore Trend di Prezzo</h3>
-            </div>
-            <p>Incolla l'URL di un prodotto Amazon per visualizzarne lo storico dei prezzi e ricevere una previsione AI sulla probabilità di un futuro ribasso.</p>
-            <input type="text" id="priceTrendInput" class="glass-input" placeholder="Incolla URL Amazon...">
-            <button class="glass-btn primary-btn" onclick="analyzePriceTrend()">Analizza Prezzo</button>
-            <div class="result" id="priceTrendResult"></div>
+    <!-- Quick Tools -->
+    <section class="container" style="margin-top: 3rem;">
+        <div class="text-center mb-5">
+            <h2>⚡ Strumenti Rapidi</h2>
+            <p>Funzioni veloci per migliorare la tua esperienza di shopping</p>
         </div>
-
-        <div class="glass-card ai-card">
-            <div class="ai-card-header">
-                <i class="fa-solid fa-balance-scale"></i>
-                <h3>Confronto Prodotti Smart</h3>
+        
+        <div class="row">
+            <div class="col-sm-3 col-6 mb-4">
+                <div class="card text-center">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">🎨</div>
+                    <h5>Decodifica Colori</h5>
+                    <p class="text-secondary">Scopri cosa significano i nostri codici colore</p>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="colorInput" placeholder="Es: rosso, verde...">
+                    </div>
+                    <button class="btn btn-secondary btn-sm btn-block" onclick="decodeColor()">Decodifica</button>
+                    <div id="colorResult" class="mt-2" style="min-height: 30px; font-size: 0.9rem;"></div>
+                </div>
             </div>
-            <p>Inserisci due o più URL Amazon. L'AI genererà una tabella comparativa, riassumerà i pro e i contro dalle recensioni e ti consiglierà il miglior acquisto.</p>
-            <textarea id="compareInput" class="glass-textarea" placeholder="Incolla un URL per riga..." rows="3"></textarea>
-            <button class="glass-btn primary-btn" onclick="compareProducts()">Confronta Prodotti</button>
-            <div class="result" id="compareResult"></div>
-        </div>
-
-        <div class="glass-card ai-card">
-            <div class="ai-card-header">
-                <i class="fa-solid fa-gift"></i>
-                <h3>Generatore Idee Regalo</h3>
+            
+            <div class="col-sm-3 col-6 mb-4">
+                <div class="card text-center">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">🎲</div>
+                    <h5>Nome Offerta</h5>
+                    <p class="text-secondary">Genera nomi accattivanti per le offerte</p>
+                    <button class="btn btn-secondary btn-block" onclick="generateOfferName()">Genera Nome</button>
+                    <div id="offerNameResult" class="mt-3" style="min-height: 30px; font-weight: bold;"></div>
+                </div>
             </div>
-            <p>Descrivi la persona e l'occasione (es. "Regalo per papà 60 anni, ama giardinaggio, budget 50€"). L'AI troverà i regali perfetti per te.</p>
-            <input type="text" id="giftInput" class="glass-input" placeholder="Descrivi qui il regalo che cerchi...">
-            <button class="glass-btn primary-btn" onclick="generateGiftIdeas()">Trova Regalo</button>
-            <div class="result" id="giftResult"></div>
+            
+            <div class="col-sm-3 col-6 mb-4">
+                <div class="card text-center">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">💡</div>
+                    <h5>Consiglio Smart</h5>
+                    <p class="text-secondary">Ricevi un consiglio di shopping personalizzato</p>
+                    <button class="btn btn-secondary btn-block" onclick="getSmartTip()">Consiglio</button>
+                    <div id="smartTipResult" class="mt-3" style="min-height: 30px; font-size: 0.9rem;"></div>
+                </div>
+            </div>
+            
+            <div class="col-sm-3 col-6 mb-4">
+                <div class="card text-center">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">🔮</div>
+                    <h5>Previsione Trend</h5>
+                    <p class="text-secondary">Scopri i trend di shopping del momento</p>
+                    <button class="btn btn-secondary btn-block" onclick="predictTrend()">Prevedi</button>
+                    <div id="trendResult" class="mt-3" style="min-height: 30px; font-size: 0.9rem;"></div>
+                </div>
+            </div>
         </div>
-    </div>
-
-    <section class="promo-banner-whatsapp">
-        <h2><i class="fa-brands fa-whatsapp"></i> Offerte Esclusive su WhatsApp</h2>
-        <p>L'AI è potente, ma le offerte lampo sono veloci! Unisciti al nostro canale per ricevere le migliori occasioni selezionate dal nostro team in tempo reale.</p>
-        <a href="groups.html" class="glass-btn" style="background: white; color: #25D366;">Unisciti Ora</a>
     </section>
 
-    <h2 class="section-title">Strumenti di Analisi Rapida</h2>
-    <div class="quick-tools-grid">
-         <div class="glass-card ai-card">
-            <div class="ai-card-header">
-                <i class="fa-solid fa-search-dollar"></i>
-                <h3>Cacciatore Offerte Nascoste</h3>
-            </div>
-            <p>L'AI scandaglia Amazon alla ricerca di coupon nascosti, offerte Warehouse e sconti applicati al checkout. Inserisci una categoria (es. "Cuffie Bluetooth").</p>
-            <input type="text" id="hiddenDealInput" class="glass-input" placeholder="Categoria prodotto...">
-            <button class="glass-btn primary-btn" onclick="findHiddenDeals()">Scova Offerte</button>
-            <div class="result" id="hiddenDealResult"></div>
+    <!-- CTA Section -->
+    <section class="container" style="margin-top: 3rem;">
+        <div class="card text-center" style="background: linear-gradient(135deg, #25D366, #128C7E); color: white;">
+            <h2 style="color: white;">🚀 L'AI è Potente, ma le Offerte Lampo Sono Veloci!</h2>
+            <p style="color: rgba(255,255,255,0.9); margin-bottom: 2rem;">Unisciti ai nostri canali per ricevere le migliori occasioni selezionate dal nostro team in tempo reale</p>
+            <a href="groups.html" class="btn btn-success btn-lg">💬 Unisciti ai Gruppi</a>
         </div>
-
-        <div class="glass-card ai-card">
-            <div class="ai-card-header">
-                <i class="fa-solid fa-palette"></i>
-                <h3>Analizzatore Colore Sconto</h3>
-            </div>
-            <p>Un modo rapido per interpretare i nostri codici colore. Inserisci un colore (es. 'rosso') e ti diremo che tipo di sconto rappresenta!</p>
-            <input type="text" id="colorInput" class="glass-input" placeholder="Es. verde, blu, arancione...">
-            <button class="glass-btn primary-btn" onclick="analyzeColor()">Analizza Colore</button>
-            <div class="result" id="colorResult"></div>
-        </div>
-
-        <div class="glass-card ai-card">
-            <div class="ai-card-header">
-                <i class="fa-solid fa-random"></i>
-                <h3>Generatore Nome Offerta</h3>
-            </div>
-            <p>Sei a caccia di ispirazione? Clicca per generare un nome accattivante per un'offerta. Perfetto per i nostri partner e affiliati!</p>
-            <button class="glass-btn primary-btn" onclick="generateOfferName()">Genera Nome</button>
-            <div class="result" id="offerNameResult"></div>
-        </div>
-    </div>
-    
-    <section class="promo-banner-products">
-        <h2><i class="fa-solid fa-shopping-bag"></i> Stanco di Analizzare? Passa all'Azione!</h2>
-        <p>L'intelligenza artificiale ti ha dato i consigli giusti. Ora trova il prodotto perfetto tra centinaia di offerte reali e verificate dal nostro team.</p>
-        <a href="products.html?category=elettronica" class="glass-btn primary-btn">Vai a Elettronica</a>
-        <a href="products.html?category=casa" class="glass-btn primary-btn">Vai a Casa e Cucina</a>
-        <a href="products.html?category=fai-da-te" class="glass-btn primary-btn">Vai a Fai da te</a>
-        <a href="products.html" class="glass-btn secondary-btn">Vedi Tutte le Offerte</a>
     </section>
 
-    <section class="disclaimer-section glass-card">
-        <h2 style="text-align: center; color: var(--warning-orange);">⚠️ Disclaimer e Descrizione del Servizio</h2>
-        <p><strong>CronoAI è un servizio sperimentale basato su modelli linguistici di grandi dimensioni.</strong> Le risposte, sebbene avanzate, sono generate artificialmente e potrebbero contenere imprecisioni. Le analisi, le previsioni di prezzo e i suggerimenti non costituiscono una consulenza d'acquisto o finanziaria. Le offerte, i prezzi e la disponibilità dei prodotti non sono garantiti e devono <strong>sempre</strong> essere verificati sulla pagina ufficiale di Amazon prima di procedere all'acquisto. <strong>Cronoshop e CronoAI non si assumono alcuna responsabilità per le decisioni di acquisto dell'utente.</strong></p>
+    <!-- Disclaimer -->
+    <section class="container" style="margin-top: 3rem;">
+        <div class="card" style="border-left: 4px solid var(--warning-orange);">
+            <h4 style="color: var(--warning-orange);">⚠️ Disclaimer</h4>
+            <p><strong>CronoAI è un servizio sperimentale bassu su simulazioni.</strong> Le risposte sono generate artificialmente e potrebbero contenere imprecisioni. Le analisi e i suggerimenti non costituiscono consulenza d'acquisto. I prezzi e la disponibilità devono sempre essere verificati su Amazon prima dell'acquisto.</p>
+            <p><strong>Cronoshop e CronoAI non si assumono responsabilità per le decisioni di acquisto dell'utente.</strong></p>
+        </div>
     </section>
 
-</main>
-
-<footer class="glass-footer">
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>CronoAI</h4>
+                    <p>L'intelligenza artificiale al servizio del tuo shopping.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Strumenti</h4>
+                    <a href="#aiTools">Analizzatore Prezzi</a>
+                    <a href="#aiTools">Confronta Prodotti</a>
+                    <a href="#aiTools">Trova Regalo</a>
+                    <a href="#aiTools">Caccia Offerte</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Supporto</h4>
+                    <a href="faq.html">FAQ</a>
+                    <a href="groups.html">Contatti</a>
+                    <a href="chisiamo.html">Chi Siamo</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Cronoshop. Tutti i diritti riservati.</p>
+            </div>
+        </div>
     </footer>
 
-<script src="src/utils/nav-loader.js" defer></script>
-<script>
-    // --- FUNZIONI AVANZATE (Simulazione Frontend) ---
-    // NOTA: Queste funzioni richiederebbero un backend complesso con vere API AI.
-    // Qui simuliamo una risposta per mostrare il funzionamento del frontend.
+    <script src="main.js"></script>
+    <script>
+        // Load navigation
+        fetch('nav.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navigation').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading navigation:', error));
 
-    function showLoading(resultDiv) {
-        resultDiv.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Analisi in corso...';
-    }
-
-    function analyzePriceTrend() {
-        const input = document.getElementById('priceTrendInput').value;
-        const resultDiv = document.getElementById('priceTrendResult');
-        if (!input.includes('amazon.')) {
-            resultDiv.textContent = "Per favore, inserisci un URL Amazon valido.";
-            return;
+        // Scroll to tools section
+        function scrollToTools() {
+            document.getElementById('aiTools').scrollIntoView({ behavior: 'smooth' });
         }
-        showLoading(resultDiv);
-        setTimeout(() => {
-            resultDiv.innerHTML = `<strong>Analisi per Prodotto X:</strong><br>
-                                 - Prezzo attuale: <strong>75,99€</strong><br>
-                                 - Prezzo medio (90gg): 92,50€<br>
-                                 - Prezzo minimo storico: 68,00€<br>
-                                 - <strong>Previsione AI:</strong> <span style="color: var(--warning-orange);">Stabile. Probabilità di ribasso del 25% entro 2 settimane.</span><br>
-                                 <a href='products.html' style='font-size: 0.9em;'>Vedi alternative in offerta ora!</a>`;
-        }, 2000);
-    }
 
-    function compareProducts() {
-        const input = document.getElementById('compareInput').value;
-        const resultDiv = document.getElementById('compareResult');
-        if (input.split('\\n').length < 2) {
-            resultDiv.textContent = "Inserisci almeno due URL per il confronto.";
-            return;
+        // Show loading state
+        function showLoading(elementId) {
+            const element = document.getElementById(elementId);
+            element.innerHTML = '<div class="text-center"><div class="loading"></div> Analisi in corso...</div>';
         }
-        showLoading(resultDiv);
-        setTimeout(() => {
-            resultDiv.innerHTML = `<strong>Risultato Confronto:</strong><br>
-                                 - <strong>Prodotto A:</strong> Più economico, recensioni miste sulla batteria.<br>
-                                 - <strong>Prodotto B:</strong> Più costoso, qualità costruttiva superiore.<br>
-                                 - <strong>Consiglio AI:</strong> <span style="color: var(--success-green);">Prodotto B è il miglior rapporto qualità/prezzo se il budget lo consente.</span><br>
-                                 <a href='products.html' style='font-size: 0.9em;'>Cerca offerte simili qui.</a>`;
-        }, 2500);
-    }
 
-    function generateGiftIdeas() {
-        const input = document.getElementById('giftInput').value;
-        const resultDiv = document.getElementById('giftResult');
-        if (!input) {
-            resultDiv.textContent = "Descrivi la persona per cui cerchi il regalo.";
-            return;
+        // AI Tool Functions (Simulated)
+        function analyzePrices() {
+            const input = document.getElementById('priceAnalyzerInput').value;
+            const resultDiv = document.getElementById('priceAnalyzerResult');
+            
+            if (!input || !input.includes('amazon')) {
+                resultDiv.innerHTML = '<div class="text-danger">⚠️ Inserisci un URL Amazon valido</div>';
+                return;
+            }
+            
+            showLoading('priceAnalyzerResult');
+            
+            setTimeout(() => {
+                resultDiv.innerHTML = `
+                    <div class="card" style="background: var(--bg-secondary); padding: 1rem;">
+                        <h6 class="text-success">📊 Analisi Completata</h6>
+                        <p><strong>Prezzo attuale:</strong> €75.99</p>
+                        <p><strong>Prezzo medio (90gg):</strong> €92.50</p>
+                        <p><strong>Prezzo minimo storico:</strong> €68.00</p>
+                        <p><strong>Previsione AI:</strong> <span class="text-warning">Stabile. Probabilità di ribasso del 25% entro 2 settimane.</span></p>
+                        <small><a href="products.html">Vedi alternative in offerta →</a></small>
+                    </div>
+                `;
+            }, 2000);
         }
-        showLoading(resultDiv);
-        setTimeout(() => {
-            resultDiv.innerHTML = `<strong>Idee Regalo Generate:</strong><br>
-                                 1. Set Attrezzi Giardinaggio Premium (48€)<br>
-                                 2. Libro su Orticoltura Biologica (25€)<br>
-                                 3. Sedia da Giardino Ergonomica (55€)<br>
-                                 <a href='products.html?category=fai-da-te' style='font-size: 0.9em;'>Scopri altre idee nella sezione Giardino!</a>`;
-        }, 1800);
-    }
 
-    function findHiddenDeals() {
-        const input = document.getElementById('hiddenDealInput').value;
-        const resultDiv = document.getElementById('hiddenDealResult');
-        if (!input) {
-            resultDiv.textContent = "Inserisci una categoria di prodotto.";
-            return;
+        function compareProducts() {
+            const input = document.getElementById('productComparatorInput').value;
+            const resultDiv = document.getElementById('productComparatorResult');
+            
+            if (!input || input.split('\n').length < 2) {
+                resultDiv.innerHTML = '<div class="text-danger">⚠️ Inserisci almeno due URL per il confronto</div>';
+                return;
+            }
+            
+            showLoading('productComparatorResult');
+            
+            setTimeout(() => {
+                resultDiv.innerHTML = `
+                    <div class="card" style="background: var(--bg-secondary); padding: 1rem;">
+                        <h6 class="text-success">⚖️ Confronto Completato</h6>
+                        <p><strong>Prodotto A:</strong> Più economico, recensioni miste sulla batteria</p>
+                        <p><strong>Prodotto B:</strong> Più costoso, qualità costruttiva superiore</p>
+                        <p><strong>Consiglio AI:</strong> <span class="text-primary">Prodotto B offre il miglior rapporto qualità/prezzo</span></p>
+                        <small><a href="products.html">Cerca prodotti simili →</a></small>
+                    </div>
+                `;
+            }, 2500);
         }
-        showLoading(resultDiv);
-        setTimeout(() => {
-            resultDiv.innerHTML = `<strong>Offerte Nascoste per '${input}':</strong><br>
-                                 - Trovato coupon da <strong>10%</strong> su 'Cuffie Marca X'.<br>
-                                 - Trovato prodotto Warehouse (come nuovo) a <strong>-30%</strong>.<br>
-                                 <a href='products.html' style='font-size: 0.9em;'>Verifica tra le nostre offerte del giorno!</a>`;
-        }, 2200);
-    }
 
+        function findGifts() {
+            const input = document.getElementById('giftFinderInput').value;
+            const resultDiv = document.getElementById('giftFinderResult');
+            
+            if (!input) {
+                resultDiv.innerHTML = '<div class="text-danger">⚠️ Descrivi la persona per cui cerchi il regalo</div>';
+                return;
+            }
+            
+            showLoading('giftFinderResult');
+            
+            setTimeout(() => {
+                resultDiv.innerHTML = `
+                    <div class="card" style="background: var(--bg-secondary); padding: 1rem;">
+                        <h6 class="text-success">🎁 Idee Regalo Generate</h6>
+                        <p>1. Set Attrezzi Giardinaggio Premium (€48)</p>
+                        <p>2. Libro su Orticoltura Biologica (€25)</p>
+                        <p>3. Sedia da Giardino Ergonomica (€55)</p>
+                        <small><a href="products.html?category=casa">Scopri altre idee nella sezione Casa →</a></small>
+                    </div>
+                `;
+            }, 1800);
+        }
 
-    // --- FUNZIONI RAPIDE (Originali migliorate) ---
-    function analyzeColor() {
-        const input = document.getElementById('colorInput').value.toLowerCase();
-        const resultDiv = document.getElementById('colorResult');
-        const risposte = {
-            'rosso': 'Sconto imperdibile (>40%), agisci subito!',
-            'arancione': 'Ottima offerta (25-40%), da considerare seriamente.',
-            'giallo': 'Sconto modesto (10-25%), buono se ne hai bisogno ora.',
-            'verde': 'Prezzo standard, non è una vera offerta.',
-            'blu': 'Prezzo in aumento, acquista solo se necessario.'
-        };
-        resultDiv.textContent = risposte[input] || "Colore non nel nostro database sconti.";
-    }
+        function huntDeals() {
+            const input = document.getElementById('dealHunterInput').value;
+            const resultDiv = document.getElementById('dealHunterResult');
+            
+            if (!input) {
+                resultDiv.innerHTML = '<div class="text-danger">⚠️ Inserisci una categoria di prodotto</div>';
+                return;
+            }
+            
+            showLoading('dealHunterResult');
+            
+            setTimeout(() => {
+                resultDiv.innerHTML = `
+                    <div class="card" style="background: var(--bg-secondary); padding: 1rem;">
+                        <h6 class="text-success">🎯 Offerte Trovate</h6>
+                        <p>• Trovato coupon da <strong>10%</strong> su 'Cuffie Marca X'</p>
+                        <p>• Trovato prodotto Warehouse (come nuovo) a <strong>-30%</strong></p>
+                        <p>• Offerta lampo attiva per 6 ore: <strong>-25%</strong></p>
+                        <small><a href="products.html">Verifica tra le nostre offerte del giorno →</a></small>
+                    </div>
+                `;
+            }, 2200);
+        }
 
-    function generateOfferName() {
-        const aggettivi = ['Imperdibile', 'Stratosferico', 'Segreto', 'Esclusivo', 'Lampo', 'Atomico'];
-        const nomi = ['Ribasso', 'Sconto', 'Affare', 'Risparmio', 'Deal', 'Bomba'];
-        const icone = ['<i class="fa-solid fa-fire"></i>', '<i class="fa-solid fa-rocket"></i>', '<i class="fa-solid fa-gem"></i>', '<i class="fa-solid fa-bolt"></i>'];
-        
-        const nomeCasuale = `${icone[Math.floor(Math.random() * icone.length)]} ${aggettivi[Math.floor(Math.random() * aggettivi.length)]} ${nomi[Math.floor(Math.random() * nomi.length)]}!`;
-        document.getElementById('offerNameResult').innerHTML = nomeCasuale;
-    }
-</script>
+        // Quick Tools Functions
+        function decodeColor() {
+            const input = document.getElementById('colorInput').value.toLowerCase();
+            const resultDiv = document.getElementById('colorResult');
+            
+            const colorMeanings = {
+                'rosso': 'Sconto imperdibile (>40%)',
+                'arancione': 'Ottima offerta (25-40%)',
+                'giallo': 'Sconto modesto (10-25%)',
+                'verde': 'Prezzo standard',
+                'blu': 'Prezzo in aumento'
+            };
+            
+            resultDiv.innerHTML = colorMeanings[input] || 'Colore non riconosciuto';
+        }
 
+        function generateOfferName() {
+            const adjectives = ['Imperdibile', 'Stratosferico', 'Esclusivo', 'Lampo', 'Atomico', 'Mega'];
+            const nouns = ['Ribasso', 'Sconto', 'Affare', 'Deal', 'Bomba', 'Occasione'];
+            const icons = ['🔥', '⚡', '💎', '🚀', '💥', '⭐'];
+            
+            const randomName = `${icons[Math.floor(Math.random() * icons.length)]} ${adjectives[Math.floor(Math.random() * adjectives.length)]} ${nouns[Math.floor(Math.random() * nouns.length)]}!`;
+            document.getElementById('offerNameResult').innerHTML = randomName;
+        }
+
+        function getSmartTip() {
+            const tips = [
+                'Controlla sempre le recensioni prima di acquistare',
+                'Confronta i prezzi su più siti prima di decidere',
+                'Iscriviti alle notifiche per non perdere le offerte lampo',
+                'Leggi attentamente la descrizione del prodotto',
+                'Verifica la politica di reso del venditore'
+            ];
+            
+            const randomTip = tips[Math.floor(Math.random() * tips.length)];
+            document.getElementById('smartTipResult').innerHTML = `💡 ${randomTip}`;
+        }
+
+        function predictTrend() {
+            const trends = [
+                'Smartphone pieghevoli in crescita del 45%',
+                'Elettrodomestici smart sempre più richiesti',
+                'Prodotti eco-sostenibili in forte aumento',
+                'Accessori per smart working molto popolari',
+                'Dispositivi per fitness domestico in trend'
+            ];
+            
+            const randomTrend = trends[Math.floor(Math.random() * trends.length)];
+            document.getElementById('trendResult').innerHTML = `📈 ${randomTrend}`;
+        }
+
+        // Add fade-in animation to cards
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                document.querySelectorAll('.card').forEach((card, index) => {
+                    setTimeout(() => {
+                        card.classList.add('fade-in');
+                    }, index * 100);
+                });
+            }, 100);
+        });
+    </script>
 </body>
 </html>
